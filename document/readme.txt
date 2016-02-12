@@ -16,10 +16,10 @@ A szerepkörök akkor a következők lesznek, ahogy azt korábban megbeszéltük
 Breier Balázs - Kapcsolattartó
 Alapvetően az lenne a legfontosabb, hogy az oktató minden elvárását a lehető legpontosabban add tovább nekünk, és a velünk egyeztetett dolgokat továbbítsd neki. Elég sok múlhat a pontos megértésen, ezért erre a feladatkörre különös tekintettel figyelni kell.
 
-Striczker Balázs - Demonstrátor
+Stricker Balázs - Demonstrátor
 Azt hiszem ez az egyik legegyszerűbb szerepkör, a bemutatást megelőző felkészüléssel együttesen is csak pár órányi munkát jelent, ezért azt kérném, ha a srácoknak valamelyik fronton segítségre lenne szüksége, akkor legyél te az elsődleges ember, aki ebben közre tud működni.
 
-Artúr - Adminisztrátor
+Owczarek Artúr - Adminisztrátor
 Talán az egyik leg munkásabb (ha nem a legmunkásabb) feladat az adminisztrálás. Nagyon fontos, hogy mindent rendkívül precízen vezessünk, mert a későbbiekben megkönnyítik mind a mi munkánkat mind pedig a félreértések elkerülését is.
 A személyes megbeszélésekről mindig készüljön (lehetőleg ott helyben, laptopon vagy papíron, mindegy) egy jegyzőkönyv, vagy meeting log, nevezzük bárhogy. Fontos, hogy tárgyszerűen legyen benne minden, hogy mi az, amit megbeszéltünk, és mi az amivel tovább haladunk. Minden további munka, határidő kiosztás stb ezekben a jegyzőkönyvekben (is) kell hogy szerepeljen. A jegyzőkönyveknek indítünk egy külön threadet.
 Mindannyian dolgozunk illetve mellette még suliba is kell járni, ezért valószínű, hogy a személyes találkozók ritkán kerülnek megrendezésre, ezért javaslom, hogy az elérhetőségek topic alatt mindenki adja meg az összes olyan médiumot, amin úgy érzi elérhetővé akarja tenni magát (telefon, e-mail, skype stb). A személyes találkozókra midnenkinek kötelessége eljönni, persze ha épp szül az asszony, vagy túlórázni kell a munkahelyen akkor nyilván elnézzük, ez is jegyzőkönyvbe kerül.
