@@ -1,0 +1,55 @@
+Stricker Balázs: Specifikáció
+
+“Akkor megfelelő egy specifikáció,
+Ha arról mindenki megértése jó.
+Írtam hozzá versecskét is, kicsit,
+Hátha kiakasztja a projektvezetőt, Petit.
+A vers csak a szavak számát növeli,
+A legjobb cég a világon a Hubasky!”
+
+					2016. február 12.
+
+Ha jól emlékszem, tegnap ezeket az alapvető elvárásokat mondta a tanár:
+-	Adatbázisszerű működés
+-	OOP szemlélet
+-	UML használat
+-	A kórház esetén:
+    o	Legyenek benne orvosok
+    o	Legyenek benne betegek
+    o	A betegeknek megrendelhető kezelések
+    o	A betegeknek kórtörténet
+
+Én ezt úgy fordítanám le kicsit konkretizálva, hogy:
+1.	legyen egy lista az orvosokról.  Ebben legyen elérhető a CV, a kezelt betegek listája, az osztály és beosztás, munkarend a hétre (hónapra?). Például:
+-	Orvosok listája: listbox
+-	CV: textbox
+-	Kezet betegek listája: listview
+-	Osztály, beosztás: TBD (to be discussed)
+
+
+2.	legyen egy lista a betegekről.  Ebben legyen elérhető a kórtörténet, a beteg alapadatai, a jelenlegi kezelés adatai, a megrendelt, de még el nem végzett kezelések. Konkrétabban:
+-	Betegek listája: listbox
+-	Kórtörténet: textbox
+-	Megrendelt kezelések: TBD 
+    o	Ehhez kell majd jó sok konverter, txt sorait objektumok property-jeivé konvertálni
+      	Ehhez majd kell egy jó és teljes körű interfész leírás
+
+3.	Legyen adatbázis. Ehhez szerintem az lenne a legcélszerűbb, ha a betegek és orvosok adatait egyedenként külön .txt fájlban tárolnánk. Én ehhez szívesen hozzá tennék olyasmit, hogy lehessen fotót, szkent, pl. röntgen leletről hozzácsapni a betegek adataihoz. Ez szerintem legyen ZIP, amiben benne van minden. Ezt nem kell hierarchizálni, legyen egy zsák, amibe bele lehet dobálni, csak a fájlok nevét kell strukturáltan tárolni - „az orvos majd kiválasztja kézzel a röntgent a kazalból”.
+    o	Ezt meg kell dumálni, mert ha egy fájlba tesszük az összes egyed adatait, azt nehéz adatbázisként kezelni, de ha több fájlba, annak a kezelése macerás, lásd az egyel lejjebbi pont bulletjét
+    o	Legyen egyedi azonosító, szerintem legyen a TB szám :)
+    o	A képfájlokat hozzá csapni szerintem legyen drag-drop felület, mint egy zsák...
+
+
+4.	Mivel személyes adatokról van szó, ezért kell(ene) hozzá titkosítást csinálni. Ehhez szerintem az lenne a legcélravezetőbb, ha pl. a 7-zip API-t használnánk titkosított zip fájl készítéséhez (0 kompresszióval)
+    o	Ehhez viszont fog kelleni egy index fájl, szintén letitkosítva, és ezt kell majd módosítgatni, amikor az adatbázishoz új beteget adunk. Ez alapján kell majd a zip-eket beolvasni is, és ez alapján kell majd keresni is, különben nem lesz jó.
+    o	Az indexhez szerintem a singleton megfelelő megoldás
+
+5.	Legyen sájni felület. Szerintem erre én tudok egy jó alap megoldást mutatni, de biztos lehet szofisztikáltabban is. A sájni nekem annyit jelent, hogy fokozatosan megjelenő ablakok (pl. fokozatosan szélesedő, ha rányomsz egy opcióra). 
+
+6.	Extra: természetesen felhő integráció :) Szerintem ehhez a dropbox lenne a legjobb, mert az ingyenesnek is van 30 napos fájl visszaállítási funkciója. Persze kérdéses, hogy mennyire bonyolult megvalósítani, de szerintem azért nem annyira...
+
+
+Ha egy ilyet össze tudunk rakni, az már szerintem megfelelő. Ha kell, még tudjuk tovább cukrozni, de alapvetően a „shine last” szerintem a legjobb megközelítés, főleg tapasztalatlan fejlesztők esetén. Ilyenekre tudok gondolni:
+    o	Date picker, az adott jövőbeli napon látjuk a kezelések listáját, kit vettek fel, melyik beteget discharge-olták
+    o	History, az elmúlt hónapban
+    o	Statisztika ablak, előre beégetett statisztikanézetekkel
