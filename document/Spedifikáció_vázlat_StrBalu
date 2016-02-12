@@ -34,7 +34,7 @@ Ha jól emlékszem, tegnap ezeket az alapvető elvárásokat mondta a tanár:
     o	Ehhez kell majd jó sok konverter, txt sorait objektumok property-jeivé konvertálni
       	Ehhez majd kell egy jó és teljes körű interfész leírás
 
-3.	Legyen adatbázis. Ehhez szerintem az lenne a legcélszerűbb, ha a betegek és orvosok adatait egyedenként külön .txt fájlban tárolnánk. Én ehhez szívesen hozzá tennék olyasmit, hogy lehessen fotót, szkent, pl. röntgen leletről hozzácsapni a betegek adataihoz. Ez szerintem legyen ZIP, amiben benne van minden. Ezt nem kell hierarchizálni, legyen egy zsák, amibe bele lehet dobálni, csak a fájlok nevét kell strukturáltan tárolni - „az orvos majd kiválasztja kézzel a röntgent a kazalból”.
+3.	Legyen adatbázis. Ehhez szerintem az lenne a legcélszerűbb, ha a betegek és orvosok adatait egyedenként külön .txt fájlban tárolnánk. Én ehhez szívesen hozzá tennék olyasmit, hogy lehessen fotót, szkent, pl. röntgen leletről hozzácsapni a betegek adataihoz. Ez szerintem legyen ZIP, amiben benne van minden. Ezt nem kell hierarchizálni, legyen egy zsák, amibe bele lehet dobálni, csak a txt és zip fájlok nevét kell strukturáltan tárolni egy indexben - „az orvos majd kiválasztja kézzel a röntgent a kazalból”.
     o	Ezt meg kell dumálni, mert ha egy fájlba tesszük az összes egyed adatait, azt nehéz adatbázisként kezelni, de ha több fájlba, annak a kezelése macerás, lásd az egyel lejjebbi pont bulletjét
     o	Legyen egyedi azonosító, szerintem legyen a TB szám :)
     o	A képfájlokat hozzá csapni szerintem legyen drag-drop felület, mint egy zsák...
