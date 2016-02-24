@@ -1,0 +1,7 @@
+O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\test\db_test\db_test\bin\Debug\db_test.exe.config
+O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\test\db_test\db_test\bin\Debug\db_test.exe
+O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\test\db_test\db_test\bin\Debug\db_test.pdb
+O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\test\db_test\db_test\bin\Debug\MySql.Data.dll
+O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\test\db_test\db_test\obj\Debug\db_test.csprojResolveAssemblyReference.cache
+O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\test\db_test\db_test\obj\Debug\db_test.exe
+O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\test\db_test\db_test\obj\Debug\db_test.pdb
