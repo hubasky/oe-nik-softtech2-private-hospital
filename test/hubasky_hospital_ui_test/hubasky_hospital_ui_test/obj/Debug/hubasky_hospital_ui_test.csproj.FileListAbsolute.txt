@@ -1,0 +1,30 @@
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\bin\Debug\hubasky_hospital_ui_test.exe.config
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\bin\Debug\hubasky_hospital_ui_test.exe
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\bin\Debug\hubasky_hospital_ui_test.pdb
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.csprojResolveAssemblyReference.cache
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\MainWindow.baml
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\MainWindow.g.cs
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\App.g.cs
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test_MarkupCompile.cache
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.g.resources
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.Properties.Resources.resources
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.csproj.GenerateResource.Cache
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.exe
+O:\Dokumentumok\Suli\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.pdb
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\bin\Debug\hubasky_hospital_ui_test.exe.config
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.exe
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.pdb
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.csprojResolveAssemblyReference.cache
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\MainWindow.baml
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\MainWindow.g.cs
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\App.g.cs
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test_MarkupCompile.cache
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.g.resources
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.Properties.Resources.resources
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.csproj.GenerateResource.Cache
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\bin\Debug\hubasky_hospital_ui_test.exe
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\bin\Debug\hubasky_hospital_ui_test.pdb
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\ProcedureWindow.baml
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\ProcedureWindow.g.cs
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\GeneratedInternalTypeHelper.g.cs
+e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test_MarkupCompile.lref

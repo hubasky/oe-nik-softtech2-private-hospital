@@ -1,0 +1,26 @@
+﻿<Window x:Class="hubasky_hospital_ui_test.ProcedureWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EKG vizsgálat adatlap" Height="412" Width="714">
+    <Grid>
+        <Label Content="Eljárást végző orvos neve" HorizontalAlignment="Left" Margin="17,114,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="Eljárás időpontja" HorizontalAlignment="Left" Margin="17,145,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="Beavatkozás időtartama" HorizontalAlignment="Left" Margin="17,176,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="Tüsszös Tibor" HorizontalAlignment="Left" Margin="210,21,0,0" VerticalAlignment="Top"/>
+        <Label Content="756324851" HorizontalAlignment="Left" Margin="210,52,0,0" VerticalAlignment="Top"/>
+        <Label Content="Páciens neve" HorizontalAlignment="Left" Margin="17,21,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="TAJ száma" HorizontalAlignment="Left" Margin="17,52,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="Dr. Gyógyító György" HorizontalAlignment="Left" Margin="210,114,0,0" VerticalAlignment="Top"/>
+        <Label Content="2016.02.26 10:26" HorizontalAlignment="Left" Margin="210,145,0,0" VerticalAlignment="Top"/>
+        <Label Content="23 perc" HorizontalAlignment="Left" Margin="210,176,0,0" VerticalAlignment="Top"/>
+        <Label Content="EKG vizsgálat" HorizontalAlignment="Left" Margin="210,83,0,0" VerticalAlignment="Top"/>
+        <Label Content="Eljárás megnevezése" HorizontalAlignment="Left" Margin="17,83,0,0" VerticalAlignment="Top" Width="188"/>
+        <TextBlock HorizontalAlignment="Left" Height="154" Margin="17,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="418" Padding="5"><Run Language="hu-hu" Text="A beteg pulzusa 92, vérnyomás 148/78"/><LineBreak/><Run Language="hu-hu" Text="EKG vizsgálat során bal pitvar szívzörejel jelei láthatók, melynek oka jelenleg még nem ismert."/><LineBreak/><Run Language="hu-hu" Text="Szívultrahang javasolt az anatómiai eltérések feltárására."/></TextBlock>
+        <ListBox HorizontalAlignment="Left" Height="138" Margin="440,207,0,0" VerticalAlignment="Top" Width="256">
+            <ListBoxItem>160226-1032-756324851-ekg-alap.jpg</ListBoxItem>
+            <ListBoxItem>160226-1034-756324851-ekg-alap.jpg</ListBoxItem>
+        </ListBox>
+        <Label Content="Csatolmányok" HorizontalAlignment="Left" Margin="440,176,0,0" VerticalAlignment="Top"/>
+        <Button Content="Új csatolmány hozzáadása" HorizontalAlignment="Left" Margin="540,350,0,0" VerticalAlignment="Top" Width="156"/>
+    </Grid>
+</Window>
