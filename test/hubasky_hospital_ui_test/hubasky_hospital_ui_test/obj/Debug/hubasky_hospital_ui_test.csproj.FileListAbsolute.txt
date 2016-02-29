@@ -28,3 +28,6 @@ e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_u
 e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\ProcedureWindow.g.cs
 e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\GeneratedInternalTypeHelper.g.cs
 e:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test_MarkupCompile.lref
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\bin\Debug\hubasky_hospital_ui_test.exe.config
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.exe
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\test\hubasky_hospital_ui_test\hubasky_hospital_ui_test\obj\Debug\hubasky_hospital_ui_test.pdb

@@ -5,3 +5,6 @@ O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospita
 O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\test\db_test\db_test\obj\Debug\db_test.csprojResolveAssemblyReference.cache
 O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\test\db_test\db_test\obj\Debug\db_test.exe
 O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\test\db_test\db_test\obj\Debug\db_test.pdb
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\test\db_test\db_test\bin\Debug\db_test.exe.config
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\test\db_test\db_test\obj\Debug\db_test.exe
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\test\db_test\db_test\obj\Debug\db_test.pdb
