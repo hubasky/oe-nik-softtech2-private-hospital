@@ -1,0 +1,25 @@
+Exporting package to 'F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\model\Hospital.xml'
+Retrieving data for export: diagram elements
+Retrieving data for export: links
+Retrieving data for export: constraints
+Retrieving data for export: attribute tagged values
+Retrieving data for export: operation tagged values
+Retrieving data for export: operation parameter tagged values
+Retrieving data for export: connector tagged values
+Completed data retrieval
+Pre-processing export tree...
+Completed pre-processing
+Processing package: DataManagementPeti
+Element:0: Employee
+Element:1: Ward
+Element:2: Hospital
+Element:3: Department
+Element:4: Unit
+Element:5: Person
+Element:6: IExpandableUnit
+Element:7: IModifiableUnit
+Element:8: Role
+Element:9: IManageEmployees
+Diagram: Kórház adminisztráció
+Formatting output XML...please wait
+XMI Document Export Complete!
