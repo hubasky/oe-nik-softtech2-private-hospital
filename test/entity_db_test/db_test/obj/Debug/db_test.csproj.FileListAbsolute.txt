@@ -1,0 +1,12 @@
+D:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\bin\Debug\db_test.exe.config
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\bin\Debug\db_test.exe
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\bin\Debug\db_test.pdb
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\bin\Debug\EntityFramework.dll
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\bin\Debug\EntityFramework.SqlServer.dll
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\bin\Debug\MySql.Data.dll
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\bin\Debug\MySql.Data.Entity.EF6.dll
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\bin\Debug\EntityFramework.xml
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\bin\Debug\EntityFramework.SqlServer.xml
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\obj\Debug\db_test.csprojResolveAssemblyReference.cache
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\obj\Debug\db_test.exe
+d:\Peti\Suli\Szoftvertechnológia II\db_test\db_test\obj\Debug\db_test.pdb
