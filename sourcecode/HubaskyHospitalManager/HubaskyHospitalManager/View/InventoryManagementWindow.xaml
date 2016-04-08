@@ -1,0 +1,22 @@
+﻿<Window x:Class="HubaskyHospitalManager.View.InventoryManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Eszköznyilvántartó" Height="720" Width="1280"        
+        WindowStartupLocation="CenterScreen"        
+        Icon="pack://application:,,,/Images/hubasky_icon.png">
+    <Grid HorizontalAlignment="Left" Height="640" Margin="0,25,0,0" VerticalAlignment="Top" Width="1272" Background="White">
+        <DataGrid x:Name="dg_hb" HorizontalAlignment="Left" Height="503" Margin="187,58,0,0" VerticalAlignment="Top" Width="793" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Eszköz szám" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Megnevezés" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Részleg" Binding="{Binding Dept}"/>
+                <DataGridTextColumn Header="Mennyiség" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Mértékegység" Binding="{Binding Dimension}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Eszköz törlése" HorizontalAlignment="Left" Margin="1033,85,0,0" VerticalAlignment="Top" Width="136"/>
+        <Button Content="Új eszköz felvétele" HorizontalAlignment="Left" Margin="1033,58,0,0" VerticalAlignment="Top" Width="136"/>
+
+    </Grid>
+
+</Window>

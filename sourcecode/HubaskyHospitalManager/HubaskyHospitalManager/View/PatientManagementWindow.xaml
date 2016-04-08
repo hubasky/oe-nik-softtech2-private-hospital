@@ -1,0 +1,51 @@
+﻿<Window x:Class="HubaskyHospitalManager.View.PatientManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Betegnyilvántartó" Height="720" Width="1280"        
+        WindowStartupLocation="CenterScreen"        
+        Icon="pack://application:,,,/Images/hubasky_icon.png">
+    
+    <Grid HorizontalAlignment="Left" Height="640" Margin="0,25,0,0" VerticalAlignment="Top" Width="1272" Background="White">
+        <ListBox HorizontalAlignment="Left" Height="304" Margin="187,128,0,0" VerticalAlignment="Top" Width="316">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label></Label>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBoxItem>Beteg Béla - TAJ: 918354986</ListBoxItem>
+            <ListBoxItem>Köhögő Klára - TAJ: 654832972</ListBoxItem>
+            <ListBoxItem>Hörgő Hedvig - TAJ: 753156898</ListBoxItem>
+            <ListBoxItem>Tüsszös Tibor - TAJ: 756324851</ListBoxItem>
+            <ListBoxItem>Üszkös Oszkár - TAJ: 654123987</ListBoxItem>
+            <ListBoxItem>Beteg Béla - TAJ: 147852963</ListBoxItem>
+        </ListBox>
+        <Label Content="Páciens keresése" HorizontalAlignment="Left" Margin="187,10,0,0" VerticalAlignment="Top" Width="209" FontSize="20"/>
+        <Label Content="Név" HorizontalAlignment="Left" Margin="187,66,0,0" VerticalAlignment="Top" Width="139"/>
+        <Label Content="TAJ szám" HorizontalAlignment="Left" Margin="187,97,0,0" VerticalAlignment="Top" Width="139"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="331,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="331,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172"/>
+        <Label Content="Adatlap" HorizontalAlignment="Left" Margin="760,10,0,0" VerticalAlignment="Top" Width="209" FontSize="20"/>
+        <Label Content="Név" HorizontalAlignment="Left" Margin="584,66,0,0" VerticalAlignment="Top" Width="139"/>
+        <Label Content="TAJ szám" HorizontalAlignment="Left" Margin="584,97,0,0" VerticalAlignment="Top" Width="139"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="728,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Text="Tüsszös Tibor"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="728,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Text="756324851"/>
+        <Label Content="Születési dátum" HorizontalAlignment="Left" Margin="584,128,0,0" VerticalAlignment="Top" Width="139"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="728,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Text="1972. 05. 11."/>
+        <Label Content="Lakcím" HorizontalAlignment="Left" Margin="584,159,0,0" VerticalAlignment="Top" Width="139"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="728,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Text="1234 Budapest Ellátó tér 3."/>
+        <Label Content="Telefonszám" HorizontalAlignment="Left" Margin="584,190,0,0" VerticalAlignment="Top" Width="139"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="728,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Text="+3619876543"/>
+        <Label Content="e-mail cím" HorizontalAlignment="Left" Margin="584,221,0,0" VerticalAlignment="Top" Width="139"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="728,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Text="tuszitibi@gmail.com"/>
+        <ListBox HorizontalAlignment="Left" Height="138" Margin="584,294,0,0" VerticalAlignment="Top" Width="464">
+            <ListBoxItem>Kardiológia - Betegfelvétel</ListBoxItem>
+            <ListBoxItem>Kardiológiai Anamnézis</ListBoxItem>
+            <ListBoxItem>EKG vizsgálat</ListBoxItem>
+            <ListBoxItem>Vérvétel - kis rutin</ListBoxItem>
+        </ListBox>
+        <Label Content="Eljárások" HorizontalAlignment="Left" Margin="584,257,0,0" VerticalAlignment="Top" Width="209" FontSize="20"/>
+        <Button x:Name="Btn_NewProcedure" Content="Új eljárás felvétele" HorizontalAlignment="Left" Margin="584,437,0,0" VerticalAlignment="Top" Click="Btn_NewProcedure_Click"/>
+        <Button Content="Adatlap megtekintése" HorizontalAlignment="Left" Margin="187,437,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
