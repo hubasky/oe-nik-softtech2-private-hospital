@@ -1,0 +1,19 @@
+﻿<Window x:Class="HP_EntityTest.EmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EmployeeWindow" Height="248" Width="392">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Név" Margin="10,10,10,0" VerticalAlignment="Top"/>
+        <Label Content="Telfonszám" Margin="10,41,10,0" VerticalAlignment="Top"/>
+        <Label Content="Beosztás" Margin="10,72,10,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtBox_Name" Grid.Column="1" Height="23" Margin="10,10,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtBox_Phone" Grid.Column="1" Height="23" Margin="10,41,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <ComboBox x:Name="Combo_Role" ItemsSource="{Binding Path=RoleValues}" SelectedItem="{Binding Path=SelectedRole}" Grid.Column="1" Margin="10,72,10,0" VerticalAlignment="Top"/>
+        <Button Content="Hozzáad" Grid.Column="1" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="22" VerticalAlignment="Bottom" Click="Button_Click"/>
+
+    </Grid>
+</Window>
