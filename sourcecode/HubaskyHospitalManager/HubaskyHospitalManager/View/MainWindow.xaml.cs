@@ -1,6 +1,10 @@
-﻿using System;
+﻿using HubaskyHospitalManager.Model.ApplicationManagement;
+using HubaskyHospitalManager.Model.Common;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,8 +22,24 @@ namespace HubaskyHospitalManager.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(name));
+        }
+
+        ApplicationManager appMgr;
+
+        private Employee applicationUser;
+        public Employee ApplicationUser 
+        {
+            get { return applicationUser; }
+            set { applicationUser = value; OnPropertyChanged(); }
+        }
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -27,55 +47,56 @@ namespace HubaskyHospitalManager.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            appMgr = new ApplicationManager();
+            ApplicationUser = appMgr.ApplicationUser;
+            DataContext = this;
         }
 
         private void Grid_HospitalManagement_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            LoginWindow firstLogin = new LoginWindow();
+            LoginWindow firstLogin = new LoginWindow(new Role[] { Role.Administrator }, appMgr);
             firstLogin.ShowDialog();
             if (firstLogin.DialogResult == true)
             {
-                if (firstLogin.LoggedInUser != null)
-                {
-                    Status_Login.Content = "Bejelentkezve: " + firstLogin.LoggedInUser.UserName;
-
-                    HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow();
-                    HospitalManagementView.ShowDialog();
-                }
+                UpdateLoggedInUser();
+                HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow();
+                HospitalManagementView.ShowDialog();
+                appMgr.Logout();
+                UpdateLoggedInUser();
             }
         }
 
         private void Grid_PatientManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            LoginWindow firstLogin = new LoginWindow();
+            LoginWindow firstLogin = new LoginWindow( appMgr);
             firstLogin.ShowDialog();
             if (firstLogin.DialogResult == true)
             {
-                if (firstLogin.LoggedInUser != null)
-                {
-                    Status_Login.Content = "Bejelentkezve: " + firstLogin.LoggedInUser.UserName;
-
-                    PatientManagementWindow PatientManagementView = new PatientManagementWindow();
-                    PatientManagementView.ShowDialog();
-                }
+                UpdateLoggedInUser();
+                PatientManagementWindow PatientManagementView = new PatientManagementWindow();
+                PatientManagementView.ShowDialog();
+                appMgr.Logout();
+                UpdateLoggedInUser();
             }
         }
 
         private void Grid_InventoryManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            LoginWindow firstLogin = new LoginWindow();
+            LoginWindow firstLogin = new LoginWindow(new Role[] { Role.Administrator, Role.DataRecorder }, appMgr);
             firstLogin.ShowDialog();
             if (firstLogin.DialogResult == true)
             {
-                if (firstLogin.LoggedInUser != null)
-                {
-                    Status_Login.Content = "Bejelentkezve: " + firstLogin.LoggedInUser.UserName;
-
-                    InventoryManagementWindow InventoryManagementView = new InventoryManagementWindow();
-                    InventoryManagementView.ShowDialog();
-                }
+                UpdateLoggedInUser();
+                InventoryManagementWindow InventoryManagementView = new InventoryManagementWindow();
+                InventoryManagementView.ShowDialog();
+                appMgr.Logout();
+                UpdateLoggedInUser();
             }
+        }
+
+        private void UpdateLoggedInUser()
+        {
+            this.ApplicationUser = appMgr.ApplicationUser;
         }
     }
 }

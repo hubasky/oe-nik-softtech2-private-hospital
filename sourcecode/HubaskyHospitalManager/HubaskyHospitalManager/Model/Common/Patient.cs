@@ -17,22 +17,10 @@ namespace HubaskyHospitalManager.Model.Common
 {
 	public class Patient : Person
     {
-        private List<MedicalRecord> medicalHistory;
-        private Gender gender;
-
-        public List<MedicalRecord> MedicalHistory
-        {
-            get { return medicalHistory; }
-            set { medicalHistory = value; }
-        }
-
-        public Gender Gender
-        {
-            get { return gender; }
-            set { gender = value; }
-        }
-
-
+        public int Ssn { get; set; }
+        public List<MedicalRecord> MedicalHistory { get; set; }
+        public Gender Gender { get; set; }
+        
 		public Patient()
         {
 

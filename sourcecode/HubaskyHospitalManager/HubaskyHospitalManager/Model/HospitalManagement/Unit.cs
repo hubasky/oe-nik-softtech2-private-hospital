@@ -12,33 +12,18 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
 	public class Unit 
     {
-        private string name;
-        private Employee manager;
-        private List<Employee> employees;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public Employee Manager
-        {
-            get { return manager; }
-            set { manager = value; }
-        }
-
-        public List<Employee> Employees
-        {
-            get { return employees; }
-            set { employees = value; }
-        }
-
+        [Key]
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public Employee Manager { get; set; }
+        public List<Employee> Employees { get; set; }
+        
 		public Unit()
         {
 

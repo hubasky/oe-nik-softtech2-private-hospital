@@ -1,4 +1,6 @@
-﻿using HubaskyHospitalManager.Model.Common;
+﻿using HubaskyHospitalManager.Model.ApplicationManagement;
+using HubaskyHospitalManager.Model.Common;
+using HubaskyHospitalManager.Model.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,28 +22,47 @@ namespace HubaskyHospitalManager.View
     /// </summary>
     public partial class LoginWindow : Window
     {
+        ApplicationManager appMgr;
+        Role[] authRoles;
+        bool isRoleAuth = false;
 
-        public User LoggedInUser { get; private set; }
-
-
-        public LoginWindow()
+        public LoginWindow(ApplicationManager appMgr)
         {
             InitializeComponent();
+            this.appMgr = appMgr;
+        }
+
+        public LoginWindow(Role[] roles, ApplicationManager appMgr)
+        {
+            InitializeComponent();
+            this.appMgr = appMgr;
+            this.authRoles = roles;
+            this.isRoleAuth = true;
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            User user = new User(LoginView.TxtBox_UserName.Text, LoginView.TxtBox_UserPassword.Password);
-            LoggedInUser = User.AuthenticateUser(user);
-            if (LoggedInUser != null)
+            //appMgr.ApplicationUser = null;
+            Employee user = null;
+            try
             {
+                if (isRoleAuth)
+                    user = appMgr.Authenticate(LoginView.TxtBox_UserName.Text, LoginView.TxtBox_UserPassword.Password, authRoles);
+                else
+                    user = appMgr.Authenticate(LoginView.TxtBox_UserName.Text, LoginView.TxtBox_UserPassword.Password);
+            }
+                            
+            catch (EmployeeRoleForbiddenException)
+            {
+                MessageBox.Show(String.Format("{0} felhasználónak nincs jogosultsága a funkció használatához!", appMgr.ApplicationUser.Username), "Figyelem!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DialogResult = false;
+                return;
+            }
+            
+            if (user != null)
                 LoginView.DialogResult = true;
-                LoginView.Close();
-            }
             else
-            {
-                MessageBox.Show("Error");
-            }
+                MessageBox.Show("Hibás felhasználónév vagy jelszó", "Hibás bejelentkezés", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)

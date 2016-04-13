@@ -12,39 +12,38 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
+using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.Common
 {
-	public class Employee : Person
+	public class Employee : Person, ICloneable
     {
-        private int salary;
-        private Role role;
-        private Ward ward;
+        [Key]
+        public string Username { get; private set; }
+        public string Password { get; private set; }
+        public double Salary { get; set; }
+        public Role Role { get; set; }
+        public Ward Ward { get; set; }
 
-        public int Salary
+        public Employee()
         {
-            get { return salary; }
-            set { salary = value; }
         }
 
-        public Role Role
+		public Employee(string username, string password)
         {
-            get { return role; }
-            set { role = value; }
-        }
-
-        public Ward Ward
-        {
-            get { return ward; }
-            set { ward = value; }
-        }
-
-		public Employee()
-        {
-
+            this.Username = username;
+            this.Password = password;
 		}
 
-
-	}//end Employee
-
-}//end namespace HospitalManagement
+        public object Clone()
+        {
+            Employee clone = new Employee(this.Username, this.Password);
+            clone.Name = this.Name;
+            clone.Phone = this.Phone;
+            clone.Salary = this.Salary;
+            clone.Role = this.Role;
+            clone.Ward = this.Ward;
+            return clone;
+        }
+    }
+}

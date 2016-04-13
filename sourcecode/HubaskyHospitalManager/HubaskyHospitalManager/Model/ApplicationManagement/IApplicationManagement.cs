@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.ApplicationManagement;
+using HubaskyHospitalManager.Model.Common;
 
 namespace HubaskyHospitalManager.Model.ApplicationManagement
 {
@@ -19,7 +20,9 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
 		/// 
 		/// <param name="user"></param>
 		/// <param name="pass"></param>
-		bool Authenticate(string user, string pass);
-	}//end IApplicationManagement
+        Employee Authenticate(string user, string pass);
+        Employee Authenticate(string username, string password, Role[] role);
+        void Logout();
+	}
 
-}//end namespace ApplicationManagement
+}
