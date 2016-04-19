@@ -34,10 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -63,6 +65,7 @@
     <Compile Include="Data\HubaskyDataBase.cs" />
     <Compile Include="Data\PopulateDb.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
+    <Compile Include="View\HospitalManagementView.cs" />
     <Compile Include="View\InventoryManagementWindow.xaml.cs">
       <DependentUpon>InventoryManagementWindow.xaml</DependentUpon>
     </Compile>
@@ -73,6 +76,7 @@
     <Compile Include="View\PatientManagementWindow.xaml.cs">
       <DependentUpon>PatientManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UnitView.cs" />
     <Page Include="View\HospitalManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

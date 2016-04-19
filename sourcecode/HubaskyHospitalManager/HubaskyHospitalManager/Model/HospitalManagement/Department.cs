@@ -16,17 +16,11 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 {
 	public class Department : Unit
     {
-        private List<Ward> wards;
-
-        public List<Ward> Wards
-        {
-            get { return wards; }
-            set { wards = value; }
-        }
+        public List<Ward> Wards { get; set; }
 
 		public Department()
         {
-
+            Wards = new List<Ward>();
 		}
 
 

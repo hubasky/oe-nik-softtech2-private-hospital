@@ -1,46 +1,38 @@
 ﻿<Window x:Class="HubaskyHospitalManager.View.HospitalManagementWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:self="clr-namespace:HubaskyHospitalManager.View"
+        xmlns:model="clr-namespace:HubaskyHospitalManager.Model.HospitalManagement"
         Title="Kórház adminisztráció" Height="720" Width="1280"        
         WindowStartupLocation="CenterScreen"        
-        Icon="pack://application:,,,/Images/hubasky_icon.png">
-    <Grid HorizontalAlignment="Left" Height="640" Margin="0,25,0,0" VerticalAlignment="Top" Width="1272" Background="White">
-        <TreeView HorizontalAlignment="Left" Height="515" Margin="230,70,0,0" VerticalAlignment="Top" Width="385" IsTextSearchEnabled="True" AllowDrop="True">
+        Icon="pack://application:,,,/Images/hubasky_icon.png" Loaded="Window_Loaded">
+    <Window.Resources>
+
+    </Window.Resources>
+    <Grid Margin="0,25,0,0" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView x:Name="TreeView_Hierarchy" Height="515" Margin="10,50,10,0" VerticalAlignment="Top"
+                  SelectedItemChanged="TreeView_SelectedItemChanged"
+                  ItemsSource="{Binding Path=Units}">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type self:UnitView}" ItemsSource="{Binding Units}">
+                    <TextBlock Text="{Binding Reference.Name}" />
+                </HierarchicalDataTemplate>
+
+            </TreeView.ItemTemplate>
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}">
-                    <Setter Property="IsExpanded" Value="True"></Setter>
+                    <Setter Property="IsExpanded" Value="True"/>
                 </Style>
             </TreeView.ItemContainerStyle>
-            <TreeViewItem Header="Hubasky Magánkórház">
-                <TreeViewItem Header="Betegellátási főosztály" IsExpanded="True">
-                    <TreeViewItem Header="Járóbetegellátás"/>
-                    <TreeViewItem Header="Kardiológia"/>
-                    <TreeViewItem Header="Fogászat"/>
-                    <TreeViewItem Header="Sebészet"/>
-                    <TreeViewItem Header="Szülészet"/>
-                    <TreeViewItem Header="Ortopédia"/>
-                </TreeViewItem>
-                <TreeViewItem Header="Labor vizsgálati főosztály" IsExpanded="True">
-                    <TreeViewItem Header="Radiológia"></TreeViewItem>
-                    <TreeViewItem Header="Vérvizsgálati osztály"></TreeViewItem>
-                    <TreeViewItem Header="Patológia"/>
-                </TreeViewItem>
-                <TreeViewItem Header="Épületüzemeltetési főosztály" IsExpanded="True">
-                    <TreeViewItem Header="Karbantartás"/>
-                    <TreeViewItem Header="Informatika"/>
-                    <TreeViewItem Header="Biztonsági szolgálat"/>
-                </TreeViewItem>
-                <TreeViewItem Header="Gazdasági főosztály" IsExpanded="True">
-                    <TreeViewItem Header="Kontrolling"/>
-                    <TreeViewItem Header="Marketing"/>
-                    <TreeViewItem Header="Sales"/>
-                    <TreeViewItem Header="Logisztikai"/>
-                </TreeViewItem>
-            </TreeViewItem>
         </TreeView>
-        <Label Content="Kórház hierarchiai szerkezete" HorizontalAlignment="Left" Height="35" Margin="235,30,0,0" VerticalAlignment="Top" Width="380" FontSize="20"/>
-        <Label Content="Adatlap" HorizontalAlignment="Left" Height="35" Margin="640,30,0,0" VerticalAlignment="Top" Width="380" FontSize="20"/>
-        <Grid HorizontalAlignment="Left" Height="265" Margin="640,70,0,0" VerticalAlignment="Top" Width="540">
+        <Label Content="Kórház hierarchiai szerkezete" Height="35" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Adatlap" Height="35" Margin="10,30,10,0" VerticalAlignment="Top" FontSize="20" Grid.Column="2"/>
+        <Grid Height="265" Margin="10,70,10,0" VerticalAlignment="Top" Grid.Column="2">
             <StackPanel HorizontalAlignment="Left" Height="265" VerticalAlignment="Top" Width="170">
                 <Label Content="Intézeti egység megnevezése" VerticalAlignment="Top"/>
                 <Label Content="Azonosító" VerticalAlignment="Top"/>
@@ -58,6 +50,20 @@
                 <Label Content="kardiologia@hubasky.hu" VerticalAlignment="Top"/>
             </StackPanel>
         </Grid>
-
+        <StackPanel Margin="10" Grid.Column="1">
+            <Label Content="Szervezeti egység dolgozói" FontSize="20" Grid.Column="1" VerticalAlignment="Top"/>
+            <Label Content="Részlegvezető"/>
+            <ListBox Grid.Column="1" Height="23" VerticalAlignment="Top"/>
+            <Label Content="Beosztottak"/>
+            <ListBox ItemsSource="{Binding Path=SelectedUnit.Reference.Employees}" Grid.Column="1" Height="443" VerticalAlignment="Top">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Label Content="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
     </Grid>
 </Window>

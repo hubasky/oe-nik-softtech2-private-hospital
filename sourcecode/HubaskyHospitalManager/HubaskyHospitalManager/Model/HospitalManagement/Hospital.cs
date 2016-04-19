@@ -34,7 +34,7 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
         
 		public Hospital()
         {
-
+            departments = new List<Department>();
 		}
 
 	}//end Hospital

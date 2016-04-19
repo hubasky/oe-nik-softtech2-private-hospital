@@ -1,5 +1,6 @@
 ﻿using HubaskyHospitalManager.Model.ApplicationManagement;
 using HubaskyHospitalManager.Model.Common;
+using HubaskyHospitalManager.Model.HospitalManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,6 +51,13 @@ namespace HubaskyHospitalManager.View
             appMgr = new ApplicationManager();
             ApplicationUser = appMgr.ApplicationUser;
             DataContext = this;
+
+            // --- TEST CODE ---
+            appMgr.HospitalManagement = new HospitalManager(appMgr);
+            HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow(appMgr.HospitalManagement);
+            HospitalManagementView.ShowDialog();
+
+            // --- END OF TEST CODE ---
         }
 
         private void Grid_HospitalManagement_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -59,7 +67,8 @@ namespace HubaskyHospitalManager.View
             if (firstLogin.DialogResult == true)
             {
                 UpdateLoggedInUser();
-                HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow();
+                appMgr.HospitalManagement = new HospitalManager(appMgr);
+                HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow(appMgr.HospitalManagement);
                 HospitalManagementView.ShowDialog();
                 appMgr.Logout();
                 UpdateLoggedInUser();
@@ -68,7 +77,7 @@ namespace HubaskyHospitalManager.View
 
         private void Grid_PatientManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            LoginWindow firstLogin = new LoginWindow( appMgr);
+            LoginWindow firstLogin = new LoginWindow(appMgr);
             firstLogin.ShowDialog();
             if (firstLogin.DialogResult == true)
             {

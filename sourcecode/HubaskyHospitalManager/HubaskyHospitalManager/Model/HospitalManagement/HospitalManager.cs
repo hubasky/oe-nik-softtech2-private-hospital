@@ -13,31 +13,23 @@ using System.IO;
 using HubaskyHospitalManager.Model.ApplicationManagement;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.Common;
+using System.Linq;
+using System.Windows;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
 	public class HospitalManager : IManageableUnit, IManageableEmployee {
 
-        private Hospital hospital;
-        private ApplicationManager appManager;
+        public Hospital Hospital { get; set; }
+        public ApplicationManager AppManager { get; set; }
 
-        public Hospital Hospital
+		public HospitalManager(ApplicationManager appMgr)
         {
-            get { return hospital; }
-            set { hospital = value; }
-        }
-
-        public ApplicationManager AppManager
-        {
-            get { return appManager; }
-            set { appManager = value; }
-        }
-
-		public HospitalManager()
-        {
-
+            this.AppManager = appMgr;
+            Hospital = new Hospital();
+            Hospital = AppManager.ApplicationDb.Hospital.FirstOrDefault();
 		}
-
+        
 		/// 
 		/// <param name="employee"></param>
 		/// <param name="ward"></param>
