@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HubaskyHospitalManager.View
 {
@@ -28,7 +29,6 @@ namespace HubaskyHospitalManager.View
             set { units = value; }
         }
         
-
         private UnitView selectedUnit;
         public UnitView SelectedUnit
         {
@@ -37,21 +37,19 @@ namespace HubaskyHospitalManager.View
         }
 
         
-
-
-
         public HospitalManagementView(HospitalManager hospMgr)
         {
             units = new ObservableCollection<UnitView>();
             hospManager = hospMgr;
-            UpdateHierarchyList();
-            
+            UpdateHierarchyList();            
         }
 
         private void UpdateHierarchyList()
         {
             UnitView HospitalUnitView = new UnitView(hospManager.Hospital);
-            var deptView = hospManager.AppManager.ApplicationDb.Departments.Select(m => m);
+            var deptView = hospManager.AppManager.ApplicationDb.Departments.Include("Wards").ToList();
+            var wardView = hospManager.AppManager.ApplicationDb.Wards.Include("Employees").ToList();
+            var empView = hospManager.AppManager.ApplicationDb.Employees.Select(e => e);
             if (deptView != null)
             {
                 foreach (Department dept in deptView)
