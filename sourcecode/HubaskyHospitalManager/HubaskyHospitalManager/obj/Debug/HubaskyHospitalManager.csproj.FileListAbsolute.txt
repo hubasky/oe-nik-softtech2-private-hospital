@@ -27,3 +27,32 @@ o:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospita
 o:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.SqlServer.xml
 o:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\GeneratedInternalTypeHelper.g.cs
 o:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager_MarkupCompile.lref
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\HubaskyHospitalManager.exe.config
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.exe
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.pdb
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\HubaskyHospitalManager.exe
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\HubaskyHospitalManager.pdb
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.dll
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.SqlServer.dll
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.xml
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.SqlServer.xml
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.csprojResolveAssemblyReference.cache
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\InventoryManagementWindow.baml
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\LoginWindow.baml
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\ProcedureWindow.baml
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\PatientManagementWindow.baml
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagementWindow.g.cs
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\InventoryManagementWindow.g.cs
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\LoginWindow.g.cs
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\MainWindow.g.cs
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\ProcedureWindow.g.cs
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\PatientManagementWindow.g.cs
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\App.g.cs
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager_MarkupCompile.cache
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager_MarkupCompile.lref
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagementWindow.baml
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\MainWindow.baml
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.g.resources
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.Properties.Resources.resources
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.csproj.GenerateResource.Cache

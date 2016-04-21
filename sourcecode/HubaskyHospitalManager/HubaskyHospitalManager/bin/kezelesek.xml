@@ -1,0 +1,1586 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ward>
+		<name>allergológia</name>
+		<procedure>
+			<id>ALR1001</id>
+			<description>allergiateszt bőrön alkalmazva</description>
+		</procedure>
+		<procedure>
+			<id>ALR1002</id>
+			<description>pulmonológiai funkcionális tesztek</description>
+		</procedure>
+		<procedure>
+			<id>ALR1003</id>
+			<description>hörgő terheléses teszt</description>
+		</procedure>
+		<procedure>
+			<id>ALR1004</id>
+			<description>az orr és a felső légutak endoszkópos vizsgálata</description>
+		</procedure>
+		<procedure>
+			<id>ALR1005</id>
+			<description>allergia vérteszt (RAST)</description>
+		</procedure>
+		<procedure>
+			<id>ALR1006</id>
+			<description>mellkasröntgen</description>
+		</procedure>
+		<procedure>
+			<id>ALR1007</id>
+			<description>tüdő és arcüreg CT vizsgálata</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>aneszteziológia</name>
+		<procedure>
+			<id>ANE1001</id>
+			<description>műtéti altatás (narkózis)</description>
+		</procedure>
+		<procedure>
+			<id>ANE1002</id>
+			<description>bódítást (szedálás)</description>
+		</procedure>
+		<procedure>
+			<id>ANE1003</id>
+			<description>helyi érzéstelenítési technika alkalmazása</description>
+		</procedure>
+		<procedure>
+			<id>ANE1004</id>
+			<description>vezetéses érzéstelenítési technika alkalmazása</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>belgyógyászat</name>
+		<procedure>
+			<id>BEL1001</id>
+			<description>EKG vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>BEL1002</id>
+			<description>labor vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>BEL1003</id>
+			<description>általános belgyógyászati szűrő vizsgálat</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>bőrgyógyászat</name>
+		<procedure>
+			<id>BGY1001</id>
+			<description>műtéti kimetszés</description>
+		</procedure>
+		<procedure>
+			<id>BGY1002</id>
+			<description>lézeres eljárás</description>
+		</procedure>
+		<procedure>
+			<id>BGY1003</id>
+			<description>rádiófrekvenciás eljárás</description>
+		</procedure>
+		<procedure>
+			<id>BGY1004</id>
+			<description>fagyasztásos eljárás</description>
+		</procedure>
+		<procedure>
+			<id>BGY1005</id>
+			<description>kiégetéses eljárás</description>
+		</procedure>
+		<procedure>
+			<id>BGY1006</id>
+			<description>hegkezelés</description>
+		</procedure>
+		<procedure>
+			<id>BGY1007</id>
+			<description>egészségmegörző szűrés</description>
+		</procedure>
+		<procedure>
+			<id>BGY1008</id>
+			<description>szövettani vizsgálat</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>diabetológia</name>
+		<procedure>
+			<id>DIA1001</id>
+			<description>HBA1C</description>
+		</procedure>
+		<procedure>
+			<id>DIA1002</id>
+			<description>microalbumin-szűrés</description>
+		</procedure>
+		<procedure>
+			<id>DIA1003</id>
+			<description>terheléses vércukor vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>DIA1004</id>
+			<description>labor vizsgálat</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>dietetika</name>
+		<procedure>
+			<id>DIE1001</id>
+			<description>dietetikai tanácsadás</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>endokrinológia</name>
+		<procedure>
+			<id>END1001</id>
+			<description>golyva</description>
+		</procedure>
+		<procedure>
+			<id>END1002</id>
+			<description>túlműködés</description>
+		</procedure>
+		<procedure>
+			<id>END1003</id>
+			<description>ciszta</description>
+		</procedure>
+		<procedure>
+			<id>END1004</id>
+			<description>daganat</description>
+		</procedure>
+		<procedure>
+			<id>END2001</id>
+			<description>jóindulatú daganatok</description>
+		</procedure>
+		<procedure>
+			<id>END2002</id>
+			<description>túlműködés</description>
+		</procedure>
+		<procedure>
+			<id>END3001</id>
+			<description>jóindulatú daganatok</description>
+		</procedure>
+		<procedure>
+			<id>END3002</id>
+			<description>rosszindulatú daganatok</description>
+		</procedure>
+		<procedure>
+			<id>END3003</id>
+			<description> ciszták a mellékvesében</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>érsebészet</name>
+		<procedure>
+			<id>ERS1001</id>
+			<description>A bokától a combtőig futó nagy felületes véna saphena magna eltávolítása (sztripping) </description>
+		</procedure>
+		<procedure>
+			<id>ERS1002</id>
+			<description>A bokától a lábszár hátoldalán a térdhajlatig futó véna saphena parva eltávolítása (sztripping) </description>
+		</procedure>
+		<procedure>
+			<id>ERS1003</id>
+			<description>A combhajlatban összeömlő felületes vénák lekötése (krosszektómia) </description>
+		</procedure>
+		<procedure>
+			<id>ERS1004</id>
+			<description>Oldalágak eltávolítása (oldalág varicektómia) </description>
+		</procedure>
+		<procedure>
+			<id>ERS1005</id>
+			<description>Injekciós érelzárás (szklerotizálás) hajszálértágulat, seprűvénák esetén </description>
+		</procedure>
+		<procedure>
+			<id>ERS1006</id>
+			<description>Vérrög eltávolítás (trombózus expresszió): felületes véna trombózisa esetén </description>
+		</procedure>
+		<procedure>
+			<id>ERS1007</id>
+			<description>Felületes véna trombózisánál a véna lekötése, ha a mélyvénás rendszerre való ráterjedés fenyeget.</description>
+		</procedure>
+		<procedure>
+			<id>ERS1008</id>
+			<description>Flebektómia (apró bőrmetszéseken keresztül egy speciális műszerrel a visszér teljes eltávolítása)</description>
+		</procedure>
+		<procedure>
+			<id>ERS1009</id>
+			<description>Visszérműtét lézertechnikával</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>fül-orr-gégészet</name>
+		<procedure>
+			<id>FOG1001</id>
+			<description>Arcüreg mosás</description>
+		</procedure>
+		<procedure>
+			<id>FOG1002</id>
+			<description>Diagnosztikus gégemikroszkópia (laryngomikroszkópia)</description>
+		</procedure>
+		<procedure>
+			<id>FOG1003</id>
+			<description>Dobhártya bemetszés (myringotomia)</description>
+		</procedure>
+		<procedure>
+			<id>FOG1004</id>
+			<description>Dobhártya plasztika (myringoplasty)</description>
+		</procedure>
+		<procedure>
+			<id>FOG1005</id>
+			<description>Endoszkópos orrmelléküreg műtét (FESS műtét)</description>
+		</procedure>
+		<procedure>
+			<id>FOG1006</id>
+			<description>Fültőmirigy eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>FOG1007</id>
+			<description>Garatmandula eltávolítása (tonsillectomia)</description>
+		</procedure>
+		<procedure>
+			<id>FOG1008</id>
+			<description>Hajlékony eszközzel gégetükrözés</description>
+		</procedure>
+		<procedure>
+			<id>FOG1009</id>
+			<description>Hallócsont plasztika</description>
+		</procedure>
+		<procedure>
+			<id>FOG1010</id>
+			<description>Hangszalagon végzett műtétek</description>
+		</procedure>
+		<procedure>
+			<id>FOG1011</id>
+			<description>Horkolás gátló műtét (rádiófrekvenciás)</description>
+		</procedure>
+		<procedure>
+			<id>FOG1012</id>
+			<description>Jóindulatú gégedaganatok eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>FOG1013</id>
+			<description>Jóindulatú nyaki daganatok műtétei</description>
+		</procedure>
+		<procedure>
+			<id>FOG1014</id>
+			<description>Külsőfül helyzetének korrigálása</description>
+		</procedure>
+		<procedure>
+			<id>FOG1015</id>
+			<description>Lágyszájpad plasztika</description>
+		</procedure>
+		<procedure>
+			<id>FOG1016</id>
+			<description>Mikroszkópos gége sebészet</description>
+		</procedure>
+		<procedure>
+			<id>FOG1017</id>
+			<description>Myringotomia szellőztető tubus beültetéssel</description>
+		</procedure>
+		<procedure>
+			<id>FOG1018</id>
+			<description>Nyelvcsap megkisebbítése (resectio uvulae)</description>
+		</procedure>
+		<procedure>
+			<id>FOG1019</id>
+			<description>Orrcsonttörés utáni helyreállítás (repositio)</description>
+		</procedure>
+		<procedure>
+			<id>FOG1020</id>
+			<description>Orrmandula eltávolítás (adenotomia)</description>
+		</procedure>
+		<procedure>
+			<id>FOG1021</id>
+			<description>Orrplasztika</description>
+		</procedure>
+		<procedure>
+			<id>FOG1022</id>
+			<description>Orrpolip eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>FOG1023</id>
+			<description>Orrsövény műtét + polip eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>FOG1024</id>
+			<description>Orrüreg tükrözése</description>
+		</procedure>
+		<procedure>
+			<id>FOG1025</id>
+			<description>Orrvérzés kauteres kezelése (égetés)</description>
+		</procedure>
+		<procedure>
+			<id>FOG1026</id>
+			<description>Rostacsontok megnyitása</description>
+		</procedure>
+		<procedure>
+			<id>FOG1027</id>
+			<description>Tályog megnyitása (incisio)</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>gasztroenterológia</name>
+		<procedure>
+			<id>GSZ1001</id>
+			<description>vérvizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>GSZ1002</id>
+			<description>vizeletvizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>GSZ1003</id>
+			<description>székletvizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>GSZ2001</id>
+			<description>ultrahang </description>
+		</procedure>
+		<procedure>
+			<id>GSZ2002</id>
+			<description>röntgen</description>
+		</procedure>
+		<procedure>
+			<id>GSZ2003</id>
+			<description>CT</description>
+		</procedure>
+		<procedure>
+			<id>GSZ3001</id>
+			<description>gyomortükrözés</description>
+		</procedure>
+		<procedure>
+			<id>GSZ3002</id>
+			<description>vastagbéltükrözés</description>
+		</procedure>
+		<procedure>
+			<id>GSZ4001</id>
+			<description>Helicobacter kilégzési teszt</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>immunológia</name>
+		<procedure>
+			<id>IMM1001</id>
+			<description>gyulladáscsökkentő terápia</description>
+		</procedure>
+		<procedure>
+			<id>IMM1002</id>
+			<description>allergia vizsgálat</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>kardiológia</name>
+		<procedure>
+			<id>KRD1001</id>
+			<description>EKG</description>
+		</procedure>
+		<procedure>
+			<id>KRD1002</id>
+			<description>Holter-vizsgálat (24 órás EKG)</description>
+		</procedure>
+		<procedure>
+			<id>KRD1003</id>
+			<description>ABPM (24 órás vérnyomásmérés)</description>
+		</procedure>
+		<procedure>
+			<id>KRD1004</id>
+			<description>Terheléses EKG (ergometria)</description>
+		</procedure>
+		<procedure>
+			<id>KRD1005</id>
+			<description>Szívultrahang (Echo)</description>
+		</procedure>
+		<procedure>
+			<id>KRD1006</id>
+			<description>Doppler vizsgálat (erek ultrahang vizsgálata)</description>
+		</procedure>
+		<procedure>
+			<id>KRD1007</id>
+			<description>Arteriográf vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>KRD1008</id>
+			<description>Laboratóriumi vizsgálat (rizikófaktorok: cukor, koleszterin, triglicerid, stb.)</description>
+		</procedure>
+		<procedure>
+			<id>KRD1009</id>
+			<description>Speciális laborvizsgálat (troponin, pro BNP, D dimer, stb.)</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>neurológia</name>
+		<procedure>
+			<id>NER1001</id>
+			<description>rövid általános vizsgálat (vérnyomásmérés, szív, erek, tüdő meghallgatása, has megtapintása)</description>
+		</procedure>
+		<procedure>
+			<id>NER1002</id>
+			<description>fizikoterápia</description>
+		</procedure>
+		<procedure>
+			<id>NER1003</id>
+			<description>gyógytorna</description>
+		</procedure>
+		<procedure>
+			<id>NER1004</id>
+			<description>ideg-izom ingerlés</description>
+		</procedure>
+		<procedure>
+			<id>NER1005</id>
+			<description>elektromos kezelések</description>
+		</procedure>
+		<procedure>
+			<id>NER2001</id>
+			<description>gyógyszeres kezelés (injekciós)</description>
+		</procedure>
+		<procedure>
+			<id>NER2002</id>
+			<description>gyógyszeres kezelés (injekciós)</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>nőgyógyászat</name>
+		<procedure>
+			<id>NGY1001</id>
+			<description>Nőgyógyászai fizikális alapvizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>NGY1002</id>
+			<description>Laborvizsgálat vérből, vizeletből, hüvelyváladékból</description>
+		</procedure>
+		<procedure>
+			<id>NGY1003</id>
+			<description>Szexuális úton terjedő betegségek szűrése (chlamydia, HPV, szifilisz, stb.)</description>
+		</procedure>
+		<procedure>
+			<id>NGY1004</id>
+			<description>Méhnyakrák szűrés: citológia, szövettan</description>
+		</procedure>
+		<procedure>
+			<id>NGY1005</id>
+			<description>Ultrahangos vizsgálatok</description>
+		</procedure>
+		<procedure>
+			<id>NGY1006</id>
+			<description>Hormonvizsgálatok</description>
+		</procedure>
+		<procedure>
+			<id>NGY1007</id>
+			<description>Hiszteroszkópia (méhüregi tükrözés)</description>
+		</procedure>
+		<procedure>
+			<id>NGY1008</id>
+			<description>Laparoszkópia (hasüregi tükrözés)</description>
+		</procedure>
+		<procedure>
+			<id>NGY2001</id>
+			<description> Szeméremtesti szemölcs és anyajegyek eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>NGY2002</id>
+			<description> Vírusszemölcs (condyloma) eltávolítása külső nemi szervekről</description>
+		</procedure>
+		<procedure>
+			<id>NGY2003</id>
+			<description> Méhnyakból szövetminta vétele (conisatio)</description>
+		</procedure>
+		<procedure>
+			<id>NGY2004</id>
+			<description> Endoszkóppal a petevezeték átjárhatóságának vizsgálata</description>
+		</procedure>
+		<procedure>
+			<id>NGY2005</id>
+			<description> Tuba katéterezés, átfúvás</description>
+		</procedure>
+		<procedure>
+			<id>NGY3001</id>
+			<description>Bartholin ciszta vagy tályog megnyitása, megoldása (marsupializáció)</description>
+		</procedure>
+		<procedure>
+			<id>NGY3002</id>
+			<description> Polip eltávolítás hüvelyből, méhnyakból, méhből (polypectomia)</description>
+		</procedure>
+		<procedure>
+			<id>NGY3003</id>
+			<description> Ciszta eltávolítás hüvelyből, méhnyakból, méhből</description>
+		</procedure>
+		<procedure>
+			<id>NGY3004</id>
+			<description> Hüvely és gáttájék plasztika</description>
+		</procedure>
+		<procedure>
+			<id>NGY3005</id>
+			<description> Szeméremtest műtétek</description>
+		</procedure>
+		<procedure>
+			<id>NGY3006</id>
+			<description> Szűzhártya plasztika</description>
+		</procedure>
+		<procedure>
+			<id>NGY3007</id>
+			<description> Intimplasztika</description>
+		</procedure>
+		<procedure>
+			<id>NGY3008</id>
+			<description> Hüvelybemenet és gát helyreállító műtéte</description>
+		</procedure>
+		<procedure>
+			<id>NGY3009</id>
+			<description> Inkontinencia szalag behelyezése</description>
+		</procedure>
+		<procedure>
+			<id>NGY3010</id>
+			<description> Küret (kaparás, frakcionált abrasio) altatásban</description>
+		</procedure>
+		<procedure>
+			<id>NGY3011</id>
+			<description> Diagnosztikus hiszteroszkópia (méhüregi tükrözés)</description>
+		</procedure>
+		<procedure>
+			<id>NGY4001</id>
+			<description> Diagnosztikus laparoszkópia (hasüregi tükrözés)</description>
+		</procedure>
+		<procedure>
+			<id>NGY4002</id>
+			<description> Laparoszkópos sterilizáció</description>
+		</procedure>
+		<procedure>
+			<id>NGY4003</id>
+			<description> Méheltávolítás (hiszterektómia) hasfali metszésen át</description>
+		</procedure>
+		<procedure>
+			<id>NGY4004</id>
+			<description> Méheltávolítás (hiszterektómia) hüvelyen át</description>
+		</procedure>
+		<procedure>
+			<id>NGY4005</id>
+			<description> Méhenkívüli terhesség megszüntetése has feltárással, vagy laparoszkópiával</description>
+		</procedure>
+		<procedure>
+			<id>NGY4006</id>
+			<description> Petefészek ciszta eltávolítás laparotomiából (hasfali metszésből), vagy laparoszkópiával</description>
+		</procedure>
+		<procedure>
+			<id>NGY4007</id>
+			<description> Petefészek eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>NGY4008</id>
+			<description> Petefészek és petevezető eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>NGY4009</id>
+			<description>Első és hátsó hüvelyfal plasztika</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>ortopédia</name>
+		<procedure>
+			<id>ORT1001</id>
+			<description>Vérvizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>ORT1002</id>
+			<description>Vizeletvizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>ORT1003</id>
+			<description>Székletvizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>ORT1004</id>
+			<description>PSA vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>ORT1005</id>
+			<description>Human haemoglobin teszt</description>
+		</procedure>
+		<procedure>
+			<id>ORT1006</id>
+			<description>ODM - Csontsűrűség-mérés</description>
+		</procedure>
+		<procedure>
+			<id>ORT1007</id>
+			<description>röntgen </description>
+		</procedure>
+		<procedure>
+			<id>ORT1008</id>
+			<description>CT</description>
+		</procedure>
+		<procedure>
+			<id>ORT1009</id>
+			<description>ultrahang</description>
+		</procedure>
+		<procedure>
+			<id>ORT2001</id>
+			<description>Core dekompresszió kezdődő combfej elhalás miatt</description>
+		</procedure>
+		<procedure>
+			<id>ORT2002</id>
+			<description>Cement nélküli csípőprotézis-beültetés </description>
+		</procedure>
+		<procedure>
+			<id>ORT2003</id>
+			<description>Csípőizületi protézis csere</description>
+		</procedure>
+		<procedure>
+			<id>ORT2004</id>
+			<description>Cementes csípőprotézis-beültetés</description>
+		</procedure>
+		<procedure>
+			<id>ORT2005</id>
+			<description>Combcsont tengelykorrekciós műtéte</description>
+		</procedure>
+		<procedure>
+			<id>ORT3001</id>
+			<description>Artroszkópos és feltárásos beavatkozások</description>
+		</procedure>
+		<procedure>
+			<id>ORT3002</id>
+			<description>Térdízületi szinovektómia</description>
+		</procedure>
+		<procedure>
+			<id>ORT3003</id>
+			<description>Magastíbia oszteotómia: sípcsont görbesége, részleges ízületi porckopás miatt</description>
+		</procedure>
+		<procedure>
+			<id>ORT3004</id>
+			<description>Térdprotézis beültetés</description>
+		</procedure>
+		<procedure>
+			<id>ORT3005</id>
+			<description>Meniszkusz sérülések (ízületi porcsarló szakadás) ellátása: reszekció, varrat </description>
+		</procedure>
+		<procedure>
+			<id>ORT3006</id>
+			<description>Ízfelszíni porcfelszín károsodások ellátása: debridement, mikrofraktúra, mozaik plasztika </description>
+		</procedure>
+		<procedure>
+			<id>ORT3007</id>
+			<description>Térdizületi artrolízis – mozgásjavító műtéti beavatkozások</description>
+		</procedure>
+		<procedure>
+			<id>ORT3008</id>
+			<description>Patellofemorális (térdkalács) betegségek sebészi kezelése: artroszkópos lateralis rilíz, tuberozitász tibié transpozíció </description>
+		</procedure>
+		<procedure>
+			<id>ORT3009</id>
+			<description> Térdízületi sportsérülések, sport ártalmak sebészi kezelése</description>
+		</procedure>
+		<procedure>
+			<id>ORT3010</id>
+			<description>szalagsérülések artroszkópos és nyitott ellátása: varrat, pótlás</description>
+		</procedure>
+		<procedure>
+			<id>ORT3011</id>
+			<description>A sípcsont tengelykorrekciós műtéte</description>
+		</procedure>
+		<procedure>
+			<id>ORT3012</id>
+			<description>Artroszkópos izületi szabadtest eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>ORT3013</id>
+			<description>Artroszkópos Plica eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>ORT3014</id>
+			<description>Artroszkópos Pridie felfúrás</description>
+		</procedure>
+		<procedure>
+			<id>ORT3015</id>
+			<description>Baker ciszta eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>ORT3016</id>
+			<description>Elülső keresztszalag helyreállítás, porc mozaik plasztikája</description>
+		</procedure>
+		<procedure>
+			<id>ORT3017</id>
+			<description>Izületi tükrözés során a sérült porcrész helyreállítása, microfractura</description>
+		</procedure>
+		<procedure>
+			<id>ORT3018</id>
+			<description>Izületi tükrözéssel simítás, tisztítás, porcrész, levált rész, redő eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>ORT3019</id>
+			<description>Kiterjesztett lateralis release, tuberositas tibiae transpositio retinaculum bemetszése</description>
+		</procedure>
+		<procedure>
+			<id>ORT3020</id>
+			<description>Térd protézis beültetés, valamint térdprotézis csere</description>
+		</procedure>
+		<procedure>
+			<id>ORT3021</id>
+			<description>Térdkalács előtti nyáktömlő eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>ORT3022</id>
+			<description>Unicondylaris térdprotézis beültetés</description>
+		</procedure>
+		<procedure>
+			<id>ORT4001</id>
+			<description>artroszkópos ízületi felszínkezelés: debridement, mikrofractúra, mozaik plasztika</description>
+		</procedure>
+		<procedure>
+			<id>ORT4002</id>
+			<description>Szinovektómia (ízületi belhártya részleges eltávolítása), szabad ízületi test eltávolítás </description>
+		</procedure>
+		<procedure>
+			<id>ORT4003</id>
+			<description>Sportsérülések és sportártalmak sebészi kezelése </description>
+		</procedure>
+		<procedure>
+			<id>ORT4004</id>
+			<description>Achilles ín varrata</description>
+		</procedure>
+		<procedure>
+			<id>ORT4005</id>
+			<description>Boka protézis</description>
+		</procedure>
+		<procedure>
+			<id>ORT4006</id>
+			<description>Bokaizület elmerevítése</description>
+		</procedure>
+		<procedure>
+			<id>ORT4007</id>
+			<description>Bokaszalag varrat, plasztika, tokfeszítés</description>
+		</procedure>
+		<procedure>
+			<id>ORT4008</id>
+			<description>Bokatáji ganglion műtét</description>
+		</procedure>
+		<procedure>
+			<id>ORT5001</id>
+			<description>Előláb deformitások (bütyök, kalapács ujj, talpfájdalom) korrekciós műtétje</description>
+		</procedure>
+		<procedure>
+			<id>ORT5002</id>
+			<description>Haglund sarok műtéti kezelése</description>
+		</procedure>
+		<procedure>
+			<id>ORT5003</id>
+			<description>A II-IV. lábtőcsont fejének plasztikája</description>
+		</procedure>
+		<procedure>
+			<id>ORT5004</id>
+			<description>Achilles-ín szakadás fedett és nyitott műtéti ellátása</description>
+		</procedure>
+		<procedure>
+			<id>ORT5005</id>
+			<description>Achilles-ín tendinitis miatt végzett synovectomia</description>
+		</procedure>
+		<procedure>
+			<id>ORT5006</id>
+			<description>Az első lábtőcsont műtéte</description>
+		</procedure>
+		<procedure>
+			<id>ORT5007</id>
+			<description>Csontkinövés levésés</description>
+		</procedure>
+		<procedure>
+			<id>ORT5008</id>
+			<description>Egyéb láb deformációk műtéti megoldása</description>
+		</procedure>
+		<procedure>
+			<id>ORT5009</id>
+			<description>Lábközépcsontok törésének műtési ellátása</description>
+		</procedure>
+		<procedure>
+			<id>ORT5010</id>
+			<description>Nagylábujj lábtő-lábujj izületének rezekciós plasztikája</description>
+		</procedure>
+		<procedure>
+			<id>ORT5011</id>
+			<description>Ujjizületi protézis</description>
+		</procedure>
+		<procedure>
+			<id>ORT6001</id>
+			<description>Szubakromiális impigement (ütődéses) szindróma sebészi kezelése artroszkópos és nyílt technikával: debridement, akromion plasztika </description>
+		</procedure>
+		<procedure>
+			<id>ORT6002</id>
+			<description>Rotátor köpeny szakadás sebészi kezelése artroszkópos vagy nyílt módszerrel: akromion plasztika, debridement, bicepsz tenotómia, ROK varrat (refixáció), ennek kilátástalansága esetén Rockwood műtét </description>
+		</procedure>
+		<procedure>
+			<id>ORT6003</id>
+			<description>Vállizületi sportsérülések és sportártalmak sebészi ellátása</description>
+		</procedure>
+		<procedure>
+			<id>ORT6004</id>
+			<description>Vállizületi instabilitás sebészi kezelése artroszkópos és nyílt módszerrel: pl. többszöri vállficam esetén labrum refixáció, ízületi tok zsugorítás, csontos ütközők</description>
+		</procedure>
+		<procedure>
+			<id>ORT6005</id>
+			<description>Befagyott váll (frozen shoulder) maitti artrolízis, artroszkópos sebészi felszabadítás, debridement</description>
+		</procedure>
+		<procedure>
+			<id>ORT6006</id>
+			<description>Vállizületi porckárosodások felszínpótló kezelései protézis beültetéssel </description>
+		</procedure>
+		<procedure>
+			<id>ORT6007</id>
+			<description>A kulcscsont oldalsó részének eltávolítása és a kulcscsont-lapocka izület kitisztítása</description>
+		</procedure>
+		<procedure>
+			<id>ORT6008</id>
+			<description>AC ízületi ficam stabilizálása</description>
+		</procedure>
+		<procedure>
+			<id>ORT6009</id>
+			<description>Biceps-ín reinsertio</description>
+		</procedure>
+		<procedure>
+			<id>ORT6010</id>
+			<description>Felső végtag (kivéve: kéz) műtétei</description>
+		</procedure>
+		<procedure>
+			<id>ORT6011</id>
+			<description>Kiterjesztett vállartroszkópia</description>
+		</procedure>
+		<procedure>
+			<id>ORT6012</id>
+			<description>Váll rotátor köpeny inának rekonstrukciója</description>
+		</procedure>
+		<procedure>
+			<id>ORT6013</id>
+			<description>Vállizület plasztika és tisztítás izületmegnyitó műtéttel</description>
+		</procedure>
+		<procedure>
+			<id>ORT6014</id>
+			<description>Vállizületi protézis</description>
+		</procedure>
+		<procedure>
+			<id>ORT6015</id>
+			<description>Vállizületi tükrözés során izületi plasztika (Bankart műtét)</description>
+		</procedure>
+		<procedure>
+			<id>ORT6016</id>
+			<description>Weaver-Dunn műtét</description>
+		</procedure>
+		<procedure>
+			<id>ORT7001</id>
+			<description>Könyökízületi szabad ízületi test eltávolítás, ízületi felszínkezelés, megvastagodott ízületi belhártya eltávolítása artroszkópos technikával</description>
+		</procedure>
+		<procedure>
+			<id>ORT7002</id>
+			<description>Könyök-bursa kiírtása</description>
+		</procedure>
+		<procedure>
+			<id>ORT7003</id>
+			<description>Felkar-singcsont közötti izület plasztikája</description>
+		</procedure>
+		<procedure>
+			<id>ORT7004</id>
+			<description>Könyök feletti nyálkatömlő eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>ORT7005</id>
+			<description>Könyökízületi arthroscopia</description>
+		</procedure>
+		<procedure>
+			<id>ORT7006</id>
+			<description>Könyökizületi hártya eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>ORT7007</id>
+			<description>Könyökizületi protézis</description>
+		</procedure>
+		<procedure>
+			<id>ORT7008</id>
+			<description>Tenisz/golfkönyök ellátása thrombocyta suspensiós injekciós kezeléssel</description>
+		</procedure>
+		<procedure>
+			<id>ORT7009</id>
+			<description>Tenisz/golfkönyök műtéti ellátása</description>
+		</procedure>
+		<procedure>
+			<id>ORT8001</id>
+			<description>Pattanó ujj: ínhüvely bemetszés</description>
+		</procedure>
+		<procedure>
+			<id>ORT8002</id>
+			<description>Kis ízületi szinovektómia (belhártya felszaporodás eltávolítása)</description>
+		</procedure>
+		<procedure>
+			<id>ORT8003</id>
+			<description>Kis ízületi protézis beültetés</description>
+		</procedure>
+		<procedure>
+			<id>ORT8004</id>
+			<description>Carpal tunnel szindróma (kéztőcsatorna műtét)</description>
+		</procedure>
+		<procedure>
+			<id>ORT8005</id>
+			<description>Csontos extensor ín felszabadítás</description>
+		</procedure>
+		<procedure>
+			<id>ORT8006</id>
+			<description>Csuklóizületi ínhüvely.gyulladás miatti műtétek</description>
+		</procedure>
+		<procedure>
+			<id>ORT8007</id>
+			<description>Dupuytren kontraktúra megszüntetése - több ujjon</description>
+		</procedure>
+		<procedure>
+			<id>ORT8008</id>
+			<description>Dupuytren kontrktúra - egy ujjon</description>
+		</procedure>
+		<procedure>
+			<id>ORT8009</id>
+			<description>Ínhüvely-eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>ORT8010</id>
+			<description>Kéz feszítőín helyreállítás</description>
+		</procedure>
+		<procedure>
+			<id>ORT8011</id>
+			<description>Kézín varrata</description>
+		</procedure>
+		<procedure>
+			<id>ORT8012</id>
+			<description>Kéztőcsontok és ujjcsontok közti izületekből hártya eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>ORT8013</id>
+			<description>Kézujjak izületeinek plasztikája</description>
+		</procedure>
+		<procedure>
+			<id>ORT8014</id>
+			<description>Karpalisz (csukló) alagút synroma (tenyér zsibbadás): n. Mediánus felszabadítás</description>
+		</procedure>
+		<procedure>
+			<id>ORT8015</id>
+			<description>Ízületi szinovektómia - Csuklótáji ganglionok eltávolítása</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>plasztikai sebészet</name>
+		<procedure>
+			<id>PLS1001</id>
+			<description>Ránctalanítás Botox injekciós kezeléssel </description>
+		</procedure>
+		<procedure>
+			<id>PLS1002</id>
+			<description>Anyajegyek, bőrelváltozások kezelése</description>
+		</procedure>
+		<procedure>
+			<id>PLS1003</id>
+			<description>Botox izzadás kezelés (hónalji, talpi, tenyéri izzadás megszüntetésére) </description>
+		</procedure>
+		<procedure>
+			<id>PLS1004</id>
+			<description>Ajakfeltöltés</description>
+		</procedure>
+		<procedure>
+			<id>PLS1005</id>
+			<description>Ráncfeltöltés, arckontúr formálás Juvederm hiarulonsav készítménnyel</description>
+		</procedure>
+		<procedure>
+			<id>PLS2001</id>
+			<description>Arcplasztika, Középső arcfélplasztika (MACS lift) </description>
+		</procedure>
+		<procedure>
+			<id>PLS2002</id>
+			<description>Nyakplasztika</description>
+		</procedure>
+		<procedure>
+			<id>PLS2003</id>
+			<description>Homlokplasztika</description>
+		</procedure>
+		<procedure>
+			<id>PLS2004</id>
+			<description>Szemhéjplasztika  </description>
+		</procedure>
+		<procedure>
+			<id>PLS2005</id>
+			<description>Orrplasztika </description>
+		</procedure>
+		<procedure>
+			<id>PLS2006</id>
+			<description>Állplasztika  </description>
+		</procedure>
+		<procedure>
+			<id>PLS2007</id>
+			<description>Fülplasztika</description>
+		</procedure>
+		<procedure>
+			<id>PLS3001</id>
+			<description>Mellnagyobbítás  </description>
+		</procedure>
+		<procedure>
+			<id>PLS3002</id>
+			<description>Mellkisebbítés </description>
+		</procedure>
+		<procedure>
+			<id>PLS3003</id>
+			<description>Mellfelvarrás  </description>
+		</procedure>
+		<procedure>
+			<id>PLS3004</id>
+			<description>Hasplasztika </description>
+		</procedure>
+		<procedure>
+			<id>PLS3005</id>
+			<description>Alsó törzsplasztika  </description>
+		</procedure>
+		<procedure>
+			<id>PLS3006</id>
+			<description>Felső törzsplasztika </description>
+		</procedure>
+		<procedure>
+			<id>PLS3007</id>
+			<description>Zsírleszívás  </description>
+		</procedure>
+		<procedure>
+			<id>PLS3008</id>
+			<description>Fenékplasztika </description>
+		</procedure>
+		<procedure>
+			<id>PLS3009</id>
+			<description>Combplasztika  </description>
+		</procedure>
+		<procedure>
+			<id>PLS3010</id>
+			<description>Felkarplasztika </description>
+		</procedure>
+		<procedure>
+			<id>PLS3011</id>
+			<description>Vádliplasztika  </description>
+		</procedure>
+		<procedure>
+			<id>PLS3012</id>
+			<description>Zsírbeültetés</description>
+		</procedure>
+		<procedure>
+			<id>PLS4001</id>
+			<description>Gynecomastia  </description>
+		</procedure>
+		<procedure>
+			<id>PLS4002</id>
+			<description>Orrplasztika </description>
+		</procedure>
+		<procedure>
+			<id>PLS4003</id>
+			<description>Mellizom nagyobbítás implantátummal</description>
+		</procedure>
+		<procedure>
+			<id>PLS4004</id>
+			<description>Zsírleszívás </description>
+		</procedure>
+		<procedure>
+			<id>PLS4005</id>
+			<description>Törzsplasztika   </description>
+		</procedure>
+		<procedure>
+			<id>PLS4006</id>
+			<description>Arcplasztika </description>
+		</procedure>
+		<procedure>
+			<id>PLS4007</id>
+			<description>Szemhéjplasztika </description>
+		</procedure>
+		<procedure>
+			<id>PLS4008</id>
+			<description>Vádli izom nagyobbítás implantátummal</description>
+		</procedure>
+		<procedure>
+			<id>PLS5001</id>
+			<description>Hüvelyplasztika  </description>
+		</procedure>
+		<procedure>
+			<id>PLS5002</id>
+			<description>Kisajak plasztika </description>
+		</procedure>
+		<procedure>
+			<id>PLS5003</id>
+			<description>Szeméremdomb plasztika  </description>
+		</procedure>
+		<procedure>
+			<id>PLS6001</id>
+			<description>Kombinált mellplasztika  </description>
+		</procedure>
+		<procedure>
+			<id>PLS6002</id>
+			<description>Szülés utáni alakkorrekció</description>
+		</procedure>
+		<procedure>
+			<id>PLS7001</id>
+			<description>Laboratóriumi vizsgálatok </description>
+		</procedure>
+		<procedure>
+			<id>PLS7002</id>
+			<description>Röntgenvizsgálatok </description>
+		</procedure>
+		<procedure>
+			<id>PLS7003</id>
+			<description>Mammográfia </description>
+		</procedure>
+		<procedure>
+			<id>PLS7004</id>
+			<description>Mellkasröntgen </description>
+		</procedure>
+		<procedure>
+			<id>PLS7005</id>
+			<description>Ultrahang vizsgálatok </description>
+		</procedure>
+		<procedure>
+			<id>PLS7006</id>
+			<description>Hasi ultrahang </description>
+		</procedure>
+		<procedure>
+			<id>PLS7007</id>
+			<description>Emlő ultrahang </description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>proktológia</name>
+		<procedure>
+			<id>PRO1001</id>
+			<description>instrumentális beavatkozás (gumigyűrű ligatura, fotokoaguláció, stb.)</description>
+		</procedure>
+		<procedure>
+			<id>PRO1002</id>
+			<description>gyógyszeres kezelés</description>
+		</procedure>
+		<procedure>
+			<id>PRO1003</id>
+			<description>lézeres aranyérműtét</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>pszichiátria, pszichoterápia</name>
+		<procedure>
+			<id>PSI1001</id>
+			<description>pszichoterápia</description>
+		</procedure>
+		<procedure>
+			<id>PSI1002</id>
+			<description>gyógyszeres kezelés</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>pulmonológia</name>
+		<procedure>
+			<id>PUL1001</id>
+			<description>allergológiai vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>PUL1002</id>
+			<description>vérkép laboratóriumi elemzése</description>
+		</procedure>
+		<procedure>
+			<id>PUL1003</id>
+			<description>légzésfunkció-mérés</description>
+		</procedure>
+		<procedure>
+			<id>PUL1004</id>
+			<description>röntgen</description>
+		</procedure>
+		<procedure>
+			<id>PUL1005</id>
+			<description>ultrahang</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>radiológia</name>
+		<procedure>
+			<id>RAD1001</id>
+			<description>Röntgen </description>
+		</procedure>
+		<procedure>
+			<id>RAD1002</id>
+			<description>Mammográfia </description>
+		</procedure>
+		<procedure>
+			<id>RAD1003</id>
+			<description>Ultrahang (2D, 3D, magzati, magzati 4D, hasi, izületi, stb.)</description>
+		</procedure>
+		<procedure>
+			<id>RAD1004</id>
+			<description>Doppler ultrahang</description>
+		</procedure>
+		<procedure>
+			<id>RAD1005</id>
+			<description>CT </description>
+		</procedure>
+		<procedure>
+			<id>RAD1006</id>
+			<description>MRI</description>
+		</procedure>
+		<procedure>
+			<id>RAD1007</id>
+			<description>Izotópvizsgálat</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>reumatológia</name>
+		<procedure>
+			<id>REU1001</id>
+			<description>röntgen</description>
+		</procedure>
+		<procedure>
+			<id>REU1002</id>
+			<description>labor vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>REU1003</id>
+			<description>konzílium (orvosi tanácskozás)</description>
+		</procedure>
+		<procedure>
+			<id>REU1004</id>
+			<description>ízületi ultrahang</description>
+		</procedure>
+		<procedure>
+			<id>REU1005</id>
+			<description>CT</description>
+		</procedure>
+		<procedure>
+			<id>REU1006</id>
+			<description>MR</description>
+		</procedure>
+		<procedure>
+			<id>REU1007</id>
+			<description>gyógyszeres kezelés (tabletta vagy injekció)</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>sebészet</name>
+		<procedure>
+			<id>SEB1001</id>
+			<description>Aranyér gyűrűzés</description>
+		</procedure>
+		<procedure>
+			<id>SEB1002</id>
+			<description>Aranyér műtét</description>
+		</procedure>
+		<procedure>
+			<id>SEB1003</id>
+			<description>Benőtt köröm műtéti kezelése</description>
+		</procedure>
+		<procedure>
+			<id>SEB1004</id>
+			<description>Bőrelváltozások kimetszése </description>
+		</procedure>
+		<procedure>
+			<id>SEB1005</id>
+			<description>Diagnosztikus laparoszkópia bakteri vagy szövettani minta vételével</description>
+		</procedure>
+		<procedure>
+			<id>SEB1006</id>
+			<description>Diagnosztikus végbéltükrözés (rektoszkópia) </description>
+		</procedure>
+		<procedure>
+			<id>SEB1007</id>
+			<description>Égés vagy fertőzés miatti seb kimetszése</description>
+		</procedure>
+		<procedure>
+			<id>SEB1008</id>
+			<description>Emlő és a hónalji nyirokcsomók sebészeti eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>SEB1009</id>
+			<description>Emlő sebészeti eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>SEB1010</id>
+			<description>Emlőből daganat, csomó eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>SEB1011</id>
+			<description>Epehólyag eltávolító műtét laparotomiával, vagy laparoszkóppal</description>
+		</procedure>
+		<procedure>
+			<id>SEB1012</id>
+			<description>Fenékvájati tályog eltávolítás (sinus pilonidalis)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1013</id>
+			<description>Féregnyúlvány eltávolítás laparotomiával (hasi műtéttel)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1014</id>
+			<description>Here vízsérv (hydrokele) műtét</description>
+		</procedure>
+		<procedure>
+			<id>SEB1015</id>
+			<description>Laparoszkópos féregnyúlvány eltávolítás (hasüregi tükrözés)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1016</id>
+			<description>Laparoszkópos gyomorszáj záróizom bemetszés (cardyomiotomia)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1017</id>
+			<description>Laparoszkópos gyomorszájredő képzés (fundoplicatio) </description>
+		</procedure>
+		<procedure>
+			<id>SEB1018</id>
+			<description>Laparoszkóppal asszisztált vékonybélszakasz eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>SEB1019</id>
+			<description>Laparoszkóppal hasi összenövések oldása (adheziolízis)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1020</id>
+			<description>Laparoszkópos lép eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>SEB1021</id>
+			<description>Laparoszkópos mellékveseműtét (hasüregi tükrözés)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1022</id>
+			<description>Laparoszkópos rectopexia (végbélrögzítés, hasüregi tükrözés)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1023</id>
+			<description>Laparoszkópos rekeszizom műtét (hasüregi tükrözés)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1024</id>
+			<description>Laparoszkópos lágyéksérv műtét</description>
+		</procedure>
+		<procedure>
+			<id>SEB1025</id>
+			<description>Lép eltávolítás laparotomiával (hasfali metszés)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1026</id>
+			<description>Máj ciszta eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>SEB1027</id>
+			<description>Mellékpajzsmirigy műtétek </description>
+		</procedure>
+		<procedure>
+			<id>SEB1028</id>
+			<description>Nyirokcsomó kimetszése</description>
+		</procedure>
+		<procedure>
+			<id>SEB1029</id>
+			<description>Pajzsmirigy eltávolítása - részleges</description>
+		</procedure>
+		<procedure>
+			<id>SEB1030</id>
+			<description>Pajzsmirigy eltávolítása - teljes</description>
+		</procedure>
+		<procedure>
+			<id>SEB1031</id>
+			<description>Perifériás véna vérrögének eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>SEB1032</id>
+			<description>Sérvműtét egyoldali, kétoldali (lágyék, köldök, hasfali)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1033</id>
+			<description>Sérvműtét egyoldali, kétoldali - hálóbeültetéssel (lágyék, köldök, hasfali)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1034</id>
+			<description>Sérvműtét egyoldali endoszkópos (lágyék, köldök, hasfali)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1035</id>
+			<description>Sérvműtét kétoldali endoszkópos (lágyék, köldök, hasfali)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1036</id>
+			<description>Laparoscopos vastagbél műtét (hasüregi tükrözés)</description>
+		</procedure>
+		<procedure>
+			<id>SEB1037</id>
+			<description>Tyúkszem (klavus) kimetszés</description>
+		</procedure>
+		<procedure>
+			<id>SEB1038</id>
+			<description>Vastagbél eltávolítás laparotómiából (hasfali metszés) </description>
+		</procedure>
+		<procedure>
+			<id>SEB1039</id>
+			<description>Vastagbél polipektómia vastagbéltükrözés (colonoscopia) során</description>
+		</procedure>
+		<procedure>
+			<id>SEB1040</id>
+			<description>Végbél eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>SEB1041</id>
+			<description>Végbélnyílás tágítása</description>
+		</procedure>
+		<procedure>
+			<id>SEB1042</id>
+			<description>Végbélnyílás záróizmának oldalsó, részleges átmetszése</description>
+		</procedure>
+		<procedure>
+			<id>SEB1043</id>
+			<description>Végbélsipoly, végbélrepedés, végbéltályog</description>
+		</procedure>
+		<procedure>
+			<id>SEB1044</id>
+			<description>Visszér műtét – egyoldali és kétoldali</description>
+		</procedure>
+		<procedure>
+			<id>SEB1045</id>
+			<description>Zsírdaganat, kásadaganat, függöly sebészi eltávolítása</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>szemészet</name>
+		<procedure>
+			<id>SZE1001</id>
+			<description>szemnyomás mérés</description>
+		</procedure>
+		<procedure>
+			<id>SZE1002</id>
+			<description>fénytörési állapot vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>SZE1003</id>
+			<description>közeli-, távoli látoélesség vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>SZE1004</id>
+			<description>szemfenék állapot vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>SZE1005</id>
+			<description>színlátás vizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>SZE1006</id>
+			<description>kétszemes együttlátás vizsgálat</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>szommológia</name>
+		<procedure>
+			<id>SZO1001</id>
+			<description>Poliszomnográfia: Kiterjesztett éjszakai alvásvizsgálat</description>
+		</procedure>
+		<procedure>
+			<id>SZO1002</id>
+			<description>Poligráfia: alvás alatti légzés vizsgálata</description>
+		</procedure>
+	</ward>
+	<ward>
+		<name>urológia</name>
+		<procedure>
+			<id>URO1001</id>
+			<description>Fityma sejtes letapadásának felszabadítása</description>
+		</procedure>3
+		<procedure>
+			<id>URO1002</id>
+			<description>Fitymaszűkület miatti egyéb műtét (dorsal incisio)</description>
+		</procedure>
+		<procedure>
+			<id>URO1003</id>
+			<description>Hasban visszamaradt here feltárása</description>
+		</procedure>
+		<procedure>
+			<id>URO1004</id>
+			<description>Here eltávolítása (castratio, semicastratio)</description>
+		</procedure>
+		<procedure>
+			<id>URO1005</id>
+			<description>Here rögzítése</description>
+		</procedure>
+		<procedure>
+			<id>URO1006</id>
+			<description>Here visszérsérv (varicokele) műtét</description>
+		</procedure>
+		<procedure>
+			<id>URO1007</id>
+			<description>Here vízsérv (hydrokele)</description>
+		</procedure>
+		<procedure>
+			<id>URO1008</id>
+			<description>Húgycső endoszkópos bemetszése</description>
+		</procedure>
+		<procedure>
+			<id>URO1009</id>
+			<description>Húgycsőnyílás bemetszése</description>
+		</procedure>
+		<procedure>
+			<id>URO1010</id>
+			<description>Húgycsövön keresztüli hólyagtumor eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>URO1011</id>
+			<description>Húgycsövön keresztül a vesevezeték szájadékának bemetszése</description>
+		</procedure>
+		<procedure>
+			<id>URO1012</id>
+			<description>Húgyhólyag biopszia</description>
+		</procedure>
+		<procedure>
+			<id>URO1013</id>
+			<description>Húgyhólyag tükrözés</description>
+		</procedure>
+		<procedure>
+			<id>URO1014</id>
+			<description>Húgyúti kövek endoszkópos eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>URO1015</id>
+			<description>Húgyúti kövek sebészi feltárásból történő eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>URO1016</id>
+			<description>Körülmetélés (Circumcisio)</description>
+		</procedure>
+		<procedure>
+			<id>URO1017</id>
+			<description>Laparoszkópos véna spermatika interna lekötés</description>
+		</procedure>
+		<procedure>
+			<id>URO1018</id>
+			<description>Mellékhere ciszta eltávolítása</description>
+		</procedure>
+		<procedure>
+			<id>URO1019</id>
+			<description>Pénisz protézis implantáció (implantátum nélkül)</description>
+		</procedure>
+		<procedure>
+			<id>URO1020</id>
+			<description>Percutan kőeltávolítás veséből</description>
+		</procedure>
+		<procedure>
+			<id>URO1021</id>
+			<description>Prosztata biopszia</description>
+		</procedure>
+		<procedure>
+			<id>URO1022</id>
+			<description>Rövid kantár (fitymafék) átvágás</description>
+		</procedure>
+		<procedure>
+			<id>URO1023</id>
+			<description>Sterilizáció férfiaknál (vasectomia)</description>
+		</procedure>
+		<procedure>
+			<id>URO1024</id>
+			<description>TURP - Húgycsövön keresztüli prosztata eltávolítás</description>
+		</procedure>
+		<procedure>
+			<id>URO1025</id>
+			<description>Ultrahangos kőzúzás (ESWL)</description>
+		</procedure>
+		<procedure>
+			<id>URO1026</id>
+			<description>Veseciszta leszívás és szklerotizálás (UH vezérelt)</description>
+		</procedure>
+		<procedure>
+			<id>URO1027</id>
+			<description>Veseciszta eltávolítása laparoszkóppal</description>
+		</procedure>
+		<procedure>
+			<id>URO1028</id>
+			<description>Veseeltávolítás egyoldali laparoszkópos</description>
+		</procedure>
+		<procedure>
+			<id>URO1029</id>
+			<description>Veseeltávolítás egyoldali laparotomiából</description>
+		</procedure>
+	</ward>
+</xml>

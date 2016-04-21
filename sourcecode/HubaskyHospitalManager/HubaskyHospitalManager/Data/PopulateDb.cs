@@ -12,13 +12,11 @@ namespace HubaskyHospitalManager.Data
 {
     public static class PopulateDb
     {
+
         public static void Populate(ApplicationManager appMgr)
         {
+            PopulateDb.PopulateEmployees(appMgr);
             PopulateDb.PopulateUnits(appMgr);
-            //PopulateDb.PopulateEmployees(appMgr);
-
-            
-            
         }
 
         private static void PopulateEmployees(ApplicationManager appMgr)
@@ -62,11 +60,18 @@ namespace HubaskyHospitalManager.Data
             andris.Role = Role.DataRecorder;
             andris.DateOfBirth = "1972.10.08";
 
+            List<Employee> empList = new List<Employee>();  
+            for (int i = 0; i < 80; i++)
+            { 
+                empList.Add(new Employee("Teszt" + i, "1234", 100000 + i, Role.Doctor, "teszt" + i, "teszt" + i, "teszt" + i));
+            }
+
             appMgr.ApplicationDb.Employees.Add(pista);
             appMgr.ApplicationDb.Employees.Add(margit);
             appMgr.ApplicationDb.Employees.Add(laci);
             appMgr.ApplicationDb.Employees.Add(eszti);
             appMgr.ApplicationDb.Employees.Add(andris);
+            appMgr.ApplicationDb.Employees.AddRange(empList);
 
             appMgr.ApplicationDb.SaveChanges();
         }
@@ -97,16 +102,53 @@ namespace HubaskyHospitalManager.Data
                     hospMgr = emp;
                 }
             }
+
             hospital.Manager = hospMgr;
             hospital.Name = "Hubasky Magánkórház";
             hospital.Employees = emps;
 
+
+
+
             Department patientTreatDept = new Department();
             patientTreatDept.Name = "Betegellátási főosztály";
             hospital.Departments.Add(patientTreatDept);
-            appMgr.ApplicationDb.Departments.Add(patientTreatDept);
+            //appMgr.ApplicationDb.Departments.Add(patientTreatDept);
 
-            Ward walkInPatientWard = new Ward();
+            Department surgeryDept = new Department();
+            surgeryDept.Name = "Sebészeti főosztály";
+            hospital.Departments.Add(surgeryDept);
+            //appMgr.ApplicationDb.Departments.Add(surgeryDept);
+
+            Department testDept = new Department();
+            testDept.Name = "Teszt főosztály";
+            hospital.Departments.Add(testDept);
+            //appMgr.ApplicationDb.Departments.Add(test);
+
+            List<Department> deptList = new List<Department>();
+            deptList.Add(patientTreatDept);
+            deptList.Add(surgeryDept);
+            deptList.Add(testDept);
+            appMgr.ApplicationDb.Departments.AddRange(deptList);
+
+            XmlReader xmlReader = new XmlReader();
+            int length = xmlReader.Wards.Count();
+            List<Ward> wardList = new List<Ward>();
+            List<Employee> empList = new List<Employee>();
+                
+            for (int i = 0; i < length-1; i++)
+            {
+                wardList.Add(new Ward(i, xmlReader.Wards.ElementAt(i), 
+                    emps[i % 5], emps.Where(x => x.Username.Equals("Teszt" + i)).ToList(), 
+                    xmlReader.Procedures));
+            }
+
+            appMgr.ApplicationDb.Wards.Union(wardList);
+            patientTreatDept.Wards.AddRange(wardList.GetRange(0, 8));
+            surgeryDept.Wards.AddRange(wardList.GetRange(8, 8));
+            testDept.Wards.AddRange(wardList.GetRange(16, 8));
+
+            /*Ward walkInPatientWard = new Ward();
             walkInPatientWard.Name = "Járóbetegellátás";
             walkInPatientWard.Manager = emps[0];
             walkInPatientWard.Employees = emps;
@@ -115,10 +157,11 @@ namespace HubaskyHospitalManager.Data
             Ward cardiologyWard = new Ward();
             cardiologyWard.Name = "Kardiológia";
             cardiologyWard.Manager = emps[1];
-            appMgr.ApplicationDb.Wards.Add(cardiologyWard);
+            appMgr.ApplicationDb.Wards.Add(cardiologyWard);*/
 
-            patientTreatDept.Wards.Add(walkInPatientWard);
-            patientTreatDept.Wards.Add(cardiologyWard);
+            /*patientTreatDept.Wards.Add(walkInPatientWard);
+            patientTreatDept.Wards.Add(cardiologyWard);*/
+
             appMgr.ApplicationDb.Hospital.Add(hospital);
 
             appMgr.ApplicationDb.SaveChanges();

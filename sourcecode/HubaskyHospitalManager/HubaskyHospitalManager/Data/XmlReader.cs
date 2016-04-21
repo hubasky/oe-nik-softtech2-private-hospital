@@ -2,20 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace XmlParser
+namespace HubaskyHospitalManager.Data
 {
     class XmlReader
     {
-        private static XDocument xDoc;
-        private static Dictionary<string, string> procedures;
-        private static List<string> wards;
 
-        public static Dictionary<string, string> Procedures
+        private XDocument xDoc;
+        private Dictionary<string, string> procedures;
+        private List<string> wards;
+
+        public List<string> Wards
         {
-            get { return XmlReader.procedures; }
-            set { XmlReader.procedures = value; }
+            get { return wards; }
+            set { wards = value; }
+        }
+
+        public Dictionary<string, string> Procedures
+        {
+            get { return procedures; }
+            set { procedures = value; }
         }
 
         private string id;
@@ -30,7 +38,7 @@ namespace XmlParser
         public XmlReader()
         {
             xDoc = XDocument.Load(@"..\kezelesek.xml");
-            procedures = new Dictionary<string,string>();
+            procedures = new Dictionary<string, string>();
             wards = new List<string>();
             LoadProcedures();
         }
@@ -57,5 +65,6 @@ namespace XmlParser
                 }
             }
         }
+
     }
 }

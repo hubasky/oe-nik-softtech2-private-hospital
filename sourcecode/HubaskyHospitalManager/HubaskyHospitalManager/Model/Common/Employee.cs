@@ -35,6 +35,17 @@ namespace HubaskyHospitalManager.Model.Common
             this.Password = password;
 		}
 
+        public Employee(string username, string password, double salary, Role role, string name, string phone, string dateOfBirth)
+        {
+            this.Username = username;
+            this.Password = password;
+            this.Salary = salary;
+            this.Role = role;
+            this.Phone = Phone;
+            this.Name = name;
+            this.DateOfBirth = dateOfBirth;
+        }
+
         public object Clone()
         {
             Employee clone = new Employee(this.Username, this.Password);

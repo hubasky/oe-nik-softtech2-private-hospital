@@ -64,6 +64,7 @@
     </ApplicationDefinition>
     <Compile Include="Data\HubaskyDataBase.cs" />
     <Compile Include="Data\PopulateDb.cs" />
+    <Compile Include="Data\XmlReader.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
     <Compile Include="View\HospitalManagementView.cs" />
     <Compile Include="View\InventoryManagementWindow.xaml.cs">

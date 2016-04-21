@@ -32,11 +32,11 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
         
 		public ApplicationManager()
         {
-            string version = "05";
+            string version = "06";
             string dataSource = @"Data Source=(localdb)\MSSQLLocalDB";
             string initialCatalog = @"Initial Catalog=tempdb" + version;
             string security = @"Integrated Security=True";
-            string dbFileName = @"AttachDBFilename=o:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
+            string dbFileName = @"AttachDBFilename=F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
             string connStr = string.Format("{0};{1};{2};{3}", dataSource, initialCatalog, security, dbFileName);
             ApplicationDb = new HubaskyDataBase(connStr);
             

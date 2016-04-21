@@ -1,0 +1,5 @@
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\XmlParser\XmlParser\XmlParser\bin\Debug\XmlParser.exe
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\XmlParser\XmlParser\XmlParser\bin\Debug\XmlParser.pdb
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\XmlParser\XmlParser\XmlParser\obj\Debug\XmlParser.csprojResolveAssemblyReference.cache
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\XmlParser\XmlParser\XmlParser\obj\Debug\XmlParser.exe
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\XmlParser\XmlParser\XmlParser\obj\Debug\XmlParser.pdb

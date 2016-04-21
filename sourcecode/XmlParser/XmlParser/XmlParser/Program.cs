@@ -7,10 +7,11 @@ namespace XmlParser
 {
     class Program
     {
+            
+
         static void Main(string[] args)
         {
-
-
+            XmlReader xmlReader = new XmlReader();
         }
 
 

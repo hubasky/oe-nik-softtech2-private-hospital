@@ -11,16 +11,34 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.HospitalManagement;
+using HubaskyHospitalManager.Model.Common;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
 	public class Ward : Unit 
     {
+        private Dictionary<string, string> procedures;
+
+        public Dictionary<string, string> Procedures
+        {
+            get { return procedures; }
+            set { procedures = value; }
+        }
 
 		public Ward()
         {
 
 		}
+
+        public Ward(int id, string name, Employee manager, List<Employee> employees, Dictionary<string, string> procedures)
+        {
+            this.procedures = procedures;
+            this.Id = id;
+            this.Name = name;
+            this.Manager = manager;
+            this.Employees = employees;
+        }
+        
 
 	}//end Ward
 

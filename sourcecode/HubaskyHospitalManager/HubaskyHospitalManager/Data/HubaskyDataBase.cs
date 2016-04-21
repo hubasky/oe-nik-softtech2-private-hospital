@@ -19,6 +19,7 @@ namespace HubaskyHospitalManager.Data
     
         public HubaskyDataBase(string connStr) : base(connStr)
         {
+            
         }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
