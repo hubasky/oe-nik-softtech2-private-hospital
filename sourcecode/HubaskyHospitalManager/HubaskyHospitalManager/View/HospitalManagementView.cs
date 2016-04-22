@@ -36,10 +36,6 @@ namespace HubaskyHospitalManager.View
             set { selectedUnit = value; OnPropertyChanged(); }
         }
 
-        
-
-
-
         public HospitalManagementView(HospitalManager hospMgr)
         {
             units = new ObservableCollection<UnitView>();
@@ -51,7 +47,7 @@ namespace HubaskyHospitalManager.View
         private void UpdateHierarchyList()
         {
             UnitView HospitalUnitView = new UnitView(hospManager.Hospital);
-            var deptView = hospManager.AppManager.ApplicationDb.Departments.Select(m => m);
+            var deptView = hospManager.AppManager.ApplicationDb.Departments.ToList();
             if (deptView != null)
             {
                 foreach (Department dept in deptView)

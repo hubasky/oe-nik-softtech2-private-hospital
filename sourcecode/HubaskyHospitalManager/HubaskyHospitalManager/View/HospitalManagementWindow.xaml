@@ -10,12 +10,17 @@
 
     </Window.Resources>
     <Grid Margin="0,25,0,0" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TreeView x:Name="TreeView_Hierarchy" Height="515" Margin="10,50,10,0" VerticalAlignment="Top"
+        <TreeView x:Name="TreeView_Hierarchy" Margin="10,50,10,10"
                   SelectedItemChanged="TreeView_SelectedItemChanged"
                   ItemsSource="{Binding Path=Units}">
             <TreeView.ItemTemplate>
@@ -31,31 +36,16 @@
             </TreeView.ItemContainerStyle>
         </TreeView>
         <Label Content="Kórház hierarchiai szerkezete" Height="35" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Adatlap" Height="35" Margin="10,30,10,0" VerticalAlignment="Top" FontSize="20" Grid.Column="2"/>
-        <Grid Height="265" Margin="10,70,10,0" VerticalAlignment="Top" Grid.Column="2">
-            <StackPanel HorizontalAlignment="Left" Height="265" VerticalAlignment="Top" Width="170">
-                <Label Content="Intézeti egység megnevezése" VerticalAlignment="Top"/>
-                <Label Content="Azonosító" VerticalAlignment="Top"/>
-                <Label Content="Felettes intézeti egység" VerticalAlignment="Top"/>
-                <Label Content="Egységvezető" VerticalAlignment="Top"/>
-                <Label Content="Telefon mellék" VerticalAlignment="Top"/>
-                <Label Content="Részleg e-mail cím" VerticalAlignment="Top"/>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Left" Height="265" VerticalAlignment="Top" Width="335" Margin="205,0,0,0">
-                <Label Content="Kardiológia" VerticalAlignment="Top"/>
-                <Label Content="HMB-KARD" VerticalAlignment="Top"/>
-                <Label Content="Betegellátási főosztály" VerticalAlignment="Top"/>
-                <Label Content="Szíves Szilvia" VerticalAlignment="Top"/>
-                <Label Content="2341" VerticalAlignment="Top"/>
-                <Label Content="kardiologia@hubasky.hu" VerticalAlignment="Top"/>
-            </StackPanel>
-        </Grid>
         <StackPanel Margin="10" Grid.Column="1">
+            <Label Content="Adatlap" Height="35" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
+            <Label Content="Intézeti egység megnevezése" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=SelectedUnit.Reference.Name}" VerticalAlignment="Top" FontWeight="Medium"/>
+            <Label Content="Egységvezető" VerticalAlignment="Top"/>
+            <Label Content="{Binding Path=SelectedUnit.Reference.Manager.Name}" VerticalAlignment="Top" FontWeight="Medium"/>
+        </StackPanel>
+        <Grid Margin="10" Grid.Column="2">
             <Label Content="Szervezeti egység dolgozói" FontSize="20" Grid.Column="1" VerticalAlignment="Top"/>
-            <Label Content="Részlegvezető"/>
-            <ListBox Grid.Column="1" Height="23" VerticalAlignment="Top"/>
-            <Label Content="Beosztottak"/>
-            <ListBox ItemsSource="{Binding Path=SelectedUnit.Reference.Employees}" Grid.Column="1" Height="443" VerticalAlignment="Top">
+            <ListBox ItemsSource="{Binding Path=SelectedUnit.Reference.Employees}" Margin="0,42,0,0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -64,6 +54,6 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Window>

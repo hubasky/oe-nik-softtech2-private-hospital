@@ -38,12 +38,13 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             string security = @"Integrated Security=True";
             string dbFileName = @"AttachDBFilename=F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
             string connStr = string.Format("{0};{1};{2};{3}", dataSource, initialCatalog, security, dbFileName);
+
+            // Ez a db server beállítása, a file conn stringet benthagyom arra az esetre, ha késõbb kellene...
+            connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=testdb01;User ID=sa;Password=szoftech;Pooling=False";
             ApplicationDb = new HubaskyDataBase(connStr);
-            
-            PopulateDb.Populate(this);
 
-
-
+            // Ezt most átmenetileg kikapcsolom, igazából lassan eljutok arra a szintre a hosp managerrel, hogy appon keresztül lehet adatbázisba hozzáadni usereket meg wardokat. Remélem :D
+            // PopulateDb.Populate(this);
 		}
         
 		/// 

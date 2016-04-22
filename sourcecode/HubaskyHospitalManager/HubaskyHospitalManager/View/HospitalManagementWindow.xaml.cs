@@ -42,7 +42,7 @@ namespace HubaskyHospitalManager.View
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = HospView;
-            TreeView_Hierarchy.Items.Add(HospView.Units);
+            // TreeView_Hierarchy.Items.Add(HospView.Units);
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
