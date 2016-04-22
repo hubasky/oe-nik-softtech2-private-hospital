@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\
 HubaskyHospitalManager
 none
 false
 DEBUG;TRACE
-O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\App.xaml
+F:\Repok\OE_NIK_project_hospital\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\App.xaml
 6-44797806
 
 42-445518827
-15657165148
+15-1400613457
 View\HospitalManagementWindow.xaml;View\InventoryManagementWindow.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\ProcedureWindow.xaml;View\PatientManagementWindow.xaml;
 
 False

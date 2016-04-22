@@ -148,6 +148,20 @@ namespace HubaskyHospitalManager.Data
             surgeryDept.Wards.AddRange(wardList.GetRange(8, 8));
             testDept.Wards.AddRange(wardList.GetRange(16, 8));
 
+            /*Ward walkInPatientWard = new Ward();
+            walkInPatientWard.Name = "Járóbetegellátás";
+            walkInPatientWard.Manager = emps[0];
+            walkInPatientWard.Employees = emps;
+            appMgr.ApplicationDb.Wards.Add(walkInPatientWard);
+
+            Ward cardiologyWard = new Ward();
+            cardiologyWard.Name = "Kardiológia";
+            cardiologyWard.Manager = emps[1];
+            appMgr.ApplicationDb.Wards.Add(cardiologyWard);*/
+
+            /*patientTreatDept.Wards.Add(walkInPatientWard);
+            patientTreatDept.Wards.Add(cardiologyWard);*/
+
             appMgr.ApplicationDb.Hospital.Add(hospital);
 
             appMgr.ApplicationDb.SaveChanges();
