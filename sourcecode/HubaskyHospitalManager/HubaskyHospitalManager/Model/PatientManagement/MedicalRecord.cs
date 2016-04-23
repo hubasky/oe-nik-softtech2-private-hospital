@@ -20,21 +20,50 @@ namespace HubaskyHospitalManager.Model.PatientManagement
     {
         //egy medical history van, azon belül több medical record, azon belül több procedure
         [Key]
-        //public string MedicalRecordId;
-        public string CreatedTimestamp { get; private set; }
-        public string Anamnesis { get; set; }
-        public string Diagnosis { get; set; }
-        public State State { get; set; }
-        public List<Procedure> Procedures { get; set; }
+        private readonly string createdTimestamp;
 
+        private string anamnesis;
+        private string diagnosis;
+        private State state;
+        private List<Procedure> procedures;
+
+        public string CreatedTimestamp
+        {
+            get { return createdTimestamp; }
+            //set { createdTimestamp = value; }
+        }
+
+        public string Anamnesis
+        {
+            get { return anamnesis; }
+            set { anamnesis = value; }
+        }
+
+        public string Diagnosis
+        {
+            get { return diagnosis; }
+            set { diagnosis = value; }
+        }
+
+        public State State
+        {
+            get { return state; }
+            set { state = value; }
+        }
+
+        public List<Procedure> Procedures
+        {
+            get { return procedures; }
+            set { procedures = value; }
+        }
 
         public MedicalRecord()
         {
-            this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
-            this.State = State.New;
-            this.Diagnosis = "";
-            this.Procedures = new List<Procedure>();
-            this.Procedures.Add(new Procedure());
+            this.createdTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
+            this.state = State.New;
+            this.diagnosis = "";
+            this.procedures = new List<Procedure>();
+            this.procedures.Add(new Procedure());
 
         }
 

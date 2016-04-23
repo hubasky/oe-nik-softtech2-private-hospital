@@ -17,90 +17,90 @@ namespace HubaskyHospitalManager.Data
         {
             PopulateDb.PopulateEmployees(appMgr);
             PopulateDb.PopulateUnits(appMgr);
-            PopulateDb.PopulatePatients(appMgr);
+            //PopulateDb.PopulatePatients(appMgr);
         }
 
-        private static void PopulatePatients(ApplicationManager appMgr)
-        {
+        //private static void PopulatePatients(ApplicationManager appMgr)
+        //{
 
-            var pats = appMgr.ApplicationDb.Patients.Select(m => m);
-            appMgr.ApplicationDb.Patients.RemoveRange(pats);
+        //    var pats = appMgr.ApplicationDb.Patients.Select(m => m);
+        //    appMgr.ApplicationDb.Patients.RemoveRange(pats);
 
-            //PERSON
-            //    public string Name { get; set; }
-            //public string Phone { get; set; }
-            //public string Address { get; set; }
-            //public string DateOfBirth { get; set; }
+        //    //PERSON
+        //    //    public string Name { get; set; }
+        //    //public string Phone { get; set; }
+        //    //public string Address { get; set; }
+        //    //public string DateOfBirth { get; set; }
 
-            //PATIENT
-            //    public int Ssn { get; set; }
-            //public List<MedicalRecord> MedicalHistory { get; set; }
-            //public Gender Gender { get; set; }
+        //    //PATIENT
+        //    //    public int Ssn { get; set; }
+        //    //public List<MedicalRecord> MedicalHistory { get; set; }
+        //    //public Gender Gender { get; set; }
 
-            Patient kati = new Patient(
-                "Kómás Kati",   //name
-                "069011111",       //tel
-                "1996.06.20",   //DoB
-                9991999,         //SSN
-                null,           //medicalHistory
-                Gender.Female   //Gender
-                );
+        //    Patient kati = new Patient(
+        //        "Kómás Kati",   //name
+        //        "069011111",       //tel
+        //        "1996.06.20",   //DoB
+        //        9991999,         //SSN
+        //        null,           //medicalHistory
+        //        Gender.Female   //Gender
+        //        );
 
-            Patient karesz = new Patient(
-                "Kankós Karesz",   //name
-                "0660222222",       //tel
-                "1991.02.13",   //DoB
-                1359143,         //SSN
-                null,           //medicalHistory
-                Gender.Male   //Gender
-                );
+        //    Patient karesz = new Patient(
+        //        "Kankós Karesz",   //name
+        //        "0660222222",       //tel
+        //        "1991.02.13",   //DoB
+        //        1359143,         //SSN
+        //        null,           //medicalHistory
+        //        Gender.Male   //Gender
+        //        );
 
-            Patient imre = new Patient(
-                "Itókás Imre",   //name
-                "0670333333",       //tel
-                "1978.09.06",   //DoB
-                9083825,         //SSN
-                null,           //medicalHistory
-                Gender.Male   //Gender
-                );
+        //    Patient imre = new Patient(
+        //        "Itókás Imre",   //name
+        //        "0670333333",       //tel
+        //        "1978.09.06",   //DoB
+        //        9083825,         //SSN
+        //        null,           //medicalHistory
+        //        Gender.Male   //Gender
+        //        );
 
-            Patient hilda = new Patient(
-                "Hasmenős Hilda",   //name
-                "062044444",        //tel
-                "1957.11.12",       //DoB
-                1125267,            //SSN
-                null,               //medicalHistory
-                Gender.Female       //Gender
-                );
+        //    Patient hilda = new Patient(
+        //        "Hasmenős Hilda",   //name
+        //        "062044444",        //tel
+        //        "1957.11.12",       //DoB
+        //        1125267,            //SSN
+        //        null,               //medicalHistory
+        //        Gender.Female       //Gender
+        //        );
 
-            Patient bertold = new Patient(
-                "Barangoló Bertold",//name
-                "064055555",        //tel
-                "1985.02.16",       //DoB
-                9306484,            //SSN
-                null,               //medicalHistory
-                Gender.Male         //Gender
-                );
+        //    Patient bertold = new Patient(
+        //        "Barangoló Bertold",//name
+        //        "064055555",        //tel
+        //        "1985.02.16",       //DoB
+        //        9306484,            //SSN
+        //        null,               //medicalHistory
+        //        Gender.Male         //Gender
+        //        );
 
 
-            List<Patient> patList = new List<Patient>();
-            for (int i = 0; i < 80; i++)
-            {
-                patList.Add(new Patient("Teszt" + i, "0660" + i, "1980.XX." + i,
-                    9989110 + i, null, (Gender)(i % 2)));
-            }
+        //    List<Patient> patList = new List<Patient>();
+        //    for (int i = 0; i < 80; i++)
+        //    {
+        //        patList.Add(new Patient("Teszt" + i, "0660" + i, "1980.XX." + i,
+        //            9989110 + i, null, (Gender)(i % 2)));
+        //    }
 
-            appMgr.ApplicationDb.Patients.Add(kati);
-            appMgr.ApplicationDb.Patients.Add(karesz);
-            appMgr.ApplicationDb.Patients.Add(imre);
-            appMgr.ApplicationDb.Patients.Add(hilda);
-            appMgr.ApplicationDb.Patients.Add(bertold);
+        //    appMgr.ApplicationDb.Patients.Add(kati);
+        //    appMgr.ApplicationDb.Patients.Add(karesz);
+        //    appMgr.ApplicationDb.Patients.Add(imre);
+        //    appMgr.ApplicationDb.Patients.Add(hilda);
+        //    appMgr.ApplicationDb.Patients.Add(bertold);
 
-            appMgr.ApplicationDb.Patients.AddRange(patList);
+        //    appMgr.ApplicationDb.Patients.AddRange(patList);
 
-            appMgr.ApplicationDb.SaveChanges();
+        //    appMgr.ApplicationDb.SaveChanges();
 
-        }
+        //}
 
         private static void PopulateEmployees(ApplicationManager appMgr)
         {
