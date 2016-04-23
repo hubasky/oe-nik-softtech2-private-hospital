@@ -13,14 +13,17 @@ using System.IO;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.InventoryManagement;
 using HubaskyHospitalManager.Model.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
-	public class Procedure {
+    public class Procedure
+    {
+        [Key]
+        private readonly string createdTimestamp;
 
+        private string lastModifiedTimestamp;
         private List<string> attachments;
-        private DateTime createdTimestamp;
-        private DateTime lastModifiedTimestamp;
         private string name;
         private int price;
         private State state;
@@ -33,13 +36,13 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             set { attachments = value; }
         }
 
-        public DateTime CreatedTimestamp
+        public string CreatedTimestamp
         {
             get { return createdTimestamp; }
-            set { createdTimestamp = value; }
+            //set { createdTimestamp = value; }
         }
 
-        public DateTime LastModifiedTimestamp
+        public string LastModifiedTimestamp
         {
             get { return lastModifiedTimestamp; }
             set { lastModifiedTimestamp = value; }
@@ -75,33 +78,42 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             set { inventoryUsage = value; }
         }
 
-		public Procedure()
+        public Procedure()
+        {
+            this.createdTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
+            this.LastModifiedTimestamp = this.createdTimestamp;
+
+            this.State = State.New;
+            this.inventoryUsage = new List<InventoryItem>();
+            this.price = 0;
+            this.name = "";
+            this.attachments = new List<string>();
+            //this.responsible //-> nincs inicializálva!
+        }
+
+
+        /// 
+        /// <param name="attachment"></param>
+        public void AddAttachment(string attachment)
         {
 
-		}
+        }
 
-		/// 
-		/// <param name="attachment"></param>
-		public void AddAttachment(string attachment)
+        /// 
+        /// <param name="item"></param>
+        /// <param name="decrement"></param>
+        public int DecreaseQuantity(InventoryItem item, int decrement)
         {
+            return 0;
+        }
 
-		}
-
-		/// 
-		/// <param name="item"></param>
-		/// <param name="decrement"></param>
-		public int DecreaseQuantity(InventoryItem item, int decrement)
+        /// 
+        /// <param name="name"></param>
+        public List<InventoryItem> SearchInventory(string name)
         {
-			return 0;
-		}
+            return null;
+        }
 
-		/// 
-		/// <param name="name"></param>
-		public List<InventoryItem> SearchInventory(string name)
-        {
-			return null;
-		}
-
-	}//end Procedure
+    }//end Procedure
 
 }//end namespace PatientManagement

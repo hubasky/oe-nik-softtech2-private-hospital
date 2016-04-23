@@ -12,20 +12,50 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.PatientManagement;
+using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.Common
 {
-	public class Patient : Person
+    public class Patient : Person, ICloneable
     {
+        [Key]
         public int Ssn { get; set; }
         public List<MedicalRecord> MedicalHistory { get; set; }
         public Gender Gender { get; set; }
-        
-		public Patient()
+
+        public Patient()
         {
 
-		}
+        }
 
-	}//end Patient
+
+        public Patient(string name, string phone, string dateOfBirth, int ssn, List<MedicalRecord> medicalHistory, Gender gender)
+        {
+            this.Phone = phone;
+            this.Name = name;
+            this.DateOfBirth = dateOfBirth;
+            this.Ssn = ssn;
+            this.Gender = gender;
+            this.MedicalHistory = (medicalHistory == null) ? 
+                new List<MedicalRecord>() :
+                medicalHistory;
+
+        }
+
+
+        public object Clone()
+        {
+            Patient clone = new Patient(
+                this.Name,
+                this.Phone,
+                this.DateOfBirth,
+                this.Ssn,
+                this.MedicalHistory,
+                this.Gender);
+
+            return clone;
+
+        }
+    }//end Patient
 
 }//end namespace PatientManagement

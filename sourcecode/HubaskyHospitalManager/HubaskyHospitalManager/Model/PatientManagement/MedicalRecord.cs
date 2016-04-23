@@ -12,15 +12,26 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
-	public class MedicalRecord
+    public class MedicalRecord
     {
+        //egy medical history van, azon belül több medical record, azon belül több procedure
+        [Key]
+        private readonly string createdTimestamp;
+
         private string anamnesis;
         private string diagnosis;
         private State state;
         private List<Procedure> procedures;
+
+        public string CreatedTimestamp
+        {
+            get { return createdTimestamp; }
+            //set { createdTimestamp = value; }
+        }
 
         public string Anamnesis
         {
@@ -46,11 +57,18 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             set { procedures = value; }
         }
 
-		public MedicalRecord()
+        public MedicalRecord()
         {
+            this.createdTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
+            this.state = State.New;
+            this.diagnosis = "";
+            this.procedures = new List<Procedure>();
+            this.procedures.Add(new Procedure());
 
-		}
+        }
 
-	}//end MedicalRecord
+
+
+    }//end MedicalRecord
 
 }//end namespace PatientManagement
