@@ -12,6 +12,8 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.Common;
+using HubaskyHospitalManager.Model.ApplicationManagement;
+using System.Linq;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
@@ -35,7 +37,16 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 		public PatientManager(){
 
 		}
-        
+
+        public PatientManager(ApplicationManager appMgr)
+        {
+            this.AppManager = appMgr;
+            patients = new List<Patient>();
+            var results = AppManager.ApplicationDb.Patients.Select(m => m);
+            var resultslist = results.AsEnumerable().Cast<Patient>().ToList();
+
+            patients = (resultslist.Count == 0) ? null : resultslist;
+        }
 		/// 
 		/// <param name="medicalRecord"></param>
 		public void CloseMedicalRecord(MedicalRecord medicalRecord)

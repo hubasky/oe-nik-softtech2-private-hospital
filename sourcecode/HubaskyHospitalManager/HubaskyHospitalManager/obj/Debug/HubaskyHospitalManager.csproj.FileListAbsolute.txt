@@ -65,7 +65,6 @@ D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\source
 D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.SqlServer.dll
 D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.xml
 D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.SqlServer.xml
-D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.csprojResolveAssemblyReference.cache
 D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\InventoryManagementWindow.baml
 D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\LoginWindow.baml
 D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\ProcedureWindow.baml
