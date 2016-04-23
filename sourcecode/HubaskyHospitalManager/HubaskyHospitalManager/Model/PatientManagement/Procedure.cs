@@ -20,74 +20,74 @@ namespace HubaskyHospitalManager.Model.PatientManagement
     public class Procedure
     {
         [Key]
-        private readonly string createdTimestamp;
+        public string CreatedTimestamp { get; private set; }
 
-        private string lastModifiedTimestamp;
-        private List<string> attachments;
-        private string name;
-        private int price;
-        private State state;
-        private Employee responsible;
-        private List<InventoryItem> inventoryUsage;
+        public string LastModifiedTimestamp { get; set; }
+        public List<string> Attachments { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public State State { get; set; }
+        public Employee Responsible { get; set; }
+        public List<InventoryItem> InventoryUsage { get; set; }
 
-        public List<string> Attachments
-        {
-            get { return attachments; }
-            set { attachments = value; }
-        }
+        //public List<string> Attachments
+        //{
+        //    get { return attachments; }
+        //    set { attachments = value; }
+        //}
 
-        public string CreatedTimestamp
-        {
-            get { return createdTimestamp; }
-            //set { createdTimestamp = value; }
-        }
+        //public string CreatedTimestamp
+        //{
+        //    get { return createdTimestamp; }
+        //    //set { createdTimestamp = value; }
+        //}
 
-        public string LastModifiedTimestamp
-        {
-            get { return lastModifiedTimestamp; }
-            set { lastModifiedTimestamp = value; }
-        }
+        //public string LastModifiedTimestamp
+        //{
+        //    get { return lastModifiedTimestamp; }
+        //    set { lastModifiedTimestamp = value; }
+        //}
 
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
+        //public string Name
+        //{
+        //    get { return name; }
+        //    set { name = value; }
+        //}
 
-        public int Price
-        {
-            get { return price; }
-            set { price = value; }
-        }
+        //public int Price
+        //{
+        //    get { return price; }
+        //    set { price = value; }
+        //}
 
-        public State State
-        {
-            get { return state; }
-            set { state = value; }
-        }
+        //public State State
+        //{
+        //    get { return state; }
+        //    set { state = value; }
+        //}
 
-        public Employee Responsible
-        {
-            get { return responsible; }
-            set { responsible = value; }
-        }
+        //public Employee Responsible
+        //{
+        //    get { return responsible; }
+        //    set { responsible = value; }
+        //}
 
-        public List<InventoryItem> InventoryUsage
-        {
-            get { return inventoryUsage; }
-            set { inventoryUsage = value; }
-        }
+        //public List<InventoryItem> InventoryUsage
+        //{
+        //    get { return inventoryUsage; }
+        //    set { inventoryUsage = value; }
+        //}
 
         public Procedure()
         {
-            this.createdTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
-            this.LastModifiedTimestamp = this.createdTimestamp;
+            this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
+            this.LastModifiedTimestamp = this.CreatedTimestamp;
 
             this.State = State.New;
-            this.inventoryUsage = new List<InventoryItem>();
-            this.price = 0;
-            this.name = "";
-            this.attachments = new List<string>();
+            this.InventoryUsage = new List<InventoryItem>();
+            this.Price = 0;
+            this.Name = "";
+            this.Attachments = new List<string>();
             //this.responsible //-> nincs inicializálva!
         }
 

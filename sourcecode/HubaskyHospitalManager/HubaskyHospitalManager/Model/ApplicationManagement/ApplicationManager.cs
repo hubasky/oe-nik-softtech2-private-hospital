@@ -32,11 +32,11 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
         
 		public ApplicationManager()
         {
-            string version = "17";
+            string version = "21";
             string dataSource = @"Data Source=(localdb)\MSSQLLocalDB";
             string initialCatalog = @"Initial Catalog=tempdb" + version;
             string security = @"Integrated Security=True";
-            string dbFileName = @"AttachDBFilename=D:\Dropbox\Egyetem\4. félév\SzofTech2\FF\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
+            string dbFileName = @"AttachDBFilename=D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
             string connStr = string.Format("{0};{1};{2};{3}", dataSource, initialCatalog, security, dbFileName);
 
             // Ez a db server beállítása, a file conn stringet benthagyom arra az esetre, ha késõbb kellene...

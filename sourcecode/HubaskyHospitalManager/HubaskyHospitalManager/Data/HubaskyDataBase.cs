@@ -17,7 +17,7 @@ namespace HubaskyHospitalManager.Data
         public DbSet<Hospital> Hospital { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Ward> Wards { get; set; }
-        //public DbSet<Patient> Patients { get; set; }
+        public DbSet<Patient> Patients { get; set; }
 
         public HubaskyDataBase(string connStr) : base(connStr)
         {
