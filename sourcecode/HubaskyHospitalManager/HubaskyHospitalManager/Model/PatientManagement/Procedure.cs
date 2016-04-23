@@ -30,53 +30,6 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public Employee Responsible { get; set; }
         public List<InventoryItem> InventoryUsage { get; set; }
 
-        //public List<string> Attachments
-        //{
-        //    get { return attachments; }
-        //    set { attachments = value; }
-        //}
-
-        //public string CreatedTimestamp
-        //{
-        //    get { return createdTimestamp; }
-        //    //set { createdTimestamp = value; }
-        //}
-
-        //public string LastModifiedTimestamp
-        //{
-        //    get { return lastModifiedTimestamp; }
-        //    set { lastModifiedTimestamp = value; }
-        //}
-
-        //public string Name
-        //{
-        //    get { return name; }
-        //    set { name = value; }
-        //}
-
-        //public int Price
-        //{
-        //    get { return price; }
-        //    set { price = value; }
-        //}
-
-        //public State State
-        //{
-        //    get { return state; }
-        //    set { state = value; }
-        //}
-
-        //public Employee Responsible
-        //{
-        //    get { return responsible; }
-        //    set { responsible = value; }
-        //}
-
-        //public List<InventoryItem> InventoryUsage
-        //{
-        //    get { return inventoryUsage; }
-        //    set { inventoryUsage = value; }
-        //}
 
         public Procedure()
         {

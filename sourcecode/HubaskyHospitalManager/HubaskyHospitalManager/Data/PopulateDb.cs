@@ -27,17 +27,6 @@ namespace HubaskyHospitalManager.Data
             var pats = appMgr.ApplicationDb.Patients.Select(m => m);
             appMgr.ApplicationDb.Patients.RemoveRange(pats);
 
-            //PERSON
-            //    public string Name { get; set; }
-            //public string Phone { get; set; }
-            //public string Address { get; set; }
-            //public string DateOfBirth { get; set; }
-
-            //PATIENT
-            //    public int Ssn { get; set; }
-            //public List<MedicalRecord> MedicalHistory { get; set; }
-            //public Gender Gender { get; set; }
-
             Patient kati = new Patient(
                 "Kómás Kati",   //name
                 "069011111",       //tel

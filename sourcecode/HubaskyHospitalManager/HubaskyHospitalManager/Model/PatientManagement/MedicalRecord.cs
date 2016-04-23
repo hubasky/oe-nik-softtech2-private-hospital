@@ -27,36 +27,6 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public State State { get; set; }
         public List<Procedure> Procedures { get; set; }
 
-        //public string CreatedTimestamp
-        //{
-        //    get { return createdTimestamp; }
-        //    //set { createdTimestamp = value; }
-        //}
-
-        //public string Anamnesis
-        //{
-        //    get { return anamnesis; }
-        //    set { anamnesis = value; }
-        //}
-
-        //public string Diagnosis
-        //{
-        //    get { return diagnosis; }
-        //    set { diagnosis = value; }
-        //}
-
-        //public State State
-        //{
-        //    get { return state; }
-        //    set { state = value; }
-        //}
-
-        //public List<Procedure> Procedures
-        //{
-        //    get { return procedures; }
-        //    set { procedures = value; }
-        //}
-
         public MedicalRecord()
         {
             this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");

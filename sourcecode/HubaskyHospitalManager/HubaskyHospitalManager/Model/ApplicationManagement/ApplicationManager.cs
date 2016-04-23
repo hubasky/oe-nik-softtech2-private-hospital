@@ -32,7 +32,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
         
 		public ApplicationManager()
         {
-            string version = "21";
+            string version = "09";
             string dataSource = @"Data Source=(localdb)\MSSQLLocalDB";
             string initialCatalog = @"Initial Catalog=tempdb" + version;
             string security = @"Integrated Security=True";
@@ -44,7 +44,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             ApplicationDb = new HubaskyDataBase(connStr);
 
             // Ezt most átmenetileg kikapcsolom, igazából lassan eljutok arra a szintre a hosp managerrel, hogy appon keresztül lehet adatbázisba hozzáadni usereket meg wardokat. Remélem :D
-            PopulateDb.Populate(this);
+            //PopulateDb.Populate(this);
 		}
         
 		/// 
