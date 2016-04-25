@@ -37,6 +37,20 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         }
 
+        public void NewProcedure(Procedure procedure)
+        {
+            this.Procedures.Add(procedure);
+        }
+
+        public void CloseProcedure(Procedure procedure)
+        {
+
+        }
+
+        public void UpdateProcedure(Procedure procedure)
+        {
+
+        }
 
 
     }//end MedicalRecord

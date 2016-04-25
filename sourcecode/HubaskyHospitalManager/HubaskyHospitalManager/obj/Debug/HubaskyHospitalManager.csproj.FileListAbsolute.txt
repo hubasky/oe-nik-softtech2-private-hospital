@@ -84,4 +84,3 @@ D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\source
 D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.g.resources
 D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.Properties.Resources.resources
 D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.csproj.GenerateResource.Cache
-D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.csprojResolveAssemblyReference.cache

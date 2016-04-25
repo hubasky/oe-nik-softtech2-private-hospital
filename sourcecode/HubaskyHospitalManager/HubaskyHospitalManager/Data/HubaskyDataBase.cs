@@ -24,6 +24,11 @@ namespace HubaskyHospitalManager.Data
             
         }
 
+        public HubaskyDataBase()
+        {
+
+        }
+
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
         //    modelBuilder.Entity<Hospital>()
