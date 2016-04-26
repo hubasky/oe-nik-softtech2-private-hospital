@@ -1,6 +1,7 @@
 ﻿using HubaskyHospitalManager.Model.ApplicationManagement;
 using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
+using HubaskyHospitalManager.View.HospitalManagerView;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

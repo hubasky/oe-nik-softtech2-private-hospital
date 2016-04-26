@@ -43,7 +43,21 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		/// <param name="parentUnit"></param>
 		public void AddUnit(Unit unit, Unit parentUnit)
         {
-
+            // Test for unit adding cases
+            // unit is department, parent unit is hospital
+            if (unit.GetType() == typeof(Department) && parentUnit.GetType() == Hospital.GetType())
+            {
+                Hospital.Departments.Add((Department)unit);
+                AppManager.ApplicationDb.SaveChanges();
+            }
+            else if (unit.GetType() == typeof(Ward) && parentUnit.GetType() == Hospital.Departments.FirstOrDefault().GetType())
+            {
+                var parent = (from department in AppManager.ApplicationDb.Departments
+                              where department.Id == parentUnit.Id
+                              select department).FirstOrDefault();
+                parent.Wards.Add((Ward)unit);
+                AppManager.ApplicationDb.SaveChanges();
+            }
 		}
 
 		/// 
@@ -66,6 +80,27 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		public void RemoveUnit(Unit unit)
         {
 
+            if (unit != null)
+            {
+                if (unit.GetType() == AppManager.ApplicationDb.Departments.FirstOrDefault().GetType())
+                {
+                    //var dept = (from department in AppManager.ApplicationDb.Departments
+                    //            where department.Id == unit.Id
+                    //            select department).FirstOrDefault();
+                    //MessageBox.Show(dept.ToString());
+
+                    AppManager.ApplicationDb.Departments.Remove((Department)unit);
+                    AppManager.ApplicationDb.SaveChanges();
+                }
+                else
+                    if (unit.GetType() == AppManager.ApplicationDb.Wards.FirstOrDefault().GetType())
+                    {
+
+                        //MessageBox.Show(unit.ToString());
+                        AppManager.ApplicationDb.Wards.Remove((Ward)unit);
+                        AppManager.ApplicationDb.SaveChanges();
+                    }
+            }
 		}
 
 		public void UpdateDatabase()

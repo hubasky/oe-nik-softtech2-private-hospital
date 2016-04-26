@@ -1,4 +1,5 @@
-﻿using HubaskyHospitalManager.Model.HospitalManagement;
+﻿using HubaskyHospitalManager.Model.Common;
+using HubaskyHospitalManager.Model.HospitalManagement;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HubaskyHospitalManager.View
+namespace HubaskyHospitalManager.View.HospitalManagerView
 {
     public class HospitalManagementView : INotifyPropertyChanged
     {
@@ -36,15 +37,31 @@ namespace HubaskyHospitalManager.View
             set { selectedUnit = value; OnPropertyChanged(); }
         }
 
+        private ObservableCollection<Employee> employees;
+        private ObservableCollection<Employee> Employees
+        {
+            get { return employees; }
+            set { employees = value; }
+        }
+
+        private Employee selectedEmployee;
+        public Employee SelectedEmployee
+        {
+            get { return selectedEmployee; }
+            set { selectedEmployee = value; OnPropertyChanged(); }
+        }
+
+
         public HospitalManagementView(HospitalManager hospMgr)
         {
             units = new ObservableCollection<UnitView>();
+            employees = new ObservableCollection<Employee>();
             hospManager = hospMgr;
             UpdateHierarchyList();
             
         }
 
-        private void UpdateHierarchyList()
+        public void UpdateHierarchyList()
         {
             UnitView HospitalUnitView = new UnitView(hospManager.Hospital);
             var deptView = hospManager.AppManager.ApplicationDb.Departments.ToList();
@@ -65,7 +82,8 @@ namespace HubaskyHospitalManager.View
                 }
             }
 
-            units = new ObservableCollection<UnitView>();
+            if (units.Count > 0)
+                units.Remove(units[0]);
             units.Add(HospitalUnitView);
 
         }

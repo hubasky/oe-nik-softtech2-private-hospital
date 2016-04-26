@@ -66,7 +66,11 @@
     <Compile Include="Data\PopulateDb.cs" />
     <Compile Include="Data\XmlReader.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
-    <Compile Include="View\HospitalManagementView.cs" />
+    <Compile Include="View\HospitalManagerView\CreateUnitView.cs" />
+    <Compile Include="View\HospitalManagerView\CreateUnitWindow.xaml.cs">
+      <DependentUpon>CreateUnitWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HospitalManagerView\HospitalManagementView.cs" />
     <Compile Include="View\InventoryManagementWindow.xaml.cs">
       <DependentUpon>InventoryManagementWindow.xaml</DependentUpon>
     </Compile>
@@ -77,8 +81,12 @@
     <Compile Include="View\PatientManagementWindow.xaml.cs">
       <DependentUpon>PatientManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UnitView.cs" />
-    <Page Include="View\HospitalManagementWindow.xaml">
+    <Compile Include="View\HospitalManagerView\UnitView.cs" />
+    <Page Include="View\HospitalManagerView\CreateUnitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HospitalManagerView\HospitalManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,7 +107,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Common\User.cs" />
-    <Compile Include="View\HospitalManagementWindow.xaml.cs">
+    <Compile Include="View\HospitalManagerView\HospitalManagementWindow.xaml.cs">
       <DependentUpon>HospitalManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">

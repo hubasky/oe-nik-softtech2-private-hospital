@@ -23,12 +23,17 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
         public string Name { get; set; }
         public virtual Employee Manager { get; set; }
         public virtual List<Employee> Employees { get; set; }
+
+        // Additional data
+        public string UnitEmail { get; set; }
+        public string UnitPhone { get; set; }
+        public string UnitWeb { get; set; }
         
 		public Unit()
         {
 
 		}
 
-	}//end Unit
+	}
 
-}//end namespace HospitalManagement
+}
