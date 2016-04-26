@@ -1,4 +1,9 @@
 *.ldb
 document/2. Kidolgozás/~$ndszerterv kidolgozás.docx
 sourcecode/HubaskyHospitalManager/HubaskyHospitalManager/obj/*
+sourcecode/HubaskyHospitalManager/HubaskyHospitalManager/obj/Debug/*
+sourcecode/HubaskyHospitalManager/HubaskyHospitalManager/obj/Debug/TempPE/*
+sourcecode/HubaskyHospitalManager/HubaskyHospitalManager/obj/Debug/View/*
 sourcecode/HubaskyHospitalManager/HubaskyHospitalManager/bin/*
+sourcecode/HubaskyHospitalManager/HubaskyHospitalManager/bin/Debug/*
+sourcecode/HubaskyHospitalManager/HubaskyHospitalManager/bin/Release/*
