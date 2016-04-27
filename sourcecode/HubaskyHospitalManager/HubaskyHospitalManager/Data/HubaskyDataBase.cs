@@ -1,5 +1,6 @@
 ﻿using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
+using HubaskyHospitalManager.Model.PatientManagement;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,10 +17,16 @@ namespace HubaskyHospitalManager.Data
         public DbSet<Hospital> Hospital { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Ward> Wards { get; set; }
-    
+        public DbSet<Patient> Patients { get; set; }
+
         public HubaskyDataBase(string connStr) : base(connStr)
         {
             
+        }
+
+        public HubaskyDataBase()
+        {
+
         }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)

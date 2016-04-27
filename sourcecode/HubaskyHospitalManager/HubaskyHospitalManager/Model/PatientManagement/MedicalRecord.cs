@@ -12,45 +12,47 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
-	public class MedicalRecord
+    public class MedicalRecord
     {
-        private string anamnesis;
-        private string diagnosis;
-        private State state;
-        private List<Procedure> procedures;
+        //egy medical history van, azon belül több medical record, azon belül több procedure
+        [Key]
+        public string CreatedTimestamp { get; private set; }
 
-        public string Anamnesis
+        public string Anamnesis { get; set; }
+        public string Diagnosis { get; set; }
+        public State State { get; set; }
+        public List<Procedure> Procedures { get; set; }
+
+        public MedicalRecord()
         {
-            get { return anamnesis; }
-            set { anamnesis = value; }
+            this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
+            this.State = State.New;
+            this.Diagnosis = "";
+            this.Procedures = new List<Procedure>();
+            this.Procedures.Add(new Procedure());
+
         }
 
-        public string Diagnosis
+        public void NewProcedure(Procedure procedure)
         {
-            get { return diagnosis; }
-            set { diagnosis = value; }
+            this.Procedures.Add(procedure);
         }
 
-        public State State
+        public void CloseProcedure(Procedure procedure)
         {
-            get { return state; }
-            set { state = value; }
+
         }
 
-        public List<Procedure> Procedures
+        public void UpdateProcedure(Procedure procedure)
         {
-            get { return procedures; }
-            set { procedures = value; }
+
         }
 
-		public MedicalRecord()
-        {
 
-		}
-
-	}//end MedicalRecord
+    }//end MedicalRecord
 
 }//end namespace PatientManagement

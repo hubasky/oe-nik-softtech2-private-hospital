@@ -53,9 +53,15 @@ namespace HubaskyHospitalManager.View
             DataContext = this;
 
             // --- TEST CODE ---
-            appMgr.HospitalManagement = new HospitalManager(appMgr);
-            HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow(appMgr.HospitalManagement);
-            HospitalManagementView.ShowDialog();
+            ////Hospitalmanager-be visz auth nélkül
+            //appMgr.HospitalManagement = new HospitalManager(appMgr);
+            //HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow(appMgr.HospitalManagement);
+            //HospitalManagementView.ShowDialog();
+
+            //Patientmanager-be visz auth nélkül
+            appMgr.PatientManagement = new Model.PatientManagement.PatientManager(appMgr);
+            PatientManagementWindow PatientManagementView = new PatientManagementWindow();
+            PatientManagementView.ShowDialog();
 
             // --- END OF TEST CODE ---
         }

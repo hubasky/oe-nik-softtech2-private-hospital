@@ -13,95 +13,62 @@ using System.IO;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.InventoryManagement;
 using HubaskyHospitalManager.Model.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
-	public class Procedure {
+    public class Procedure
+    {
+        [Key]
+        public string CreatedTimestamp { get; private set; }
 
-        private List<string> attachments;
-        private DateTime createdTimestamp;
-        private DateTime lastModifiedTimestamp;
-        private string name;
-        private int price;
-        private State state;
-        private Employee responsible;
-        private List<InventoryItem> inventoryUsage;
+        public string LastModifiedTimestamp { get; set; }
+        public List<string> Attachments { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public State State { get; set; }
+        public Employee Responsible { get; set; }
+        public List<InventoryItem> InventoryUsage { get; set; }
 
-        public List<string> Attachments
+
+        public Procedure()
         {
-            get { return attachments; }
-            set { attachments = value; }
+            this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
+            this.LastModifiedTimestamp = this.CreatedTimestamp;
+
+            this.State = State.New;
+            this.InventoryUsage = new List<InventoryItem>();
+            this.Price = 0;
+            this.Name = "";
+            this.Attachments = new List<string>();
+            //this.responsible //-> nincs inicializálva!
         }
 
-        public DateTime CreatedTimestamp
+
+        /// 
+        /// <param name="attachment"></param>
+        public void AddAttachment(string attachment)
         {
-            get { return createdTimestamp; }
-            set { createdTimestamp = value; }
+
         }
 
-        public DateTime LastModifiedTimestamp
+        /// 
+        /// <param name="item"></param>
+        /// <param name="decrement"></param>
+        public int DecreaseQuantity(InventoryItem item, int decrement)
         {
-            get { return lastModifiedTimestamp; }
-            set { lastModifiedTimestamp = value; }
+            return 0;
         }
 
-        public string Name
+        /// 
+        /// <param name="name"></param>
+        public List<InventoryItem> SearchInventory(string name)
         {
-            get { return name; }
-            set { name = value; }
+            return null;
         }
 
-        public int Price
-        {
-            get { return price; }
-            set { price = value; }
-        }
+        
 
-        public State State
-        {
-            get { return state; }
-            set { state = value; }
-        }
-
-        public Employee Responsible
-        {
-            get { return responsible; }
-            set { responsible = value; }
-        }
-
-        public List<InventoryItem> InventoryUsage
-        {
-            get { return inventoryUsage; }
-            set { inventoryUsage = value; }
-        }
-
-		public Procedure()
-        {
-
-		}
-
-		/// 
-		/// <param name="attachment"></param>
-		public void AddAttachment(string attachment)
-        {
-
-		}
-
-		/// 
-		/// <param name="item"></param>
-		/// <param name="decrement"></param>
-		public int DecreaseQuantity(InventoryItem item, int decrement)
-        {
-			return 0;
-		}
-
-		/// 
-		/// <param name="name"></param>
-		public List<InventoryItem> SearchInventory(string name)
-        {
-			return null;
-		}
-
-	}//end Procedure
+    }//end Procedure
 
 }//end namespace PatientManagement

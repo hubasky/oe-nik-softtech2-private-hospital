@@ -12,10 +12,12 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.Common;
+using HubaskyHospitalManager.Model.ApplicationManagement;
+using System.Linq;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
-	public class PatientManager : IPatientManagement
+    public class PatientManager : IPatientManagement
     {
         private List<Patient> patients;
         private ApplicationManagement.ApplicationManager appManager;
@@ -32,67 +34,121 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             set { appManager = value; }
         }
 
-		public PatientManager(){
-
-		}
-        
-		/// 
-		/// <param name="medicalRecord"></param>
-		public void CloseMedicalRecord(MedicalRecord medicalRecord)
+        public PatientManager()
         {
 
-		}
+        }
 
-		/// 
-		/// <param name="procedure"></param>
-		public void CloseProcedure(Procedure procedure)
+        public PatientManager(ApplicationManager appMgr)
+        {
+            this.AppManager = appMgr;
+            patients = new List<Patient>();
+            //var resultslist = AppManager.ApplicationDb.Patients.Select(m => m).ToList();
+
+            //foreach (Patient p in resultslist)
+            //{
+            //    patients.Add(p);
+            //}
+
+            //patients = (resultslist.Count == 0) ? null : resultslist;
+
+            patients = AppManager.ApplicationDb.Patients.Select(m => m).ToList();
+        }
+
+        public Patient NewPatient()
+        {
+            Patient newPatient = new Patient();
+            patients.Add(newPatient);
+
+            return newPatient;
+        }
+
+        /// 
+        /// <param name="patient"></param>
+        public void UpdatePatient(Patient patient)
+        {
+            //itt két patient kell, egy a temp, és egy akit update-elni akarunk
+        }
+
+
+        /// 
+        /// <param name="medicalRecord"></param>
+        public void CloseMedicalRecord(MedicalRecord medicalRecord)
+        {
+            medicalRecord.State = State.Closed;
+        }
+
+
+        /// 
+        /// <param name="procedure"></param>
+        public void CloseProcedure(Procedure procedure)
         {
 
-		}
+        }
 
-		/// 
-		/// <param name="patient"></param>
-		public MedicalRecord NewMedicalRecord(Patient patient)
+
+        /// 
+        /// <param name="patient"></param>
+        public MedicalRecord NewMedicalRecord(Patient patient)
+        {
+            MedicalRecord medicalRecord = new MedicalRecord();
+            patient.MedicalHistory.Add(medicalRecord);
+
+            return medicalRecord;
+        }
+
+
+        /// 
+        /// <param name="patient"></param>
+        public Procedure NewProcedure(Patient patient)
+        {
+            int cnt = 0;
+            while (!(patient.MedicalHistory[cnt].State == State.Closed))
+            {
+                cnt++;
+            }
+
+            if (cnt < patient.MedicalHistory.Count)
+            {
+                Procedure proc = new Procedure();
+                patient.MedicalHistory[cnt].NewProcedure(proc);
+                return proc;
+            }
+            else
+            {
+                return null;
+            }
+
+             
+
+        }
+
+        /// 
+        /// <param name="patient"></param>
+        public void UpdateMedicalRecord(Patient patient)
         {
 
-			return null;
-		}
+            foreach (MedicalRecord medRec in patient.MedicalHistory)
+            {
+                if (!(medRec.State == State.Closed))
+                {
+                    throw new NotImplementedException("Ezt még ki kell dolgozni!");
+                }
+            }
 
-		public Patient NewPatient()
+        }
+
+        /// 
+        /// <param name="procedure"></param>
+        public void UpdateProcedure(Procedure procedure)
         {
 
-			return null;
-		}
 
-		/// 
-		/// <param name="patient"></param>
-		public Procedure NewProcedure(Patient patient)
-        {
+            procedure.LastModifiedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
 
-			return null;
-		}
+            throw new NotImplementedException("Ezt még ki kell dolgozni!");
+        }
 
-		/// 
-		/// <param name="patient"></param>
-		public void UpdateMedicalRecord(Patient patient)
-        {
-
-		}
-
-		/// 
-		/// <param name="patient"></param>
-		public void UpdatePatient(Patient patient)
-        {
-
-		}
-
-		/// 
-		/// <param name="procedure"></param>
-		public void UpdateProcedure(Procedure procedure)
-        {
-
-		}
-        
-	}//end PatientManager
+    }//end PatientManager
 
 }//end namespace PatientManagement
