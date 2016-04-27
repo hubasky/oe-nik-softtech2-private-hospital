@@ -23,7 +23,7 @@ namespace HubaskyHospitalManager.Model.Common
         public string Password { get; private set; }
         public double Salary { get; set; }
         public Role Role { get; set; }
-        public Ward Ward { get; set; }
+        // public Ward Ward { get; set; }
 
         public Employee()
         {
@@ -53,7 +53,7 @@ namespace HubaskyHospitalManager.Model.Common
             clone.Phone = this.Phone;
             clone.Salary = this.Salary;
             clone.Role = this.Role;
-            clone.Ward = this.Ward;
+            //clone.Ward = this.Ward;
             return clone;
         }
     }

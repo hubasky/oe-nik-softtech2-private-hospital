@@ -7,7 +7,11 @@
         WindowStartupLocation="CenterScreen"        
         Icon="pack://application:,,,/Images/hubasky_icon.png" Loaded="Window_Loaded">
     <Window.Resources>
-
+        <self:HospitalSelectedAddressConverter x:Key="HospitalSelectedAddressConverter"/>
+        <self:HospitalSelectedDisableDeleteUnit x:Key="HospitalSelectedDisableDeleteUnit"/>
+        <self:HospitalSelectedAddressLabelConverter x:Key="HospitalSelectedAddressLabelConverter"/>
+        <self:WardSelectedDisableAddUnitConverter x:Key="WardSelectedDisableAddUnitConverter"/>
+        
     </Window.Resources>
     <Grid Margin="0,25,0,0" Background="White">
         <Grid.RowDefinitions>
@@ -45,14 +49,14 @@
             <Label Content="{Binding Path=SelectedUnit.Reference.Name}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,54,10,0" Height="26" Grid.Column="1"/>
             <Label Content="Egységvezető" VerticalAlignment="Top" Margin="0,80,10,0"/>
             <Label Content="{Binding Path=SelectedUnit.Reference.Manager.Name}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,80,10,0" Grid.Column="1" Height="26"/>
-            <Label Content="e-mail cím" VerticalAlignment="Top" Margin="0,106,10,0"/>
-            <Label Content="{Binding SelectedUnit.Reference.UnitEmail}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,106,10,0" Grid.Column="1" Height="26"/>
+            <Label Content="e-mail" VerticalAlignment="Top" Margin="0,106,10,0"/>
+            <Label Content="{Binding SelectedUnit.Reference.Email}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,106,10,0" Grid.Column="1" Height="26"/>
             <Label Content="Telefon mellék" VerticalAlignment="Top" Margin="0,132,10,0"/>
-            <Label Content="{Binding SelectedUnit.Reference.UnitPhone}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,132,10,0" Grid.Column="1" Height="26"/>
-            <Label Content="Honlap cím" VerticalAlignment="Top" Margin="0,158,10,0"/>
-            <Label Content="{Binding SelectedUnit.Reference.UnitWeb}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,158,10,0" Grid.Column="1" Height="26"/>
-            <Label Content="Szervezeti egység dolgozói" FontSize="20" VerticalAlignment="Top" Margin="10,201,10,0" Grid.ColumnSpan="2"/>
-            <ListBox ItemsSource="{Binding Path=SelectedUnit.Reference.Employees}" Margin="0,243,0,0" Grid.ColumnSpan="2">
+            <Label Content="{Binding SelectedUnit.Reference.Phone}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,132,10,0" Grid.Column="1" Height="26"/>
+            <Label Content="Honlap" VerticalAlignment="Top" Margin="0,158,10,0"/>
+            <Label Content="{Binding SelectedUnit.Reference.Web}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,158,10,0" Grid.Column="1" Height="26"/>
+            <Label Content="Szervezeti egység dolgozói" FontSize="20" VerticalAlignment="Top" Margin="10,225,10,0" Grid.ColumnSpan="2"/>
+            <ListBox ItemsSource="{Binding Path=SelectedUnit.Reference.Employees}" Margin="0,267,0,0" Grid.ColumnSpan="2">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -61,6 +65,8 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Label Content="Cím" VerticalAlignment="Top" Margin="0,184,10,0" Visibility="{Binding SelectedUnit, Converter={StaticResource HospitalSelectedAddressLabelConverter}}"/>
+            <Label Content="{Binding SelectedUnit, Converter={StaticResource HospitalSelectedAddressConverter}}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,184,10,0" Grid.Column="1" Height="26"/>
         </Grid>
         <Grid Margin="10" Grid.Column="2">
             <Grid.ColumnDefinitions>
@@ -90,11 +96,23 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="Btn_CreateUnit" Margin="10,10,10,0" VerticalAlignment="Top" Height="50" Click="Btn_CreateUnit_Click">
+            <Button x:Name="Btn_CreateUnit" IsEnabled="{Binding SelectedUnit, Converter={StaticResource WardSelectedDisableAddUnitConverter}}" Margin="10,10,10,0" VerticalAlignment="Top" Height="50" Click="Btn_CreateUnit_Click">
                 <TextBlock Text="Új szervezeti egység létrehozása" Height="Auto" TextWrapping="Wrap" TextAlignment="Center"/>
             </Button>
-            <Button x:Name="Btn_DeleteUnit" Margin="10,10,10,0" VerticalAlignment="Top" Height="50" Grid.Column="1" Click="Btn_DeleteUnit_Click">
+            <Button x:Name="Btn_DeleteUnit" IsEnabled="{Binding SelectedUnit, Converter={StaticResource HospitalSelectedDisableDeleteUnit}}" Margin="10,10,10,0" VerticalAlignment="Top" Height="50" Grid.Column="1" Click="Btn_DeleteUnit_Click">
                 <TextBlock Text="Szervezeti egység törlése" Height="Auto" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Btn_AddEmployee" Margin="10,10,10,0" VerticalAlignment="Top" Height="50" Click="Btn_AddEmployee_Click">
+                <TextBlock Text="Új alkalmazott hozzáadása" Height="Auto" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Button>
+            <Button x:Name="Btn_DeleteEmployee" Margin="10,10,10,0" VerticalAlignment="Top" Height="50" Grid.Column="1" Click="Btn_DeleteEmployee_Click">
+                <TextBlock Text="Alkalmazott törlése" Height="Auto" TextWrapping="Wrap" TextAlignment="Center"/>
             </Button>
         </Grid>
     </Grid>

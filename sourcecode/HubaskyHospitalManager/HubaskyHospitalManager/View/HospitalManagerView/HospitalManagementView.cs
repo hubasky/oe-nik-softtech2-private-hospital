@@ -29,7 +29,6 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             set { units = value; }
         }
         
-
         private UnitView selectedUnit;
         public UnitView SelectedUnit
         {
@@ -51,19 +50,18 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             set { selectedEmployee = value; OnPropertyChanged(); }
         }
 
-
         public HospitalManagementView(HospitalManager hospMgr)
         {
             units = new ObservableCollection<UnitView>();
             employees = new ObservableCollection<Employee>();
             hospManager = hospMgr;
-            UpdateHierarchyList();
-            
+            UpdateHierarchyList();            
         }
 
         public void UpdateHierarchyList()
         {
             UnitView HospitalUnitView = new UnitView(hospManager.Hospital);
+            // Departmentsek elérhetők a Hospital propertyn keresztül... TODO adatbázis elérés cserélése.
             var deptView = hospManager.AppManager.ApplicationDb.Departments.ToList();
             if (deptView != null)
             {
@@ -85,7 +83,6 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             if (units.Count > 0)
                 units.Remove(units[0]);
             units.Add(HospitalUnitView);
-
         }
     }
 }

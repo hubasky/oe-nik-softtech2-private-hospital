@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\App.xaml
-7-1925682469
+8-1017603895
 
-441082684829
+511366348625
 15657165148
-View\HospitalManagerView\CreateUnitWindow.xaml;View\HospitalManagerView\HospitalManagementWindow.xaml;View\InventoryManagementWindow.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\ProcedureWindow.xaml;View\PatientManagementWindow.xaml;
+View\HospitalManagerView\CreateUnitWindow.xaml;View\HospitalManagerView\EditEmployeeWindow.xaml;View\HospitalManagerView\HospitalManagementWindow.xaml;View\InventoryManagementWindow.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\ProcedureWindow.xaml;View\PatientManagementWindow.xaml;
 
 False
 

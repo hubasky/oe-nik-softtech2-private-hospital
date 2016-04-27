@@ -15,6 +15,7 @@ using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.Common;
 using System.Linq;
 using System.Windows;
+using HubaskyHospitalManager.Model.Exceptions;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
@@ -26,8 +27,19 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		public HospitalManager(ApplicationManager appMgr)
         {
             this.AppManager = appMgr;
-            Hospital = new Hospital();
-            Hospital = AppManager.ApplicationDb.Hospital.FirstOrDefault();
+            if (AppManager.ApplicationDb.Hospital.FirstOrDefault() == null)
+            {
+                Hospital = new Hospital();
+                Hospital.Name = "Hubasky Magánkórház";
+                Hospital.Address = "1234 Budapest, Gyógyító tér 1.";
+                Hospital.Phone = "+36556667788";
+                Hospital.Email = "info@hubasky.hu";
+                Hospital.Web = "hubasky.hu";
+                AppManager.ApplicationDb.Hospital.Add(Hospital);
+                AppManager.ApplicationDb.SaveChanges();
+            }
+            else
+                Hospital = AppManager.ApplicationDb.Hospital.FirstOrDefault();
 		}
         
 		/// 
@@ -43,20 +55,24 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		/// <param name="parentUnit"></param>
 		public void AddUnit(Unit unit, Unit parentUnit)
         {
-            // Test for unit adding cases
-            // unit is department, parent unit is hospital
-            if (unit.GetType() == typeof(Department) && parentUnit.GetType() == Hospital.GetType())
+            if (unit == null)
+                throw new InvalidUnitAdditionException("Unit to be added to the database can't be null.");
+
+            // If parentUnit is null or Hospital type, the unit needs to be converted to Department
+            if (parentUnit == null || parentUnit.GetType() == Hospital.GetType())
             {
-                Hospital.Departments.Add((Department)unit);
+                Hospital.Departments.Add(new Department(unit));
                 AppManager.ApplicationDb.SaveChanges();
             }
-            else if (unit.GetType() == typeof(Ward) && parentUnit.GetType() == Hospital.Departments.FirstOrDefault().GetType())
+            else
             {
-                var parent = (from department in AppManager.ApplicationDb.Departments
-                              where department.Id == parentUnit.Id
-                              select department).FirstOrDefault();
-                parent.Wards.Add((Ward)unit);
-                AppManager.ApplicationDb.SaveChanges();
+                // If the given unit is ward type, the parent unit must be department
+                if (parentUnit != null && parentUnit.GetType() == Hospital.Departments.FirstOrDefault().GetType())
+                {
+                    Department dept = (Department)parentUnit;
+                    dept.Wards.Add(new Ward(unit));
+                    AppManager.ApplicationDb.SaveChanges();
+                }
             }
 		}
 
@@ -84,19 +100,12 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             {
                 if (unit.GetType() == AppManager.ApplicationDb.Departments.FirstOrDefault().GetType())
                 {
-                    //var dept = (from department in AppManager.ApplicationDb.Departments
-                    //            where department.Id == unit.Id
-                    //            select department).FirstOrDefault();
-                    //MessageBox.Show(dept.ToString());
-
                     AppManager.ApplicationDb.Departments.Remove((Department)unit);
                     AppManager.ApplicationDb.SaveChanges();
                 }
                 else
                     if (unit.GetType() == AppManager.ApplicationDb.Wards.FirstOrDefault().GetType())
                     {
-
-                        //MessageBox.Show(unit.ToString());
                         AppManager.ApplicationDb.Wards.Remove((Ward)unit);
                         AppManager.ApplicationDb.SaveChanges();
                     }

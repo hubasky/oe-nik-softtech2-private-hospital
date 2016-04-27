@@ -17,12 +17,17 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 {
 	public class Ward : Unit 
     {
-        public Dictionary<string, string> Procedures { get; set; }
+        public virtual Dictionary<string, string> Procedures { get; set; }
 
 		public Ward()
         {
             Procedures = new Dictionary<string, string>();
 		}
+
+        public Ward(string name, Employee manager, string email, string phone, string web) : base(name, manager, email, phone, web)
+        {
+            Procedures = new Dictionary<string, string>();
+        }
 
         public Ward(int id, string name, Employee manager, List<Employee> employees, Dictionary<string, string> procedures)
         {
@@ -31,6 +36,17 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             this.Name = name;
             this.Manager = manager;
             this.Employees = employees;
+        }
+
+        public Ward(Unit unit)
+        {
+            Name = unit.Name;
+            Manager = unit.Manager;
+            Email = unit.Email;
+            Phone = unit.Phone;
+            Web = unit.Web;
+            Employees = new List<Employee>();
+            Procedures = new Dictionary<string, string>();
         }
 	}
 }

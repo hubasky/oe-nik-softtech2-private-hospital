@@ -61,38 +61,9 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             cuw.ShowDialog();
             if (cuw.DialogResult == true)
             {
-                // nothing or hospital selected, adding unit is a department
-                if (HospView.SelectedUnit == null || AppMgr.HospitalManagement.Hospital.Equals(HospView.SelectedUnit.Reference))
-                {
-                    Department dept = new Department();
-                    // TODO: needs edit
-                    dept.Employees = cuw.CreatedUnitView.Unit.Employees; 
-                    dept.Manager = cuw.CreatedUnitView.Unit.Manager;
-                    dept.Name = cuw.CreatedUnitView.Unit.Name;
-                    dept.UnitEmail = cuw.CreatedUnitView.Unit.UnitEmail;
-                    dept.UnitPhone = cuw.CreatedUnitView.Unit.UnitPhone;
-                    dept.UnitWeb = cuw.CreatedUnitView.Unit.UnitWeb;
-
-                    AppMgr.HospitalManagement.AddUnit(dept, AppMgr.HospitalManagement.Hospital);
-                    HospView.UpdateHierarchyList();
-                }
-                else 
-                    // check if the selected item is a department
-                    if (HospView.SelectedUnit.Reference.GetType() == AppMgr.ApplicationDb.Departments.FirstOrDefault().GetType())
-                    {
-                        Ward ward = new Ward();
-                        // TODO: needs edit
-                        ward.Manager = cuw.CreatedUnitView.Unit.Manager;
-                        ward.Name = cuw.CreatedUnitView.Unit.Name;
-                        ward.UnitEmail = cuw.CreatedUnitView.Unit.UnitEmail;
-                        ward.UnitPhone = cuw.CreatedUnitView.Unit.UnitPhone;
-                        ward.UnitWeb = cuw.CreatedUnitView.Unit.UnitWeb;
-
-                        AppMgr.HospitalManagement.AddUnit(ward, HospView.SelectedUnit.Reference);
-                        HospView.UpdateHierarchyList();                        
-                    }
-                
-
+                Unit parent = HospView.SelectedUnit != null ? HospView.SelectedUnit.Reference : null;
+                AppMgr.HospitalManagement.AddUnit(cuw.CreatedUnitView.Unit, parent);
+                HospView.UpdateHierarchyList();
             }
 
         }
@@ -105,11 +76,21 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             }
             else
             {
-                Unit reference = HospView.SelectedUnit.Reference;
                 AppMgr.HospitalManagement.RemoveUnit(HospView.SelectedUnit.Reference);
+                HospView.SelectedUnit = null;
                 HospView.UpdateHierarchyList();
-                MessageBox.Show(String.Format("{0} nevű szervezeti egység eltávolítva az adatbázisból.", reference.Name), "Adatbázis művelet", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            }            
+        }
+
+        private void Btn_AddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            EditEmployeeWindow editEmp = new EditEmployeeWindow();
+            editEmp.ShowDialog();
+        }
+
+        private void Btn_DeleteEmployee_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

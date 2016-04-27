@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.HospitalManagement;
+using HubaskyHospitalManager.Model.Common;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
@@ -22,5 +23,21 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
         {
             Wards = new List<Ward>();
 		}
+
+        public Department(string name, Employee manager, string email, string phone, string web) : base(name, manager, email, phone, web)
+        {
+            Wards = new List<Ward>();
+        }
+
+        public Department(Unit unit)
+        {
+            Name = unit.Name;
+            Manager = unit.Manager;
+            Email = unit.Email;
+            Phone = unit.Phone;
+            Web = unit.Web;
+            Employees = new List<Employee>();
+            Wards = new List<Ward>();
+        }
 	}
 }

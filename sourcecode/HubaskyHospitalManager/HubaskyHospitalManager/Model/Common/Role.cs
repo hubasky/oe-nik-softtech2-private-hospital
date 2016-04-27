@@ -16,13 +16,10 @@ namespace HubaskyHospitalManager.Model.Common
 {
 	public enum Role
     {
-
 		Doctor,
 		Nurse,
 		Laboratorian,
 		DataRecorder,
 		Administrator
-
-	}//end Role
-
-}//end namespace ApplicationManagement
+	}
+}

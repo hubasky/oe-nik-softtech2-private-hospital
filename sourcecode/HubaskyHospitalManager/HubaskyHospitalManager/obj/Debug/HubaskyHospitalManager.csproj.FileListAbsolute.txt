@@ -58,3 +58,5 @@ O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospita
 O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\HospitalManagementWindow.baml
 O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\CreateUnitWindow.g.cs
 O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\CreateUnitWindow.baml
+O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditEmployeeWindow.g.cs
+O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditEmployeeWindow.baml

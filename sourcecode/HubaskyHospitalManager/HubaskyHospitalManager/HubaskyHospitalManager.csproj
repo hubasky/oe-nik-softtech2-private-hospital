@@ -66,11 +66,20 @@
     <Compile Include="Data\PopulateDb.cs" />
     <Compile Include="Data\XmlReader.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
+    <Compile Include="Model\Exceptions\InvalidUnitAdditionException.cs" />
     <Compile Include="View\HospitalManagerView\CreateUnitView.cs" />
     <Compile Include="View\HospitalManagerView\CreateUnitWindow.xaml.cs">
       <DependentUpon>CreateUnitWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\HospitalManagerView\EditEmployeeWindow.xaml.cs">
+      <DependentUpon>EditEmployeeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HospitalManagerView\HospitalManagementView.cs" />
+    <Compile Include="View\HospitalManagerView\HospitalSelectedAddressConverter.cs" />
+    <Compile Include="View\HospitalManagerView\HospitalSelectedAddressLabelConverter.cs" />
+    <Compile Include="View\HospitalManagerView\HospitalSelectedDisableDeleteUnit.cs" />
+    <Compile Include="View\HospitalManagerView\RoleToStringConverter.cs" />
+    <Compile Include="View\HospitalManagerView\WardSelectedDisableAddUnitConverter.cs" />
     <Compile Include="View\InventoryManagementWindow.xaml.cs">
       <DependentUpon>InventoryManagementWindow.xaml</DependentUpon>
     </Compile>
@@ -83,6 +92,10 @@
     </Compile>
     <Compile Include="View\HospitalManagerView\UnitView.cs" />
     <Page Include="View\HospitalManagerView\CreateUnitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HospitalManagerView\EditEmployeeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
