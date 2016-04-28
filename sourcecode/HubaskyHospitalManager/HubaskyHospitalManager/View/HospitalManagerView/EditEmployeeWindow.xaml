@@ -8,6 +8,7 @@
         Height="294" Width="704" Loaded="Window_Loaded">
     <Window.Resources>
         <local:RoleToStringConverter x:Key="RoleToStringConverter" />
+        <local:SelectedRoleConverter x:Key="SelectedRoleConverter" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,28 +18,35 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Név" Margin="10,18,10,0" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" Height="23" Margin="10,21,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Employee.Name}" Grid.Column="1" Height="23" Margin="10,21,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Content="Cím" Margin="10,46,10,0" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" Height="23" Margin="10,49,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Employee.Address}" Grid.Column="1" Height="23" Margin="10,49,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Content="Telefonszám" Margin="10,74,10,0" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" Height="23" Margin="10,77,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Employee.Phone}" Grid.Column="1" Height="23" Margin="10,77,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Content="Születési dátum" Margin="10,102,10,0" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" Height="23" Margin="10,105,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Employee.DateOfBirth}" Grid.Column="1" Height="23" Margin="10,105,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Content="Munkakör" Margin="10,130,10,0" VerticalAlignment="Top"/>
-        <ComboBox Grid.Column="1" Height="23" Margin="10,133,10,0" VerticalAlignment="Top" ItemsSource="{Binding Path=RoleTypes, Converter={StaticResource RoleToStringConverter}}"/>
+        <ComboBox SelectedItem="{Binding Employee.Role, Converter={StaticResource SelectedRoleConverter}}" Grid.Column="1" Height="23" Margin="10,133,10,0" VerticalAlignment="Top" ItemsSource="{Binding Path=RoleTypes, Converter={StaticResource RoleToStringConverter}}"/>
         <Label Content="Fizetés" Margin="10,158,10,0" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" Height="23" Margin="10,161,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label Content="Felhasználónév" Margin="11,18,10,0" VerticalAlignment="Top" Grid.Column="2"/>
-        <TextBox Grid.Column="3" Height="23" Margin="10,21,9,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label Content="Jelszó" Margin="11,48,10,0" VerticalAlignment="Top" Grid.Column="2"/>
-        <PasswordBox Grid.Column="3" Height="23" Margin="10,51,9,0" VerticalAlignment="Top"/>
-        <Label Content="Jelszó megerősítése" Margin="11,76,10,0" VerticalAlignment="Top" Grid.Column="2"/>
-        <PasswordBox Grid.Column="3" Height="23" Margin="10,79,9,0" VerticalAlignment="Top"/>
-        <Button Content="OK" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,10,10" Width="102" Height="30" VerticalAlignment="Bottom"/>
+        <TextBox Text="{Binding Employee.Salary}" Grid.Column="1" Height="23" Margin="10,161,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Content="Részleg" Margin="10,186,10,0" VerticalAlignment="Top"/>
-        <ComboBox Grid.Column="1" Height="23" Margin="10,189,10,0" VerticalAlignment="Top"/>
+        <ComboBox SelectedItem="{Binding SelectedUnit}" ItemsSource="{Binding Units}" Grid.Column="1" Height="23" Margin="10,189,10,0" VerticalAlignment="Top">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label Content="Részlegvezető" Margin="10,217,10,0" VerticalAlignment="Top"/>
-        <CheckBox Content="" Margin="10,223,10,0" VerticalAlignment="Top" Grid.Column="1"/>
-
+        <CheckBox IsChecked="{Binding IsManager}" Content="" Margin="10,223,10,0" VerticalAlignment="Top" Grid.Column="1"/>
+        
+        <Label x:Name="Label_Username" Content="Felhasználónév" Margin="11,18,10,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <TextBox x:Name="TextBox_Username" Text="{Binding Employee.Username}" Grid.Column="3" Height="23" Margin="10,21,9,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label Content="Jelszó" Margin="11,48,10,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <PasswordBox x:Name="PswBox_Password" Grid.Column="3" Height="23" Margin="10,51,9,0" VerticalAlignment="Top"/>
+        <Label Content="Jelszó megerősítése" Margin="11,76,10,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <PasswordBox x:Name="PswBox_PasswordAgain" Grid.Column="3" Height="23" Margin="10,79,9,0" VerticalAlignment="Top"/>
+        
+        <Button Content="OK" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,10,10" Width="102" Height="30" VerticalAlignment="Bottom" Click="Button_Click"/>
     </Grid>
 </Window>

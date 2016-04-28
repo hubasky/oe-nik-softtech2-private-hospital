@@ -78,7 +78,9 @@
     <Compile Include="View\HospitalManagerView\HospitalSelectedAddressConverter.cs" />
     <Compile Include="View\HospitalManagerView\HospitalSelectedAddressLabelConverter.cs" />
     <Compile Include="View\HospitalManagerView\HospitalSelectedDisableDeleteUnit.cs" />
+    <Compile Include="View\HospitalManagerView\RoleToLabelConverter.cs" />
     <Compile Include="View\HospitalManagerView\RoleToStringConverter.cs" />
+    <Compile Include="View\HospitalManagerView\SelectedRoleConverter.cs" />
     <Compile Include="View\HospitalManagerView\WardSelectedDisableAddUnitConverter.cs" />
     <Compile Include="View\InventoryManagementWindow.xaml.cs">
       <DependentUpon>InventoryManagementWindow.xaml</DependentUpon>
@@ -119,7 +121,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Common\User.cs" />
     <Compile Include="View\HospitalManagerView\HospitalManagementWindow.xaml.cs">
       <DependentUpon>HospitalManagementWindow.xaml</DependentUpon>
     </Compile>

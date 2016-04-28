@@ -20,8 +20,8 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		/// 
 		/// <param name="employee"></param>
 		/// <param name="ward"></param>
-		void AddEmployee(Employee employee, Ward ward);
-
+		void AddEmployee(Employee employee, Unit unit);
+        
 		/// 
 		/// <param name="employee"></param>
 		void RemoveEmployee(Employee employee);
@@ -30,6 +30,13 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		/// <param name="sourceEmployee"></param>
 		/// <param name="targetEmployee"></param>
 		void UpdateEmployee(Employee sourceEmployee, Employee targetEmployee);
-	}//end IManageableEmployee
-
-}//end namespace HospitalManagement
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <param name="sourceUnit"></param>
+        /// <param name="targetUnit"></param>
+        void MoveEmployee(Employee employee, Unit sourceUnit, Unit targetUnit);
+	}
+}

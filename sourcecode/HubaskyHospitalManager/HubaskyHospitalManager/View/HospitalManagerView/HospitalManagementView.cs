@@ -20,7 +20,7 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
         }
 
-        private HospitalManager hospManager;
+        public HospitalManager HospManager { get; set; }
 
         private ObservableCollection<UnitView> units;
         public ObservableCollection<UnitView> Units
@@ -50,19 +50,21 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             set { selectedEmployee = value; OnPropertyChanged(); }
         }
 
+
+
         public HospitalManagementView(HospitalManager hospMgr)
         {
             units = new ObservableCollection<UnitView>();
             employees = new ObservableCollection<Employee>();
-            hospManager = hospMgr;
+            HospManager = hospMgr;
             UpdateHierarchyList();            
         }
 
         public void UpdateHierarchyList()
         {
-            UnitView HospitalUnitView = new UnitView(hospManager.Hospital);
+            UnitView HospitalUnitView = new UnitView(HospManager.Hospital);
             // Departmentsek elérhetők a Hospital propertyn keresztül... TODO adatbázis elérés cserélése.
-            var deptView = hospManager.AppManager.ApplicationDb.Departments.ToList();
+            var deptView = HospManager.AppManager.ApplicationDb.Departments.ToList();
             if (deptView != null)
             {
                 foreach (Department dept in deptView)

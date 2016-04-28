@@ -19,14 +19,23 @@ namespace HubaskyHospitalManager.Model.Common
 	public class Employee : Person, ICloneable
     {
         [Key]
-        public string Username { get; private set; }
-        public string Password { get; private set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
         public double Salary { get; set; }
         public Role Role { get; set; }
         // public Ward Ward { get; set; }
 
         public Employee()
         {
+            Name = "";
+            Phone = "";
+            Address = "";
+            DateOfBirth = "";
+            Salary = 100000.0;
+            Role = Role.DataRecorder;
+            Username = "";
+            Password = "";
+
         }
 
 		public Employee(string username, string password)
@@ -41,9 +50,10 @@ namespace HubaskyHospitalManager.Model.Common
             this.Password = password;
             this.Salary = salary;
             this.Role = role;
-            this.Phone = Phone;
+            this.Phone = phone;
             this.Name = name;
             this.DateOfBirth = dateOfBirth;
+            //this.Address = "";
         }
 
         public object Clone()
@@ -53,6 +63,8 @@ namespace HubaskyHospitalManager.Model.Common
             clone.Phone = this.Phone;
             clone.Salary = this.Salary;
             clone.Role = this.Role;
+            clone.Address = this.Address;
+            clone.DateOfBirth = this.DateOfBirth;
             //clone.Ward = this.Ward;
             return clone;
         }

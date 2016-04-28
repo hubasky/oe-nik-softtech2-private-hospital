@@ -29,6 +29,11 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		/// <param name="sourceUnit"></param>
 		/// <param name="targetUnit"></param>
 		void UpdateUnit(Unit sourceUnit, Unit targetUnit);
-	}//end IManageableUnit
+        
+        /// 
+        /// <param name="sourceUnit"></param>
+        /// <param name="targetUnit"></param>
+        List<Unit> GetUnits();
+	}
 
-}//end namespace HospitalManagement
+}

@@ -16,7 +16,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
-	public class Unit 
+	public class Unit : ICloneable
     {
         [Key]
         public int Id { get; set; }
@@ -41,5 +41,11 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             Web = web;
             Employees = new List<Employee>();
         }
-	}
+
+        public object Clone()
+        {
+            Unit unit = new Unit(this.Name, this.Manager, this.Email, this.Phone, this.Web);
+            return unit;
+        }
+    }
 }

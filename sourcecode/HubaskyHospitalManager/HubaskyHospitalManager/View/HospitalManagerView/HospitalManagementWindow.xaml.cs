@@ -1,4 +1,5 @@
 ﻿using HubaskyHospitalManager.Model.ApplicationManagement;
+using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using System;
 using System.Collections.Generic;
@@ -84,13 +85,102 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
 
         private void Btn_AddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            EditEmployeeWindow editEmp = new EditEmployeeWindow();
-            editEmp.ShowDialog();
+            EditEmployeeWindow addEmp = new EditEmployeeWindow(HospView);
+            addEmp.ShowDialog();
+            if (addEmp.DialogResult == true)
+            {
+                //Unit parent = HospView.SelectedUnit != null ? HospView.SelectedUnit.Reference : null;
+                Unit parent = addEmp.SelectedUnit;
+                AppMgr.HospitalManagement.AddEmployee(addEmp.Employee, parent);
+                if (addEmp.IsManager)
+                {
+                    Unit parentClone = (Unit)parent.Clone();
+                    parentClone.Manager = addEmp.Employee;
+                    AppMgr.HospitalManagement.UpdateUnit(parentClone, parent);
+                }
+
+                HospView.UpdateHierarchyList();
+                var selection = HospView.SelectedUnit;
+                HospView.SelectedUnit = null;
+                HospView.SelectedUnit = selection;
+            }
         }
 
         private void Btn_DeleteEmployee_Click(object sender, RoutedEventArgs e)
         {
-
+            AppMgr.HospitalManagement.RemoveEmployee(HospView.SelectedEmployee);
+            var selection = HospView.SelectedUnit;
+            HospView.SelectedUnit = null;
+            HospView.SelectedUnit = selection;
+            HospView.UpdateHierarchyList();
         }
+
+        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Employee empClone = (Employee)HospView.SelectedEmployee.Clone();
+            EditEmployeeWindow editEmp = new EditEmployeeWindow(empClone, HospView);
+            editEmp.ShowDialog();
+            if (editEmp.DialogResult == true)
+            {
+                AppMgr.HospitalManagement.UpdateEmployee(empClone, HospView.SelectedEmployee);
+
+                Unit origUnit = HospView.SelectedUnit.Reference;
+                Unit origUnitClone = (Unit)origUnit.Clone();
+                Unit targetUnit = editEmp.SelectedUnit;
+                Unit targetUnitClone = (Unit)targetUnit.Clone();
+
+                // stay
+                if (origUnit.Equals(targetUnit))
+                {
+                    if (editEmp.IsManager)
+                        origUnitClone.Manager = HospView.SelectedEmployee;
+                    //else
+                        //origUnitClone.Manager = origUnit.Manager;
+                    AppMgr.HospitalManagement.UpdateUnit(origUnitClone, origUnit);
+                }
+                // move
+                else
+                {
+                    if (origUnit.Manager != null)
+                    {
+                        if (editEmp.IsManager)
+                        {
+                            if (origUnit.Manager.Equals(HospView.SelectedEmployee))
+                            {
+                                origUnitClone.Manager = null;
+                            }
+                            targetUnitClone.Manager = HospView.SelectedEmployee;
+                        }
+                        else
+                        {
+                            if (origUnit.Manager.Equals(HospView.SelectedEmployee))
+                            {
+                                origUnitClone.Manager = null;
+                            }                            
+                        }
+                    }
+                    else
+                    {
+                        if (editEmp.IsManager)
+                        {
+                            targetUnitClone.Manager = HospView.SelectedEmployee;
+                        }
+                    }
+
+                    // move employee
+                    AppMgr.HospitalManagement.MoveEmployee(HospView.SelectedEmployee, HospView.SelectedUnit.Reference, targetUnit);
+                    AppMgr.HospitalManagement.UpdateUnit(origUnitClone, origUnit);
+                    AppMgr.HospitalManagement.UpdateUnit(targetUnitClone, targetUnit);
+                }
+
+
+
+                HospView.UpdateHierarchyList();
+                var selection = HospView.SelectedUnit;
+                HospView.SelectedUnit = null;
+                HospView.SelectedUnit = selection;
+            }
+        }
+
     }
 }

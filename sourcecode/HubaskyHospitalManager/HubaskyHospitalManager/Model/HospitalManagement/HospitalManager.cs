@@ -45,15 +45,56 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		/// 
 		/// <param name="employee"></param>
 		/// <param name="ward"></param>
-		public void AddEmployee(Employee employee, Ward ward)
+		public void AddEmployee(Employee employee, Unit unit)
         {
-
+            // If unit is null or Hospital type, the unit needs to be converted to Department
+            if (unit == null)
+            {
+                Hospital.Employees.Add(employee);
+                AppManager.ApplicationDb.SaveChanges();
+            }
+            else
+            {
+                unit.Employees.Add(employee);
+                AppManager.ApplicationDb.SaveChanges();
+            }
 		}
 
+        /// 
+        /// <param name="sourceEmployee"></param>
+        /// <param name="targetEmployee"></param>
+        public void UpdateEmployee(Employee sourceEmployee, Employee targetEmployee)
+        {
+
+        }
+
 		/// 
-		/// <param name="unit"></param>
-		/// <param name="parentUnit"></param>
-		public void AddUnit(Unit unit, Unit parentUnit)
+		/// <param name="employee"></param>
+		public void RemoveEmployee(Employee employee)
+        {
+            if (Hospital.Manager != null && Hospital.Manager.Equals(employee))
+                Hospital.Manager = null;
+            Hospital.Employees.Remove(employee);
+            foreach (Department dept in Hospital.Departments)
+            {
+                if (dept.Manager != null && dept.Manager.Equals(employee))
+                    dept.Manager = null;
+                dept.Employees.Remove(employee);
+                foreach (Ward ward in dept.Wards)
+                {
+                    if (ward.Manager != null && ward.Manager.Equals(employee))
+                        ward.Manager = null;
+                    ward.Employees.Remove(employee);
+                }
+            }
+            AppManager.ApplicationDb.Employees.Remove(employee);
+            AppManager.ApplicationDb.SaveChanges();
+		}
+
+        /// 
+        /// <param name="unit"></param>
+        /// <param name="parentUnit"></param>
+        public void AddUnit(Unit unit, Unit parentUnit)
         {
             if (unit == null)
                 throw new InvalidUnitAdditionException("Unit to be added to the database can't be null.");
@@ -74,22 +115,35 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
                     AppManager.ApplicationDb.SaveChanges();
                 }
             }
-		}
-
-		/// 
-		/// <param name="unit"></param>
-		public Unit FindParentUnit(Unit unit)
+        }
+        
+        /// 
+        /// <param name="sourceUnit"></param>
+        /// <param name="targetUnit"></param>
+        public void UpdateUnit(Unit sourceUnit, Unit targetUnit)
         {
+            if (sourceUnit != null && targetUnit != null)
+            {
+                if (!targetUnit.Name.Equals(sourceUnit.Name))
+                    targetUnit.Name = sourceUnit.Name;
 
-			return null;
-		}
-
-		/// 
-		/// <param name="employee"></param>
-		public void RemoveEmployee(Employee employee)
-        {
-
-		}
+                if (targetUnit.Manager != null)
+                {
+                    if (!targetUnit.Manager.Equals(sourceUnit.Manager))
+                        targetUnit.Manager = sourceUnit.Manager;
+                }
+                else
+                {
+                    if (sourceUnit.Manager != null)
+                        targetUnit.Manager = sourceUnit.Manager;
+                }
+                if (!targetUnit.Phone.Equals(sourceUnit.Phone))
+                    targetUnit.Phone = sourceUnit.Phone;
+                if (!targetUnit.Web.Equals(sourceUnit.Web))
+                    targetUnit.Web = sourceUnit.Web;
+                AppManager.ApplicationDb.SaveChanges();
+            }
+        }
 
 		/// 
 		/// <param name="unit"></param>
@@ -100,39 +154,84 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             {
                 if (unit.GetType() == AppManager.ApplicationDb.Departments.FirstOrDefault().GetType())
                 {
+                    foreach (Employee deptEmp in unit.Employees)
+                        MoveEmployee(deptEmp, unit, Hospital);
+                    foreach (Ward ward in ((Department)unit).Wards)
+                    {
+                        foreach (Employee emp in ward.Employees)
+                            MoveEmployee(emp, ward, Hospital);
+                    }
                     AppManager.ApplicationDb.Departments.Remove((Department)unit);
                     AppManager.ApplicationDb.SaveChanges();
                 }
                 else
                     if (unit.GetType() == AppManager.ApplicationDb.Wards.FirstOrDefault().GetType())
                     {
+                        Unit parent = FindParentUnit(unit);
+                        foreach (Employee emp in ((Ward)unit).Employees)
+                        {
+                            MoveEmployee(emp, unit, parent);
+                        }
                         AppManager.ApplicationDb.Wards.Remove((Ward)unit);
                         AppManager.ApplicationDb.SaveChanges();
                     }
             }
 		}
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <param name="sourceUnit"></param>
+        /// <param name="targetUnit"></param>
+        public void MoveEmployee(Employee employee, Unit sourceUnit, Unit targetUnit)
+        { 
+            if (employee != null && sourceUnit != null && targetUnit != null)
+            {
+                if (!sourceUnit.Equals(targetUnit))
+                {
+                    sourceUnit.Employees.Remove(employee);
+                    targetUnit.Employees.Add(employee);
+                    AppManager.ApplicationDb.SaveChanges();
+                }
+            }
+        }
+        
+        /// 
+        /// <param name="unit"></param>
+        public Unit FindParentUnit(Unit unit)
+        {
+            Department dept = unit as Department;
+            if (dept != null)
+                return Hospital;
+            var parent = (from department in Hospital.Departments
+                          where department.Wards.Contains((Ward)unit)
+                          select department).FirstOrDefault();
+            return parent;
+        }
+        
+        public List<Unit> GetUnits()
+        {
+            List<Unit> list = new List<Unit>();
+            list.Add(Hospital);
+            foreach (Department dept in Hospital.Departments)
+            {
+                list.Add(dept);
+                foreach (Ward ward in dept.Wards)
+                {
+                    list.Add(ward);
+                }
+            }
+            list = list.OrderBy(o => o.Name).ToList();
+            return list;
+        }
+
+
 		public void UpdateDatabase()
         {
 
 		}
-
-		/// 
-		/// <param name="sourceEmployee"></param>
-		/// <param name="targetEmployee"></param>
-		public void UpdateEmployee(Employee sourceEmployee, Employee targetEmployee)
-        {
-
-		}
-
-		/// 
-		/// <param name="sourceUnit"></param>
-		/// <param name="targetUnit"></param>
-		public void UpdateUnit(Unit sourceUnit, Unit targetUnit)
-        {
-
-		}
-
 	}//end HospitalManager
 
 }//end namespace HospitalManagement
