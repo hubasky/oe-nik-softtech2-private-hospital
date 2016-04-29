@@ -16,11 +16,7 @@ namespace HubaskyHospitalManager.Model.Common
 {
 	public enum InventoryUnit
     {
-
-		Db,
-		Ml,
-		Mg
-
+		db, ml, mg
 	}//end InventoryUnit
 
 }//end namespace InventoryManagement
