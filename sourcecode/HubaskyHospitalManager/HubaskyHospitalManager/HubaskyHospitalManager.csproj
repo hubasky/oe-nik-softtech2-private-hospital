@@ -68,6 +68,9 @@
     <Compile Include="Model\Common\InventoryRecordStatus.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
     <Compile Include="View\HospitalManagementView.cs" />
+    <Compile Include="View\InventoryControl.xaml.cs">
+      <DependentUpon>InventoryControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\InventoryEditorWindow.xaml.cs">
       <DependentUpon>InventoryEditorWindow.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,10 @@
     <Page Include="View\HospitalManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InventoryControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\InventoryEditorWindow.xaml">
       <SubType>Designer</SubType>
