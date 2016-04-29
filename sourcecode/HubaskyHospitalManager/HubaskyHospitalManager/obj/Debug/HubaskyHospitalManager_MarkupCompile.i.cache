@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\aowczare\Documents\GitHub\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\
+C:\Users\aowczare\Documents\GitHub\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\
 HubaskyHospitalManager
 none
 false
 DEBUG;TRACE
-C:\Users\aowczare\Documents\GitHub\HubaskyHospitalManager\HubaskyHospitalManager\App.xaml
+C:\Users\aowczare\Documents\GitHub\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\App.xaml
 7-1829476893
 
 48-456463061
-15-2118921498
+151891823999
 View\HospitalManagementWindow.xaml;View\InventoryEditorWindow.xaml;View\InventoryManagementWindow.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\ProcedureWindow.xaml;View\PatientManagementWindow.xaml;
 
-False
+True
 

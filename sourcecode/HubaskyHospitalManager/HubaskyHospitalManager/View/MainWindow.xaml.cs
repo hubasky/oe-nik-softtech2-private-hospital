@@ -98,10 +98,8 @@ namespace HubaskyHospitalManager.View
             {
                 UpdateLoggedInUser();
                 appMgr.InventoryManagement = new InventoryManager(appMgr);
-                InventoryManagementWindow InventoryManagementView = new InventoryManagementWindow(appMgr.InventoryManagement);
-                InventoryManagementView.ShowDialog();
-                //InventoryEditorWindow InventoryEditorView = new InventoryEditorWindow(appMgr.InventoryManagement);
-                //InventoryEditorView.ShowDialog();
+                InventoryEditorWindow InventoryEditorView = new InventoryEditorWindow(appMgr.InventoryManagement);
+                InventoryEditorView.ShowDialog();
                 appMgr.InventoryManagement = null;
                 appMgr.Logout();
                 UpdateLoggedInUser();
