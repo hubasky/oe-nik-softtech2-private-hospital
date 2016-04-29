@@ -45,7 +45,7 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             Email = unit.Email;
             Phone = unit.Phone;
             Web = unit.Web;
-            Employees = new List<Employee>();
+            // Employees = new List<Employee>();
             Procedures = new Dictionary<string, string>();
         }
 	}

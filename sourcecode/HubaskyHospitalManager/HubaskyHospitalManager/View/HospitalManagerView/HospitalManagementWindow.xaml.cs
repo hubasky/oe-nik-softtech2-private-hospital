@@ -58,12 +58,12 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
 
         private void Btn_CreateUnit_Click(object sender, RoutedEventArgs e)
         {
-            CreateUnitWindow cuw = new CreateUnitWindow(AppMgr);
+            EditUnitWindow cuw = new EditUnitWindow(AppMgr);
             cuw.ShowDialog();
             if (cuw.DialogResult == true)
             {
                 Unit parent = HospView.SelectedUnit != null ? HospView.SelectedUnit.Reference : null;
-                AppMgr.HospitalManagement.AddUnit(cuw.CreatedUnitView.Unit, parent);
+                AppMgr.HospitalManagement.AddUnit(cuw.EditUnitView.Unit, parent);
                 HospView.UpdateHierarchyList();
             }
 
@@ -117,63 +117,86 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
 
         private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Employee empClone = (Employee)HospView.SelectedEmployee.Clone();
-            EditEmployeeWindow editEmp = new EditEmployeeWindow(empClone, HospView);
-            editEmp.ShowDialog();
-            if (editEmp.DialogResult == true)
+            if (HospView.SelectedEmployee != null)
             {
-                AppMgr.HospitalManagement.UpdateEmployee(empClone, HospView.SelectedEmployee);
-
-                Unit origUnit = HospView.SelectedUnit.Reference;
-                Unit origUnitClone = (Unit)origUnit.Clone();
-                Unit targetUnit = editEmp.SelectedUnit;
-                Unit targetUnitClone = (Unit)targetUnit.Clone();
-
-                // stay
-                if (origUnit.Equals(targetUnit))
+                Employee empClone = (Employee)HospView.SelectedEmployee.Clone();
+                EditEmployeeWindow editEmp = new EditEmployeeWindow(empClone, HospView);
+                editEmp.ShowDialog();
+                if (editEmp.DialogResult == true)
                 {
-                    if (editEmp.IsManager)
-                        origUnitClone.Manager = HospView.SelectedEmployee;
-                    //else
-                        //origUnitClone.Manager = origUnit.Manager;
-                    AppMgr.HospitalManagement.UpdateUnit(origUnitClone, origUnit);
-                }
-                // move
-                else
-                {
-                    if (origUnit.Manager != null)
+                    AppMgr.HospitalManagement.UpdateEmployee(empClone, HospView.SelectedEmployee);
+
+                    Unit origUnit = HospView.SelectedUnit.Reference;
+                    Unit origUnitClone = (Unit)origUnit.Clone();
+                    Unit targetUnit = editEmp.SelectedUnit;
+                    Unit targetUnitClone = (Unit)targetUnit.Clone();
+
+                    // stay
+                    if (origUnit.Equals(targetUnit))
                     {
                         if (editEmp.IsManager)
+                            origUnitClone.Manager = HospView.SelectedEmployee;
+                        //else
+                        //origUnitClone.Manager = origUnit.Manager;
+                        AppMgr.HospitalManagement.UpdateUnit(origUnitClone, origUnit);
+                    }
+                    // move
+                    else
+                    {
+                        if (origUnit.Manager != null)
                         {
-                            if (origUnit.Manager.Equals(HospView.SelectedEmployee))
+                            if (editEmp.IsManager)
                             {
-                                origUnitClone.Manager = null;
+                                if (origUnit.Manager.Equals(HospView.SelectedEmployee))
+                                {
+                                    origUnitClone.Manager = null;
+                                }
+                                targetUnitClone.Manager = HospView.SelectedEmployee;
                             }
-                            targetUnitClone.Manager = HospView.SelectedEmployee;
+                            else
+                            {
+                                if (origUnit.Manager.Equals(HospView.SelectedEmployee))
+                                {
+                                    origUnitClone.Manager = null;
+                                }
+                            }
                         }
                         else
                         {
-                            if (origUnit.Manager.Equals(HospView.SelectedEmployee))
+                            if (editEmp.IsManager)
                             {
-                                origUnitClone.Manager = null;
-                            }                            
+                                targetUnitClone.Manager = HospView.SelectedEmployee;
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (editEmp.IsManager)
-                        {
-                            targetUnitClone.Manager = HospView.SelectedEmployee;
-                        }
+
+                        // move employee
+                        AppMgr.HospitalManagement.MoveEmployee(HospView.SelectedEmployee, HospView.SelectedUnit.Reference, targetUnit);
+                        AppMgr.HospitalManagement.UpdateUnit(origUnitClone, origUnit);
+                        AppMgr.HospitalManagement.UpdateUnit(targetUnitClone, targetUnit);
                     }
 
-                    // move employee
-                    AppMgr.HospitalManagement.MoveEmployee(HospView.SelectedEmployee, HospView.SelectedUnit.Reference, targetUnit);
-                    AppMgr.HospitalManagement.UpdateUnit(origUnitClone, origUnit);
-                    AppMgr.HospitalManagement.UpdateUnit(targetUnitClone, targetUnit);
+                    HospView.UpdateHierarchyList();
+                    var selection = HospView.SelectedUnit;
+                    HospView.SelectedUnit = null;
+                    HospView.SelectedUnit = selection;
                 }
-
-
+            }
+        }
+        
+        private void TreeView_Hierarchy_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (HospView.SelectedUnit != null)
+            {
+                Unit unit = HospView.SelectedUnit.Reference;
+                Unit unitClone = (Unit)unit.Clone();
+                EditUnitWindow editUnitWindow = new EditUnitWindow(unitClone, AppMgr);
+                editUnitWindow.Title = "Szervezeti egység módosítása";
+                editUnitWindow.ShowDialog();
+                if (editUnitWindow.DialogResult == true)
+                {
+                    unitClone = editUnitWindow.EditUnitView.Unit;
+                    AppMgr.HospitalManagement.UpdateUnit(unitClone, unit);
+                }
 
                 HospView.UpdateHierarchyList();
                 var selection = HospView.SelectedUnit;
@@ -181,6 +204,5 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
                 HospView.SelectedUnit = selection;
             }
         }
-
     }
 }

@@ -45,6 +45,7 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
         public object Clone()
         {
             Unit unit = new Unit(this.Name, this.Manager, this.Email, this.Phone, this.Web);
+            unit.Employees = this.Employees;
             return unit;
         }
     }

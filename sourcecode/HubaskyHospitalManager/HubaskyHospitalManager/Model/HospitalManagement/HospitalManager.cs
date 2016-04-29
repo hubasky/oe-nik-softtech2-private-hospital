@@ -65,7 +65,52 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
         /// <param name="targetEmployee"></param>
         public void UpdateEmployee(Employee sourceEmployee, Employee targetEmployee)
         {
+            if (sourceEmployee != null && targetEmployee != null)
+            {
+                bool changed = false;
+                
+                if (!targetEmployee.Name.Equals(sourceEmployee.Name))
+                {
+                    targetEmployee.Name = sourceEmployee.Name;
+                    changed = true;
+                }
+                if (!targetEmployee.Phone.Equals(sourceEmployee.Phone))
+                {
+                    targetEmployee.Phone = sourceEmployee.Phone;
+                    changed = true;
+                }
+                if (!targetEmployee.Address.Equals(sourceEmployee.Address))
+                {
+                    targetEmployee.Address = sourceEmployee.Address;
+                    changed = true;
+                }
+                if (!targetEmployee.DateOfBirth.Equals(sourceEmployee.DateOfBirth))
+                {
+                    targetEmployee.DateOfBirth = sourceEmployee.DateOfBirth;
+                    changed = true;
+                }
+                if (!targetEmployee.Password.Equals(sourceEmployee.Password))
+                {
+                    targetEmployee.Password = sourceEmployee.Password;
+                    changed = true;
+                }
+                if (Math.Abs(targetEmployee.Salary - sourceEmployee.Salary) > 0.01)
+                {
+                    targetEmployee.Salary = sourceEmployee.Salary;
+                    changed = true;
+                }
+                if (targetEmployee.Role != sourceEmployee.Role)
+                {
+                    targetEmployee.Role = sourceEmployee.Role;
+                    changed = true;
+                }
 
+                if (changed)
+                {
+                    AppManager.ApplicationDb.SaveChanges();
+                }
+
+            }
         }
 
 		/// 
@@ -124,24 +169,46 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
         {
             if (sourceUnit != null && targetUnit != null)
             {
+                bool changed = false; ;
                 if (!targetUnit.Name.Equals(sourceUnit.Name))
+                {
                     targetUnit.Name = sourceUnit.Name;
+                    changed = true;
+                }
 
                 if (targetUnit.Manager != null)
                 {
                     if (!targetUnit.Manager.Equals(sourceUnit.Manager))
+                    {
                         targetUnit.Manager = sourceUnit.Manager;
+                        changed = true;
+                    }
                 }
                 else
                 {
                     if (sourceUnit.Manager != null)
+                    {
                         targetUnit.Manager = sourceUnit.Manager;
+                        changed = true;
+                    }
                 }
                 if (!targetUnit.Phone.Equals(sourceUnit.Phone))
+                {
                     targetUnit.Phone = sourceUnit.Phone;
+                    changed = true;
+                }
+                if (!targetUnit.Email.Equals(sourceUnit.Email))
+                {
+                    targetUnit.Email = sourceUnit.Email;
+                    changed = true;
+                }
                 if (!targetUnit.Web.Equals(sourceUnit.Web))
+                {
                     targetUnit.Web = sourceUnit.Web;
-                AppManager.ApplicationDb.SaveChanges();
+                    changed = true;
+                }
+                if (changed)
+                    AppManager.ApplicationDb.SaveChanges();
             }
         }
 
@@ -154,13 +221,19 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             {
                 if (unit.GetType() == AppManager.ApplicationDb.Departments.FirstOrDefault().GetType())
                 {
-                    foreach (Employee deptEmp in unit.Employees)
-                        MoveEmployee(deptEmp, unit, Hospital);
                     foreach (Ward ward in ((Department)unit).Wards)
                     {
                         foreach (Employee emp in ward.Employees)
-                            MoveEmployee(emp, ward, Hospital);
+                            //MoveEmployee(emp, ward, Hospital);
+                            Hospital.Employees.Add(emp);
+                        AppManager.ApplicationDb.Wards.Remove(ward);
                     }
+                    foreach (Employee deptEmp in unit.Employees)
+                        // MoveEmployee(deptEmp, unit, Hospital);
+                        Hospital.Employees.Add(deptEmp);
+
+                    //unit.Employees.RemoveRange(0, unit.Employees.Count);
+
                     AppManager.ApplicationDb.Departments.Remove((Department)unit);
                     AppManager.ApplicationDb.SaveChanges();
                 }
@@ -168,10 +241,10 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
                     if (unit.GetType() == AppManager.ApplicationDb.Wards.FirstOrDefault().GetType())
                     {
                         Unit parent = FindParentUnit(unit);
-                        foreach (Employee emp in ((Ward)unit).Employees)
-                        {
-                            MoveEmployee(emp, unit, parent);
-                        }
+                        Ward ward = (Ward)unit;
+                        foreach (Employee emp in ward.Employees)
+                            //MoveEmployee(emp, unit, parent);
+                            parent.Employees.Add(emp);
                         AppManager.ApplicationDb.Wards.Remove((Ward)unit);
                         AppManager.ApplicationDb.SaveChanges();
                     }

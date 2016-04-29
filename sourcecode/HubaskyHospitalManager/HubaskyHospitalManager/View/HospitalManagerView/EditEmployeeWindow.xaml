@@ -9,6 +9,7 @@
     <Window.Resources>
         <local:RoleToStringConverter x:Key="RoleToStringConverter" />
         <local:SelectedRoleConverter x:Key="SelectedRoleConverter" />
+        <local:SalaryConverter x:Key="SalaryConverter" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -28,7 +29,7 @@
         <Label Content="Munkakör" Margin="10,130,10,0" VerticalAlignment="Top"/>
         <ComboBox SelectedItem="{Binding Employee.Role, Converter={StaticResource SelectedRoleConverter}}" Grid.Column="1" Height="23" Margin="10,133,10,0" VerticalAlignment="Top" ItemsSource="{Binding Path=RoleTypes, Converter={StaticResource RoleToStringConverter}}"/>
         <Label Content="Fizetés" Margin="10,158,10,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Employee.Salary}" Grid.Column="1" Height="23" Margin="10,161,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Employee.Salary, Converter={StaticResource SalaryConverter}}" Grid.Column="1" Height="23" Margin="10,161,10,0" TextWrapping="Wrap" VerticalAlignment="Top" PreviewTextInput="TextBox_PreviewTextInput"/>
         <Label Content="Részleg" Margin="10,186,10,0" VerticalAlignment="Top"/>
         <ComboBox SelectedItem="{Binding SelectedUnit}" ItemsSource="{Binding Units}" Grid.Column="1" Height="23" Margin="10,189,10,0" VerticalAlignment="Top">
             <ComboBox.ItemTemplate>

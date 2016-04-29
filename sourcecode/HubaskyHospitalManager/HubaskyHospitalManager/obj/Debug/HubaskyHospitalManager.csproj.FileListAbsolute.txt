@@ -60,3 +60,36 @@ O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospita
 O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\CreateUnitWindow.baml
 O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditEmployeeWindow.g.cs
 O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditEmployeeWindow.baml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\HubaskyHospitalManager.exe.config
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.exe
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.pdb
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\HubaskyHospitalManager.exe
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\HubaskyHospitalManager.pdb
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.dll
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.SqlServer.dll
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.xml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\bin\Debug\EntityFramework.SqlServer.xml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.csprojResolveAssemblyReference.cache
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\InventoryManagementWindow.baml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\LoginWindow.baml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\ProcedureWindow.baml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\PatientManagementWindow.baml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditEmployeeWindow.g.cs
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\HospitalManagementWindow.g.cs
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\InventoryManagementWindow.g.cs
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\LoginWindow.g.cs
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\MainWindow.g.cs
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\ProcedureWindow.g.cs
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\PatientManagementWindow.g.cs
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\App.g.cs
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\GeneratedInternalTypeHelper.g.cs
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager_MarkupCompile.cache
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager_MarkupCompile.lref
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditEmployeeWindow.baml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\HospitalManagementWindow.baml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\MainWindow.baml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.g.resources
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.Properties.Resources.resources
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.csproj.GenerateResource.Cache
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditUnitWindow.g.cs
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditUnitWindow.baml

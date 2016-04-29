@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\
 HubaskyHospitalManager
 none
 false
 DEBUG;TRACE
-O:\Dokumentumok\Suli\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\App.xaml
-8-1017603895
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\App.xaml
+8-2125601748
 
-52484855558
-15657165148
-View\HospitalManagerView\CreateUnitWindow.xaml;View\HospitalManagerView\EditEmployeeWindow.xaml;View\HospitalManagerView\HospitalManagementWindow.xaml;View\InventoryManagementWindow.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\ProcedureWindow.xaml;View\PatientManagementWindow.xaml;
+54-1069709387
+151561723899
+View\HospitalManagerView\EditUnitWindow.xaml;View\HospitalManagerView\EditEmployeeWindow.xaml;View\HospitalManagerView\HospitalManagementWindow.xaml;View\InventoryManagementWindow.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\ProcedureWindow.xaml;View\PatientManagementWindow.xaml;
 
 False
 

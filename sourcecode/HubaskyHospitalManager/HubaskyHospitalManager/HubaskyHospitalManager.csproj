@@ -67,9 +67,9 @@
     <Compile Include="Data\XmlReader.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
     <Compile Include="Model\Exceptions\InvalidUnitAdditionException.cs" />
-    <Compile Include="View\HospitalManagerView\CreateUnitView.cs" />
-    <Compile Include="View\HospitalManagerView\CreateUnitWindow.xaml.cs">
-      <DependentUpon>CreateUnitWindow.xaml</DependentUpon>
+    <Compile Include="View\HospitalManagerView\EditUnitView.cs" />
+    <Compile Include="View\HospitalManagerView\EditUnitWindow.xaml.cs">
+      <DependentUpon>EditUnitWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HospitalManagerView\EditEmployeeWindow.xaml.cs">
       <DependentUpon>EditEmployeeWindow.xaml</DependentUpon>
@@ -78,8 +78,10 @@
     <Compile Include="View\HospitalManagerView\HospitalSelectedAddressConverter.cs" />
     <Compile Include="View\HospitalManagerView\HospitalSelectedAddressLabelConverter.cs" />
     <Compile Include="View\HospitalManagerView\HospitalSelectedDisableDeleteUnit.cs" />
+    <Compile Include="View\HospitalManagerView\NothingSelectedDisableConverter.cs" />
     <Compile Include="View\HospitalManagerView\RoleToLabelConverter.cs" />
     <Compile Include="View\HospitalManagerView\RoleToStringConverter.cs" />
+    <Compile Include="View\HospitalManagerView\SalaryConverter.cs" />
     <Compile Include="View\HospitalManagerView\SelectedRoleConverter.cs" />
     <Compile Include="View\HospitalManagerView\WardSelectedDisableAddUnitConverter.cs" />
     <Compile Include="View\InventoryManagementWindow.xaml.cs">
@@ -93,7 +95,7 @@
       <DependentUpon>PatientManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HospitalManagerView\UnitView.cs" />
-    <Page Include="View\HospitalManagerView\CreateUnitWindow.xaml">
+    <Page Include="View\HospitalManagerView\EditUnitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
