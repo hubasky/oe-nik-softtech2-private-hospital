@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="HubaskyHospitalManager.View.InventoryControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HubaskyHospitalManager.View"
+             xmlns:my="HubaskyHospitalManager.View.InventoryControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Status}" Value="0">
+                    <Setter Property="Background" Value="PaleGreen" />
+                    <Setter Property="Foreground" Value="Black" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="1">
+                    <Setter Property="Background" Value="Yellow" />
+                    <Setter Property="Foreground" Value="Black" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="2">
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="Foreground" Value="Black" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="3">
+                    <Setter Property="Background" Value="Red" />
+                    <Setter Property="Foreground" Value="Black" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding ElementName=label, Path=Height}"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding ElementName=label, Path=Width}"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" x:Name="label" Margin="10" Content="Keresés" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" x:Name="textBox" Margin="10"  KeyUp="textBox_KeyUp" />
+        <DataGrid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" x:Name="dataGrid" ItemsSource="{Binding Inventory, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedInventoryItem}" Margin="10" RowEditEnding="dataGrid_RowEditEnding" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" AddingNewItem="dataGrid_AddingNewItem" SelectionMode="Single" IsReadOnly="True" />
+    </Grid>
+</UserControl>

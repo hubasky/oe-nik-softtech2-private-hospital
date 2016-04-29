@@ -3,55 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Eszköznyilvántartó" Height="720" Width="1280"        
         WindowStartupLocation="CenterScreen"        
-        Icon="pack://application:,,,/Images/hubasky_icon.png" Loaded="Window_Loaded">
-
-    <Window.Resources>
-        <Style TargetType="{x:Type DataGridRow}">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding Status}" Value="0">
-                    <Setter Property="Background" Value="PaleGreen" />
-                    <Setter Property="Foreground" Value="Black" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status}" Value="1">
-                    <Setter Property="Background" Value="Yellow" />
-                    <Setter Property="Foreground" Value="Black" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status}" Value="2">
-                    <Setter Property="Background" Value="White" />
-                    <Setter Property="Foreground" Value="Black" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status}" Value="3">
-                    <Setter Property="Background" Value="Red" />
-                    <Setter Property="Foreground" Value="Black" />
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
-
-    <StackPanel>
-        <WrapPanel>
-            <Label x:Name="label" Margin="10" Content="Keresés" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBox x:Name="textBox" Margin="10"  KeyUp="textBox_KeyUp" Width="400" />
-        </WrapPanel>
-        <WrapPanel>
-            <DataGrid x:Name="dataGrid" ItemsSource="{Binding Inventory, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedInventoryItem}" Margin="10" RowEditEnding="dataGrid_RowEditEnding" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" AddingNewItem="dataGrid_AddingNewItem" Width="550" Height="600" SelectionMode="Single" IsReadOnly="True" />
-            <StackPanel VerticalAlignment="Center">
-                <Button x:Name="button_Add" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="75" Click="button_Add_Click"/>
-                <Button x:Name="button_Remove" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="75" Click="button_Remove_Click"/>
-                <Button x:Name="button_OK" Content="Jóváhagy" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="75" Click="button_OK_Click"/>
-            </StackPanel>
-            <ListBox x:Name="listBox" ItemsSource="{Binding InventoryUsage, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedInventoryUsage}" Height="600" Margin="10" Width="550"/>
-        </WrapPanel>
-    </StackPanel>
-
-    <!--<Grid HorizontalAlignment="Left" Height="640" Margin="0,25,0,0" VerticalAlignment="Top" Width="1272" Background="White">
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Inventory, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedInventoryItem}" Margin="10,30,0,0" RowEditEnding="dataGrid_RowEditEnding" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" AddingNewItem="dataGrid_AddingNewItem" HorizontalAlignment="Left" Width="564" Height="600" VerticalAlignment="Top" SelectionMode="Single" />
-        <Button x:Name="button_Save" Content="Save" HorizontalAlignment="Left" Margin="1059,240,0,0" VerticalAlignment="Top" Width="75" Click="button_Click_Save"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" KeyUp="textBox_KeyUp" />
-        <Button x:Name="button_Insert" Content="Insert" HorizontalAlignment="Left" Margin="1059,213,0,0" VerticalAlignment="Top" Width="75" Click="button_Click_Insert"/>
-        <Button x:Name="button_Mode" Content="Toggle&#xD;&#xA;Mode" HorizontalAlignment="Center" Margin="1059,94,138,0" VerticalAlignment="Top" Width="75" Height="52" Click="button_Mode_Click"/>
-        <ListBox x:Name="listBox" ItemsSource="{Binding InventoryUsage, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedInventoryUsage}" HorizontalAlignment="Left" Height="600" Margin="579,30,0,0" VerticalAlignment="Top" Width="247"/>
-        <Button x:Name="button_Add" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="1059,267,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="button_Add_Click"/>
-        <Button x:Name="button_Remove" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="1059,294,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="button_Remove_Click"/>
-    </Grid>-->
+        xmlns:local="clr-namespace:HubaskyHospitalManager.View"
+        Icon="pack://application:,,,/Images/hubasky_icon.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <local:InventoryControl x:Name="inventoryControl" Grid.Column="0"/>
+        <Grid Grid.Column="1" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" x:Name="button_Add" Content="&gt;&gt;" Width="100" HorizontalAlignment="Center" Margin="10" Click="button_Add_Click"/>
+            <Button Grid.Row="1" x:Name="button_Remove" Content="&lt;&lt;" Width="100" HorizontalAlignment="Center" Margin="10" Click="button_Remove_Click"/>
+            <Button Grid.Row="2" x:Name="button_OK" Content="Jóváhagy" Width="100" HorizontalAlignment="Center" Margin="10" Click="button_OK_Click"/>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding ElementName=label, Path=Height}"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" x:Name="label" Margin="10" Content="Felhasznált eszközök" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <ListBox Grid.Row="1" x:Name="listBox" ItemsSource="{Binding InventoryUsage, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedInventoryUsage}" Margin="10"/>
+        </Grid>
+    </Grid>
 </Window>
