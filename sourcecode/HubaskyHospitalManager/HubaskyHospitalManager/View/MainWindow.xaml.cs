@@ -1,6 +1,7 @@
 ﻿using HubaskyHospitalManager.Model.ApplicationManagement;
 using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
+using HubaskyHospitalManager.Model.InventoryManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,9 +54,9 @@ namespace HubaskyHospitalManager.View
             DataContext = this;
 
             // --- TEST CODE ---
-            appMgr.HospitalManagement = new HospitalManager(appMgr);
-            HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow(appMgr.HospitalManagement);
-            HospitalManagementView.ShowDialog();
+            //appMgr.HospitalManagement = new HospitalManager(appMgr);
+            //HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow(appMgr.HospitalManagement);
+            //HospitalManagementView.ShowDialog();
 
             // --- END OF TEST CODE ---
         }
@@ -96,8 +97,10 @@ namespace HubaskyHospitalManager.View
             if (firstLogin.DialogResult == true)
             {
                 UpdateLoggedInUser();
-                InventoryManagementWindow InventoryManagementView = new InventoryManagementWindow();
-                InventoryManagementView.ShowDialog();
+                appMgr.InventoryManagement = new InventoryManager(appMgr);
+                InventoryEditorWindow InventoryEditorView = new InventoryEditorWindow(appMgr.InventoryManagement);
+                InventoryEditorView.ShowDialog();
+                appMgr.InventoryManagement = null;
                 appMgr.Logout();
                 UpdateLoggedInUser();
             }

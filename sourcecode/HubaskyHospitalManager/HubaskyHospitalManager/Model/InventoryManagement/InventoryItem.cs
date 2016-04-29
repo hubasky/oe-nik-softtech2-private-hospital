@@ -17,40 +17,31 @@ namespace HubaskyHospitalManager.Model.InventoryManagement
 {
 	public class InventoryItem
     {
-        private int id;
-        private string name;
-        private int quantity;
-        private InventoryUnit unit;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public InventoryUnit Unit { get; set; }
+        public InventoryRecordStatus Status { get; set; }
 
-        public int Id
+        public InventoryItem(int id, string name, int quantity, InventoryUnit unit, InventoryRecordStatus status)
         {
-            get { return id; }
-            set { id = value; }
+            Id = id;
+            Name = name;
+            Quantity = quantity;
+            Unit = unit;
+            Status = status;
         }
 
-        public string Name
+        public InventoryItem()
         {
-            get { return name; }
-            set { name = value; }
+
         }
 
-        public int Quantity
+        public override string ToString()
         {
-            get { return quantity; }
-            set { quantity = value; }
+            return String.Format("{2} {3} {1} (id: {0})", Id, Name, Quantity, Unit, Status);
         }
 
-        public InventoryUnit Unit
-        {
-            get { return unit; }
-            set { unit = value; }
-        }
-
-		public InventoryItem()
-        {
-
-		}
-
-	}//end InventoryItem
+    }//end InventoryItem
 
 }//end namespace InventoryManagement

@@ -16,13 +16,13 @@ using System.Windows.Shapes;
 namespace HubaskyHospitalManager.View
 {
     /// <summary>
-    /// Interaction logic for InventoryManagementWindow.xaml
+    /// Interaction logic for InventoryEditorWindow.xaml
     /// </summary>
-    public partial class InventoryManagementWindow : Window
+    public partial class InventoryEditorWindow : Window
     {
         InventoryManager vm { get; set; }
 
-        public InventoryManagementWindow(InventoryManager inventoryManagement)
+        public InventoryEditorWindow(InventoryManager inventoryManagement)
         {
             InitializeComponent();
             vm = inventoryManagement;
@@ -63,38 +63,6 @@ namespace HubaskyHospitalManager.View
         {
             vm.Search(textBox.Text.ToLower());
             dataGrid.Items.Refresh();
-        }
-
-        private void button_Click_Insert(object sender, RoutedEventArgs e)
-        {
-            dataGrid.ScrollIntoView(dataGrid.Items[dataGrid.Items.Count - 1]);
-            dataGrid.SelectedIndex = dataGrid.Items.Count - 1;
-        }
-
-        private void button_Add_Click(object sender, RoutedEventArgs e)
-        {
-            if (vm.SelectedInventoryItem != null)
-            {
-                vm.AddToUsage();
-                dataGrid.Items.Refresh();
-                listBox.Items.Refresh();
-            }
-        }
-
-        private void button_Remove_Click(object sender, RoutedEventArgs e)
-        {
-            if (vm.SelectedInventoryUsage != null)
-            {
-                vm.RemoveFromUsage();
-                dataGrid.Items.Refresh();
-                listBox.Items.Refresh();
-            }
-        }
-
-        private void button_OK_Click(object sender, RoutedEventArgs e)
-        {
-            vm.UpdateInventory();
-            DialogResult = true;
         }
     }
 }

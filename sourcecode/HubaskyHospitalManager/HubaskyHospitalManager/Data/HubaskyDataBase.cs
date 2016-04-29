@@ -1,7 +1,9 @@
 ﻿using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
+using HubaskyHospitalManager.Model.InventoryManagement;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -16,7 +18,16 @@ namespace HubaskyHospitalManager.Data
         public DbSet<Hospital> Hospital { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Ward> Wards { get; set; }
-    
+
+        // Inventory Table
+        public DbSet<InventoryItem> Inventory { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Auto increment id field in Inventory table
+            modelBuilder.Entity<InventoryItem>().Property(a => a.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+        }
+
         public HubaskyDataBase(string connStr) : base(connStr)
         {
             
