@@ -18,6 +18,7 @@ using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Data;
 using System.Linq;
 using HubaskyHospitalManager.Model.Exceptions;
+using System.Security.Cryptography;
 
 namespace HubaskyHospitalManager.Model.ApplicationManagement
 {
@@ -46,11 +47,24 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             // Ezt most átmenetileg kikapcsolom, igazából lassan eljutok arra a szintre a hosp managerrel, hogy appon keresztül lehet adatbázisba hozzáadni usereket meg wardokat. Remélem :D
             // PopulateDb.Populate(this);
 		}
-        
-		/// 
-		/// <param name="user"></param>
-		/// <param name="pass"></param>
-		public Employee Authenticate(string username, string password)
+
+        public String CalculateSHA256(String data)
+        {
+            StringBuilder Sb = new StringBuilder();
+
+            using (SHA256 hash = SHA256Managed.Create())
+            {
+                foreach (Byte b in hash.ComputeHash(Encoding.UTF8.GetBytes(data)))
+                    Sb.Append(b.ToString("x2"));
+            }
+
+            return Sb.ToString();
+        }
+
+        /// 
+        /// <param name="user"></param>
+        /// <param name="pass"></param>
+        public Employee Authenticate(string username, string password)
         {
             Employee loginUser = null;
             var emps = ApplicationDb.Employees.Select(m => m);
