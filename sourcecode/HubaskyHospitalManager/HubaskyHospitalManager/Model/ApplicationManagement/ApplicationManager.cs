@@ -22,7 +22,7 @@ using System.Security.Cryptography;
 
 namespace HubaskyHospitalManager.Model.ApplicationManagement
 {
-	public class ApplicationManager : IApplicationManagement 
+    public class ApplicationManager : IApplicationManagement
     {
         public Employee ApplicationUser { get; set; }
         public PatientManager PatientManagement { get; set; }
@@ -30,14 +30,18 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
         public InventoryManager InventoryManagement { get; set; }
 
         public HubaskyDataBase ApplicationDb { get; set; }
-        
-		public ApplicationManager()
+
+        public ApplicationManager()
         {
-            string version = "00";
+            string version = "32";
             string dataSource = @"Data Source=(localdb)\MSSQLLocalDB";
             string initialCatalog = @"Initial Catalog=tempdb" + version;
             string security = @"Integrated Security=True";
-            string dbFileName = @"AttachDBFilename=C:\Users\aowczare\Documents\GitHub\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
+
+            string AOstring = @"AttachDBFilename=C:\Users\aowczare\Documents\GitHub";
+            string SBstring = @"AttachDBFilename=D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode";
+
+            string dbFileName = SBstring + @"\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
             string connStr = string.Format("{0};{1};{2};{3}", dataSource, initialCatalog, security, dbFileName);
 
             // Ez a db server beállítása, a file conn stringet benthagyom arra az esetre, ha késõbb kellene...
@@ -45,8 +49,8 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             ApplicationDb = new HubaskyDataBase(connStr);
 
             // Ezt most átmenetileg kikapcsolom, igazából lassan eljutok arra a szintre a hosp managerrel, hogy appon keresztül lehet adatbázisba hozzáadni usereket meg wardokat. Remélem :D
-            // PopulateDb.Populate(this);
-		}
+            PopulateDb.Populate(this);
+        }
 
         public String CalculateSHA256(String data)
         {
@@ -78,9 +82,9 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             }
 
             ApplicationUser = loginUser;
-			return ApplicationUser;
-		}
-        
+            return ApplicationUser;
+        }
+
         /// 
         /// <param name="user"></param>
         /// <param name="pass"></param>
@@ -107,7 +111,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
 
             ApplicationUser = loginUser;
             return ApplicationUser;
-        } 
+        }
         public void Logout()
         {
             this.ApplicationUser = null;

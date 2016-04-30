@@ -73,6 +73,7 @@ namespace HubaskyHospitalManager.Data
             appMgr.ApplicationDb.Employees.Add(andris);
             appMgr.ApplicationDb.Employees.AddRange(empList);
 
+            //ha itt megakad, bump-olni kell a verziószámot, vagy kikapcsolni a populate-et!
             appMgr.ApplicationDb.SaveChanges();
         }
 
