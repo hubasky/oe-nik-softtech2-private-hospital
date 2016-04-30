@@ -5,6 +5,7 @@
 //  Created on:      07-ápr.-2016 12:45:16
 //  Original author: Owczarek Artur
 ///////////////////////////////////////////////////////////
+//merged with SB 20160430_0920
 
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             ApplicationDb = new HubaskyDataBase(connStr);
 
             // Ezt most átmenetileg kikapcsolom, igazából lassan eljutok arra a szintre a hosp managerrel, hogy appon keresztül lehet adatbázisba hozzáadni usereket meg wardokat. Remélem :D
-            PopulateDb.Populate(this);
+            //PopulateDb.Populate(this);
         }
 
         public String CalculateSHA256(String data)
