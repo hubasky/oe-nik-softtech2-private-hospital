@@ -67,6 +67,11 @@
     <Compile Include="Data\XmlReader.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
     <Compile Include="Model\Exceptions\InvalidUnitAdditionException.cs" />
+    <Compile Include="Model\HospitalManagement\IManageableProcedures.cs" />
+    <Compile Include="Model\PatientManagement\ProcedureType.cs" />
+    <Compile Include="View\HospitalManagerView\EditProceduresWindow.xaml.cs">
+      <DependentUpon>EditProceduresWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HospitalManagerView\EditUnitView.cs" />
     <Compile Include="View\HospitalManagerView\EditUnitWindow.xaml.cs">
       <DependentUpon>EditUnitWindow.xaml</DependentUpon>
@@ -95,6 +100,10 @@
       <DependentUpon>PatientManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HospitalManagerView\UnitView.cs" />
+    <Page Include="View\HospitalManagerView\EditProceduresWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HospitalManagerView\EditUnitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

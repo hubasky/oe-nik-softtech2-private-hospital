@@ -1,5 +1,6 @@
 ﻿using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
+using HubaskyHospitalManager.Model.PatientManagement;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,13 +50,12 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             get { return selectedEmployee; }
             set { selectedEmployee = value; OnPropertyChanged(); }
         }
-
-
-
+        
         public HospitalManagementView(HospitalManager hospMgr)
         {
             units = new ObservableCollection<UnitView>();
             employees = new ObservableCollection<Employee>();
+            //procedures = new ObservableCollection<ProcedureType>();
             HospManager = hospMgr;
             UpdateHierarchyList();            
         }

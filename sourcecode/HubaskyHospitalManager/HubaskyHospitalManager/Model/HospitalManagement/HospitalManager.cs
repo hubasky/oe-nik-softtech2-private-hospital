@@ -16,10 +16,11 @@ using HubaskyHospitalManager.Model.Common;
 using System.Linq;
 using System.Windows;
 using HubaskyHospitalManager.Model.Exceptions;
+using HubaskyHospitalManager.Model.PatientManagement;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
-	public class HospitalManager : IManageableUnit, IManageableEmployee {
+	public class HospitalManager : IManageableUnit, IManageableEmployee, IManageableProcedures {
 
         public Hospital Hospital { get; set; }
         public ApplicationManager AppManager { get; set; }
@@ -216,7 +217,6 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		/// <param name="unit"></param>
 		public void RemoveUnit(Unit unit)
         {
-
             if (unit != null)
             {
                 if (unit.GetType() == AppManager.ApplicationDb.Departments.FirstOrDefault().GetType())
@@ -226,7 +226,7 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
                         foreach (Employee emp in ward.Employees)
                             //MoveEmployee(emp, ward, Hospital);
                             Hospital.Employees.Add(emp);
-                        AppManager.ApplicationDb.Wards.Remove(ward);
+                        //AppManager.ApplicationDb.Wards.Remove(ward);
                     }
                     foreach (Employee deptEmp in unit.Employees)
                         // MoveEmployee(deptEmp, unit, Hospital);
@@ -234,6 +234,7 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 
                     //unit.Employees.RemoveRange(0, unit.Employees.Count);
 
+                    AppManager.ApplicationDb.Wards.RemoveRange(((Department)unit).Wards);
                     AppManager.ApplicationDb.Departments.Remove((Department)unit);
                     AppManager.ApplicationDb.SaveChanges();
                 }
@@ -303,8 +304,23 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 
 		public void UpdateDatabase()
         {
-
+            AppManager.ApplicationDb.SaveChanges();
 		}
-	}//end HospitalManager
 
-}//end namespace HospitalManagement
+        public void AddNewProcedure(ProcedureType procedureType)
+        {
+            AppManager.ApplicationDb.ProcedureTypes.Add(procedureType);
+            AppManager.ApplicationDb.SaveChanges();
+        }
+
+        public void DeleteProcedure(ProcedureType procedureType)
+        {
+            if(procedureType != null)
+                foreach (Ward ward in procedureType.Wards)
+                    ward.Procedures.Remove(procedureType);
+            AppManager.ApplicationDb.ProcedureTypes.Remove(procedureType);
+            AppManager.ApplicationDb.SaveChanges();
+        }
+
+    }
+}

@@ -12,6 +12,7 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.ApplicationManagement;
+using HubaskyHospitalManager.Model.PatientManagement;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
@@ -26,7 +27,7 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             get { return departments; }
             set { departments = value; }
         }
-        
+                
 		public Hospital()
         {
             Departments = new List<Department>();

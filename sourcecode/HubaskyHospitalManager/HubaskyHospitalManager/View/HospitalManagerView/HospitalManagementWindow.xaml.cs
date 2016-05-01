@@ -204,5 +204,19 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
                 HospView.SelectedUnit = selection;
             }
         }
+
+        private void Btn_ManageProcedures_Click(object sender, RoutedEventArgs e)
+        {
+            if (HospView.SelectedUnit != null)
+            {
+                Ward ward = HospView.SelectedUnit.Reference as Ward;
+                if (ward != null)
+                {
+                    EditProceduresWindow epw = new EditProceduresWindow(AppMgr, ward);
+                    epw.ShowDialog();
+                    HospView.UpdateHierarchyList();
+                }
+            }
+        }
     }
 }

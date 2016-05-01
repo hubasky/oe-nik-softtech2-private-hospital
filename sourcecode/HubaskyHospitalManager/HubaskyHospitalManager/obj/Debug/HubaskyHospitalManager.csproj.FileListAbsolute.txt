@@ -93,3 +93,5 @@ d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-pr
 d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\HubaskyHospitalManager.csproj.GenerateResource.Cache
 d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditUnitWindow.g.cs
 d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditUnitWindow.baml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditProceduresWindow.baml
+d:\--- Document ---\Suli\4. felev\Szoftvertechnologia II\git\oe-nik-softtech2-private-hospital\sourcecode\HubaskyHospitalManager\HubaskyHospitalManager\obj\Debug\View\HospitalManagerView\EditProceduresWindow.g.cs

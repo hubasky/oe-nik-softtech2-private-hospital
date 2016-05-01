@@ -138,9 +138,9 @@ namespace HubaskyHospitalManager.Data
                 
             for (int i = 0; i < length-1; i++)
             {
-                wardList.Add(new Ward(i, xmlReader.Wards.ElementAt(i), 
-                    emps[i % 5], emps.Where(x => x.Username.Equals("Teszt" + i)).ToList(), 
-                    xmlReader.Procedures));
+                //wardList.Add(new Ward(i, xmlReader.Wards.ElementAt(i), 
+                //    emps[i % 5], emps.Where(x => x.Username.Equals("Teszt" + i)).ToList(), 
+                //    xmlReader.Procedures));
             }
 
             appMgr.ApplicationDb.Wards.Union(wardList);

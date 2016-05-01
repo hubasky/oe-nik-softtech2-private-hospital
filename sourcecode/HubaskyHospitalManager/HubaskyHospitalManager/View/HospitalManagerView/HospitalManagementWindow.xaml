@@ -61,6 +61,16 @@
             <Label Content="{Binding SelectedUnit.Reference.Web}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,158,10,0" Grid.Column="1" Height="26"/>
             <Label Content="Cím" VerticalAlignment="Top" Margin="0,184,10,0" Visibility="{Binding SelectedUnit, Converter={StaticResource HospitalSelectedAddressLabelConverter}}"/>
             <Label Content="{Binding SelectedUnit, Converter={StaticResource HospitalSelectedAddressConverter}}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,184,10,0" Grid.Column="1" Height="26"/>
+            <Label Content="Kiírható eljárások" Margin="10,0,10,248" FontSize="20" Grid.ColumnSpan="2" Height="37" VerticalAlignment="Bottom"/>
+            <ListBox ItemsSource="{Binding SelectedUnit.Reference.Procedures}" Height="243" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
         <Grid Margin="10" Grid.Column="2">
             <Grid.ColumnDefinitions>
@@ -84,7 +94,7 @@
             <Label Content="{Binding SelectedEmployee.Salary}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,188,10,0" Height="26" Grid.Column="1"/>
             <Label Content="Felhasználónév" VerticalAlignment="Top" Margin="0,214,10,0"/>
             <Label Content="{Binding SelectedEmployee.Username}" VerticalAlignment="Top" FontWeight="Medium" Margin="0,214,10,0" Height="26" Grid.Column="1"/>
-            <ListBox ItemsSource="{Binding SelectedUnit.Reference.Employees}" Margin="0,291,0,0" SelectedItem="{Binding SelectedEmployee}" MouseDoubleClick="ListBox_MouseDoubleClick" Grid.ColumnSpan="2">
+            <ListBox ItemsSource="{Binding SelectedUnit.Reference.Employees}" SelectedItem="{Binding SelectedEmployee}" MouseDoubleClick="ListBox_MouseDoubleClick" Grid.ColumnSpan="2" Height="243" VerticalAlignment="Bottom">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -118,6 +128,14 @@
             <Button x:Name="Btn_DeleteEmployee" Margin="10,10,10,0" VerticalAlignment="Top" Height="50" Grid.Column="1" Click="Btn_DeleteEmployee_Click">
                 <TextBlock Text="Alkalmazott törlése" Height="Auto" TextWrapping="Wrap" TextAlignment="Center"/>
             </Button>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Btn_ManageProcedures" Content="Eljárások kezelése" Grid.Column="1" Margin="0,10,10,0" VerticalAlignment="Top" Height="50" HorizontalAlignment="Right"
+                    Width="171" Click="Btn_ManageProcedures_Click"/>
         </Grid>
     </Grid>
 </Window>
