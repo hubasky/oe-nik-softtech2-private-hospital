@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HubaskyHospitalManager.Model.ApplicationManagement;
 using HubaskyHospitalManager.Model.PatientManagement;
+using HubaskyHospitalManager.Model.Common;
 
 namespace HubaskyHospitalManager.View
 {
@@ -78,7 +79,8 @@ namespace HubaskyHospitalManager.View
 
         private void Btn_NewPatient_Click(object sender, RoutedEventArgs e)
         {
-
+            Patient pt = new Patient();
+            VM.Patients.Add(new PatientView(pt));
         }
 
         private void tbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
