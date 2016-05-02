@@ -34,14 +34,14 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
 
         public ApplicationManager()
         {
-            string version = "s30";
+            string version = "s31";
             string dataSource = @"Data Source=(localdb)\MSSQLLocalDB";
             string initialCatalog = @"Initial Catalog=tempdb" + version;
             string security = @"Integrated Security=True";
 
             string AOstring = @"AttachDBFilename=C:\Users\aowczare\Documents\GitHub";
             string SBstring = @"AttachDBFilename=D:\Dropbox\Egyetem\4. félév\SzofTech2\oe-nik-softtech2-private-hospital\sourcecode";
-            
+
             string dbFileName = SBstring + @"\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
             string connStr = string.Format("{0};{1};{2};{3}", dataSource, initialCatalog, security, dbFileName);
 

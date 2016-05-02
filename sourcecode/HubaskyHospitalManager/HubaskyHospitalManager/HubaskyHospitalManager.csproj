@@ -65,7 +65,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters.cs" />
     <Compile Include="Data\HubaskyDataBase.cs" />
     <Compile Include="Data\PopulateDb.cs" />
     <Compile Include="Data\XmlReader.cs" />
@@ -195,9 +194,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\PatientManagement\Search\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\hubasky_icon.png" />
   </ItemGroup>
