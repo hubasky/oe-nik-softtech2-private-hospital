@@ -1,4 +1,6 @@
-﻿using HubaskyHospitalManager.Model.HospitalManagement;
+﻿using HubaskyHospitalManager.Model.Common;
+using HubaskyHospitalManager.Model.HospitalManagement;
+using HubaskyHospitalManager.Model.PatientManagement;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HubaskyHospitalManager.View
+namespace HubaskyHospitalManager.View.HospitalManagerView
 {
     public class HospitalManagementView : INotifyPropertyChanged
     {
@@ -19,7 +21,7 @@ namespace HubaskyHospitalManager.View
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
         }
 
-        private HospitalManager hospManager;
+        public HospitalManager HospManager { get; set; }
 
         private ObservableCollection<UnitView> units;
         public ObservableCollection<UnitView> Units
@@ -28,7 +30,6 @@ namespace HubaskyHospitalManager.View
             set { units = value; }
         }
         
-
         private UnitView selectedUnit;
         public UnitView SelectedUnit
         {
@@ -36,18 +37,34 @@ namespace HubaskyHospitalManager.View
             set { selectedUnit = value; OnPropertyChanged(); }
         }
 
+        private ObservableCollection<Employee> employees;
+        private ObservableCollection<Employee> Employees
+        {
+            get { return employees; }
+            set { employees = value; }
+        }
+
+        private Employee selectedEmployee;
+        public Employee SelectedEmployee
+        {
+            get { return selectedEmployee; }
+            set { selectedEmployee = value; OnPropertyChanged(); }
+        }
+        
         public HospitalManagementView(HospitalManager hospMgr)
         {
             units = new ObservableCollection<UnitView>();
-            hospManager = hospMgr;
-            UpdateHierarchyList();
-            
+            employees = new ObservableCollection<Employee>();
+            //procedures = new ObservableCollection<ProcedureType>();
+            HospManager = hospMgr;
+            UpdateHierarchyList();            
         }
 
-        private void UpdateHierarchyList()
+        public void UpdateHierarchyList()
         {
-            UnitView HospitalUnitView = new UnitView(hospManager.Hospital);
-            var deptView = hospManager.AppManager.ApplicationDb.Departments.ToList();
+            UnitView HospitalUnitView = new UnitView(HospManager.Hospital);
+            // Departmentsek elérhetők a Hospital propertyn keresztül... TODO adatbázis elérés cserélése.
+            var deptView = HospManager.AppManager.ApplicationDb.Departments.ToList();
             if (deptView != null)
             {
                 foreach (Department dept in deptView)
@@ -65,9 +82,9 @@ namespace HubaskyHospitalManager.View
                 }
             }
 
-            units = new ObservableCollection<UnitView>();
+            if (units.Count > 0)
+                units.Remove(units[0]);
             units.Add(HospitalUnitView);
-
         }
     }
 }

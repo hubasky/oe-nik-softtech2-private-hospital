@@ -67,12 +67,31 @@
     <Compile Include="Data\XmlReader.cs" />
     <Compile Include="Model\Common\InventoryRecordStatus.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
-    <Compile Include="View\HospitalManagementView.cs" />
+    <Compile Include="Model\Exceptions\InvalidUnitAdditionException.cs" />
+    <Compile Include="Model\HospitalManagement\IManageableProcedures.cs" />
+    <Compile Include="Model\PatientManagement\ProcedureType.cs" />
+    <Compile Include="View\HospitalManagerView\EditProceduresWindow.xaml.cs">
+      <DependentUpon>EditProceduresWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HospitalManagerView\EditUnitView.cs" />
+    <Compile Include="View\HospitalManagerView\EditUnitWindow.xaml.cs">
+      <DependentUpon>EditUnitWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HospitalManagerView\EditEmployeeWindow.xaml.cs">
+      <DependentUpon>EditEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HospitalManagerView\HospitalManagementView.cs" />
+    <Compile Include="View\HospitalManagerView\HospitalSelectedAddressConverter.cs" />
+    <Compile Include="View\HospitalManagerView\HospitalSelectedAddressLabelConverter.cs" />
+    <Compile Include="View\HospitalManagerView\HospitalSelectedDisableDeleteUnit.cs" />
+    <Compile Include="View\HospitalManagerView\NothingSelectedDisableConverter.cs" />
+    <Compile Include="View\HospitalManagerView\RoleToLabelConverter.cs" />
+    <Compile Include="View\HospitalManagerView\RoleToStringConverter.cs" />
+    <Compile Include="View\HospitalManagerView\SalaryConverter.cs" />
+    <Compile Include="View\HospitalManagerView\SelectedRoleConverter.cs" />
+    <Compile Include="View\HospitalManagerView\WardSelectedDisableAddUnitConverter.cs" />
     <Compile Include="View\InventoryControl.xaml.cs">
       <DependentUpon>InventoryControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\InventoryEditorWindow.xaml.cs">
-      <DependentUpon>InventoryEditorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\InventoryManagementWindow.xaml.cs">
       <DependentUpon>InventoryManagementWindow.xaml</DependentUpon>
@@ -84,8 +103,20 @@
     <Compile Include="View\PatientManagementWindow.xaml.cs">
       <DependentUpon>PatientManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UnitView.cs" />
-    <Page Include="View\HospitalManagementWindow.xaml">
+    <Compile Include="View\HospitalManagerView\UnitView.cs" />
+    <Page Include="View\HospitalManagerView\EditProceduresWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HospitalManagerView\EditUnitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HospitalManagerView\EditEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HospitalManagerView\HospitalManagementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,8 +144,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Common\User.cs" />
-    <Compile Include="View\HospitalManagementWindow.xaml.cs">
+    <Compile Include="View\HospitalManagerView\HospitalManagementWindow.xaml.cs">
       <DependentUpon>HospitalManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">

@@ -16,19 +16,37 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
-	public class Unit 
+	public class Unit : ICloneable
     {
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
         public virtual Employee Manager { get; set; }
         public virtual List<Employee> Employees { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Web { get; set; }
         
 		public Unit()
         {
-
+            Employees = new List<Employee>();
 		}
 
-	}//end Unit
+        public Unit(string name, Employee manager, string email, string phone, string web)
+        {
+            Name = name;
+            Manager = manager;
+            Email = email;
+            Phone = phone;
+            Web = web;
+            Employees = new List<Employee>();
+        }
 
-}//end namespace HospitalManagement
+        public object Clone()
+        {
+            Unit unit = new Unit(this.Name, this.Manager, this.Email, this.Phone, this.Web);
+            unit.Employees = this.Employees;
+            return unit;
+        }
+    }
+}

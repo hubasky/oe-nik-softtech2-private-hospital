@@ -12,25 +12,42 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.Common;
+using HubaskyHospitalManager.Model.PatientManagement;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
 	public class Ward : Unit 
     {
-        public Dictionary<string, string> Procedures { get; set; }
+        public virtual List<ProcedureType> Procedures { get; set; }
 
 		public Ward()
         {
-            Procedures = new Dictionary<string, string>();
+            Procedures = new List<ProcedureType>();
 		}
 
-        public Ward(int id, string name, Employee manager, List<Employee> employees, Dictionary<string, string> procedures)
+        public Ward(string name, Employee manager, string email, string phone, string web) : base(name, manager, email, phone, web)
+        {
+            Procedures = new List<ProcedureType>();
+        }
+
+        public Ward(int id, string name, Employee manager, List<Employee> employees, List<ProcedureType> procedures)
         {
             this.Procedures = procedures;
             this.Id = id;
             this.Name = name;
             this.Manager = manager;
             this.Employees = employees;
+        }
+
+        public Ward(Unit unit)
+        {
+            Name = unit.Name;
+            Manager = unit.Manager;
+            Email = unit.Email;
+            Phone = unit.Phone;
+            Web = unit.Web;
+            // Employees = new List<Employee>();
+            Procedures = new List<ProcedureType>();
         }
 	}
 }

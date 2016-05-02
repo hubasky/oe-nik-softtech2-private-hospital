@@ -12,31 +12,25 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.ApplicationManagement;
+using HubaskyHospitalManager.Model.PatientManagement;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
-	public class Hospital : Unit {
+	public class Hospital : Unit
+    {
+        
+        public string Address { get; set; }
 
-        private string address = "1234 Budapest, Gyógyító tér 1.";
         private List<Department> departments;
-
-        public string Address
-        {
-            get { return address; }
-            set { address = value; }
-        }
-
-        public List<Department> Departments
+        public virtual List<Department> Departments
         {
             get { return departments; }
             set { departments = value; }
         }
-        
+                
 		public Hospital()
         {
-            departments = new List<Department>();
+            Departments = new List<Department>();
 		}
-
-	}//end Hospital
-
-}//end namespace HospitalManagement
+	}
+}

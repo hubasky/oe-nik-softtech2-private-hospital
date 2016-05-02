@@ -16,13 +16,61 @@ namespace HubaskyHospitalManager.Model.Common
 {
 	public enum Role
     {
-
 		Doctor,
 		Nurse,
 		Laboratorian,
 		DataRecorder,
 		Administrator
+	}
 
-	}//end Role
+    public static class RoleConverter
+    {
+        public static string RoleToString(string roleName)
+        {
+            string niceName = "";
+            switch (roleName)
+            {
+                case "Doctor":
+                    niceName = "orvos";
+                    break;
+                case "Nurse":
+                    niceName = "ápoló";
+                    break;
+                case "Laboratorian":
+                    niceName = "labortechnikus";
+                    break;
+                case "DataRecorder":
+                    niceName = "adatrögzítõ";
+                    break;
+                case "Administrator":
+                    niceName = "adminisztrátor";
+                    break;
+            }
+            return niceName;
+        }
 
-}//end namespace ApplicationManagement
+        public static Role StringToRole(string niceName)
+        {
+            Role role = Role.DataRecorder;
+            switch (niceName)
+            {
+                case "orvos":
+                    role = Role.Doctor;
+                    break;
+                case "ápoló":
+                    role = Role.Nurse;
+                    break;
+                case "labortechnikus":
+                    role = Role.Laboratorian;
+                    break;
+                case "adatrögzítõ":
+                    role = Role.DataRecorder;
+                    break;
+                case "adminisztrátor":
+                    role = Role.Administrator;
+                    break;
+            }
+            return role;
+        }
+    }
+}

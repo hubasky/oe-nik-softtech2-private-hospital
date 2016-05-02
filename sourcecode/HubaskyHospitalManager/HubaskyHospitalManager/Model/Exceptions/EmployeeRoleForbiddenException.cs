@@ -8,7 +8,6 @@ namespace HubaskyHospitalManager.Model.Exceptions
 {
     public class EmployeeRoleForbiddenException : Exception
     {
-
         public EmployeeRoleForbiddenException()
         {
         }

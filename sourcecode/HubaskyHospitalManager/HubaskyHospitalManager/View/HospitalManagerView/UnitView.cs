@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HubaskyHospitalManager.View
+namespace HubaskyHospitalManager.View.HospitalManagerView
 {
     public class UnitView
     {
