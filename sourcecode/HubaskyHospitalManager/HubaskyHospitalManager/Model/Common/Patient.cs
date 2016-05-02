@@ -13,8 +13,9 @@ namespace HubaskyHospitalManager.Model.Common
     {
         [Key]
         public int Ssn { get; set; }
-        public List<MedicalRecord> MedicalHistory { get; set; }
+        public virtual List<MedicalRecord> MedicalHistory { get; set; }
         public Gender Gender { get; set; }
+        //public string Address { get; set; }
 
         public Patient()
         {
@@ -22,13 +23,14 @@ namespace HubaskyHospitalManager.Model.Common
         }
 
 
-        public Patient(string name, string phone, string dateOfBirth, int ssn, List<MedicalRecord> medicalHistory, Gender gender)
+        public Patient(string name, string phone, string dateOfBirth, int ssn, string address, List<MedicalRecord> medicalHistory, Gender gender)
         {
             this.Phone = phone;
             this.Name = name;
             this.DateOfBirth = dateOfBirth;
             this.Ssn = ssn;
             this.Gender = gender;
+            this.Address = address;
             this.MedicalHistory = (medicalHistory == null) ?
                 new List<MedicalRecord>() :
                 medicalHistory;
@@ -57,6 +59,7 @@ namespace HubaskyHospitalManager.Model.Common
                 this.Phone,
                 this.DateOfBirth,
                 this.Ssn,
+                this.Address,
                 this.MedicalHistory,
                 this.Gender);
 
@@ -77,6 +80,7 @@ namespace HubaskyHospitalManager.Model.Common
                 this.Name == properPatient.Name &&
                 this.DateOfBirth == properPatient.DateOfBirth &&
                 this.Ssn == properPatient.Ssn &&
+                this.Address == properPatient.Address &&
                 this.Gender == properPatient.Gender))
             {
 
@@ -84,33 +88,34 @@ namespace HubaskyHospitalManager.Model.Common
 
             }
 
-            //ha ugyanolyan hosszúak, akkor fusson csak le, különben hibára futhat
-
-
-            if (this.MedicalHistory.Count == properPatient.MedicalHistory.Count)
+            if (!(this.MedicalHistory == null)) //ha nem null 
             {
-                if (this.MedicalHistory.Count > 0) //ha azonosak, de üres, akkor hibára futhat, ha itt nincs if!
+                if (properPatient.MedicalHistory == null) //ha null
                 {
-                    int idx = 0;
-                    while (this.MedicalHistory[idx].Equals(properPatient.MedicalHistory[idx]))
-                    {
-                        idx++;
-                    }
-
-                    if (!(idx == this.MedicalHistory.Count))
-                    {
-                        return false;
-                    }
-                    //kilép, true
+                    return false;
                 }
-                //kilép, true
+                else { 
+                //ha ugyanolyan hosszúak, akkor fusson csak le, különben hibára futhat
+                    if (this.MedicalHistory.Count == properPatient.MedicalHistory.Count &&
+                        this.MedicalHistory.Count >0 &&
+                        properPatient.MedicalHistory.Count >0)
+                    {
+                        int idx = 0;
+                        while (this.MedicalHistory[idx].Equals(properPatient.MedicalHistory[idx]))
+                        {
+                            idx++;
+                        }
+
+                        if (!(idx == this.MedicalHistory.Count))
+                        {
+                            return false;
+                        }
+                        //kilép, true
+                    }
+                }
             }
 
-            else
-            {
-                return false;
-            }
-
+            //ha minden stimmel
             return true;
         }
 

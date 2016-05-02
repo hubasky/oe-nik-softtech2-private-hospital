@@ -33,53 +33,78 @@ namespace HubaskyHospitalManager.Data
                 "069011111",       //tel
                 "1996.06.20",   //DoB
                 9991999,         //SSN
+                "kamucím1",        //address
                 null,           //medicalHistory
                 Gender.Female   //Gender
                 );
+            /////
+            kati.MedicalHistory.Add(new Model.PatientManagement.MedicalRecord());
+            Model.PatientManagement.Procedure proc = new Model.PatientManagement.Procedure();
+            proc.Name = "Új eljárás kati";
+            kati.MedicalHistory[0].NewProcedure(proc);
 
             Patient karesz = new Patient(
                 "Kankós Karesz",   //name
                 "0660222222",       //tel
                 "1991.02.13",   //DoB
                 1359143,         //SSN
+                 "kamucím2",        //address
                 null,           //medicalHistory
                 Gender.Male   //Gender
                 );
+            karesz.MedicalHistory.Add(new Model.PatientManagement.MedicalRecord());
+            Model.PatientManagement.Procedure prockaresz = new Model.PatientManagement.Procedure();
+            prockaresz.Name = "Új eljárás karesz";
+            karesz.MedicalHistory[0].NewProcedure(prockaresz);
 
             Patient imre = new Patient(
                 "Itókás Imre",   //name
                 "0670333333",       //tel
                 "1978.09.06",   //DoB
                 9083825,         //SSN
+                "kamucím3",        //address
                 null,           //medicalHistory
                 Gender.Male   //Gender
                 );
+            imre.MedicalHistory.Add(new Model.PatientManagement.MedicalRecord());
+            Model.PatientManagement.Procedure procimre = new Model.PatientManagement.Procedure();
+            procimre.Name = "Új eljárás imre";
+            imre.MedicalHistory[0].NewProcedure(procimre);
 
             Patient hilda = new Patient(
                 "Hasmenős Hilda",   //name
                 "062044444",        //tel
                 "1957.11.12",       //DoB
                 1125267,            //SSN
+                "kamucím3",         //address
                 null,               //medicalHistory
                 Gender.Female       //Gender
                 );
+            hilda.MedicalHistory.Add(new Model.PatientManagement.MedicalRecord());
+            Model.PatientManagement.Procedure prochilda = new Model.PatientManagement.Procedure();
+            prochilda.Name = "Új eljárás hilda";
+            hilda.MedicalHistory[0].NewProcedure(prochilda);
 
             Patient bertold = new Patient(
                 "Barangoló Bertold",//name
                 "064055555",        //tel
                 "1985.02.16",       //DoB
                 9306484,            //SSN
+                "kamucím4",         //address
                 null,               //medicalHistory
                 Gender.Male         //Gender
                 );
+            bertold.MedicalHistory.Add(new Model.PatientManagement.MedicalRecord());
+            Model.PatientManagement.Procedure procbertold = new Model.PatientManagement.Procedure();
+            procbertold.Name = "Új eljárás bertold";
+            bertold.MedicalHistory[0].NewProcedure(procbertold);
 
-
-            List<Patient> patList = new List<Patient>();
-            for (int i = 0; i < 80; i++)
-            {
-                patList.Add(new Patient("Teszt" + i, "0660" + i, "1980.XX." + i,
-                    9989110 + i, null, (Gender)(i % 2)));
-            }
+            //List<Patient> patList = new List<Patient>();
+            //for (int i = 0; i < 81; i++)
+            //{
+            //    patList.Add(new Patient("Teszt" + i, "0660" + i, "1980.XX." + i,
+            //        9989110 + i, i + ". utca " + 10 * i, null, (Gender)(i % 2)));
+            //}
 
             appMgr.ApplicationDb.Patients.Add(kati);
             appMgr.ApplicationDb.Patients.Add(karesz);
@@ -87,7 +112,10 @@ namespace HubaskyHospitalManager.Data
             appMgr.ApplicationDb.Patients.Add(hilda);
             appMgr.ApplicationDb.Patients.Add(bertold);
 
-            appMgr.ApplicationDb.Patients.AddRange(patList);
+            //appMgr.ApplicationDb.Patients.AddRange(patList);
+
+            //Console.WriteLine("kati medicalhistory timestamp: "+ kati.MedicalHistory[0].CreatedTimestamp);
+            //Console.WriteLine("kati medicalhistory0_procedure0 timestamp: " + kati.MedicalHistory[0].Procedures[0].CreatedTimestamp);
 
             appMgr.ApplicationDb.SaveChanges();
 

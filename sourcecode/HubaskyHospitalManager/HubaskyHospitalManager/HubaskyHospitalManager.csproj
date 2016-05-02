@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -62,11 +65,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters.cs" />
     <Compile Include="Data\HubaskyDataBase.cs" />
     <Compile Include="Data\PopulateDb.cs" />
     <Compile Include="Data\XmlReader.cs" />
     <Compile Include="Model\Common\InventoryRecordStatus.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
+    <Compile Include="Model\PatientManagement\ProcedureType.cs" />
+    <Compile Include="View\Converters.cs" />
+    <Compile Include="View\ProcedureView.cs" />
+    <Compile Include="View\PatientManagementView.cs" />
     <Compile Include="View\HospitalManagementView.cs" />
     <Compile Include="View\InventoryControl.xaml.cs">
       <DependentUpon>InventoryControl.xaml</DependentUpon>
@@ -78,12 +86,14 @@
       <DependentUpon>InventoryManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoggedInUserConventer.cs" />
+    <Compile Include="View\MedicalRecordView.cs" />
     <Compile Include="View\ProcedureWindow.xaml.cs">
       <DependentUpon>ProcedureWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PatientManagementWindow.xaml.cs">
       <DependentUpon>PatientManagementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PatientView.cs" />
     <Compile Include="View\UnitView.cs" />
     <Page Include="View\HospitalManagementWindow.xaml">
       <SubType>Designer</SubType>
@@ -185,7 +195,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\PatientManagement\Search\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\hubasky_icon.png" />
   </ItemGroup>

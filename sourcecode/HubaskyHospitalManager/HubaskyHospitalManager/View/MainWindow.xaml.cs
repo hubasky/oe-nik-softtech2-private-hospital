@@ -3,6 +3,7 @@ using HubaskyHospitalManager.Model.ApplicationManagement;
 using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.InventoryManagement;
+using HubaskyHospitalManager.Model.PatientManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,13 +47,16 @@ namespace HubaskyHospitalManager.View
         public MainWindow()
         {
             InitializeComponent();
+            appMgr = new ApplicationManager();
+            ApplicationUser = appMgr.ApplicationUser;
+            DataContext = this;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            appMgr = new ApplicationManager();
-            ApplicationUser = appMgr.ApplicationUser;
-            DataContext = this;
+            //appMgr = new ApplicationManager();
+            //ApplicationUser = appMgr.ApplicationUser;
+            //DataContext = this;
 
             // --- TEST CODE ---
             ////Hospitalmanager-be visz auth nélkül
@@ -62,7 +66,11 @@ namespace HubaskyHospitalManager.View
 
             //Patientmanager-be visz auth nélkül
             appMgr.PatientManagement = new Model.PatientManagement.PatientManager(appMgr);
-            PatientManagementWindow PatientManagementView = new PatientManagementWindow();
+            
+            //majd ezt is át kell vezetni
+            appMgr.InventoryManagement = new Model.InventoryManagement.InventoryManager(appMgr);
+
+            PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
             PatientManagementView.ShowDialog();
 
             // --- END OF TEST CODE ---
@@ -85,16 +93,21 @@ namespace HubaskyHospitalManager.View
 
         private void Grid_PatientManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            
             LoginWindow firstLogin = new LoginWindow(appMgr);
+            
             firstLogin.ShowDialog();
             if (firstLogin.DialogResult == true)
             {
                 UpdateLoggedInUser();
-                PatientManagementWindow PatientManagementView = new PatientManagementWindow();
+                appMgr.PatientManagement = new PatientManager(appMgr);
+                appMgr.InventoryManagement = new InventoryManager(appMgr); //ez később kelleni fog
+                PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
                 PatientManagementView.ShowDialog();
                 appMgr.Logout();
                 UpdateLoggedInUser();
             }
+
         }
 
         private void Grid_InventoryManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

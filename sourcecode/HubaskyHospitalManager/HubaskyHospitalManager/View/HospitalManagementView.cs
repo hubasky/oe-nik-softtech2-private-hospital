@@ -54,6 +54,7 @@ namespace HubaskyHospitalManager.View
                 {
                     UnitView newDept = new UnitView(dept);
                     HospitalUnitView.Units.Add(newDept);
+                    /////////////////////////////////
                     if (dept.Wards != null)
                     {
                         foreach (Ward ward in dept.Wards)

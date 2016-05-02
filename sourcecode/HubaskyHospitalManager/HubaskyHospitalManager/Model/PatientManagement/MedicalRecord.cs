@@ -30,6 +30,18 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         private State state;
         private List<Procedure> procedures;
 
+        private string shortDescription;
+
+        public string ShortDescription
+        {
+            get { return shortDescription; }
+            set
+            {
+                shortDescription = value;
+                IsUpdated();
+            }
+        }
+
         public string Anamnesis
         {
             get { return anamnesis; }
@@ -61,7 +73,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         }
 
 
-        public List<Procedure> Procedures
+        public virtual List<Procedure> Procedures
         {
             get { return procedures; }
             set
@@ -74,11 +86,16 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         public MedicalRecord()
         {
-            this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
+            //Guid g = new Guid();
+            this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff_" + Guid.NewGuid());
             this.State = State.New;
             this.Diagnosis = "";
+            this.ShortDescription = "";
             this.Procedures = new List<Procedure>();
-            this.Procedures.Add(new Procedure());
+            //this.Procedures.Add(new Procedure()); // <- ez nem jó ötlet itt [SB]
+
+            //setterek miatt a végén!
+            this.LastModifiedTimestamp = this.CreatedTimestamp;
         }
 
         public void NewProcedure(Procedure procedure)
@@ -103,10 +120,12 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         public List<Procedure> UpdateMedicalRecord(MedicalRecord newMedicalRecord)
         {
+            //itt nem érdemes hasonlítani, 0 erőforrás ezeket felülcsapni
             this.CreatedTimestamp = newMedicalRecord.CreatedTimestamp;
             this.Anamnesis = newMedicalRecord.Anamnesis;
             this.Diagnosis = newMedicalRecord.Anamnesis;
             this.State = newMedicalRecord.State;
+            this.ShortDescription = newMedicalRecord.ShortDescription;
 
             //lehetne bonyolultabb algoritmust is írni, de nagyon valószínűtlen, hogy sorrendileg felcserélődnének
             //a listában az objektumok
@@ -146,13 +165,15 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         private void IsUpdated()
         {
-            LastModifiedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
+            //Guid g = new Guid();
+            LastModifiedTimestamp = DateTime.Now.ToString(DateTime.Now.ToString("yyyyMMddHHmmssff_" + Guid.NewGuid()));
         }
 
 
         public void IsClosed()
         {
             this.State = State.Closed;
+            //itt még végig kell hupákolni a procedure-öket is!
         }
 
     }//end MedicalRecord
