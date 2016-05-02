@@ -19,7 +19,6 @@ namespace HubaskyHospitalManager.Model.Common
 
         public Patient()
         {
-
         }
 
 

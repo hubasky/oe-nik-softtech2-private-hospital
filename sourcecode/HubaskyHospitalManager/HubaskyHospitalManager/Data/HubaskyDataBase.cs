@@ -3,7 +3,6 @@ using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.InventoryManagement;
-using HubaskyHospitalManager.Model.PatientManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,10 +22,7 @@ namespace HubaskyHospitalManager.Data
         public DbSet<Ward> Wards { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<ProcedureType> ProcedureTypes { get; set; }
-
-        public DbSet<ProcedureType> ProcedureTypes { get; set; }
-
-
+        
         // Inventory Table
         public DbSet<InventoryItem> Inventory { get; set; }
 

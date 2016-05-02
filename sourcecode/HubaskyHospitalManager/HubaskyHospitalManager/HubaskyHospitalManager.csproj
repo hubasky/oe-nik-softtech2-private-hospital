@@ -74,6 +74,7 @@
     <Compile Include="Model\HospitalManagement\IManageableProcedures.cs" />
     <Compile Include="Model\PatientManagement\ProcedureType.cs" />
     <Compile Include="View\Converters.cs" />
+    <Compile Include="View\PatientView.cs" />
     <Compile Include="View\ProcedureView.cs" />
     <Compile Include="View\PatientManagementView.cs" />
     <Compile Include="View\HospitalManagerView\EditProceduresWindow.xaml.cs">
