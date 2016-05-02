@@ -142,6 +142,8 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             Chk_Nurse.IsEnabled = false;
             Btn_SaveProcedure.IsEnabled = false;
             isEdit = false;
+            ListBox_AllProcedures.Items.Refresh();
+            ListBox_ChosenProcedures.Items.Refresh();
         }
 
         private void Btn_NewProcedure_Click(object sender, RoutedEventArgs e)

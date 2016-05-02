@@ -20,6 +20,7 @@ using HubaskyHospitalManager.Data;
 using System.Linq;
 using HubaskyHospitalManager.Model.Exceptions;
 using System.Security.Cryptography;
+using System.Windows;
 
 namespace HubaskyHospitalManager.Model.ApplicationManagement
 {
@@ -66,10 +67,9 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
                 hosp.Employees.Add(admin);
                 ApplicationDb.SaveChanges();
             }
-
 		}
 
-        public String CalculateSHA256(String data)
+        public static String CalculateSHA256(String data)
         {
             StringBuilder Sb = new StringBuilder();
 
@@ -91,7 +91,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             var emps = ApplicationDb.Employees.Select(m => m);
             foreach (Employee emp in emps)
             {
-                if (username.Equals(emp.Username) && password.Equals(emp.Password))
+                if (username.Equals(emp.Username) && ApplicationManager.CalculateSHA256(password).Equals(emp.Password))
                 {
                     loginUser = (Employee)emp.Clone();
                     break;
@@ -111,7 +111,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             var emps = ApplicationDb.Employees.Select(m => m);
             foreach (Employee emp in emps)
             {
-                if (username.Equals(emp.Username) && password.Equals(emp.Password))
+                if (username.Equals(emp.Username) && ApplicationManager.CalculateSHA256(password).Equals(emp.Password))
                 {
                     foreach (Role role in roles)
                     {

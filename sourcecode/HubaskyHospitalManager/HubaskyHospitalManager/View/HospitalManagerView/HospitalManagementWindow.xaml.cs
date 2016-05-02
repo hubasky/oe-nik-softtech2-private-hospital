@@ -89,7 +89,6 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             addEmp.ShowDialog();
             if (addEmp.DialogResult == true)
             {
-                //Unit parent = HospView.SelectedUnit != null ? HospView.SelectedUnit.Reference : null;
                 Unit parent = addEmp.SelectedUnit;
                 AppMgr.HospitalManagement.AddEmployee(addEmp.Employee, parent);
                 if (addEmp.IsManager)
@@ -136,8 +135,6 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
                     {
                         if (editEmp.IsManager)
                             origUnitClone.Manager = HospView.SelectedEmployee;
-                        //else
-                        //origUnitClone.Manager = origUnit.Manager;
                         AppMgr.HospitalManagement.UpdateUnit(origUnitClone, origUnit);
                     }
                     // move

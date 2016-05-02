@@ -55,7 +55,6 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
         {
             units = new ObservableCollection<UnitView>();
             employees = new ObservableCollection<Employee>();
-            //procedures = new ObservableCollection<ProcedureType>();
             HospManager = hospMgr;
             UpdateHierarchyList();            
         }
@@ -63,7 +62,6 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
         public void UpdateHierarchyList()
         {
             UnitView HospitalUnitView = new UnitView(HospManager.Hospital);
-            // Departmentsek elérhetők a Hospital propertyn keresztül... TODO adatbázis elérés cserélése.
             var deptView = HospManager.AppManager.ApplicationDb.Departments.ToList();
             if (deptView != null)
             {
@@ -71,7 +69,6 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
                 {
                     UnitView newDept = new UnitView(dept);
                     HospitalUnitView.Units.Add(newDept);
-                    /////////////////////////////////
                     if (dept.Wards != null)
                     {
                         foreach (Ward ward in dept.Wards)

@@ -148,7 +148,7 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
                         // password is ok
                         if (PswBox_Password.Password == PswBox_PasswordAgain.Password)
                         {
-                            Employee.Password = PswBox_Password.Password;
+                            Employee.Password = ApplicationManager.CalculateSHA256(PswBox_Password.Password);
                             DialogResult = true;
                         }
                         // password is NOT ok
@@ -172,7 +172,7 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
                         // password is ok
                         if (PswBox_Password.Password == PswBox_PasswordAgain.Password)
                         {
-                            Employee.Password = PswBox_Password.Password;
+                            Employee.Password = ApplicationManager.CalculateSHA256(PswBox_Password.Password);
                             DialogResult = true;
                         }
                         // password is NOT ok
