@@ -165,7 +165,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             this.InventoryUsage = new List<InventoryItem>();
             this.DeltaInventoryUsage = new List<InventoryItem>();
             this.Price = 0;
-            this.Name = "";
+            this.Name = "Írja be az eljárás nevét";
             this.Attachments = new List<string>();
             //this.responsible //-> nincs inicializálva!
 

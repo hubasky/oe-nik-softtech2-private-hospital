@@ -25,6 +25,7 @@ namespace HubaskyHospitalManager.View
     public partial class PatientManagementWindow : Window, INotifyPropertyChanged
     {
         PatientManagementView VM { get; set; }
+        //PatientManager PM { get; set; }
 
         public PatientManagementWindow(PatientManager patientmanager)
         {
@@ -34,7 +35,7 @@ namespace HubaskyHospitalManager.View
             //{
             //    Console.WriteLine(i + ". páciens 0. medicalrecordja: " + patientmanager.Patients[i].MedicalHistory[0].CreatedTimestamp);
             //}
-
+            //PM = patientmanager;
             VM = new PatientManagementView(patientmanager);
 
             DataContext = VM;
@@ -48,8 +49,16 @@ namespace HubaskyHospitalManager.View
 
         private void Btn_NewProcedure_Click(object sender, RoutedEventArgs e)
         {
-            ProcedureWindow procedureView = new ProcedureWindow();
+
+
+            //appMgr.HospitalManagement = new HospitalManager(appMgr);
+            //HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow(appMgr.HospitalManagement);
+            //HospitalManagementView.ShowDialog();
+
+            //Procedure proc = new Procedure();
+            ProcedureWindow procedureView = new ProcedureWindow(VM);
             procedureView.ShowDialog();
+
         }
 
 
@@ -57,7 +66,8 @@ namespace HubaskyHospitalManager.View
 
         private void Btn_NewMedicalRecord_Click(object sender, RoutedEventArgs e)
         {
-
+            MedicalRecord mr = new MedicalRecord();
+            VM.SelectedPatient.MedicalHistory.Add(new MedicalRecordView(mr));
         }
 
         private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)

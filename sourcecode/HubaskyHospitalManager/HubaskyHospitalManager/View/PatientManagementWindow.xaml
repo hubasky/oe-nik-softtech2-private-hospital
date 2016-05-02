@@ -22,7 +22,7 @@
     </Window.Resources>
 
     <Grid HorizontalAlignment="Left" Height="640" Margin="0,25,0,0" VerticalAlignment="Top" Width="1272" Background="White">
-        <ListBox Name="lbPatient" HorizontalAlignment="Left" Height="412" Margin="36,128,0,0" VerticalAlignment="Top" Width="265"
+        <ListBox x:Name="lbPatient" HorizontalAlignment="Left" Height="412" Margin="36,128,0,0" VerticalAlignment="Top" Width="265"
                  ItemsSource="{Binding Patients}"
                  SelectedItem="{Binding SelectedPatient}">
             <ListBox.ItemTemplate>
@@ -40,21 +40,21 @@
         <Label Content="Név" HorizontalAlignment="Left" Margin="36,66,0,0" VerticalAlignment="Top" Width="139"/>
         <Label Content="TAJ szám" HorizontalAlignment="Left" Margin="36,97,0,0" VerticalAlignment="Top" Width="139"/>
         <Button x:Name="Btn_NewPatient" Content="Új beteg felvétele" HorizontalAlignment="Left" Margin="36,546,0,0" VerticalAlignment="Top" Height="20" Width="139" Click="Btn_NewPatient_Click"/>
-        <TextBox Name="tbFindByName" Text="{Binding FindPatientByName, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="tbFindByName_PreviewTextInput" HorizontalAlignment="Left" Height="26" Margin="147,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox Name="tbFindByName" Text="{Binding FindPatientByName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="147,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
         <TextBox Text="{Binding FindPatientBySSN, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="147,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
         <Label Content="Adatlap" HorizontalAlignment="Left" Margin="329,15,0,0" VerticalAlignment="Top" Width="209" FontSize="20"/>
         <Label Content="Név" HorizontalAlignment="Left" Margin="328,71,0,0" VerticalAlignment="Top" Width="139"/>
         <Label Content="TAJ szám" HorizontalAlignment="Left" Margin="328,102,0,0" VerticalAlignment="Top" Width="139"/>
 
         <!--ADATLAP-->
-        <TextBox Name="tbName" Text="{Binding Path=SelectedPatient.ModelPatient.Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" PreviewTextInput="tbName_PreviewTextInput" />
-        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Ssn}" HorizontalAlignment="Left" Height="26" Margin="505,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <TextBox Name="tbName" Text="{Binding Path=SelectedPatient.ModelPatient.Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" />
+        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Ssn, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
         <Label Content="Születési dátum" HorizontalAlignment="Left" Margin="328,133,0,0" VerticalAlignment="Top" Width="139"/>
-        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.DateOfBirth}" HorizontalAlignment="Left" Height="26" Margin="505,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" />
+        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.DateOfBirth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" />
         <Label Content="Lakcím" HorizontalAlignment="Left" Margin="328,164,0,0" VerticalAlignment="Top" Width="139"/>
-        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Address}" HorizontalAlignment="Left" Height="26" Margin="505,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Address, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
         <Label Content="Telefonszám" HorizontalAlignment="Left" Margin="328,195,0,0" VerticalAlignment="Top" Width="139"/>
-        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Phone}" HorizontalAlignment="Left" Height="26" Margin="505,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Phone, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
         <Label Content="e-mail cím" HorizontalAlignment="Left" Margin="328,226,0,0" VerticalAlignment="Top" Width="139"/>
         <TextBox Text="Ilyen adattag még nincs" HorizontalAlignment="Left" Height="26" Margin="505,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
 
@@ -72,7 +72,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="Btn_NewProcedure" Content="Új eljárás felvétele" HorizontalAlignment="Left" Margin="328,545,0,0" VerticalAlignment="Top" Click="Btn_NewProcedure_Click" RenderTransformOrigin="0.533,-0.8" Width="120"/>
+        <Button x:Name="Btn_NewProcedure" Content="Új eljárás felvétele" HorizontalAlignment="Left" Margin="328,545,0,0" VerticalAlignment="Top" Click="Btn_NewProcedure_Click" RenderTransformOrigin="0.533,-0.8" Width="120"
+                IsEnabled="{Binding ElementName=MedicalHistory, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}"
+                />
 
         <!--KÓRTÖRTÉNET-->
         <Label Content="Kórtörténet" HorizontalAlignment="Left" Margin="758,34,0,0" VerticalAlignment="Top" Width="209" FontSize="15" />
@@ -90,13 +92,15 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="Btn_NewMedicalRecord" Content="Új Kezelés felvétele" HorizontalAlignment="Left" Margin="758,195,0,0" VerticalAlignment="Top" Click="Btn_NewMedicalRecord_Click"/>
-        <!--Visibility="{Binding ElementName=Procedures, Path=SelectedValue, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter=ValueForEnabled}"-->
+        <Button x:Name="Btn_NewMedicalRecord" Content="Új Kezelés felvétele" HorizontalAlignment="Left" Margin="758,195,0,0" VerticalAlignment="Top" Click="Btn_NewMedicalRecord_Click"
+                
+        IsEnabled="{Binding ElementName=lbPatient, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}"
+                />
         <Label Content="Létrehozva" HorizontalAlignment="Left" Margin="757,433,0,0" VerticalAlignment="Top" Width="82"/>
         <Label Content="Módosítva" HorizontalAlignment="Left" Margin="957,432,0,0" VerticalAlignment="Top" Width="82"/>
         <Label Content="Folyamat állapot" HorizontalAlignment="Left" Margin="759,401,0,0" VerticalAlignment="Top" Width="139"/>
-        <Label Content="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.ModelProcedure.CreatedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="844,432,0,0" VerticalAlignment="Top" Width="108"/>
-        <Label Content="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.ModelProcedure.LastModifiedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="1044,433,0,0" VerticalAlignment="Top" Width="125"/>
+        <Label Content="{Binding SelectedPatient.SelectedMedicalRecord.ModelMedicalRecord.CreatedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="844,432,0,0" VerticalAlignment="Top" Width="108"/>
+        <Label Content="{Binding SelectedPatient.SelectedMedicalRecord.ModelMedicalRecord.LastModifiedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="1044,433,0,0" VerticalAlignment="Top" Width="125"/>
         <ComboBox HorizontalAlignment="Left" Height="26" Margin="942,401,0,0" VerticalAlignment="Top" Width="226"
                   ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
                   SelectedItem="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.ModelProcedure.State}"
@@ -109,8 +113,8 @@
         <Label Content="Anamnesis" HorizontalAlignment="Left" Margin="759,227,0,0" VerticalAlignment="Top" Width="80"/>
         <TextBox Text="{Binding SelectedPatient.SelectedMedicalRecord.ModelMedicalRecord.ShortDescription}"
                  HorizontalAlignment="Left" Margin="839,232,0,0" VerticalAlignment="Top" Width="329"
+        Visibility="{Binding ElementName=MedicalHistory, Path=SelectedValue, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter=ValueForEnabled}"
                  />
-        <!--Visibility="{Binding ElementName=MedicalHistory, Path=SelectedValue, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter=ValueForEnabled}"-->
 
         <TextBox HorizontalAlignment="Left" Height="55" Margin="758,253,0,0" TextWrapping="Wrap" Text="{Binding SelectedPatient.SelectedMedicalRecord.ModelMedicalRecord.Anamnesis}" VerticalAlignment="Top" Width="411"
                  IsEnabled="{Binding ElementName=MedicalHistory, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}"/>
