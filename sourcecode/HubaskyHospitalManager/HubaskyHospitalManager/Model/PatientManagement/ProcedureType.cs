@@ -1,10 +1,10 @@
+using HubaskyHospitalManager.Model.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.InventoryManagement;
-using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;

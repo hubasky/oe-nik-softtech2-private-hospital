@@ -3,6 +3,7 @@ using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.InventoryManagement;
+using HubaskyHospitalManager.Model.PatientManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,6 +22,7 @@ namespace HubaskyHospitalManager.Data
         public DbSet<Department> Departments { get; set; }
         public DbSet<Ward> Wards { get; set; }
         public DbSet<Patient> Patients { get; set; }
+        public DbSet<ProcedureType> ProcedureTypes { get; set; }
 
         public DbSet<ProcedureType> ProcedureTypes { get; set; }
 
@@ -34,10 +36,19 @@ namespace HubaskyHospitalManager.Data
             modelBuilder.Entity<InventoryItem>().Property(a => a.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
 
-        public HubaskyDataBase(string connStr) : base(connStr)
+        public HubaskyDataBase(string connStr)
+            : base(connStr)
         {
-            
+
         }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    // Auto increment id field in Inventory table
+        //    modelBuilder.Entity<Patient>().Property(a =>
+        //            a.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+        //    base.OnModelCreating(modelBuilder);
+        //}
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

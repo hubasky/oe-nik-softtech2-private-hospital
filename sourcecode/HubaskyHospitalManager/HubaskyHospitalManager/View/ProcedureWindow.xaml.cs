@@ -23,5 +23,17 @@ namespace HubaskyHospitalManager.View
         {
             InitializeComponent();
         }
+
+        private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_NewAttachmentMod_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+       
     }
 }

@@ -29,13 +29,24 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         private string name;
         private int price;
         private State state;
+        private ProcedureType procedureType;
+
+
         private Employee responsible;
         private List<InventoryItem> inventoryUsage;
 
         private List<InventoryItem> deltaInventoryUsage;
 
 
-
+        public ProcedureType ProcedureType
+        {
+            get { return procedureType; }
+            set
+            {
+                procedureType = value; 
+                isUpdated();
+            }
+        }
 
         public List<string> Attachments
         {
@@ -87,7 +98,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             }
         }
 
-        public List<InventoryItem> InventoryUsage
+        public virtual List<InventoryItem> InventoryUsage
         {
             get { return inventoryUsage; }
             set
@@ -148,8 +159,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         public Procedure()
         {
-            this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
-            this.LastModifiedTimestamp = this.CreatedTimestamp;
+            this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff_" + Guid.NewGuid());
 
             this.State = State.New;
             this.InventoryUsage = new List<InventoryItem>();
@@ -158,6 +168,8 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             this.Name = "";
             this.Attachments = new List<string>();
             //this.responsible //-> nincs inicializálva!
+
+            this.LastModifiedTimestamp = this.CreatedTimestamp;
         }
 
 
@@ -213,9 +225,8 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         private void isUpdated()
         {
-
             //ide kell betenni a decreasequantityitem-et...
-            LastModifiedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff");
+            LastModifiedTimestamp = DateTime.Now.ToString(DateTime.Now.ToString("yyyyMMddHHmmssff_" + Guid.NewGuid()));
 
         }
 

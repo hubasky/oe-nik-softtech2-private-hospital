@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -70,6 +73,9 @@
     <Compile Include="Model\Exceptions\InvalidUnitAdditionException.cs" />
     <Compile Include="Model\HospitalManagement\IManageableProcedures.cs" />
     <Compile Include="Model\PatientManagement\ProcedureType.cs" />
+    <Compile Include="View\Converters.cs" />
+    <Compile Include="View\ProcedureView.cs" />
+    <Compile Include="View\PatientManagementView.cs" />
     <Compile Include="View\HospitalManagerView\EditProceduresWindow.xaml.cs">
       <DependentUpon>EditProceduresWindow.xaml</DependentUpon>
     </Compile>
@@ -100,6 +106,7 @@
       <DependentUpon>InventoryManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoggedInUserConventer.cs" />
+    <Compile Include="View\MedicalRecordView.cs" />
     <Compile Include="View\ProcedureWindow.xaml.cs">
       <DependentUpon>ProcedureWindow.xaml</DependentUpon>
     </Compile>
