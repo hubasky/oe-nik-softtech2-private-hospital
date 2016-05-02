@@ -215,6 +215,9 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
                     EditProceduresWindow epw = new EditProceduresWindow(AppMgr, ward);
                     epw.ShowDialog();
                     HospView.UpdateHierarchyList();
+                    var selection = HospView.SelectedUnit;
+                    HospView.SelectedUnit = null;
+                    HospView.SelectedUnit = selection;
                 }
             }
         }

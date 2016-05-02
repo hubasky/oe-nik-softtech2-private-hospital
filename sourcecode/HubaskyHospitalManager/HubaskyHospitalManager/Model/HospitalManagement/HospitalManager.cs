@@ -28,19 +28,7 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		public HospitalManager(ApplicationManager appMgr)
         {
             this.AppManager = appMgr;
-            //if (AppManager.ApplicationDb.Hospital.FirstOrDefault() == null)
-            //{
-            //    Hospital = new Hospital();
-            //    Hospital.Name = "Hubasky Magánkórház";
-            //    Hospital.Address = "1234 Budapest, Gyógyító tér 1.";
-            //    Hospital.Phone = "+36556667788";
-            //    Hospital.Email = "info@hubasky.hu";
-            //    Hospital.Web = "hubasky.hu";
-            //    AppManager.ApplicationDb.Hospital.Add(Hospital);
-            //    AppManager.ApplicationDb.SaveChanges();
-            //}
-            //else
-                Hospital = AppManager.ApplicationDb.Hospital.FirstOrDefault();
+            Hospital = AppManager.ApplicationDb.Hospital.FirstOrDefault();
 		}
         
 		/// 
@@ -311,6 +299,16 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
         {
             AppManager.ApplicationDb.ProcedureTypes.Add(procedureType);
             AppManager.ApplicationDb.SaveChanges();
+        }
+
+        public void UpdateProcedure(ProcedureType source, ProcedureType target)
+        {
+            target.AllowedAdministrator = source.AllowedAdministrator;
+            target.AllowedDataRecorder = source.AllowedDataRecorder;
+            target.AllowedDoctor = source.AllowedDoctor;
+            target.AllowedLaboratorian = source.AllowedLaboratorian;
+            target.AllowedNurse = source.AllowedNurse;
+            target.Name = source.Name;
         }
 
         public void DeleteProcedure(ProcedureType procedureType)

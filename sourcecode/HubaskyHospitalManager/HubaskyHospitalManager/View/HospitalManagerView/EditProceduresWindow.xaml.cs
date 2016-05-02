@@ -70,7 +70,10 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             get { return editProcedure; }
             set { editProcedure = value; OnPropertyChanged(); }
         }
-        
+
+        private bool isEdit = false;
+        private ProcedureType sourceProcedure;
+
         public EditProceduresWindow()
         {
             InitializeComponent();
@@ -114,9 +117,16 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
 
         private void Btn_SaveProcedure_Click(object sender, RoutedEventArgs e)
         {
-            ProcedureType newProcedure = (ProcedureType)EditProcedure.Clone();
-            AppMgr.HospitalManagement.AddNewProcedure(newProcedure);
-            AllProcedures.Add(newProcedure);
+            if (isEdit)
+            {
+                AppMgr.HospitalManagement.UpdateProcedure(EditProcedure, sourceProcedure);
+            }
+            else
+            {
+                ProcedureType newProcedure = (ProcedureType)EditProcedure.Clone();
+                AppMgr.HospitalManagement.AddNewProcedure(newProcedure);
+                AllProcedures.Add(newProcedure);
+            }
             EditProcedure = new ProcedureType("", "", new List<Role>());
             TxtBox_ProcId.IsEnabled = false;
             TxtBox_ProcName.IsEnabled = false;
@@ -126,8 +136,8 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             Chk_Laboratorian.IsEnabled = false;
             Chk_Nurse.IsEnabled = false;
             Btn_SaveProcedure.IsEnabled = false;
-
-
+            isEdit = false;
+            this.InvalidateVisual();
         }
 
         private void Btn_NewProcedure_Click(object sender, RoutedEventArgs e)
@@ -141,6 +151,7 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             Chk_Laboratorian.IsEnabled = true;
             Chk_Nurse.IsEnabled = true;
             Btn_SaveProcedure.IsEnabled = true;
+            isEdit = false;
         }
         
         private void ListBox_AllProcedures_GotFocus(object sender, RoutedEventArgs e)
@@ -185,5 +196,32 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             }
         }
 
+        private void ListBox_AllProcedures_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            EditSelectedProcedure(AllProceduresSelected);
+        }
+
+        private void ListBox_ChosenProcedures_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            EditSelectedProcedure(ChosenProceduresSelected);
+        }
+
+        private void EditSelectedProcedure(ProcedureType procedure)
+        {
+            if (procedure != null)
+            {
+                sourceProcedure = procedure;
+                EditProcedure = (ProcedureType)sourceProcedure.Clone();
+                TxtBox_ProcId.IsEnabled = false;
+                TxtBox_ProcName.IsEnabled = true;
+                Chk_Admin.IsEnabled = true;
+                Chk_DataRecorder.IsEnabled = true;
+                Chk_Doctor.IsEnabled = true;
+                Chk_Laboratorian.IsEnabled = true;
+                Chk_Nurse.IsEnabled = true;
+                Btn_SaveProcedure.IsEnabled = true;
+                isEdit = true;
+            }
+        }
     }
 }

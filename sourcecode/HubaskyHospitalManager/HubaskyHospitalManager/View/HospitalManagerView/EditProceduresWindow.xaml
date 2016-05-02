@@ -19,7 +19,7 @@
         <Label Content="Kiválasztott eljárások" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1" Height="34"/>
         <Label Content="Eljárás szerkesztése" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="18" Grid.Column="2" Grid.ColumnSpan="2" Height="34"/>
 
-        <ListBox x:Name="ListBox_AllProcedures" Margin="10,49,10,10" ItemsSource="{Binding AllProcedures}" SelectedItem="{Binding AllProceduresSelected}" GotFocus="ListBox_AllProcedures_GotFocus" SelectionChanged="ListBox_AllProcedures_SelectionChanged">
+        <ListBox x:Name="ListBox_AllProcedures" Margin="10,49,10,10" ItemsSource="{Binding AllProcedures}" SelectedItem="{Binding AllProceduresSelected}" GotFocus="ListBox_AllProcedures_GotFocus" SelectionChanged="ListBox_AllProcedures_SelectionChanged" MouseDoubleClick="ListBox_AllProcedures_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
@@ -29,7 +29,7 @@
         <Button x:Name="Btn_DeleteProcedure" Content="Törlés" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="101" Click="Btn_DeleteProcedure_Click"/>
         <Button x:Name="Btn_AddProcedures" Content="Hozzáadás" Margin="116,0,10,18" Grid.Row="1" Height="22" VerticalAlignment="Bottom" Click="Btn_AddProcedure_Click" />
         
-        <ListBox x:Name="ListBox_ChosenProcedures" Margin="10,49,10,10" Grid.Column="1" ItemsSource="{Binding ChosenProcedures}" SelectedItem="{Binding ChosenProceduresSelected}" GotFocus="ListBox_ChosenProcedures_GotFocus" SelectionChanged="ListBox_ChosenProcedures_SelectionChanged">
+        <ListBox x:Name="ListBox_ChosenProcedures" Margin="10,49,10,10" Grid.Column="1" ItemsSource="{Binding ChosenProcedures}" SelectedItem="{Binding ChosenProceduresSelected}" GotFocus="ListBox_ChosenProcedures_GotFocus" SelectionChanged="ListBox_ChosenProcedures_SelectionChanged" MouseDoubleClick="ListBox_ChosenProcedures_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
