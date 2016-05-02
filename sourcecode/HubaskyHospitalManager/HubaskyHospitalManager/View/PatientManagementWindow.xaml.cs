@@ -57,7 +57,8 @@ namespace HubaskyHospitalManager.View
 
         private void Btn_NewMedicalRecord_Click(object sender, RoutedEventArgs e)
         {
-
+            MedicalRecord mr = new MedicalRecord();
+            VM.SelectedPatient.MedicalHistory.Add(new MedicalRecordView(mr));
         }
 
         private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)

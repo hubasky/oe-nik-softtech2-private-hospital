@@ -172,7 +172,7 @@ namespace HubaskyHospitalManager.View
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
             if (name == "tbFindByName_PreviewTextInput" || name == "tbFindBySSN_PreviewTextInput")
             {
-                FillPatients();
+                //FillPatients();
             } // nem lesz tőle azonnali a keresés
         }
     }

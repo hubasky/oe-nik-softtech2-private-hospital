@@ -90,7 +90,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff_" + Guid.NewGuid());
             this.State = State.New;
             this.Diagnosis = "";
-            this.ShortDescription = "";
+            this.ShortDescription = "Írjon be a kezelés rövid leírását";
             this.Procedures = new List<Procedure>();
             //this.Procedures.Add(new Procedure()); // <- ez nem jó ötlet itt [SB]
 

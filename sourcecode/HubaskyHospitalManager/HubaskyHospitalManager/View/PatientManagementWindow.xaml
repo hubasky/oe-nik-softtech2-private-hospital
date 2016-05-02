@@ -40,21 +40,21 @@
         <Label Content="Név" HorizontalAlignment="Left" Margin="36,66,0,0" VerticalAlignment="Top" Width="139"/>
         <Label Content="TAJ szám" HorizontalAlignment="Left" Margin="36,97,0,0" VerticalAlignment="Top" Width="139"/>
         <Button x:Name="Btn_NewPatient" Content="Új beteg felvétele" HorizontalAlignment="Left" Margin="36,546,0,0" VerticalAlignment="Top" Height="20" Width="139" Click="Btn_NewPatient_Click"/>
-        <TextBox Name="tbFindByName" Text="{Binding FindPatientByName, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="tbFindByName_PreviewTextInput" HorizontalAlignment="Left" Height="26" Margin="147,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <TextBox Name="tbFindByName" Text="{Binding FindPatientByName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="147,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
         <TextBox Text="{Binding FindPatientBySSN, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="147,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
         <Label Content="Adatlap" HorizontalAlignment="Left" Margin="329,15,0,0" VerticalAlignment="Top" Width="209" FontSize="20"/>
         <Label Content="Név" HorizontalAlignment="Left" Margin="328,71,0,0" VerticalAlignment="Top" Width="139"/>
         <Label Content="TAJ szám" HorizontalAlignment="Left" Margin="328,102,0,0" VerticalAlignment="Top" Width="139"/>
 
         <!--ADATLAP-->
-        <TextBox Name="tbName" Text="{Binding Path=SelectedPatient.ModelPatient.Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" PreviewTextInput="tbName_PreviewTextInput" />
-        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Ssn}" HorizontalAlignment="Left" Height="26" Margin="505,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <TextBox Name="tbName" Text="{Binding Path=SelectedPatient.ModelPatient.Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" />
+        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Ssn, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
         <Label Content="Születési dátum" HorizontalAlignment="Left" Margin="328,133,0,0" VerticalAlignment="Top" Width="139"/>
-        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.DateOfBirth}" HorizontalAlignment="Left" Height="26" Margin="505,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" />
+        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.DateOfBirth, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" />
         <Label Content="Lakcím" HorizontalAlignment="Left" Margin="328,164,0,0" VerticalAlignment="Top" Width="139"/>
-        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Address}" HorizontalAlignment="Left" Height="26" Margin="505,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Address, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
         <Label Content="Telefonszám" HorizontalAlignment="Left" Margin="328,195,0,0" VerticalAlignment="Top" Width="139"/>
-        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Phone}" HorizontalAlignment="Left" Height="26" Margin="505,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <TextBox Text="{Binding Path=SelectedPatient.ModelPatient.Phone, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="26" Margin="505,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
         <Label Content="e-mail cím" HorizontalAlignment="Left" Margin="328,226,0,0" VerticalAlignment="Top" Width="139"/>
         <TextBox Text="Ilyen adattag még nincs" HorizontalAlignment="Left" Height="26" Margin="505,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
 
