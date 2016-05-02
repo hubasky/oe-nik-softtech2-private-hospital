@@ -14,5 +14,7 @@
         </Grid.RowDefinitions>
         <local:InventoryControl Grid.Row="0" x:Name="inventoryControl"/>
         <Button Grid.Row="1" x:Name="button_Save" Content="Változtatások mentése" Margin="20" Click="button_Click_Save" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Grid.Row="1" x:Name="button_Add" Content="Új eszköz" Margin="20" Click="button_Add_Click" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button Grid.Row="1" x:Name="button_Remove" Content="Eszköz törlése" Margin="20" Click="button_Remove_Click" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     </Grid>
 </Window>

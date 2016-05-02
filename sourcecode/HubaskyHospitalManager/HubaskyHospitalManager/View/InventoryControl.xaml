@@ -40,6 +40,6 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Column="0" x:Name="label" Margin="10" Content="Keresés" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox Grid.Column="1" x:Name="textBox" Margin="10"  KeyUp="textBox_KeyUp" />
-        <DataGrid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" x:Name="dataGrid" ItemsSource="{Binding Inventory, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedInventoryItem}" Margin="10" RowEditEnding="dataGrid_RowEditEnding" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" AddingNewItem="dataGrid_AddingNewItem" SelectionMode="Single" IsReadOnly="True" />
+        <DataGrid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" x:Name="dataGrid" ItemsSource="{Binding Inventory, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedInventoryItem}" Margin="10" RowEditEnding="dataGrid_RowEditEnding" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" AddingNewItem="dataGrid_AddingNewItem" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="false"/>
     </Grid>
 </UserControl>
