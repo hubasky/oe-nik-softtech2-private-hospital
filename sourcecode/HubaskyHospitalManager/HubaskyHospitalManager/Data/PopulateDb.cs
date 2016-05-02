@@ -63,7 +63,7 @@ namespace HubaskyHospitalManager.Data
             List<Employee> empList = new List<Employee>();  
             for (int i = 0; i < 80; i++)
             { 
-                empList.Add(new Employee("Teszt" + i, "1234", 100000 + i, Role.Doctor, "teszt" + i, "teszt" + i, "teszt" + i));
+                empList.Add(new Employee("Teszt" + i, "1234", 100000 + i, Role.Doctor, "teszt" + i, "teszt" + i, "teszt" + i, "teszt" + i));
             }
 
             appMgr.ApplicationDb.Employees.Add(pista);

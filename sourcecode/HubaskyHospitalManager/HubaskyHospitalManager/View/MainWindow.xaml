@@ -35,7 +35,7 @@
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.5"/>
                 </Grid.Effect>
-                <TextBlock Margin="10,65" TextWrapping="Wrap" TextAlignment="Center" FontSize="24"><Run Language="hu-hu" Text="Kórházi hierarchia adminisztáció"/></TextBlock>
+                <TextBlock Margin="10,65" TextWrapping="Wrap" TextAlignment="Center" FontSize="24"><Run Language="hu-hu" Text="Kórházi hierarchia adminisztráció"/></TextBlock>
 
             </Grid>
             <Grid x:Name="Grid_PatientManagement" HorizontalAlignment="Center" Height="200" Margin="355,65,375,0" VerticalAlignment="Top" Width="250" Background="White" Cursor="Hand" MouseLeftButtonDown="Grid_PatientManagement_MouseLeftButtonDown">
@@ -60,7 +60,7 @@
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.5"/>
                 </Grid.Effect>
-                <TextBlock Margin="10,80" TextWrapping="Wrap" TextAlignment="Center" FontSize="24"><Run Language="hu-hu" Text="Betegnyilvánartó"/></TextBlock>
+                <TextBlock Margin="10,80" TextWrapping="Wrap" TextAlignment="Center" FontSize="24" Text="Betegnyilvántartó"/>
 
             </Grid>
             <Grid x:Name="Grid_InventoryManagement" HorizontalAlignment="Center" Height="200" Margin="660,65,70,0" VerticalAlignment="Top" Width="250" Background="White" Cursor="Hand" MouseLeftButtonDown="Grid_InventoryManagement_MouseLeftButtonDown">

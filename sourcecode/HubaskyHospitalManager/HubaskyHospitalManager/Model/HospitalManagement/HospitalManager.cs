@@ -28,18 +28,18 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		public HospitalManager(ApplicationManager appMgr)
         {
             this.AppManager = appMgr;
-            if (AppManager.ApplicationDb.Hospital.FirstOrDefault() == null)
-            {
-                Hospital = new Hospital();
-                Hospital.Name = "Hubasky Magánkórház";
-                Hospital.Address = "1234 Budapest, Gyógyító tér 1.";
-                Hospital.Phone = "+36556667788";
-                Hospital.Email = "info@hubasky.hu";
-                Hospital.Web = "hubasky.hu";
-                AppManager.ApplicationDb.Hospital.Add(Hospital);
-                AppManager.ApplicationDb.SaveChanges();
-            }
-            else
+            //if (AppManager.ApplicationDb.Hospital.FirstOrDefault() == null)
+            //{
+            //    Hospital = new Hospital();
+            //    Hospital.Name = "Hubasky Magánkórház";
+            //    Hospital.Address = "1234 Budapest, Gyógyító tér 1.";
+            //    Hospital.Phone = "+36556667788";
+            //    Hospital.Email = "info@hubasky.hu";
+            //    Hospital.Web = "hubasky.hu";
+            //    AppManager.ApplicationDb.Hospital.Add(Hospital);
+            //    AppManager.ApplicationDb.SaveChanges();
+            //}
+            //else
                 Hospital = AppManager.ApplicationDb.Hospital.FirstOrDefault();
 		}
         

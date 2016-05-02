@@ -44,7 +44,7 @@ namespace HubaskyHospitalManager.Model.Common
             this.Password = password;
 		}
 
-        public Employee(string username, string password, double salary, Role role, string name, string phone, string dateOfBirth)
+        public Employee(string username, string password, double salary, Role role, string name, string address, string phone, string dateOfBirth)
         {
             this.Username = username;
             this.Password = password;
@@ -53,7 +53,7 @@ namespace HubaskyHospitalManager.Model.Common
             this.Phone = phone;
             this.Name = name;
             this.DateOfBirth = dateOfBirth;
-            //this.Address = "";
+            this.Address = address;
         }
 
         public object Clone()

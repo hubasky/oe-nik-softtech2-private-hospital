@@ -40,13 +40,32 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             string dbFileName = @"AttachDBFilename=C:\Users\aowczare\Documents\GitHub\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
             string connStr = string.Format("{0};{1};{2};{3}", dataSource, initialCatalog, security, dbFileName);
 
-            // Ez a db server be�ll�t�sa, a file conn stringet benthagyom arra az esetre, ha k�s�bb kellene...
-            connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=testdb06;User ID=sa;Password=szoftech;Pooling=False";
+            // Ez a db server beállítása, a file conn stringet benthagyom arra az esetre, ha később kellene...
+            connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=testdb02;User ID=sa;Password=szoftech;Pooling=False";
 
             ApplicationDb = new HubaskyDataBase(connStr);
 
-            // Ezt most �tmenetileg kikapcsolom, igaz�b�l lassan eljutok arra a szintre a hosp managerrel, hogy appon kereszt�l lehet adatb�zisba hozz�adni usereket meg wardokat. Rem�lem :D
+            // Ezt most átmenetileg kikapcsolom, igazából lassan eljutok arra a szintre a hosp managerrel, hogy appon keresztül lehet adatbázisba hozzáadni usereket meg wardokat. Remélem :D
             // PopulateDb.Populate(this);
+
+            // Ha még nem létezik az adatbázis, akkor default inicializáció:
+            if (ApplicationDb.Hospital.FirstOrDefault() == null)
+            {
+                // Default kórház
+                Hospital hosp = new Hospital();
+                hosp.Name = "Hubasky Magánkórház";
+                hosp.Address = "1234 Budapest, Gyógyító tér 1.";
+                hosp.Phone = "+36556667788";
+                hosp.Email = "info@hubasky.hu";
+                hosp.Web = "hubasky.hu";
+                ApplicationDb.Hospital.Add(hosp);
+
+                // Default admin user
+                Employee admin = new Employee("admin", "1234", 100000.0, Role.Administrator, "Adminisztrátor", "-", "-", "-");
+                hosp.Employees.Add(admin);
+                ApplicationDb.SaveChanges();
+            }
+
 		}
 
         public String CalculateSHA256(String data)

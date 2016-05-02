@@ -93,6 +93,9 @@
     <Compile Include="View\InventoryControl.xaml.cs">
       <DependentUpon>InventoryControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\InventoryEditorWindow.xaml.cs">
+      <DependentUpon>InventoryEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\InventoryManagementWindow.xaml.cs">
       <DependentUpon>InventoryManagementWindow.xaml</DependentUpon>
     </Compile>
@@ -125,12 +128,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\InventoryEditorWindow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\InventoryManagementWindow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\LoginWindow.xaml">
       <SubType>Designer</SubType>
