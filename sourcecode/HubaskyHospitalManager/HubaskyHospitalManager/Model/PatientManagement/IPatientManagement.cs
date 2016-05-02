@@ -1,3 +1,4 @@
+//merged with SB 20160430_0920
 ///////////////////////////////////////////////////////////
 //  IPatientManagement.cs
 //  Implementation of the Interface IPatientManagement
@@ -15,37 +16,37 @@ using HubaskyHospitalManager.Model.Common;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
-	public interface IPatientManagement
+    public interface IPatientManagement
     {
-		Patient NewPatient();
+        Patient NewPatient();
 
-		/// 
-		/// <param name="patient"></param>
-		void UpdatePatient(Patient patient);
+        /// 
+        /// <param name="patient"></param>
+        void UpdatePatient(Patient patientFromUI, Patient patientToDB);
 
-		/// 
-		/// <param name="patient"></param>
-		MedicalRecord NewMedicalRecord(Patient patient);
+        /// 
+        /// <param name="patient"></param>
+        MedicalRecord NewMedicalRecord(Patient patient);
 
-		/// 
-		/// <param name="patient"></param>
-		Procedure NewProcedure(Patient patient);
+        /// 
+        /// <param name="patient"></param>
+        Procedure NewProcedure(Patient patient);
 
-		/// 
-		/// <param name="procedure"></param>
-		void CloseProcedure(Procedure procedure);
+        /// 
+        /// <param name="procedure"></param>
+        void CloseProcedure(Procedure procedure);
 
-		/// 
-		/// <param name="medicalRecord"></param>
-		void CloseMedicalRecord(MedicalRecord medicalRecord);
+        /// 
+        /// <param name="medicalRecord"></param>
+        void CloseMedicalRecord(MedicalRecord medicalRecord);
 
-		/// 
-		/// <param name="procedure"></param>
-		void UpdateProcedure(Procedure procedure);
+        /// 
+        /// <param name="procedure"></param>
+        void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB);
 
-		/// 
-		/// <param name="patient"></param>
-		void UpdateMedicalRecord(Patient patient);
-	}//end IPatientManagement
+        /// 
+        /// <param name="patient"></param>
+        void UpdateMedicalRecord(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB);
+    }//end IPatientManagement
 
 }//end namespace PatientManagement

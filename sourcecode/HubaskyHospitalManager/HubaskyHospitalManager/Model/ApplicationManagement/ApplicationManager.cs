@@ -5,6 +5,7 @@
 //  Created on:      07-�pr.-2016 12:45:16
 //  Original author: Owczarek Artur
 ///////////////////////////////////////////////////////////
+//merged with SB 20160430_0920
 
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ using System.Security.Cryptography;
 
 namespace HubaskyHospitalManager.Model.ApplicationManagement
 {
-	public class ApplicationManager : IApplicationManagement 
+    public class ApplicationManager : IApplicationManagement
     {
         public Employee ApplicationUser { get; set; }
         public PatientManager PatientManagement { get; set; }
@@ -30,8 +31,8 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
         public InventoryManager InventoryManagement { get; set; }
 
         public HubaskyDataBase ApplicationDb { get; set; }
-        
-		public ApplicationManager()
+
+        public ApplicationManager()
         {
             string version = "00";
             string dataSource = @"Data Source=(localdb)\MSSQLLocalDB";
@@ -98,9 +99,9 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             }
 
             ApplicationUser = loginUser;
-			return ApplicationUser;
-		}
-        
+            return ApplicationUser;
+        }
+
         /// 
         /// <param name="user"></param>
         /// <param name="pass"></param>
@@ -127,7 +128,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
 
             ApplicationUser = loginUser;
             return ApplicationUser;
-        } 
+        }
         public void Logout()
         {
             this.ApplicationUser = null;

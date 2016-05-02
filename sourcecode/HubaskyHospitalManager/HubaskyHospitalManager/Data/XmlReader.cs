@@ -37,7 +37,8 @@ namespace HubaskyHospitalManager.Data
 
         public XmlReader()
         {
-            xDoc = XDocument.Load(@"..\kezelesek.xml");
+            //SB string:@"..\..\..\..\XmlParser\XmlParser\XmlParser\bin\kezelesek.xml"
+            xDoc = XDocument.Load(@"..\..\..\..\XmlParser\XmlParser\XmlParser\bin\kezelesek.xml");                       
             procedures = new Dictionary<string, string>();
             wards = new List<string>();
             LoadProcedures();

@@ -1,4 +1,5 @@
-﻿using HubaskyHospitalManager.Model.Common;
+﻿//merged with SB 20160430_0920
+using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.InventoryManagement;
@@ -19,6 +20,7 @@ namespace HubaskyHospitalManager.Data
         public DbSet<Hospital> Hospital { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Ward> Wards { get; set; }
+        public DbSet<Patient> Patients { get; set; }
 
         public DbSet<ProcedureType> ProcedureTypes { get; set; }
 
