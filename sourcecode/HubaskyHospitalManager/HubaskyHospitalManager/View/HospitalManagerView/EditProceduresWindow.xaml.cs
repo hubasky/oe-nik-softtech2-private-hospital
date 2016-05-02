@@ -73,6 +73,11 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
 
         private bool isEdit = false;
         private ProcedureType sourceProcedure;
+        public ProcedureType SourceProcedure
+        {
+            get { return sourceProcedure; }
+            set { sourceProcedure = value; OnPropertyChanged(); }
+        }
 
         public EditProceduresWindow()
         {
@@ -119,7 +124,7 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
         {
             if (isEdit)
             {
-                AppMgr.HospitalManagement.UpdateProcedure(EditProcedure, sourceProcedure);
+                AppMgr.HospitalManagement.UpdateProcedure(EditProcedure, SourceProcedure);
             }
             else
             {
@@ -137,7 +142,6 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             Chk_Nurse.IsEnabled = false;
             Btn_SaveProcedure.IsEnabled = false;
             isEdit = false;
-            this.InvalidateVisual();
         }
 
         private void Btn_NewProcedure_Click(object sender, RoutedEventArgs e)
@@ -210,7 +214,7 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
         {
             if (procedure != null)
             {
-                sourceProcedure = procedure;
+                SourceProcedure = procedure;
                 EditProcedure = (ProcedureType)sourceProcedure.Clone();
                 TxtBox_ProcId.IsEnabled = false;
                 TxtBox_ProcName.IsEnabled = true;

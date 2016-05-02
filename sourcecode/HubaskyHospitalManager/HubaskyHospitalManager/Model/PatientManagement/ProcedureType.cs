@@ -7,11 +7,13 @@ using HubaskyHospitalManager.Model.InventoryManagement;
 using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
     public class ProcedureType : ICloneable
-    {
+    {    
         [Key]
         public string Id { get; set; }
         public string Name { get; set; }

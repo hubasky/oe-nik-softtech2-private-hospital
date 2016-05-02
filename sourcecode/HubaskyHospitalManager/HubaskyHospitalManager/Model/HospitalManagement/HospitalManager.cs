@@ -309,6 +309,7 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             target.AllowedLaboratorian = source.AllowedLaboratorian;
             target.AllowedNurse = source.AllowedNurse;
             target.Name = source.Name;
+            AppManager.ApplicationDb.SaveChanges();
         }
 
         public void DeleteProcedure(ProcedureType procedureType)
