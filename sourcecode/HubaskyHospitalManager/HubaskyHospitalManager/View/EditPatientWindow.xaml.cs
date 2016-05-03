@@ -59,7 +59,7 @@ namespace HubaskyHospitalManager.View
             //DataContext = VM;
             DataContext = this;
             Patient = pt;
-            //TxtBox_Ssn.IsEnabled = false; //szerintem ne kapcsoljuk ki, legyen szerkeszthető
+            TxtBox_Ssn.IsEnabled = false; //szerintem ne kapcsoljuk ki, legyen szerkeszthető
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

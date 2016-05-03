@@ -33,7 +33,7 @@ namespace HubaskyHospitalManager.View
             set
             {
                 selectedPatient = value;
-                ClonedPatient = (Patient)SelectedPatient.Clone();
+                if (selectedPatient != null) ClonedPatient = (Patient)selectedPatient.Clone();
                 FillMedicalHistory();
                 OnPropertyChanged();
             }

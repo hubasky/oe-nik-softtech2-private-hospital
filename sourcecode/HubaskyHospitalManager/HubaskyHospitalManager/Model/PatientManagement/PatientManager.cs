@@ -56,8 +56,8 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         public void RemovePatient(Patient patient)
         {
-            if (Patients.Contains(patient)) Patients.Remove(patient);
-
+            Patients.Remove(patient);
+            AppManager.ApplicationDb.SaveChanges();
         }
 
         public void NewPatient(Patient patient)
@@ -99,6 +99,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             {
                 medicalRecordToDB.UpdateMedicalRecord(medicalRecordFromUI);
             }
+            AppManager.ApplicationDb.SaveChanges();
         }
 
 
@@ -106,14 +107,14 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         {
             if (patientFromUI != null && patientToDB != null)
             {
-                patientToDB.Phone = patientFromUI.Phone;
-                patientToDB.Name = patientFromUI.Name;
-                patientToDB.DateOfBirth = patientFromUI.DateOfBirth;
-                patientToDB.Ssn = patientFromUI.Ssn;
-                patientToDB.Address = patientFromUI.Address;
-                patientToDB.Gender = patientFromUI.Gender;
-                patientToDB.UpdateMedicalHistory(patientFromUI.MedicalHistory);
-
+                //patientToDB.Phone = patientFromUI.Phone;
+                //patientToDB.Name = patientFromUI.Name;
+                //patientToDB.DateOfBirth = patientFromUI.DateOfBirth;
+                //patientToDB.Ssn = patientFromUI.Ssn;
+                //patientToDB.Address = patientFromUI.Address;
+                //patientToDB.Gender = patientFromUI.Gender;
+                //patientToDB.UpdateMedicalHistory(patientFromUI.MedicalHistory);
+                patientToDB.UpdatePatient(patientFromUI);
             }
             else
             {
@@ -136,6 +137,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         {
             patient.MedicalHistory.Add(medicalRecord);
             AppManager.ApplicationDb.SaveChanges();
+
             return medicalRecord;
         }
 

@@ -94,11 +94,13 @@ namespace HubaskyHospitalManager.View
                         if (ptWindow.DialogResult == true)
                         {
                             //VM.Patientmanager.UpdatePatient(ptWindow.Patient, VM.SelectedPatient);
-                            //Patient selection = VM.SelectedPatient;
+                            Patient selection = VM.ClonedPatient;
                             //VM.SelectedPatient = null;
                             //VM.SelectedPatient = selection;
                             VM.Patientmanager.UpdatePatient(VM.ClonedPatient, VM.SelectedPatient);
                             lbPatient.Items.Refresh();
+                            VM.SelectedPatient = null;
+                            VM.SelectedPatient = selection;
                         }
 
                     }
@@ -108,6 +110,14 @@ namespace HubaskyHospitalManager.View
                 elem = (UIElement)VisualTreeHelper.GetParent(elem);
             }
 
+        }
+
+        //PATIENT TÖRLÉS
+        private void Btn_RemovePatient_Click(object sender, RoutedEventArgs e)
+        {
+            VM.Patientmanager.RemovePatient(VM.SelectedPatient);
+            VM.FillPatients();
+            lbPatient.Items.Refresh();
         }
 
         //MEDICALRECORD GOMB
@@ -225,6 +235,8 @@ namespace HubaskyHospitalManager.View
                 elem = (UIElement)VisualTreeHelper.GetParent(elem);
             }
         }
+
+        
 
     }
 
