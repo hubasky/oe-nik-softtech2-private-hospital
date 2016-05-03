@@ -37,20 +37,6 @@ namespace HubaskyHospitalManager.View
 
         }
 
-        private void Btn_NewProcedure_Click(object sender, RoutedEventArgs e)
-        {
-
-
-            ProcedureWindow procedureWindow = new ProcedureWindow(VM);
-            procedureWindow.ShowDialog();
-            if (procedureWindow.DialogResult == true)
-            {
-                
-            }
-
-        }
-
-
 
 
 
@@ -169,6 +155,52 @@ namespace HubaskyHospitalManager.View
                 elem = (UIElement)VisualTreeHelper.GetParent(elem);
             }
         }
+
+
+        private void Btn_NewProcedure_Click(object sender, RoutedEventArgs e)
+        {
+            ProcedureWindow procedureWindow = new ProcedureWindow(VM);
+
+            procedureWindow.ShowDialog();
+            if (procedureWindow.DialogResult == true)
+            {
+
+                VM.Patientmanager.NewProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
+                VM.FillProcedures();
+                Procedures.Items.Refresh();
+            }
+
+        }
+
+
+        private void Procedures_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            UIElement elem = (UIElement)Procedures.InputHitTest(e.GetPosition(Procedures));
+            while (elem != Procedures)
+            {
+                if (elem is ListBoxItem)
+                {
+                    object selectedItem = ((ListBoxItem)elem).Content;
+
+                    if (VM.SelectedProcedure != null)
+                    {
+                        ProcedureWindow procedureWindow = new ProcedureWindow((Procedure)VM.SelectedProcedure.Clone(), VM);
+
+                        procedureWindow.ShowDialog();
+                        if (procedureWindow.DialogResult == true)
+                        {
+                            VM.FillProcedures();
+                            Procedures.Items.Refresh();
+                        }
+
+                    }
+
+                    return;
+                }
+                elem = (UIElement)VisualTreeHelper.GetParent(elem);
+            }
+        }
+
     }
 
 

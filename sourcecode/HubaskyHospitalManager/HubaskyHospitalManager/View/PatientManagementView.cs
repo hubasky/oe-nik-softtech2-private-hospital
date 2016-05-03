@@ -46,6 +46,20 @@ namespace HubaskyHospitalManager.View
             set { selectedMedicalRecord = value; OnPropertyChanged(); }
         }
 
+        private ObservableCollection<Procedure> procedures;
+        public ObservableCollection<Procedure> Procedures
+        {
+            get { return procedures; }
+            set { procedures = value; OnPropertyChanged(); }
+        }
+
+        private Procedure selectedProcedure;
+        public Procedure SelectedProcedure
+        {
+            get { return selectedProcedure; }
+            set { selectedProcedure = value; OnPropertyChanged(); }
+        }
+
         private string findPatientBySSN = "";
         public string FindPatientBySSN
         {
@@ -124,6 +138,17 @@ namespace HubaskyHospitalManager.View
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
            
+        }
+
+        internal void FillProcedures()
+        {
+            ObservableCollection<Procedure> newProcedures = new ObservableCollection<Procedure>();
+
+            if (SelectedMedicalRecord != null)
+                foreach (Procedure proc in SelectedMedicalRecord.Procedures)
+                    newProcedures.Add(proc);
+
+            Procedures = newProcedures;
         }
     }
 }

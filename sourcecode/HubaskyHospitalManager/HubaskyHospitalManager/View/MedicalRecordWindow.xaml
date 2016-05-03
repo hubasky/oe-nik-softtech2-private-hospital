@@ -4,7 +4,7 @@
         xmlns:local ="clr-namespace:HubaskyHospitalManager.View"
         xmlns:l ="clr-namespace:HubaskyHospitalManager.Model.Common"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        Title="Új eljárás"  Height="600" Width="600"       
+        Title="Új gyógykezelés"  Height="600" Width="600"       
         WindowStartupLocation="CenterScreen"        
         Icon="pack://application:,,,/Images/hubasky_icon.png">
     <Window.Resources>

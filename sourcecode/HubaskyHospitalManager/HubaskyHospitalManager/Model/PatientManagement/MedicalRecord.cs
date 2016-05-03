@@ -98,9 +98,9 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             }
         }
 
-        public void CloseProcedure(Procedure procedure)
+        public void CloseProcedure(Procedure procedure) //nem kell vlaószínűleg
         {
-            procedure.IsClosed();
+            procedure.IsClosed();//nem kell vlaószínűleg
         }
 
         public void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB)

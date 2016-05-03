@@ -24,26 +24,26 @@ namespace HubaskyHospitalManager.View
         public PatientManagementView VM { get; set; }
         public ProcedureView PView { get; set; }
 
+        public Procedure Procedure { get; set; }
         
         
         public ProcedureWindow(PatientManagementView pmv)
         {
             InitializeComponent();
+            Procedure = new Procedure();
 
             VM = pmv;
-            
-            //if (pmv.SelectedPatient.SelectedMedicalRecord.SelectedProcedure == null)
-            //{
-            //    Procedure proc = new Procedure();
-            //    PView = new ProcedureView(proc);
-            //    pmv.SelectedPatient.SelectedMedicalRecord.SelectedProcedure = PView;
-            //}
-            //else
-            //{
-            //    PView = pmv.SelectedPatient.SelectedMedicalRecord.SelectedProcedure;
-            //}
+            VM.SelectedProcedure = Procedure;
+            DataContext = pmv;
+        }
+      
+        public ProcedureWindow(Procedure procedure, PatientManagementView pmv)
+        {
+            InitializeComponent();
 
-            DataContext = VM;
+            VM = pmv;
+            Procedure = procedure;
+            DataContext = pmv;
         }
 
         private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)
