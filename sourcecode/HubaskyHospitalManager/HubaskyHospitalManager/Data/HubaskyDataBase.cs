@@ -14,19 +14,21 @@ namespace HubaskyHospitalManager.Data
 {
     public class HubaskyDataBase : DbContext
     {
+        // Hospital Manager Tables
         public DbSet<Employee> Employees { get; set; }
-
         public DbSet<Hospital> Hospital { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Ward> Wards { get; set; }
+
+        // Patient Manager Tables
         public DbSet<Patient> Patients { get; set; }
         public DbSet<ProcedureType> ProcedureTypes { get; set; }
         public DbSet<MedicalRecord> MedicalRecords { get; set; }
         public DbSet<Procedure> Procedures { get; set; }
-        //public DbSet<InventoryItem> InventoryUsages { get; set; }
-        //public DbSet<File> Attachments { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<ItemUsage> ItemUsages { get; set; }
         
-        // Inventory Table
+        // Inventory Manager Table
         public DbSet<InventoryItem> Inventory { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -38,24 +40,6 @@ namespace HubaskyHospitalManager.Data
         public HubaskyDataBase(string connStr)
             : base(connStr)
         {
-
         }
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    // Auto increment id field in Inventory table
-        //    modelBuilder.Entity<Patient>().Property(a =>
-        //            a.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-        //    base.OnModelCreating(modelBuilder);
-        //}
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Hospital>()
-        //          .HasOptional(j => j.Departments)
-        //          .WithMany()
-        //          .WillCascadeOnDelete(true);
-        //    base.OnModelCreating(modelBuilder);
-        //}
     }
 }

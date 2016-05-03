@@ -15,6 +15,7 @@ using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.InventoryManagement;
 using HubaskyHospitalManager.Model.Common;
 using System.ComponentModel.DataAnnotations;
+using HubaskyHospitalManager.Model.HospitalManagement;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
@@ -24,135 +25,58 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public int Id { get; set; }
         public string CreatedTimestamp { get; set; }
         public string LastModifiedTimestamp { get; set; }
+        public ProcedureType ProcedureType { get; set; }
+        public Employee Responsible { get; set; }
+        public Ward Ward { get; set; }
 
-        //újak
         public string Anamnesis { get; set; }
         public string Diagnosis { get; set; }
         public int Duration { get; set; }
-        private List<string> attachments;
-        private ProcedureType procedureType;
-        private Employee responsible;
 
-        //set esetén ezeken keresztül frissül a LastModifiedTimestamp!
+        public virtual List<ItemUsage> InventoryUsage { get; set; }
+        public virtual List<Attachment> Attachments { get; set; }
 
+        public State State { get; set; }
+        public int Price { get; set; }
 
-
-        private List<ItemUsage> itemUsage;
-
-        private string name;
-        private int price;
-        private State state;
-
-
-        public ProcedureType ProcedureType
-        {
-            get { return procedureType; }
-            set
-            {
-                procedureType = value;
-                isUpdated();
-            }
-        }
-
-        public List<string> Attachments
-        {
-            get { return attachments; }
-            set
-            {
-                attachments = value;
-                isUpdated();
-            }
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                name = value;
-                isUpdated();
-            }
-        }
-
-        public int Price
-        {
-            get { return price; }
-            set
-            {
-                price = value;
-                isUpdated();
-            }
-        }
-
-        public State State
-        {
-            get { return state; }
-            set
-            {
-                state = value;
-                isUpdated();
-            }
-        }
-
-        public Employee Responsible
-        {
-            get { return responsible; }
-            set
-            {
-                responsible = value;
-                isUpdated();
-            }
-        }
-
-        public virtual List<ItemUsage> InventoryUsage
-        {
-            get { return itemUsage; }
-            set
-            {
-
-                itemUsage = value;
-                isUpdated();
-            }
-        }
+        
 
         public Procedure()
         {
             this.CreatedTimestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             this.State = State.New;
-            this.InventoryUsage = new List<InventoryItem>();
+            this.InventoryUsage = new List<ItemUsage>();
 
             this.Price = 0;
-            this.Name = "";
-            this.Attachments = new List<string>();
+            this.Attachments = new List<Attachment>();
             //this.responsible //-> nincs inicializálva!
 
             this.LastModifiedTimestamp = this.CreatedTimestamp;
         }
 
 
-        public Procedure(string createdTimestamp, State state, List<InventoryItem> inventoryUsage,
-            int price, string name, List<string> attachments, string anamnesis, string diagnosis,
+        public Procedure(string createdTimestamp, State state, List<ItemUsage> inventoryUsage,
+            int price, List<Attachment> attachments, string anamnesis, string diagnosis,
             int duration, ProcedureType type)
         {
             this.CreatedTimestamp = createdTimestamp;
             this.State = state;
             this.InventoryUsage = inventoryUsage;
             this.Price = price;
-            this.Name = name;
             this.Attachments = attachments;
         }
 
         /// 
         /// <param name="attachment"></param>
-        public void AddAttachment(string attachment)
+        public void AddAttachment(Attachment attachment)
         {
             this.Attachments.Add(attachment);
         }
 
-        public void UpdateInventoryUsage(ICollection<InventoryItem> usage)
+        public void UpdateInventoryUsage(ICollection<ItemUsage> usage)
         {
-            InventoryUsage = new List<InventoryItem>(usage);
+            InventoryUsage = new List<ItemUsage>(usage);
         }
 
 
@@ -168,7 +92,6 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             this.State = newProcedure.State;
             this.InventoryUsage = newProcedure.InventoryUsage;
             this.Price = newProcedure.Price;
-            this.Name = newProcedure.Name;
             this.Attachments = newProcedure.Attachments;
             this.Anamnesis = newProcedure.Anamnesis;
             this.Diagnosis = newProcedure.Diagnosis;
@@ -187,7 +110,6 @@ namespace HubaskyHospitalManager.Model.PatientManagement
                 State,
                 InventoryUsage,
                 Price,
-                Name,
                 Attachments, 
                 Anamnesis, 
                 Diagnosis, 

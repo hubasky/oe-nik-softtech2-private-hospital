@@ -40,7 +40,7 @@ namespace HubaskyHospitalManager.Data
             /////
             kati.MedicalHistory.Add(new Model.PatientManagement.MedicalRecord());
             Model.PatientManagement.Procedure proc = new Model.PatientManagement.Procedure();
-            proc.Name = "Új eljárás kati";
+            //proc.Name = "Új eljárás kati";
             kati.MedicalHistory[0].NewProcedure(proc);
 
             Patient karesz = new Patient(
@@ -54,7 +54,7 @@ namespace HubaskyHospitalManager.Data
                 );
             karesz.MedicalHistory.Add(new Model.PatientManagement.MedicalRecord());
             Model.PatientManagement.Procedure prockaresz = new Model.PatientManagement.Procedure();
-            prockaresz.Name = "Új eljárás karesz";
+            //prockaresz.Name = "Új eljárás karesz";
             karesz.MedicalHistory[0].NewProcedure(prockaresz);
 
             Patient imre = new Patient(
@@ -68,7 +68,7 @@ namespace HubaskyHospitalManager.Data
                 );
             imre.MedicalHistory.Add(new Model.PatientManagement.MedicalRecord());
             Model.PatientManagement.Procedure procimre = new Model.PatientManagement.Procedure();
-            procimre.Name = "Új eljárás imre";
+            //procimre.Name = "Új eljárás imre";
             imre.MedicalHistory[0].NewProcedure(procimre);
 
             Patient hilda = new Patient(
@@ -82,7 +82,7 @@ namespace HubaskyHospitalManager.Data
                 );
             hilda.MedicalHistory.Add(new Model.PatientManagement.MedicalRecord());
             Model.PatientManagement.Procedure prochilda = new Model.PatientManagement.Procedure();
-            prochilda.Name = "Új eljárás hilda";
+            //prochilda.Name = "Új eljárás hilda";
             hilda.MedicalHistory[0].NewProcedure(prochilda);
 
             Patient bertold = new Patient(
@@ -96,7 +96,7 @@ namespace HubaskyHospitalManager.Data
                 );
             bertold.MedicalHistory.Add(new Model.PatientManagement.MedicalRecord());
             Model.PatientManagement.Procedure procbertold = new Model.PatientManagement.Procedure();
-            procbertold.Name = "Új eljárás bertold";
+            //procbertold.Name = "Új eljárás bertold";
             bertold.MedicalHistory[0].NewProcedure(procbertold);
 
             //List<Patient> patList = new List<Patient>();

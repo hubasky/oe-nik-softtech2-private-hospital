@@ -56,7 +56,8 @@ namespace HubaskyHospitalManager.View
             if (invWindow.DialogResult == true)
             {
                 //PView.ModelProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
-                VM.SelectedProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
+                // ez itt nem tudom mit akar csinálni...
+                //VM.SelectedProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
             }
 
 

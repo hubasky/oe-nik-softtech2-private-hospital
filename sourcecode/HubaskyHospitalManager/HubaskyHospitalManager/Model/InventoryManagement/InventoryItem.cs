@@ -12,6 +12,7 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.InventoryManagement;
 using HubaskyHospitalManager.Model.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.InventoryManagement
 {
@@ -34,7 +35,6 @@ namespace HubaskyHospitalManager.Model.InventoryManagement
 
         public InventoryItem()
         {
-
         }
 
         public override string ToString()

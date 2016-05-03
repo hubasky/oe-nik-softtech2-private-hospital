@@ -68,6 +68,7 @@
     <Compile Include="Data\HubaskyDataBase.cs" />
     <Compile Include="Data\PopulateDb.cs" />
     <Compile Include="Data\XmlReader.cs" />
+    <Compile Include="Model\Common\Attachment.cs" />
     <Compile Include="Model\Common\InventoryRecordStatus.cs" />
     <Compile Include="Model\Common\ItemUsage.cs" />
     <Compile Include="Model\Exceptions\DuplicatedPatientInDbException.cs" />

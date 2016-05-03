@@ -19,35 +19,14 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 {
     public class MedicalRecord : ICloneable
     {
-        //egy medical history van, azon belül több medical record, azon belül több procedure
         [Key]
         public int Id { get; set; }
         public string CreatedTimestamp { get; set; }
         public string LastModifiedTimestamp { get; set; }
-
-        private State state;
-        private List<Procedure> procedures;
-
-        private string shortDescription;
-
-        public string ShortDescription
-        {
-            get { return shortDescription; }
-            set { shortDescription = value; IsUpdated(); }
-        }
-
-        public State State
-        {
-            get { return state; }
-            set { state = value; IsClosed(); IsUpdated(); }
-        }
-
-        public virtual List<Procedure> Procedures
-        {
-            get { return procedures; }
-            set { procedures = value; IsUpdated(); }
-        }
-
+        public State State { get; set; }
+        public string ShortDescription { get; set; }
+        public virtual List<Procedure> Procedures { get; set; }
+               
         public MedicalRecord()
         {
             //Guid g = new Guid();
