@@ -6,6 +6,7 @@ using System.IO;
 using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.PatientManagement;
 using System.ComponentModel.DataAnnotations;
+using HubaskyHospitalManager.Model.ApplicationManagement;
 
 namespace HubaskyHospitalManager.Model.Common
 {
@@ -15,6 +16,7 @@ namespace HubaskyHospitalManager.Model.Common
         public string Ssn { get; set; }
         public virtual List<MedicalRecord> MedicalHistory { get; set; }
         public Gender Gender { get; set; }
+        public string Password { get; set; }
 
         public Patient()
         {
@@ -30,13 +32,14 @@ namespace HubaskyHospitalManager.Model.Common
 
         public Patient(string name, string phone, string dateOfBirth, string ssn, string address, List<MedicalRecord> medicalHistory, Gender gender)
         {
-            this.Phone = phone;
-            this.Name = name;
-            this.DateOfBirth = dateOfBirth;
-            this.Ssn = ssn;
-            this.Gender = gender;
-            this.Address = address;
-            this.MedicalHistory = (medicalHistory == null) ? new List<MedicalRecord>() : medicalHistory;
+            Phone = phone;
+            Name = name;
+            DateOfBirth = dateOfBirth;
+            Ssn = ssn;
+            Gender = gender;
+            Address = address;
+            MedicalHistory = (medicalHistory == null) ? new List<MedicalRecord>() : medicalHistory;
+            Password = ApplicationManager.CalculateSHA256(DateOfBirth);
         }
 
         public List<MedicalRecord> UpdateMedicalHistory(List<MedicalRecord> newMedicalHistory)
