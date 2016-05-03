@@ -25,11 +25,18 @@ namespace HubaskyHospitalManager.View
             set { patients = value; OnPropertyChanged(); }
         }
 
+        public Patient ClonedPatient { get; set; }
         private Patient selectedPatient;
         public Patient SelectedPatient
         {
             get { return selectedPatient; }
-            set { selectedPatient = value; FillMedicalHistory(); OnPropertyChanged(); }
+            set
+            {
+                selectedPatient = value;
+                ClonedPatient = (Patient)SelectedPatient.Clone();
+                FillMedicalHistory();
+                OnPropertyChanged();
+            }
         }
 
         private ObservableCollection<MedicalRecord> medicalHistory;
@@ -39,11 +46,18 @@ namespace HubaskyHospitalManager.View
             set { medicalHistory = value; OnPropertyChanged(); }
         }
 
+        public MedicalRecord ClonedMedicalRecord { get; set; }
         private MedicalRecord selectedMedicalRecord;
         public MedicalRecord SelectedMedicalRecord
         {
             get { return selectedMedicalRecord; }
-            set { selectedMedicalRecord = value; FillProcedures(); OnPropertyChanged(); }
+            set
+            {
+                selectedMedicalRecord = value;
+                ClonedMedicalRecord = (MedicalRecord)SelectedMedicalRecord.Clone();
+                FillProcedures();
+                OnPropertyChanged();
+            }
         }
 
         private ObservableCollection<Procedure> procedures;
@@ -53,11 +67,18 @@ namespace HubaskyHospitalManager.View
             set { procedures = value; OnPropertyChanged(); }
         }
 
+        //a klón mindig másolata lesz az eredetinek
+        public Procedure ClonedProcedure { get; set; }
         private Procedure selectedProcedure;
         public Procedure SelectedProcedure
         {
             get { return selectedProcedure; }
-            set { selectedProcedure = value; OnPropertyChanged(); }
+            set
+            {
+                selectedProcedure = value;
+                ClonedProcedure = (Procedure)SelectedProcedure.Clone();
+                OnPropertyChanged();
+            }
         }
 
         private string findPatientBySSN = "";
@@ -79,7 +100,7 @@ namespace HubaskyHospitalManager.View
 
 
         //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
+
         public PatientManagementView(PatientManager patientmanager)
         {
             Patientmanager = patientmanager;
@@ -88,7 +109,7 @@ namespace HubaskyHospitalManager.View
 
             FillPatients();
         }
-        
+
 
         public void FillPatients()
         {
@@ -112,7 +133,7 @@ namespace HubaskyHospitalManager.View
 
             MedicalHistory = newMedicalHistory;
         }
-        
+
 
         public HospitalManager HospitalManager
         {
@@ -137,7 +158,7 @@ namespace HubaskyHospitalManager.View
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
-           
+
         }
 
         public void FillProcedures()

@@ -72,6 +72,7 @@
     <Compile Include="Model\Exceptions\DuplicatedPatientInDbException.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
     <Compile Include="Model\Exceptions\InvalidUnitAdditionException.cs" />
+    <Compile Include="Model\Exceptions\ClosedMedicalRecordAdditionException.cs" />
     <Compile Include="Model\HospitalManagement\IManageableProcedures.cs" />
     <Compile Include="Model\PatientManagement\ProcedureType.cs" />
     <Compile Include="View\Converters.cs" />

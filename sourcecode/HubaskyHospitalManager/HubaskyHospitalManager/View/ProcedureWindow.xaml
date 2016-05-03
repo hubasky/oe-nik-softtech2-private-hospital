@@ -4,7 +4,7 @@
         xmlns:local ="clr-namespace:HubaskyHospitalManager.View"
         xmlns:l ="clr-namespace:HubaskyHospitalManager.Model.Common"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        Title="Új eljárás"  Height="530" Width="750"       
+        Title="Új eljárás"  Height="530" Width="1000"       
         WindowStartupLocation="CenterScreen"        
         Icon="pack://application:,,,/Images/hubasky_icon.png">
     <Window.Resources>
@@ -14,6 +14,7 @@
                 <x:Type TypeName="l:State"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <local:StringToBoolConverter x:Key="StringToBoolConverter" />
     </Window.Resources>
 
     <Grid>
@@ -30,7 +31,7 @@
         <Label Content="23 perc" HorizontalAlignment="Left" Margin="210,237,0,0" VerticalAlignment="Top"/>
         <TextBox Text="{Binding SelectedProcedure.Name}" HorizontalAlignment="Left" Margin="210,83,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
         <Label Content="Eljárás megnevezése" HorizontalAlignment="Left" Margin="17,83,0,0" VerticalAlignment="Top" Width="188"/>
-        <ListBox HorizontalAlignment="Left" Height="147" Margin="454,53,0,0" VerticalAlignment="Top" Width="256"                 ItemsSource="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.Attachments}"
+        <ListBox HorizontalAlignment="Left" Height="241" Margin="714,83,0,0" VerticalAlignment="Top" Width="256"                 ItemsSource="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.Attachments}"
                  SelectedItem="{Binding SelectedPatient}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -42,8 +43,8 @@
             </ListBox.ItemTemplate>
 
         </ListBox>
-        <Label Content="Csatolmányok" HorizontalAlignment="Left" Margin="454,21,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Btn_NewAttachmentMod" Content="Új csatolmány hozzáadása" HorizontalAlignment="Left" Margin="454,210,0,0" VerticalAlignment="Top" Width="156" Click="Btn_NewAttachmentMod_Click"/>
+        <Label Content="Csatolmányok" HorizontalAlignment="Left" Margin="714,51,0,0" VerticalAlignment="Top" Height="27"/>
+        <Button x:Name="Btn_NewAttachmentMod" Content="Új csatolmány hozzáadása" HorizontalAlignment="Left" Margin="714,329,0,0" VerticalAlignment="Top" Width="156" Click="Btn_NewAttachmentMod_Click" Height="29"/>
         <Label Content="Létrehozva:" HorizontalAlignment="Left" Margin="19,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
         <Label Content="{Binding SelectedProcedure.CreatedTimestamp}" HorizontalAlignment="Left" Margin="95,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
         <Label Content="Módosítva:" HorizontalAlignment="Left" Margin="185,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
@@ -66,9 +67,16 @@
                   />
         <Label Content="Eljárás időpontja" HorizontalAlignment="Left" Margin="17,205,0,0" VerticalAlignment="Top" Width="188"/>
         <DatePicker DisplayDate="2016.04.30" HorizontalAlignment="Left" Height="25" Margin="210,175,0,0" VerticalAlignment="Top" Width="166"/>
-        <Button Content="Mentés" Name="btnSave" HorizontalAlignment="Left" Height="57" Margin="589,384,0,0" VerticalAlignment="Top" Width="121" Click="btnSave_Click"/>
+        <Button Content="Mentés" Name="btnSave" HorizontalAlignment="Left" Height="57" Margin="857,386,0,0" VerticalAlignment="Top" Width="115" Click="btnSave_Click"/>
         <Label Content="Eljárás típusa" HorizontalAlignment="Left" Margin="19,114,0,0" VerticalAlignment="Top" Width="188"/>
         <Label Content="{Binding SelectedPatient.SelectedProcedure}" HorizontalAlignment="Left" Margin="210,114,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
-        <Button Content="Törlés notimpl" x:Name="btnDelte" HorizontalAlignment="Left" Height="57" Margin="438,384,0,0" VerticalAlignment="Top" Width="121" Click="btnSave_Click"/>
+        <Button Content="Törlés" x:Name="btnDelte" HorizontalAlignment="Left" Height="57" Margin="714,386,0,0" VerticalAlignment="Top" Width="115" Click="btnDelete_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="106" Margin="400,83,0,0" TextWrapping="Wrap" Text="{Binding SelectedMedicalRecord.Anamnesis, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="296"
+        	IsEnabled="{Binding SelectedValue, ConverterParameter=ValueForEnabled, Converter={StaticResource StringToBoolConverter}, ElementName=MedicalHistory}"
+                 />
+        <Label Content="Anamnesis" HorizontalAlignment="Left" Margin="400,52,0,0" VerticalAlignment="Top" Width="80"/>
+        <TextBox HorizontalAlignment="Left" Height="208" Margin="400,235,0,0" TextWrapping="Wrap" Text="{Binding SelectedMedicalRecord.Diagnosis, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="296"
+        	IsEnabled="{Binding SelectedValue, ConverterParameter=ValueForEnabled, Converter={StaticResource StringToBoolConverter}, ElementName=MedicalHistory}"/>
+        <Label Content="Diagnosis" HorizontalAlignment="Left" Margin="400,205,0,0" VerticalAlignment="Top" Width="139"/>
     </Grid>
 </Window>

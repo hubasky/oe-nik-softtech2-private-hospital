@@ -54,9 +54,9 @@ namespace HubaskyHospitalManager.Model.Common
             return this.MedicalHistory;
         }
 
-        public object Clone()
+        public Object Clone()
         {
-            Patient clone = new Patient(
+            Object clone = new Patient(
                 this.Name,
                 this.Phone,
                 this.DateOfBirth,

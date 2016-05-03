@@ -19,7 +19,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
     public interface IPatientManagement
     {
         void NewPatient(Patient patient);
-
+        void RemovePatient(Patient patient);
         /// 
         /// <param name="patient"></param>
         void UpdatePatient(Patient patientFromUI, Patient patientToDB);
@@ -28,10 +28,12 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         /// 
         /// <param name="patient"></param>
         MedicalRecord NewMedicalRecord(Patient patient, MedicalRecord medicalRecord);
+        void RemoveMedicalRecord(Patient patient, MedicalRecord medicalRecord);
 
         /// 
         /// <param name="patient"></param>
         Procedure NewProcedure(MedicalRecord medicalrecord, Procedure procedure);
+        void RemoveProcedure(MedicalRecord medicalrecord, Procedure procedure);
 
         ///// 
         ///// <param name="procedure"></param>
@@ -41,13 +43,13 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         ///// <param name="medicalRecord"></param>
         //void CloseMedicalRecord(MedicalRecord medicalRecord);
 
-        ///// 
-        ///// <param name="procedure"></param>
-        //void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB);
+        /// 
+        /// <param name="procedure"></param>
+        void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB);
 
-        ///// 
-        ///// <param name="patient"></param>
-        //void UpdateMedicalRecord(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB);
+        /// 
+        /// <param name="patient"></param>
+        void UpdateMedicalRecord(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB);
     }//end IPatientManagement
 
 }//end namespace PatientManagement

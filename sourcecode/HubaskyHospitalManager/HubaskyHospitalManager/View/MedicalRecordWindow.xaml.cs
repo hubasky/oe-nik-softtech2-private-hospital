@@ -22,7 +22,7 @@ namespace HubaskyHospitalManager.View
     public partial class MedicalRecordWindow : Window
     {
         public PatientManagementView VM { get; set; }
-        public ProcedureView PView { get; set; }
+        //public ProcedureView PView { get; set; }
         public MedicalRecord MedicalRecord { get; set; }
 
 
@@ -56,7 +56,8 @@ namespace HubaskyHospitalManager.View
 
             if (invWindow.DialogResult == true)
             {
-                PView.ModelProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
+                VM.SelectedProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
+                //PView.ModelProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
             }
 
 
@@ -70,6 +71,11 @@ namespace HubaskyHospitalManager.View
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
         }
 
 

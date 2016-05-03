@@ -22,7 +22,7 @@ namespace HubaskyHospitalManager.View
     public partial class ProcedureWindow : Window
     {
         public PatientManagementView VM { get; set; }
-        public ProcedureView PView { get; set; }
+        //public ProcedureView PView { get; set; }
 
         public Procedure Procedure { get; set; }
         
@@ -70,6 +70,11 @@ namespace HubaskyHospitalManager.View
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
         }
 
 

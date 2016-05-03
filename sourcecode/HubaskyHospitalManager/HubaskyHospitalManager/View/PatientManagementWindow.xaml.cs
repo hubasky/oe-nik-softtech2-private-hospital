@@ -17,6 +17,7 @@ using HubaskyHospitalManager.Model.ApplicationManagement;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.Common;
 using System.Collections.ObjectModel;
+using HubaskyHospitalManager.Model.Exceptions;
 
 namespace HubaskyHospitalManager.View
 {
@@ -57,6 +58,7 @@ namespace HubaskyHospitalManager.View
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
         }
 
+        //PATIENT GOMB
         private void Btn_NewPatient_Click(object sender, RoutedEventArgs e)
         {
             EditPatientWindow ptWindow = new EditPatientWindow(this.VM);
@@ -73,7 +75,7 @@ namespace HubaskyHospitalManager.View
 
         }
 
-
+        //PATIENT DUPLAKLIKK
         private void lbPatient_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
@@ -86,11 +88,11 @@ namespace HubaskyHospitalManager.View
 
                     if (VM.SelectedPatient != null)
                     {
-                        EditPatientWindow ptWindow = new EditPatientWindow((Patient)VM.SelectedPatient.Clone(), VM);
+                        EditPatientWindow ptWindow = new EditPatientWindow(VM.ClonedPatient, VM);
 
                         ptWindow.ShowDialog();
                         if (ptWindow.DialogResult == true)
-                        {//itt a view nem értesül a változásról, triggerelni kéne
+                        {
                             VM.Patientmanager.UpdatePatient(ptWindow.Patient, VM.SelectedPatient);
                             Patient selection = VM.SelectedPatient;
                             VM.SelectedPatient = null;
@@ -107,6 +109,7 @@ namespace HubaskyHospitalManager.View
 
         }
 
+        //MEDICALRECORD GOMB
         private void Btn_NewMedicalRecord_Click(object sender, RoutedEventArgs e)
         {
 
@@ -119,13 +122,14 @@ namespace HubaskyHospitalManager.View
                 VM.FillMedicalHistory();
                 MedicalHistory.Items.Refresh();
             }
-
-
-            //    VM.Patientmanager.NewPatient(ptWindow.Patient);
-
-
+            else
+            {
+                VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, medicalRecordWindow.MedicalRecord);
+            }
+            
         }
 
+        //MEDICALRECORD DUPLAKLIKK
         private void MedicalHistory_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
@@ -138,7 +142,7 @@ namespace HubaskyHospitalManager.View
 
                     if (VM.SelectedMedicalRecord != null)
                     {
-                        MedicalRecordWindow medicalRecordWindow = new MedicalRecordWindow((MedicalRecord)VM.SelectedMedicalRecord.Clone(), VM);
+                        MedicalRecordWindow medicalRecordWindow = new MedicalRecordWindow(VM.ClonedMedicalRecord, VM);
 
                         medicalRecordWindow.ShowDialog();
                         if (medicalRecordWindow.DialogResult == true)
@@ -146,6 +150,11 @@ namespace HubaskyHospitalManager.View
                             //VM.Patientmanager.NewMedicalRecord(VM.SelectedPatient, mr);
                             VM.FillMedicalHistory();
                             MedicalHistory.Items.Refresh();
+                        }
+                        else
+                        {
+                            VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, 
+                                medicalRecordWindow.MedicalRecord);
                         }
 
                     }
@@ -156,23 +165,32 @@ namespace HubaskyHospitalManager.View
             }
         }
 
-
+        //PROCEDURE GOMB
         private void Btn_NewProcedure_Click(object sender, RoutedEventArgs e)
         {
-            ProcedureWindow procedureWindow = new ProcedureWindow(VM);
-
-            procedureWindow.ShowDialog();
-            if (procedureWindow.DialogResult == true)
+            if (VM.SelectedMedicalRecord.State != State.Closed) //csak akkor lehet hozzáadni, ha nem closed
             {
+                ProcedureWindow procedureWindow = new ProcedureWindow(VM);
+                procedureWindow.ShowDialog();
+                if (procedureWindow.DialogResult == true)
+                {
 
-                VM.Patientmanager.NewProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
-                VM.FillProcedures();
-                Procedures.Items.Refresh();
+                    VM.Patientmanager.NewProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
+                    VM.FillProcedures();
+                    Procedures.Items.Refresh();
+                }
+                else
+                {   //ha klónt adunk át, akkor törölhető lesz
+                    VM.Patientmanager.RemoveProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
+                }
             }
-
+            else
+            {
+                throw new ClosedMedicalRecordAdditionException("Zárt kezeléshez nem lehet eljárást rendelni!");
+            }
         }
 
-
+        //PROCEDURE DUPLAKLIKK
         private void Procedures_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             UIElement elem = (UIElement)Procedures.InputHitTest(e.GetPosition(Procedures));
@@ -184,13 +202,17 @@ namespace HubaskyHospitalManager.View
 
                     if (VM.SelectedProcedure != null)
                     {
-                        ProcedureWindow procedureWindow = new ProcedureWindow((Procedure)VM.SelectedProcedure.Clone(), VM);
+                        ProcedureWindow procedureWindow = new ProcedureWindow(VM.ClonedProcedure, VM);
 
                         procedureWindow.ShowDialog();
                         if (procedureWindow.DialogResult == true)
                         {
                             VM.FillProcedures();
                             Procedures.Items.Refresh();
+                        }
+                        else
+                        {   //ha klónt adunk át, akkor törölhető lesz
+                            VM.Patientmanager.RemoveProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
                         }
 
                     }

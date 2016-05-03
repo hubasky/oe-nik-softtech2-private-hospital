@@ -51,9 +51,14 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             Patients = new List<Patient>();
 
             Patients = AppManager.ApplicationDb.Patients.Select(m => m).ToList();
-            
+
         }
 
+        public void RemovePatient(Patient patient)
+        {
+            if (Patients.Contains(patient)) Patients.Remove(patient);
+
+        }
 
         public void NewPatient(Patient patient)
         {
@@ -73,89 +78,93 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             AppManager.ApplicationDb.SaveChanges();
         }
 
-        /// 
-        /// <param name="patient"></param>
+
+        public void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB)
+        {
+            if (procedureFromUI != null && procedureToDB != null)
+            {
+                procedureToDB.CreatedTimestamp = procedureFromUI.CreatedTimestamp;
+                procedureToDB.State = procedureFromUI.State;
+                procedureToDB.InventoryUsage = procedureFromUI.InventoryUsage;
+                procedureToDB.Price = procedureFromUI.Price;
+                procedureToDB.Name = procedureFromUI.Name;
+                procedureToDB.Attachments = procedureFromUI.Attachments;
+                procedureToDB.Anamnesis = procedureFromUI.Anamnesis;
+                procedureToDB.Diagnosis = procedureFromUI.Diagnosis;
+                procedureToDB.Duration = procedureFromUI.Duration;
+                procedureToDB.ProcedureType = procedureFromUI.ProcedureType;
+            }
+            else
+            {
+                procedureToDB = procedureFromUI;
+            }
+
+            AppManager.ApplicationDb.SaveChanges();
+        }
+
+        public void UpdateMedicalRecord(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB)
+        {
+            if (medicalRecordFromUI != null && medicalRecordToDB != null)
+            {
+                medicalRecordToDB.CreatedTimestamp = medicalRecordToDB.CreatedTimestamp;
+                medicalRecordToDB.State = medicalRecordToDB.State;
+                medicalRecordToDB.ShortDescription = medicalRecordToDB.ShortDescription;
+                medicalRecordToDB.Procedures = medicalRecordToDB.Procedures;
+                medicalRecordToDB.LastModifiedTimestamp = medicalRecordToDB.LastModifiedTimestamp;
+            }
+        }
+
+
         public void UpdatePatient(Patient patientFromUI, Patient patientToDB)
         {
-            if (patientFromUI != null && patientToDB != null && patientToDB.Ssn.Equals(patientFromUI.Ssn))
+            if (patientFromUI != null && patientToDB != null)
             {
                 patientToDB.Phone = patientFromUI.Phone;
                 patientToDB.Name = patientFromUI.Name;
                 patientToDB.DateOfBirth = patientFromUI.DateOfBirth;
-                //patientToDB.Ssn = patientFromUI.Ssn;
+                patientToDB.Ssn = patientFromUI.Ssn;
                 patientToDB.Address = patientFromUI.Address;
                 patientToDB.Gender = patientFromUI.Gender;
                 patientToDB.UpdateMedicalHistory(patientFromUI.MedicalHistory);
-                AppManager.ApplicationDb.SaveChanges();
+
+            }
+            else
+            {
+                patientToDB = patientFromUI;
             }
 
-            //if (!(patientFromUI.Equals(patientToDB)))
-            //{
-            //    //egyszerű property-k felülírása
-            //    patientToDB.Phone = patientFromUI.Phone;
-            //    patientToDB.Name = patientFromUI.Name;
-            //    patientToDB.DateOfBirth = patientFromUI.DateOfBirth;
-            //    patientToDB.Ssn = patientFromUI.Ssn;
-            //    patientToDB.Gender = patientFromUI.Gender;
+            AppManager.ApplicationDb.SaveChanges();
 
-            //    //csak a szükséges medicalrecordokat, illetve a szükséges procedure-öket update-eli
-            //    patientToDB.UpdateMedicalHistory(patientFromUI.MedicalHistory);
-
-            //}
         }
 
-        /// 
-        /// <param name="patient"></param>
+
+        public void RemoveMedicalRecord(Patient patient, MedicalRecord medicalRecord)
+        {   //ha benne van, akkor szedjük ki!
+            if (patient.MedicalHistory.Contains(medicalRecord))
+                patient.MedicalHistory.Remove(medicalRecord);
+            AppManager.ApplicationDb.SaveChanges();
+        }
+
         public MedicalRecord NewMedicalRecord(Patient patient, MedicalRecord medicalRecord)
         {
-            //MedicalRecord mr = new MedicalRecord();
             patient.MedicalHistory.Add(medicalRecord);
-
+            AppManager.ApplicationDb.SaveChanges();
             return medicalRecord;
         }
 
-        /// 
-        /// <param name="patient"></param>
         public Procedure NewProcedure(MedicalRecord medicalrecord, Procedure procedure)
         {
-
             medicalrecord.NewProcedure(procedure);
-
+            AppManager.ApplicationDb.SaveChanges();
             return procedure;
 
         }
 
-        /// 
-        /// <param name="procedure"></param>
-        //public void CloseProcedure(Procedure procedure)
-        //{
-        //    procedure.IsClosed();
-        //}
-
-
-        /// 
-        ///// <param name="medicalRecord"></param>
-        //public void CloseMedicalRecord(MedicalRecord medicalRecord)
-        //{
-        //    medicalRecord.IsClosed();
-        //}
-
-
-        ///// 
-        ///// <param name="patient"></param>
-        //public void UpdateMedicalRecord(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB)
-        //{
-        //    medicalRecordToDB.UpdateMedicalRecord(medicalRecordFromUI);
-
-        //}
-
-        ///// 
-        ///// <param name="procedure"></param>
-        //public void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB)
-        //{
-        //    procedureToDB.UpdateProcedure(procedureFromUI);
-        //}
-
+        public void RemoveProcedure(MedicalRecord medicalrecord, Procedure procedure)
+        {
+            medicalrecord.RemoveProcedure(procedure);
+            AppManager.ApplicationDb.SaveChanges();
+        }
 
     }//end PatientManager
 

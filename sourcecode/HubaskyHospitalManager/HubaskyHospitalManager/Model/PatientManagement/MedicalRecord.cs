@@ -22,12 +22,9 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         //egy medical history van, azon belül több medical record, azon belül több procedure
         [Key]
         public int Id { get; set; }
-        public string CreatedTimestamp { get; private set; }
-        public string LastModifiedTimestamp { get; private set; }
+        public string CreatedTimestamp { get; set; }
+        public string LastModifiedTimestamp { get; set; }
 
-        //set esetén ezeken keresztül frissül a LastModifiedTimestamp!
-        private string anamnesis;
-        private string diagnosis;
         private State state;
         private List<Procedure> procedures;
 
@@ -39,22 +36,10 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             set { shortDescription = value; IsUpdated(); }
         }
 
-        public string Anamnesis
-        {
-            get { return anamnesis; }
-            set { anamnesis = value; IsUpdated(); }
-        }
-
-        public string Diagnosis
-        {
-            get { return diagnosis; }
-            set { diagnosis = value; IsUpdated(); }
-        }
-
         public State State
         {
             get { return state; }
-            set { state = value; IsUpdated(); }
+            set { state = value; IsClosed(); IsUpdated(); }
         }
 
         public virtual List<Procedure> Procedures
@@ -68,7 +53,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             //Guid g = new Guid();
             this.CreatedTimestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             this.State = State.New;
-            this.Diagnosis = "";
+            //this.Diagnosis = "";
             this.ShortDescription = "";
             this.Procedures = new List<Procedure>();
             //this.Procedures.Add(new Procedure()); // <- ez nem jó ötlet itt [SB]
@@ -77,12 +62,11 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             this.LastModifiedTimestamp = this.CreatedTimestamp;
         }
 
-        public MedicalRecord(string createdTimestamp, State state, string diagnosis, string shortDescription, List<Procedure> procedures, string lastModifiedTimestamp)
+        public MedicalRecord(string createdTimestamp, State state, string shortDescription, List<Procedure> procedures, string lastModifiedTimestamp)
         {
 
             this.CreatedTimestamp = createdTimestamp;
             this.State = state;
-            this.Diagnosis = diagnosis;
             this.ShortDescription = shortDescription;
             this.Procedures = procedures;
 
@@ -93,13 +77,12 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public void NewProcedure(Procedure procedure)
         {
             Procedures.Add(procedure);
-
         }
 
-        //public void CloseProcedure(Procedure procedure) //nem kell vlaószínűleg
-        //{
-        //    procedure.IsClosed();//nem kell vlaószínűleg
-        //}
+        public void RemoveProcedure(Procedure procedure)
+        {
+            if (Procedures.Contains(procedure)) Procedures.Remove(procedure);
+        }
 
         public void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB)
         {
@@ -115,8 +98,8 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         {
             //itt nem érdemes hasonlítani, 0 erőforrás ezeket felülcsapni
             this.CreatedTimestamp = newMedicalRecord.CreatedTimestamp;
-            this.Anamnesis = newMedicalRecord.Anamnesis;
-            this.Diagnosis = newMedicalRecord.Anamnesis;
+            //this.Anamnesis = newMedicalRecord.Anamnesis;
+            //this.Diagnosis = newMedicalRecord.Anamnesis;
             this.State = newMedicalRecord.State;
             this.ShortDescription = newMedicalRecord.ShortDescription;
 
@@ -147,19 +130,19 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         public void IsClosed()
         {
-            this.State = State.Closed;
-            //itt még végig kell hupákolni a procedure-öket is!
-            foreach (Procedure proc in Procedures)
-                proc.State = State.Closed;
+            if (this.State == State.Closed)
+            {
+                foreach (Procedure proc in Procedures)
+                    proc.State = State.Closed;
+            }
         }
 
 
-        public object Clone()
+        public Object Clone()
         {
-            MedicalRecord clone = new MedicalRecord(
+            Object clone = new MedicalRecord(
                 this.CreatedTimestamp,
                 this.State,
-                this.Diagnosis,
                 this.ShortDescription,
                 this.Procedures,
                 this.LastModifiedTimestamp);

@@ -21,11 +21,12 @@ namespace HubaskyHospitalManager.Model.PatientManagement
     public class Procedure
     {
         [Key]
-        public string CreatedTimestamp { get; private set; }
+        public int Id { get; set; }
+        public string CreatedTimestamp { get; set; }
         public string LastModifiedTimestamp { get; set; }
-        
+
         //újak
-        public string Anamnesis{ get; set; }
+        public string Anamnesis { get; set; }
         public string Diagnosis { get; set; }
         public int Duration { get; set; }
         private List<string> attachments;
@@ -113,7 +114,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
                 isUpdated();
             }
         }
-       
+
         public Procedure()
         {
             this.CreatedTimestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -131,7 +132,8 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
 
         public Procedure(string createdTimestamp, State state, List<InventoryItem> inventoryUsage,
-            int price, string name, List<string> attachments)
+            int price, string name, List<string> attachments, string anamnesis, string diagnosis,
+            int duration, ProcedureType type)
         {
             this.CreatedTimestamp = createdTimestamp;
             this.State = state;
@@ -184,15 +186,19 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         }
 
 
-        internal Procedure Clone()
-        { 
-            Procedure clone = new Procedure(
+        internal Object Clone()
+        {
+            Object clone = new Procedure(
                 CreatedTimestamp,
                 State,
                 InventoryUsage,
                 Price,
                 Name,
-                Attachments);
+                Attachments, 
+                Anamnesis, 
+                Diagnosis, 
+                Duration, 
+                ProcedureType);
 
             return clone;
         }
