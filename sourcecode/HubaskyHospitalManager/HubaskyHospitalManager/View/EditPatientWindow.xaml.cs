@@ -114,6 +114,11 @@ namespace HubaskyHospitalManager.View
             //}
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
         //private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         //{
         //    e.Handled = char.IsLetter(e.Text[0]) || e.Text[0] == ' '; // e.Text[0] != ' '

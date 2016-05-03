@@ -49,14 +49,15 @@
         <Label Content="TAJ szám" HorizontalAlignment="Left" Margin="328,102,0,0" VerticalAlignment="Top" Width="139"/>
 
         <!--ADATLAP-->
-        <Label x:Name="tbName" Content="{Binding Path=SelectedPatient.Name, Mode=OneWay}" HorizontalAlignment="Left" Height="26" Margin="505,71,0,0" VerticalAlignment="Top" Width="210" />
-        <Label Content="{Binding Path=SelectedPatient.Ssn}" HorizontalAlignment="Left" Height="26" Margin="505,103,0,0" VerticalAlignment="Top" Width="210"/>
+        <Label x:Name="Label_Name" Content="{Binding SelectedPatient.Name}" HorizontalAlignment="Left" Height="26" Margin="505,71,0,0" VerticalAlignment="Top" Width="210" />
+        <Label x:Name="Label_Ssn" Content="{Binding SelectedPatient.Ssn}" HorizontalAlignment="Left" Height="26" Margin="505,103,0,0" VerticalAlignment="Top" Width="210"/>
+
         <Label Content="Születési dátum" HorizontalAlignment="Left" Margin="328,133,0,0" VerticalAlignment="Top" Width="139"/>
-        <Label Content="{Binding Path=SelectedPatient.DateOfBirth}" HorizontalAlignment="Left" Height="26" Margin="505,133,0,0" VerticalAlignment="Top" Width="210" />
+        <Label x:Name="Label_DateOfBirth" Content="{Binding SelectedPatient.DateOfBirth}" HorizontalAlignment="Left" Height="26" Margin="505,133,0,0" VerticalAlignment="Top" Width="210" />
         <Label Content="Lakcím" HorizontalAlignment="Left" Margin="328,164,0,0" VerticalAlignment="Top" Width="139"/>
-        <Label Content="{Binding Path=SelectedPatient.Address}" HorizontalAlignment="Left" Height="26" Margin="505,164,0,0" VerticalAlignment="Top" Width="210"/>
+        <Label x:Name="Label_Address" Content="{Binding SelectedPatient.Address}" HorizontalAlignment="Left" Height="26" Margin="505,164,0,0" VerticalAlignment="Top" Width="210"/>
         <Label Content="Telefonszám" HorizontalAlignment="Left" Margin="328,195,0,0" VerticalAlignment="Top" Width="139"/>
-        <Label Content="{Binding Path=SelectedPatient.Phone}" HorizontalAlignment="Left" Height="26" Margin="505,195,0,0" VerticalAlignment="Top" Width="210"/>
+        <Label x:Name="Label_Phone" Content="{Binding SelectedPatient.Phone}" HorizontalAlignment="Left" Height="26" Margin="505,195,0,0" VerticalAlignment="Top" Width="210"/>
 
         <!--KEZELÉS-->
         <Label Content="A kezeléshez tartozó eljárások" HorizontalAlignment="Left" Margin="329,232,0,0" VerticalAlignment="Top" Width="209" FontSize="15"/>
