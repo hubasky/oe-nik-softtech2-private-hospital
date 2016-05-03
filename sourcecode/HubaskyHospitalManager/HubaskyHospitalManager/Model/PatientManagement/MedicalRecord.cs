@@ -100,7 +100,10 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         public void NewProcedure(Procedure procedure)
         {
-            this.Procedures.Add(procedure);
+            if (!(Procedures.Contains(procedure)))
+            {
+                this.Procedures.Add(procedure);
+            }
         }
 
         public void CloseProcedure(Procedure procedure)

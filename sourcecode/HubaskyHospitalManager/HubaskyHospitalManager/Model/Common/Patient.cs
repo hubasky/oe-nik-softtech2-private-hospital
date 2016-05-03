@@ -20,8 +20,6 @@ namespace HubaskyHospitalManager.Model.Common
         public Patient()
         {
             this.MedicalHistory = new List<MedicalRecord>();
-            this.Name = "Írja be a beteg nevét!";
-
         }
 
 

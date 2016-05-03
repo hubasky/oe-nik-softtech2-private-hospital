@@ -24,7 +24,7 @@
     <Grid HorizontalAlignment="Left" Height="640" Margin="0,25,0,0" VerticalAlignment="Top" Width="1272" Background="White">
         <ListBox x:Name="lbPatient" HorizontalAlignment="Left" Height="412" Margin="36,128,0,0" VerticalAlignment="Top" Width="265"
                  ItemsSource="{Binding Patients}"
-                 SelectedItem="{Binding SelectedPatient}">
+                 SelectedItem="{Binding SelectedPatient}" MouseDoubleClick="lbPatient_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -103,7 +103,7 @@
         <Label Content="{Binding SelectedPatient.SelectedMedicalRecord.ModelMedicalRecord.LastModifiedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="1044,433,0,0" VerticalAlignment="Top" Width="125"/>
         <ComboBox HorizontalAlignment="Left" Height="26" Margin="942,401,0,0" VerticalAlignment="Top" Width="226"
                   ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
-                  SelectedItem="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.ModelProcedure.State}"
+                  SelectedItem="{Binding SelectedPatient.SelectedMedicalRecord.ModelMedicalRecord.State}"
                   />
         <!--Visibility="{Binding ElementName=Procedures, Path=SelectedValue, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter=ValueForEnabled}"-->
         <Label Content="Diagnosis" HorizontalAlignment="Left" Margin="759,305,0,0" VerticalAlignment="Top" Width="139"/>

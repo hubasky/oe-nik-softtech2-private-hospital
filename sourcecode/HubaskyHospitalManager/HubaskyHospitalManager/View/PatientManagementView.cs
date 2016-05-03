@@ -1,5 +1,7 @@
 ﻿using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.PatientManagement;
+using HubaskyHospitalManager.Model.InventoryManagement;
+using HubaskyHospitalManager.Model.HospitalManagement;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,37 +23,20 @@ namespace HubaskyHospitalManager.View
         public PatientView PreviouslySelectedPatient { get; set; }
         
         private string findPatientBySSN;
-        public string FindPatientBySSN
-        {
-            get { return findPatientBySSN; }
-            set
-            {   
-                findPatientBySSN = value;
-                FillPatients();
-                OnPropertyChanged();
-            }
-        }
         private string findPatientByName;
-        public string FindPatientByName
-        {
-            get { return findPatientByName; }
-            set
-            {   
-                //null értéket ne konvertáljon kisbetűssé, mert megfekszi a gyomrát
-                findPatientByName = value == null ? null : value.ToLower();
-                FillPatients();
-                OnPropertyChanged();
-            }
-        }
+
+        private InventoryManager inventoryManager;
+        private HospitalManager hospitalManager;
 
 
 
         //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        
         public PatientManagementView(PatientManager patientmanager)
         {
             Patientmanager = patientmanager;
-
+            HospitalManager = patientmanager.AppManager.HospitalManagement;
+            InventoryManager = patientmanager.AppManager.InventoryManagement;
 
             FillPatients();
         }
@@ -128,21 +113,43 @@ namespace HubaskyHospitalManager.View
 
             }
 
-
-
-            ////DEPRECATED ez működik...
-            //ObservableCollection<Patient> patList = new ObservableCollection<Patient>();
-            //for (int i = 0; i < 80; i++)
-            //{
-            //    patList.Add(new Patient("Teszt" + i, "0660" + i, "1980.XX." + i,
-            //        9989110 + i, i + ". utca " + 10 * i, null, (Gender)(i % 2)));
-            //}
-            //Patients = patList;
-
-
         }
 
+        
 
+        public HospitalManager HospitalManager
+        {
+            get { return hospitalManager; }
+            set { hospitalManager = value; }
+        }
+
+        public InventoryManager InventoryManager
+        {
+            get { return inventoryManager; }
+            set { inventoryManager = value; }
+        }
+
+        public string FindPatientBySSN
+        {
+            get { return findPatientBySSN; }
+            set
+            {
+                findPatientBySSN = value;
+                FillPatients();
+                OnPropertyChanged();
+            }
+        }
+        public string FindPatientByName
+        {
+            get { return findPatientByName; }
+            set
+            {
+                //null értéket ne konvertáljon kisbetűssé, mert megfekszi a gyomrát
+                findPatientByName = value == null ? null : value.ToLower();
+                FillPatients();
+                OnPropertyChanged();
+            }
+        }
 
         public PatientManager Patientmanager
         {

@@ -99,7 +99,8 @@ namespace HubaskyHospitalManager.View
             {
                 UpdateLoggedInUser();
                 appMgr.PatientManagement = new PatientManager(appMgr);
-                appMgr.InventoryManagement = new InventoryManager(appMgr); //ez később kelleni fog
+                appMgr.InventoryManagement = new InventoryManager(appMgr);
+                appMgr.HospitalManagement = new HospitalManager(appMgr);
                 PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
                 PatientManagementView.ShowDialog();
                 appMgr.Logout();

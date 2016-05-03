@@ -150,14 +150,22 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         //+    //void CloseMedicalRecord(MedicalRecord medicalRecord);
         //+    //void UpdateProcedure(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB);
         //+    //void UpdateMedicalRecord(Procedure procedureFromUI, Procedure procedureToDB);
-        
 
-        public Patient NewPatient()
+
+        public Patient NewPatient(Patient patient)
         {
-            Patient newPatient = new Patient();
-            patients.Add(newPatient);
+            if (patient == null)
+            {
+                patient = new Patient();
+            }
 
-            return newPatient;
+            if (!(Patients.Contains(patient)))
+            {
+                patients.Add(patient);
+            }
+
+
+            return patient;
         }
 
         /// 
@@ -191,31 +199,13 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         /// 
         /// <param name="patient"></param>
-        public Procedure NewProcedure(Patient patient)
+        public Procedure NewProcedure(MedicalRecord medicalrecord, Procedure procedure)
         {
-            int idx = 0;
-            while (!(patient.MedicalHistory[idx].State == State.Closed))
-            {
-                idx++;
-            }
 
-            //beteszi a még nyitott medicalhistory-ba a procedure-t
-            if (idx < patient.MedicalHistory.Count)
-            {
-                Procedure newProc = new Procedure();
-                patient.MedicalHistory[idx].NewProcedure(newProc);
-                return newProc;
-            }
-            //ha mindegyik medicalhistory már Closed...
-            else
-            {
-                //a konstruktorban automatikusan létrehoz egy új procedure-t is!
-                NewMedicalRecord(patient);
+            medicalrecord.NewProcedure(procedure);
 
-                //emiatt kell ez a sor, Demetert meg elmehet a francba, de még így sem teljesen kóser...
-                return patient.ReturnFirstProcedureOfNewMedicalRecord();
-                //patient szinten kéne implementálni, ott meg nem üzembiztos
-            }
+            return procedure;
+
         }
 
         /// 

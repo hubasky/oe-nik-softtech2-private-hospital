@@ -18,7 +18,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 {
     public interface IPatientManagement
     {
-        Patient NewPatient();
+        Patient NewPatient(Patient patient);
 
         /// 
         /// <param name="patient"></param>
@@ -30,7 +30,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         /// 
         /// <param name="patient"></param>
-        Procedure NewProcedure(Patient patient);
+        Procedure NewProcedure(MedicalRecord medicalrecord, Procedure procedure);
 
         /// 
         /// <param name="procedure"></param>

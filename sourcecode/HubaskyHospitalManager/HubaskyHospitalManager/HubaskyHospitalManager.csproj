@@ -74,6 +74,9 @@
     <Compile Include="Model\HospitalManagement\IManageableProcedures.cs" />
     <Compile Include="Model\PatientManagement\ProcedureType.cs" />
     <Compile Include="View\Converters.cs" />
+    <Compile Include="View\EditPatientWindow.xaml.cs">
+      <DependentUpon>EditPatientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientView.cs" />
     <Compile Include="View\ProcedureView.cs" />
     <Compile Include="View\PatientManagementView.cs" />
@@ -115,6 +118,10 @@
       <DependentUpon>PatientManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HospitalManagerView\UnitView.cs" />
+    <Page Include="View\EditPatientWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\HospitalManagerView\EditProceduresWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

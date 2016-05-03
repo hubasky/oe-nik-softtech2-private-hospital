@@ -7,27 +7,56 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace HubaskyHospitalManager.View
 {
-    public class ProcedureView
+    public class ProcedureView : INotifyPropertyChanged
     {
-        public virtual ObservableCollection<InventoryItem> InventoryUsage { get; set; } //nem kell view?
-        public InventoryItem SelectedInventoryItem { get; set; } //nem kell view?
+        private ObservableCollection<InventoryItem> inventoryUsage;
+
+        public virtual ObservableCollection<InventoryItem> InventoryUsage
+        {
+            get { return inventoryUsage; }
+            set { inventoryUsage = value; OnPropertyChanged(); }
+        }
+
+        private InventoryItem selectedInventoryItem;
+
+        public InventoryItem SelectedInventoryItem
+        {
+            get { return selectedInventoryItem; }
+            set { selectedInventoryItem = value; OnPropertyChanged(); }
+        }
+
+
+
+        public virtual ObservableCollection<String> Attachments { get; set; } //nem kell view?
+        public string SelectedAttachment { get; set; }
 
         //modell eredeti procedure
-        public Procedure ModelProcedure { get; set; }
+        private Procedure modelProcedure;
+        public Procedure ModelProcedure
+        {
+            get { return modelProcedure; }
+            set { modelProcedure = value; OnPropertyChanged(); }
+        }
 
         public ProcedureView(Procedure proc)
         {
             ModelProcedure = proc;
-            InventoryUsage = new ObservableCollection<InventoryItem>();
-
-            foreach (InventoryItem invItem in proc.InventoryUsage) //nem kell view?
-            {
-                InventoryUsage.Add(invItem);
-            }
+            InventoryUsage = new ObservableCollection<InventoryItem>(ModelProcedure.InventoryUsage);
+            Attachments = new ObservableCollection<string>(ModelProcedure.Attachments);
             
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(name));
+
         }
     }
 }

@@ -1,35 +1,57 @@
 ﻿<Window x:Class="HubaskyHospitalManager.View.ProcedureWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Új eljárás"  Height="500" Width="750"       
+        xmlns:local ="clr-namespace:HubaskyHospitalManager.View"
+        xmlns:l ="clr-namespace:HubaskyHospitalManager.Model.Common"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Új eljárás"  Height="530" Width="750"       
         WindowStartupLocation="CenterScreen"        
         Icon="pack://application:,,,/Images/hubasky_icon.png">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="l:State"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
     <Grid>
-        <Label Content="Eljárást végző orvos neve" HorizontalAlignment="Left" Margin="17,114,0,0" VerticalAlignment="Top" Width="188"/>
-        <Label Content="Eljárás napja" HorizontalAlignment="Left" Margin="17,145,0,0" VerticalAlignment="Top" Width="188"/>
-        <Label Content="Beavatkozás időtartama" HorizontalAlignment="Left" Margin="17,207,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="Eljárást végző orvos neve" HorizontalAlignment="Left" Margin="17,144,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="Eljárás napja" HorizontalAlignment="Left" Margin="17,175,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="Beavatkozás időtartama" HorizontalAlignment="Left" Margin="17,237,0,0" VerticalAlignment="Top" Width="188"/>
         <Label Content="{Binding SelectedPatient.ModelPatient.Name}" HorizontalAlignment="Left" Margin="210,22,0,0" VerticalAlignment="Top" Height="25" Width="166"/>
         <!--"{Binding SelectedPatient.ModelPatient.Name}"-->
-        <Label Content="{Binding SelectedPatient.ModelPatient.Name}" HorizontalAlignment="Left" Margin="210,52,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
+        <Label Content="{Binding SelectedPatient.ModelPatient.Ssn}" HorizontalAlignment="Left" Margin="210,52,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
         <Label Content="Páciens neve" HorizontalAlignment="Left" Margin="17,21,0,0" VerticalAlignment="Top" Width="188"/>
         <Label Content="TAJ száma" HorizontalAlignment="Left" Margin="17,52,0,0" VerticalAlignment="Top" Width="188"/>
-        <TextBox Text="Dr. Gyógyító György" HorizontalAlignment="Left" Margin="210,114,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
-        <TextBox Text="10:26" HorizontalAlignment="Left" Margin="210,175,0,0" VerticalAlignment="Top" Width="166" Height="25"/>
-        <Label Content="23 perc" HorizontalAlignment="Left" Margin="210,207,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="Dr. Gyógyító György" HorizontalAlignment="Left" Margin="210,144,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
+        <TextBox Text="10:26" HorizontalAlignment="Left" Margin="210,205,0,0" VerticalAlignment="Top" Width="166" Height="25"/>
+        <Label Content="23 perc" HorizontalAlignment="Left" Margin="210,237,0,0" VerticalAlignment="Top"/>
         <Label Content="EKG vizsgálat" HorizontalAlignment="Left" Margin="210,83,0,0" VerticalAlignment="Top"/>
         <Label Content="Eljárás megnevezése" HorizontalAlignment="Left" Margin="17,83,0,0" VerticalAlignment="Top" Width="188"/>
-        <ListBox HorizontalAlignment="Left" Height="147" Margin="454,53,0,0" VerticalAlignment="Top" Width="256">
-            <ListBoxItem>160226-1032-756324851-ekg-alap.jpg</ListBoxItem>
-            <ListBoxItem>160226-1034-756324851-ekg-alap.jpg</ListBoxItem>
+        <ListBox HorizontalAlignment="Left" Height="147" Margin="454,53,0,0" VerticalAlignment="Top" Width="256"                 ItemsSource="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.Attachments}"
+                 SelectedItem="{Binding SelectedPatient}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Label Content="{Binding ModelPatient.Name}" HorizontalAlignment="Left" Margin="2,0,0,0" Height="25" FontSize="10" VerticalContentAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                    <!--<Label></Label>-->
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
         </ListBox>
         <Label Content="Csatolmányok" HorizontalAlignment="Left" Margin="454,21,0,0" VerticalAlignment="Top"/>
         <Button x:Name="Btn_NewAttachmentMod" Content="Új csatolmány hozzáadása" HorizontalAlignment="Left" Margin="454,210,0,0" VerticalAlignment="Top" Width="156" Click="Btn_NewAttachmentMod_Click"/>
-        <Label Content="Létrehozva:" HorizontalAlignment="Left" Margin="17,448,0,-0.333" Width="85"/>
-        <Label Content="dátum" HorizontalAlignment="Left" Margin="102,448,0,-0.333" Width="85"/>
-        <Label Content="Módosítva:" HorizontalAlignment="Left" Margin="183,448,0,-0.333" Width="85"/>
-        <Label Content="dátum" HorizontalAlignment="Left" Margin="268,448,0,-0.333" Width="85"/>
-        <Label Content="Eszközigény" HorizontalAlignment="Left" Margin="17,298,0,0" VerticalAlignment="Top" Width="138"/>
-        <ListView HorizontalAlignment="Left" Height="89" Margin="17,329,0,0" VerticalAlignment="Top" Width="359">
+        <Label Content="Létrehozva:" HorizontalAlignment="Left" Margin="19,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
+        <Label Content="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.ModelProcedure.CreatedTimestamp}" HorizontalAlignment="Left" Margin="95,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
+        <Label Content="Módosítva:" HorizontalAlignment="Left" Margin="185,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
+        <Label Content="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.ModelProcedure.LastModifiedTimestamp}" HorizontalAlignment="Left" Margin="261,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
+        <Label Content="Eszközigény" HorizontalAlignment="Left" Margin="17,303,0,0" VerticalAlignment="Top" Width="138"/>
+        <ListView HorizontalAlignment="Left" Height="89" Margin="17,329,0,0" VerticalAlignment="Top" Width="359" 
+                  ItemsSource="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.InventoryUsage}"
+                 SelectedItem="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.SelectedInventoryItem}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
@@ -37,10 +59,15 @@
             </ListView.View>
         </ListView>
         <Button x:Name="Btn_ItemUsageMod" Content="Új eszköz felvétele" HorizontalAlignment="Left" Margin="17,423,0,0" VerticalAlignment="Top" Click="Btn_ItemUsageMod_Click" Width="170"/>
-        <Label Content="Eljárás állapota" HorizontalAlignment="Left" Margin="17,239,0,0" VerticalAlignment="Top" Width="188"/>
-        <ComboBox HorizontalAlignment="Left" Height="27" Margin="210,238,0,0" VerticalAlignment="Top" Width="166"/>
-        <Label Content="Eljárás időpontja" HorizontalAlignment="Left" Margin="17,175,0,0" VerticalAlignment="Top" Width="188"/>
-        <DatePicker DisplayDate="2016.04.30" HorizontalAlignment="Left" Height="25" Margin="210,145,0,0" VerticalAlignment="Top" Width="166"/>
+        <Label Content="Eljárás állapota" HorizontalAlignment="Left" Margin="17,269,0,0" VerticalAlignment="Top" Width="188"/>
+        <ComboBox HorizontalAlignment="Left" Height="27" Margin="210,268,0,0" VerticalAlignment="Top" Width="166"
+                  ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
+                  SelectedItem="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure.ModelProcedure.State}"
+                  />
+        <Label Content="Eljárás időpontja" HorizontalAlignment="Left" Margin="17,205,0,0" VerticalAlignment="Top" Width="188"/>
+        <DatePicker DisplayDate="2016.04.30" HorizontalAlignment="Left" Height="25" Margin="210,175,0,0" VerticalAlignment="Top" Width="166"/>
         <Button Content="Mentés" Name="btnSave" HorizontalAlignment="Left" Height="57" Margin="589,384,0,0" VerticalAlignment="Top" Width="121" Click="btnSave_Click"/>
+        <Label Content="Eljárás típusa" HorizontalAlignment="Left" Margin="19,114,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="{Binding SelectedPatient.SelectedProcedure}" HorizontalAlignment="Left" Margin="210,114,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
     </Grid>
 </Window>

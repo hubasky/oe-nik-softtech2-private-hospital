@@ -35,7 +35,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         private Employee responsible;
         private List<InventoryItem> inventoryUsage;
 
-        private List<InventoryItem> deltaInventoryUsage;
+        
 
 
         public ProcedureType ProcedureType
@@ -109,53 +109,12 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             }
         }
 
-        public List<InventoryItem> UpdateInventoryUsage(List<InventoryItem> newItemsList)
-        {
-            //HOLNAP ALAPOSAN ÁTNÉZNI
-            //először visszaírjuk az adatbázisba a jelenleg felhasznált cuccokat, hiszen outdated lesz
-            foreach (InventoryItem item in InventoryUsage)
-            {
-                ChangeQuantity(item, item.Quantity); //ez hozzáad
-            }
+        //public List<InventoryItem> UpdateInventoryUsage(List<InventoryItem> newItemsList)
+        //{
+            
+        //    return NotImplementedException();
+        //}
 
-            bool okToGo = true;
-
-            int idx = 0;
-            while (okToGo)
-            {
-                //okToGo = checkquantity(InventoryUsage[idx].Id, InventoryUsage[idx].Quantity)
-                idx++;
-            }
-
-            //ha minden van raktáron, amit le akarunk kérni
-            if (okToGo)
-            {
-                foreach (InventoryItem item in newItemsList)
-                {
-                    ChangeQuantity(item, item.Quantity * (-1)); //ez levon
-                    inventoryUsage = newItemsList;
-                }
-            }
-            else
-            {
-                foreach (InventoryItem item in InventoryUsage)
-                {
-                    ChangeQuantity(item, item.Quantity * (-1)); //ez levon
-                }
-            }
-
-            return inventoryUsage;
-        }
-
-        public List<InventoryItem> DeltaInventoryUsage
-        {
-            get { return deltaInventoryUsage; }
-            set
-            {
-                deltaInventoryUsage = value;
-                isUpdated();
-            }
-        }
 
         public Procedure()
         {
@@ -163,7 +122,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
             this.State = State.New;
             this.InventoryUsage = new List<InventoryItem>();
-            this.DeltaInventoryUsage = new List<InventoryItem>();
+            
             this.Price = 0;
             this.Name = "Írja be az eljárás nevét";
             this.Attachments = new List<string>();
@@ -183,26 +142,22 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         /// 
         /// <param name="item"></param>
         /// <param name="decrement"></param>
-        public int ChangeQuantity(InventoryItem item, int decrement) //csökkentés negatív előjellel!
+        //public int ChangeQuantity(InventoryItem item, int decrement) //csökkentés negatív előjellel!
+        //{
+        //    //ENNEK KELLENE HOZZÁFÉRNIE AZ NVENTORY-HOZ, ÉS TÉNYLEGESEN MÓDOSÍTANI A SZÁMOKAT
+
+
+        //    throw new NotImplementedException();
+        //    //}
+
+        //}
+
+        public void UpdateInventoryUsage(ICollection<InventoryItem> usage)
         {
-            //ENNEK KELLENE HOZZÁFÉRNIE AZ NVENTORY-HOZ, ÉS TÉNYLEGESEN MÓDOSÍTANI A SZÁMOKAT
-
-
-            throw new NotImplementedException();
-            //}
-
+            InventoryUsage = new List<InventoryItem>(usage);
         }
 
-        /// 
-        /// <param name="name"></param>
-        public List<InventoryItem> SearchInventory(string name) //DEPRECATED
-        {
-            //ezt nem itt kell implementálni, hanem az inventory-nál!
 
-            //Artúr kódjával összehegeszteni!
-
-            return null;
-        }
 
         public override bool Equals(object obj)
         {
@@ -238,7 +193,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public void UpdateProcedure(Procedure newProcedure)
         {
             this.State = newProcedure.State;
-            this.DeltaInventoryUsage = newProcedure.DeltaInventoryUsage;
+            
             this.InventoryUsage = newProcedure.InventoryUsage;
             this.Price = newProcedure.Price;
             this.Name = newProcedure.Name;
