@@ -33,21 +33,21 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         /// <param name="patient"></param>
         Procedure NewProcedure(MedicalRecord medicalrecord, Procedure procedure);
 
-        /// 
-        /// <param name="procedure"></param>
-        void CloseProcedure(Procedure procedure);
+        ///// 
+        ///// <param name="procedure"></param>
+        //void CloseProcedure(Procedure procedure);
 
-        /// 
-        /// <param name="medicalRecord"></param>
-        void CloseMedicalRecord(MedicalRecord medicalRecord);
+        ///// 
+        ///// <param name="medicalRecord"></param>
+        //void CloseMedicalRecord(MedicalRecord medicalRecord);
 
-        /// 
-        /// <param name="procedure"></param>
-        void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB);
+        ///// 
+        ///// <param name="procedure"></param>
+        //void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB);
 
-        /// 
-        /// <param name="patient"></param>
-        void UpdateMedicalRecord(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB);
+        ///// 
+        ///// <param name="patient"></param>
+        //void UpdateMedicalRecord(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB);
     }//end IPatientManagement
 
 }//end namespace PatientManagement

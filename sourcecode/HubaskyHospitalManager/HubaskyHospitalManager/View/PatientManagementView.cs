@@ -43,7 +43,7 @@ namespace HubaskyHospitalManager.View
         public MedicalRecord SelectedMedicalRecord
         {
             get { return selectedMedicalRecord; }
-            set { selectedMedicalRecord = value; OnPropertyChanged(); }
+            set { selectedMedicalRecord = value; FillProcedures(); OnPropertyChanged(); }
         }
 
         private ObservableCollection<Procedure> procedures;
@@ -140,7 +140,7 @@ namespace HubaskyHospitalManager.View
            
         }
 
-        internal void FillProcedures()
+        public void FillProcedures()
         {
             ObservableCollection<Procedure> newProcedures = new ObservableCollection<Procedure>();
 

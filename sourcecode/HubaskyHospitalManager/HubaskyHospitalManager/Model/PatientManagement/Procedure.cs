@@ -23,19 +23,24 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         [Key]
         public string CreatedTimestamp { get; private set; }
         public string LastModifiedTimestamp { get; set; }
+        
+        //újak
+        public string Anamnesis{ get; set; }
+        public string Diagnosis { get; set; }
+        public int Duration { get; set; }
+        private List<string> attachments;
+        private ProcedureType procedureType;
+        private Employee responsible;
 
         //set esetén ezeken keresztül frissül a LastModifiedTimestamp!
-        private List<string> attachments;
+
+
+
+        private List<InventoryItem> inventoryUsage;
+
         private string name;
         private int price;
         private State state;
-        private ProcedureType procedureType;
-
-
-        private Employee responsible;
-        private List<InventoryItem> inventoryUsage;
-
-        
 
 
         public ProcedureType ProcedureType
@@ -43,7 +48,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             get { return procedureType; }
             set
             {
-                procedureType = value; 
+                procedureType = value;
                 isUpdated();
             }
         }
@@ -108,29 +113,33 @@ namespace HubaskyHospitalManager.Model.PatientManagement
                 isUpdated();
             }
         }
-
-        //public List<InventoryItem> UpdateInventoryUsage(List<InventoryItem> newItemsList)
-        //{
-            
-        //    return NotImplementedException();
-        //}
-
-
+       
         public Procedure()
         {
-            this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff_" + Guid.NewGuid());
+            this.CreatedTimestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             this.State = State.New;
             this.InventoryUsage = new List<InventoryItem>();
-            
+
             this.Price = 0;
-            this.Name = "Írja be az eljárás nevét";
+            this.Name = "";
             this.Attachments = new List<string>();
             //this.responsible //-> nincs inicializálva!
 
             this.LastModifiedTimestamp = this.CreatedTimestamp;
         }
 
+
+        public Procedure(string createdTimestamp, State state, List<InventoryItem> inventoryUsage,
+            int price, string name, List<string> attachments)
+        {
+            this.CreatedTimestamp = createdTimestamp;
+            this.State = state;
+            this.InventoryUsage = inventoryUsage;
+            this.Price = price;
+            this.Name = name;
+            this.Attachments = attachments;
+        }
 
         /// 
         /// <param name="attachment"></param>
@@ -139,61 +148,26 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             this.Attachments.Add(attachment);
         }
 
-        /// 
-        /// <param name="item"></param>
-        /// <param name="decrement"></param>
-        //public int ChangeQuantity(InventoryItem item, int decrement) //csökkentés negatív előjellel!
-        //{
-        //    //ENNEK KELLENE HOZZÁFÉRNIE AZ NVENTORY-HOZ, ÉS TÉNYLEGESEN MÓDOSÍTANI A SZÁMOKAT
-
-
-        //    throw new NotImplementedException();
-        //    //}
-
-        //}
-
         public void UpdateInventoryUsage(ICollection<InventoryItem> usage)
         {
             InventoryUsage = new List<InventoryItem>(usage);
         }
 
 
-
-        //public override bool Equals(object obj)
-        //{
-        //    var properProcedure = obj as Procedure;
-
-        //    if (properProcedure == null)
-        //    {
-        //        return false;
-        //    }
-
-        //    //ha minden set-hez be van írva az isUpdated(), akkor csak ezeket kell ellenőrizni!
-        //    if (!(this.CreatedTimestamp == properProcedure.CreatedTimestamp &&
-        //        this.LastModifiedTimestamp == properProcedure.LastModifiedTimestamp))
-        //    {
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
-
         private void isUpdated()
         {
-            //ide kell betenni a decreasequantityitem-et...
-            LastModifiedTimestamp = DateTime.Now.ToString(DateTime.Now.ToString("yyyyMMddHHmmssff_" + Guid.NewGuid()));
-
+            LastModifiedTimestamp = DateTime.Now.ToString(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
         }
 
-        public void IsClosed()
-        {
-            this.State = State.Closed;
-        }
+        //public void IsClosed()
+        //{
+        //    this.State = State.Closed;
+        //}
 
         public void UpdateProcedure(Procedure newProcedure)
         {
             this.State = newProcedure.State;
-            
+
             this.InventoryUsage = newProcedure.InventoryUsage;
             this.Price = newProcedure.Price;
             this.Name = newProcedure.Name;
@@ -201,12 +175,27 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
             this.Attachments = newProcedure.Attachments; //itt lehet, hogy majd update metódust kell írni...
 
+
             this.CreatedTimestamp = newProcedure.CreatedTimestamp;
+
 
             //utoljára, hogy a setterek ne csesszék szét!
             this.LastModifiedTimestamp = newProcedure.LastModifiedTimestamp;
         }
 
+
+        internal Procedure Clone()
+        { 
+            Procedure clone = new Procedure(
+                CreatedTimestamp,
+                State,
+                InventoryUsage,
+                Price,
+                Name,
+                Attachments);
+
+            return clone;
+        }
     }//end Procedure
 
 }//end namespace PatientManagement

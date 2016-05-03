@@ -54,16 +54,6 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             
         }
 
-        //interfész metódusok:
-        //+    //Patient NewPatient();
-        //+    //void UpdatePatient(Patient patientFromUI, Patient patientToDB);
-        //+    //MedicalRecord NewMedicalRecord(Patient patient);
-        //+    //Procedure NewProcedure(Patient patient);
-        //+    //void CloseProcedure(Procedure procedure);
-        //+    //void CloseMedicalRecord(MedicalRecord medicalRecord);
-        //+    //void UpdateProcedure(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB);
-        //+    //void UpdateMedicalRecord(Procedure procedureFromUI, Procedure procedureToDB);
-
 
         public void NewPatient(Patient patient)
         {
@@ -137,34 +127,34 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         /// 
         /// <param name="procedure"></param>
-        public void CloseProcedure(Procedure procedure)
-        {
-            procedure.IsClosed();
-        }
+        //public void CloseProcedure(Procedure procedure)
+        //{
+        //    procedure.IsClosed();
+        //}
 
 
         /// 
-        /// <param name="medicalRecord"></param>
-        public void CloseMedicalRecord(MedicalRecord medicalRecord)
-        {
-            medicalRecord.IsClosed();
-        }
+        ///// <param name="medicalRecord"></param>
+        //public void CloseMedicalRecord(MedicalRecord medicalRecord)
+        //{
+        //    medicalRecord.IsClosed();
+        //}
 
 
-        /// 
-        /// <param name="patient"></param>
-        public void UpdateMedicalRecord(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB)
-        {
-            medicalRecordToDB.UpdateMedicalRecord(medicalRecordFromUI);
+        ///// 
+        ///// <param name="patient"></param>
+        //public void UpdateMedicalRecord(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB)
+        //{
+        //    medicalRecordToDB.UpdateMedicalRecord(medicalRecordFromUI);
 
-        }
+        //}
 
-        /// 
-        /// <param name="procedure"></param>
-        public void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB)
-        {
-            procedureToDB.UpdateProcedure(procedureFromUI);
-        }
+        ///// 
+        ///// <param name="procedure"></param>
+        //public void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB)
+        //{
+        //    procedureToDB.UpdateProcedure(procedureFromUI);
+        //}
 
 
     }//end PatientManager

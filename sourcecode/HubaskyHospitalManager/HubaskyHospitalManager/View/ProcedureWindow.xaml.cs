@@ -34,7 +34,7 @@ namespace HubaskyHospitalManager.View
 
             VM = pmv;
             VM.SelectedProcedure = Procedure;
-            DataContext = pmv;
+            DataContext = VM;
         }
       
         public ProcedureWindow(Procedure procedure, PatientManagementView pmv)
@@ -43,7 +43,7 @@ namespace HubaskyHospitalManager.View
 
             VM = pmv;
             Procedure = procedure;
-            DataContext = pmv;
+            DataContext = VM;
         }
 
         private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)
@@ -55,7 +55,8 @@ namespace HubaskyHospitalManager.View
 
             if (invWindow.DialogResult == true)
             {
-                PView.ModelProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
+                //PView.ModelProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
+                VM.SelectedProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
             }
 
 

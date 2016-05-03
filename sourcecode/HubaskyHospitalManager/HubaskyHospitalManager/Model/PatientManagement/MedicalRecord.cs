@@ -17,7 +17,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
-    public class MedicalRecord: ICloneable
+    public class MedicalRecord : ICloneable
     {
         //egy medical history van, azon belül több medical record, azon belül több procedure
         [Key]
@@ -92,16 +92,14 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         public void NewProcedure(Procedure procedure)
         {
-            if (!(Procedures.Contains(procedure)))
-            {
-                this.Procedures.Add(procedure);
-            }
+            Procedures.Add(procedure);
+
         }
 
-        public void CloseProcedure(Procedure procedure) //nem kell vlaószínűleg
-        {
-            procedure.IsClosed();//nem kell vlaószínűleg
-        }
+        //public void CloseProcedure(Procedure procedure) //nem kell vlaószínűleg
+        //{
+        //    procedure.IsClosed();//nem kell vlaószínűleg
+        //}
 
         public void UpdateProcedure(Procedure procedureFromUI, Procedure procedureToDB)
         {
@@ -139,24 +137,6 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             return this.Procedures;
         }
 
-        //public override bool Equals(object obj)
-        //{
-        //    var properMedicalRecord = obj as MedicalRecord;
-
-        //    if (properMedicalRecord == null)
-        //    {
-        //        return false;
-        //    }
-
-        //    //ha minden set-hez be van írva az isUpdated(), akkor csak ezeket kell ellenőrizni!
-        //    if (!(this.CreatedTimestamp == properMedicalRecord.CreatedTimestamp &&
-        //        this.LastModifiedTimestamp == properMedicalRecord.LastModifiedTimestamp))
-        //    {
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
 
         private void IsUpdated()
         {
@@ -173,7 +153,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
                 proc.State = State.Closed;
         }
 
-        
+
         public object Clone()
         {
             MedicalRecord clone = new MedicalRecord(

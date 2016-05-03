@@ -21,6 +21,10 @@ namespace HubaskyHospitalManager.Data
         public DbSet<Ward> Wards { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<ProcedureType> ProcedureTypes { get; set; }
+        public DbSet<MedicalRecord> MedicalRecords { get; set; }
+        public DbSet<Procedure> Procedures { get; set; }
+        //public DbSet<InventoryItem> InventoryUsages { get; set; }
+        //public DbSet<File> Attachments { get; set; }
         
         // Inventory Table
         public DbSet<InventoryItem> Inventory { get; set; }

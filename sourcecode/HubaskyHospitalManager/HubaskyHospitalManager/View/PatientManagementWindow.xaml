@@ -62,18 +62,26 @@
         <!--KEZELÉS-->
         <Label Content="A kezeléshez tartozó eljárások" HorizontalAlignment="Left" Margin="329,232,0,0" VerticalAlignment="Top" Width="209" FontSize="15"/>
         <ListBox x:Name="Procedures" HorizontalAlignment="Left" Height="273" Margin="329,267,0,0" VerticalAlignment="Top" Width="386"
-                 ItemsSource="{Binding SelectedPatient.SelectedMedicalRecord.Procedures}"
-                 SelectedItem="{Binding SelectedPatient.SelectedMedicalRecord.SelectedProcedure}"
+                 ItemsSource="{Binding Procedures}"
+                 SelectedItem="{Binding SelectedProcedure}" MouseDoubleClick="Procedures_MouseDoubleClick"
                  >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <Label Content="{Binding ModelProcedure.CreatedTimestamp}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" x:Name="tst" Content="{Binding CreatedTimestamp, FallbackValue=null}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
+                        <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="Btn_NewProcedure" Content="Új eljárás felvétele" HorizontalAlignment="Left" Margin="328,545,0,0" VerticalAlignment="Top" Click="Btn_NewProcedure_Click" RenderTransformOrigin="0.533,-0.8" Width="120"
+        <Button x:Name="Btn_NewProcedure" Content="Új eljárás felvétele" HorizontalAlignment="Left" Margin="329,545,0,0" VerticalAlignment="Top" Click="Btn_NewProcedure_Click" RenderTransformOrigin="0.533,-0.8" Width="120"
                 IsEnabled="{Binding ElementName=MedicalHistory, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}"
                 />
 
@@ -96,7 +104,6 @@
                         </Grid.RowDefinitions>
                         <Label Grid.Column="0" Grid.Row="0" x:Name="tst" Content="{Binding CreatedTimestamp, FallbackValue=null}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
                         <Label Grid.Column="1" Grid.Row="0" Content="{Binding ShortDescription, FallbackValue=null}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
-                        <!--<ListBoxItem Content="Kezelés_4 rövid leírása +timestamp.todate()"/>-->
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
