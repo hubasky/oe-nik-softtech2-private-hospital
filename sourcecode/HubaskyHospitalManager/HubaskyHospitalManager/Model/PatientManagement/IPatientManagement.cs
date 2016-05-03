@@ -27,7 +27,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         /// 
         /// <param name="patient"></param>
-        MedicalRecord NewMedicalRecord(Patient patient);
+        MedicalRecord NewMedicalRecord(Patient patient, MedicalRecord medicalRecord);
 
         /// 
         /// <param name="patient"></param>

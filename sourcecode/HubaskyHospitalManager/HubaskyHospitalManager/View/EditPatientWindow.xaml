@@ -22,7 +22,7 @@
             <ColumnDefinition Width="61*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Név" Margin="10,18,10,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Text="{Binding Patient.Name}" Height="23" Margin="10,21,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox Text="{Binding Patient.Name, UpdateSourceTrigger=PropertyChanged}" Height="23" Margin="10,21,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Lakcím" Margin="10,46,10,0" VerticalAlignment="Top" Height="26"/>
         <TextBox Text="{Binding Patient.Address}" Height="23" Margin="10,49,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Telefonszám" Margin="10,74,10,0" VerticalAlignment="Top" Height="26"/>
@@ -33,8 +33,9 @@
         <ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
                   SelectedItem="{Binding Patient.Gender}" Height="23" Margin="10,133,10,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="TAJ" Margin="10,158,10,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox x:Name="TxtBox_Ssn" Text="{Binding Patient.Ssn}" Height="23" Margin="10,161,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="TxtBox_Ssn" Text="{Binding Patient.Ssn, UpdateSourceTrigger=PropertyChanged}" Height="23" Margin="10,161,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
 
-        <Button Content="OK" HorizontalAlignment="Right" Margin="0,204,10,0" Width="126" Click="Button_Click" Height="30" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button Content="OK" HorizontalAlignment="Right" Margin="0,204,10.333,0" Width="160" Click="Button_Click" Height="30" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button Content="Törlés (not impl)" HorizontalAlignment="Right" Margin="0,205,204.333,0" Width="160" Click="Button_Click" Height="30" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

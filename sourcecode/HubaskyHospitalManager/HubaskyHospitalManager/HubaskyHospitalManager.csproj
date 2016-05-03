@@ -111,6 +111,9 @@
     </Compile>
     <Compile Include="View\LoggedInUserConventer.cs" />
     <Compile Include="View\MedicalRecordView.cs" />
+    <Compile Include="View\MedicalRecordWindow.xaml.cs">
+      <DependentUpon>MedicalRecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ProcedureWindow.xaml.cs">
       <DependentUpon>ProcedureWindow.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\MedicalRecordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\ProcedureWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

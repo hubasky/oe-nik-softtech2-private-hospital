@@ -17,7 +17,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
-    public class MedicalRecord
+    public class MedicalRecord: ICloneable
     {
         //egy medical history van, azon belül több medical record, azon belül több procedure
         [Key]
@@ -66,15 +66,28 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public MedicalRecord()
         {
             //Guid g = new Guid();
-            this.CreatedTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssff_" + Guid.NewGuid());
+            this.CreatedTimestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             this.State = State.New;
             this.Diagnosis = "";
-            this.ShortDescription = "Írjon be a kezelés rövid leírását";
+            this.ShortDescription = "";
             this.Procedures = new List<Procedure>();
             //this.Procedures.Add(new Procedure()); // <- ez nem jó ötlet itt [SB]
 
             //setterek miatt a végén!
             this.LastModifiedTimestamp = this.CreatedTimestamp;
+        }
+
+        public MedicalRecord(string createdTimestamp, State state, string diagnosis, string shortDescription, List<Procedure> procedures, string lastModifiedTimestamp)
+        {
+
+            this.CreatedTimestamp = createdTimestamp;
+            this.State = state;
+            this.Diagnosis = diagnosis;
+            this.ShortDescription = shortDescription;
+            this.Procedures = procedures;
+
+            //setterek miatt a végén!
+            this.LastModifiedTimestamp = lastModifiedTimestamp;
         }
 
         public void NewProcedure(Procedure procedure)
@@ -148,7 +161,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         private void IsUpdated()
         {
             //Guid g = new Guid();
-            LastModifiedTimestamp = DateTime.Now.ToString(DateTime.Now.ToString("yyyyMMddHHmmssff_" + Guid.NewGuid()));
+            LastModifiedTimestamp = DateTime.Now.ToString(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
         }
 
 
@@ -160,6 +173,19 @@ namespace HubaskyHospitalManager.Model.PatientManagement
                 proc.State = State.Closed;
         }
 
+        
+        public object Clone()
+        {
+            MedicalRecord clone = new MedicalRecord(
+                this.CreatedTimestamp,
+                this.State,
+                this.Diagnosis,
+                this.ShortDescription,
+                this.Procedures,
+                this.LastModifiedTimestamp);
+
+            return clone;
+        }
     }//end MedicalRecord
 
 }//end namespace PatientManagement

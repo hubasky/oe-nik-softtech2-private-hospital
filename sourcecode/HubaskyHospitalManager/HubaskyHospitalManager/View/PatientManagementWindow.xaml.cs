@@ -34,9 +34,9 @@ namespace HubaskyHospitalManager.View
             VM = new PatientManagementView(patientmanager);
 
             DataContext = VM;
+            
         }
-
-
+       
         private void Btn_NewProcedure_Click(object sender, RoutedEventArgs e)
         {
 
@@ -54,11 +54,6 @@ namespace HubaskyHospitalManager.View
 
 
 
-        private void Btn_NewMedicalRecord_Click(object sender, RoutedEventArgs e)
-        {
-            MedicalRecord mr = new MedicalRecord();
-            // VM.SelectedPatient.MedicalHistory.Add(new MedicalRecordView(mr));
-        }
 
         private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)
         {
@@ -87,9 +82,12 @@ namespace HubaskyHospitalManager.View
                 VM.Patientmanager.NewPatient(ptWindow.Patient);
                 VM.FillPatients();
                 lbPatient.Items.Refresh();
+                
             }
 
         }
+
+
         private void lbPatient_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
@@ -106,7 +104,7 @@ namespace HubaskyHospitalManager.View
 
                         ptWindow.ShowDialog();
                         if (ptWindow.DialogResult == true)
-                        {
+                        {//itt a view nem értesül a változásról, triggerelni kéne
                             VM.Patientmanager.UpdatePatient(ptWindow.Patient, VM.SelectedPatient);
                             lbPatient.Items.Refresh();
                         }
@@ -118,6 +116,56 @@ namespace HubaskyHospitalManager.View
                 elem = (UIElement)VisualTreeHelper.GetParent(elem);
             }
 
+        }
+
+
+        private void Btn_NewMedicalRecord_Click(object sender, RoutedEventArgs e)
+        {
+           
+            MedicalRecordWindow medicalRecordWindow = new MedicalRecordWindow(VM);
+
+            medicalRecordWindow.ShowDialog();
+            if (medicalRecordWindow.DialogResult == true)
+            {
+                VM.Patientmanager.NewMedicalRecord(VM.SelectedPatient, medicalRecordWindow.MedicalRecord);
+                VM.FillMedicalHistory();
+                MedicalHistory.Items.Refresh();
+            }
+
+            
+            //    VM.Patientmanager.NewPatient(ptWindow.Patient);
+           
+
+        }
+
+        private void MedicalHistory_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+            UIElement elem = (UIElement)MedicalHistory.InputHitTest(e.GetPosition(MedicalHistory));
+            while (elem != MedicalHistory)
+            {
+                if (elem is ListBoxItem)
+                {
+                    object selectedItem = ((ListBoxItem)elem).Content;
+
+                    if (VM.SelectedMedicalRecord != null)
+                    {
+                        MedicalRecordWindow medicalRecordWindow = new MedicalRecordWindow((MedicalRecord)VM.SelectedMedicalRecord.Clone(), VM);
+
+                        medicalRecordWindow.ShowDialog();
+                        if (medicalRecordWindow.DialogResult == true)
+                        {
+                            //VM.Patientmanager.NewMedicalRecord(VM.SelectedPatient, mr);
+                            VM.FillMedicalHistory();
+                            MedicalHistory.Items.Refresh();
+                        }
+
+                    }
+
+                    return;
+                }
+                elem = (UIElement)VisualTreeHelper.GetParent(elem);
+            }
         }
     }
 

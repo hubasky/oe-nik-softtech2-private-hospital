@@ -30,6 +30,7 @@ namespace HubaskyHospitalManager.View
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
+            //if (handler == "Name") VM.
         }
         
         private Patient patient;
@@ -49,7 +50,6 @@ namespace HubaskyHospitalManager.View
             //DataContext = VM;
             DataContext = this;
             Patient = new Patient();
-            //VM.SelectedPatient = new PatientView(Patient);
         }
 
         public EditPatientWindow(Patient pt, PatientManagementView view)
@@ -59,30 +59,12 @@ namespace HubaskyHospitalManager.View
             //DataContext = VM;
             DataContext = this;
             Patient = pt;
-            TxtBox_Ssn.IsEnabled = false;
+            //TxtBox_Ssn.IsEnabled = false; //szerintem ne kapcsoljuk ki, legyen szerkeszthető
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //DataContext = this;
-            //if (!editPatient)
-            //{
-            //    Patient = new Patient();
-            //}
-            //else
-            //{
-            //    TextBox_Username.IsEnabled = false;
-            //    Label_Username.IsEnabled = false;
-            //}
-            //List<Unit> list = HospView.HospManager.GetUnits();
-            //Units = new ObservableCollection<Unit>();
-            //foreach (Unit unit in list)
-            //{
-            //    Units.Add(unit);
-            //}
-            //SelectedUnit = HospView.SelectedUnit.Reference;
-            //if (SelectedUnit != null && SelectedUnit.Manager.Username.Equals(Patient.Username))
-            //    IsManager = true;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

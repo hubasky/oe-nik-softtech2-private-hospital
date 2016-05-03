@@ -24,12 +24,26 @@ namespace HubaskyHospitalManager.View
             get { return patients; }
             set { patients = value; OnPropertyChanged(); }
         }
-        
+
         private Patient selectedPatient;
         public Patient SelectedPatient
         {
             get { return selectedPatient; }
-            set { selectedPatient = value; OnPropertyChanged(); }
+            set { selectedPatient = value; FillMedicalHistory(); OnPropertyChanged(); }
+        }
+
+        private ObservableCollection<MedicalRecord> medicalHistory;
+        public ObservableCollection<MedicalRecord> MedicalHistory
+        {
+            get { return medicalHistory; }
+            set { medicalHistory = value; OnPropertyChanged(); }
+        }
+
+        private MedicalRecord selectedMedicalRecord;
+        public MedicalRecord SelectedMedicalRecord
+        {
+            get { return selectedMedicalRecord; }
+            set { selectedMedicalRecord = value; OnPropertyChanged(); }
         }
 
         private string findPatientBySSN = "";
@@ -68,12 +82,22 @@ namespace HubaskyHospitalManager.View
 
             if (Patientmanager.Patients != null)
                 foreach (Patient pt in Patientmanager.Patients)
-                    if (pt.Name.ToLower().Contains((string)FindPatientByName.ToLower()) && pt.Ssn.ToLower().Contains((string)FindPatientBySSN.ToLower()))
+                    if (pt.Name.ToLower().Contains(FindPatientByName.ToLower()) && pt.Ssn.ToLower().Contains(FindPatientBySSN.ToLower()))
                         newPatients.Add(pt);
 
             Patients = newPatients;
         }
 
+        public void FillMedicalHistory()
+        {
+            ObservableCollection<MedicalRecord> newMedicalHistory = new ObservableCollection<MedicalRecord>();
+
+            if (SelectedPatient != null)
+                foreach (MedicalRecord med in SelectedPatient.MedicalHistory)
+                    newMedicalHistory.Add(med);
+
+            MedicalHistory = newMedicalHistory;
+        }
         
 
         public HospitalManager HospitalManager
