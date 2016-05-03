@@ -92,8 +92,6 @@ namespace HubaskyHospitalManager.View
         }
         private void lbPatient_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //    private void popupwindowInventoryListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-            //{
 
             UIElement elem = (UIElement)lbPatient.InputHitTest(e.GetPosition(lbPatient));
             while (elem != lbPatient)

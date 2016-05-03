@@ -1,5 +1,4 @@
-﻿//merged with SB 20160430_0920
-using HubaskyHospitalManager.Model.Common;
+﻿using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.InventoryManagement;
