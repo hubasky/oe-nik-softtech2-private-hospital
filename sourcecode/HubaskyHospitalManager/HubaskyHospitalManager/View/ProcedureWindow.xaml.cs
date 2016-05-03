@@ -32,16 +32,16 @@ namespace HubaskyHospitalManager.View
 
             VM = pmv;
             
-            if (pmv.SelectedPatient.SelectedMedicalRecord.SelectedProcedure == null)
-            {
-                Procedure proc = new Procedure();
-                PView = new ProcedureView(proc);
-                pmv.SelectedPatient.SelectedMedicalRecord.SelectedProcedure = PView;
-            }
-            else
-            {
-                PView = pmv.SelectedPatient.SelectedMedicalRecord.SelectedProcedure;
-            }
+            //if (pmv.SelectedPatient.SelectedMedicalRecord.SelectedProcedure == null)
+            //{
+            //    Procedure proc = new Procedure();
+            //    PView = new ProcedureView(proc);
+            //    pmv.SelectedPatient.SelectedMedicalRecord.SelectedProcedure = PView;
+            //}
+            //else
+            //{
+            //    PView = pmv.SelectedPatient.SelectedMedicalRecord.SelectedProcedure;
+            //}
 
             DataContext = VM;
         }

@@ -31,9 +31,7 @@ namespace HubaskyHospitalManager.View
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
         }
-
-        private bool editPatient = false;
-
+        
         private Patient patient;
         public Patient Patient
         {
@@ -48,17 +46,20 @@ namespace HubaskyHospitalManager.View
         {
             InitializeComponent();
             VM = view;
-            DataContext = VM;
+            //DataContext = VM;
+            DataContext = this;
             Patient = new Patient();
-            VM.SelectedPatient = new PatientView(Patient);
+            //VM.SelectedPatient = new PatientView(Patient);
         }
 
         public EditPatientWindow(Patient pt, PatientManagementView view)
         {
             InitializeComponent();
             VM = view;
-            DataContext = VM;
+            //DataContext = VM;
+            DataContext = this;
             Patient = pt;
+            TxtBox_Ssn.IsEnabled = false;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -86,97 +87,49 @@ namespace HubaskyHospitalManager.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //    bool validate = true;
-            //    string missingData = "";
+            bool validate = true;
+            string missingData = "";
 
-            //    if (Patient.Name == "")
-            //    {
-            //        missingData += "  dolgozó neve" + Environment.NewLine;                
-            //        validate = false;
-            //    }
-            //    if (Patient.Phone == "")
-            //    {
-            //        missingData += "  telefonszám" + Environment.NewLine;
-            //        validate = false;
-            //    }
-            //    if (Patient.Address == "")
-            //    {
-            //        missingData += "  cím" + Environment.NewLine;
-            //        validate = false;
-            //    }
-            //    if (Patient.DateOfBirth == "")
-            //    {
-            //        missingData += "  születési dátum" + Environment.NewLine;
-            //        validate = false;
-            //    }
-            //    if (Patient.Username == "")
-            //    {
-            //        missingData += "  felhasználónév" + Environment.NewLine;    
-            //        validate = false;
-            //    }
+            if (Patient.Name == "")
+            {
+                missingData += "  név" + Environment.NewLine;                
+                validate = false;
+            }
+            if (Patient.Phone == "")
+            {
+                missingData += "  telefonszám" + Environment.NewLine;
+                validate = false;
+            }
+            if (Patient.Address == "")
+            {
+                missingData += "  lakcím" + Environment.NewLine;
+                validate = false;
+            }
+            if (Patient.DateOfBirth == "")
+            {
+                missingData += "  születési dátum" + Environment.NewLine;
+                validate = false;
+            }
+            if (Patient.Ssn == "")
+            {
+                missingData += "  TAJ szám" + Environment.NewLine;    
+                validate = false;
+            }
 
-            //    if (validate)
-            //    {
-            //        // create new user
-            //        if (!editPatient)
-            //        {
-            //            // password is set
-            //            if (PswBox_Password.Password != "")
-            //            {
-            //                // password is ok
-            //                if (PswBox_Password.Password == PswBox_PasswordAgain.Password)
-            //                {
-            //                    Patient.Password = ApplicationManager.CalculateSHA256(PswBox_Password.Password);
-            //                    DialogResult = true;
-            //                }
-            //                // password is NOT ok
-            //                else
-            //                {
-            //                    MessageBox.Show("A megismételt jelszó nem egyezik!", "Hibás jelszó", MessageBoxButton.OK, MessageBoxImage.Error);
-            //                }
-            //            }
-            //            // password is NOT set
-            //            else
-            //            {
-            //                MessageBox.Show("Adja meg a felhasználó jelszavát!", "Hiányzó jelszó", MessageBoxButton.OK, MessageBoxImage.Error);
-            //            }
-            //        }
-            //        // edit selected user
-            //        else
-            //        {
-            //            // password is set
-            //            if (PswBox_Password.Password != "")
-            //            {
-            //                // password is ok
-            //                if (PswBox_Password.Password == PswBox_PasswordAgain.Password)
-            //                {
-            //                    Patient.Password = ApplicationManager.CalculateSHA256(PswBox_Password.Password);
-            //                    DialogResult = true;
-            //                }
-            //                // password is NOT ok
-            //                else
-            //                {
-            //                    MessageBox.Show("A megismételt jelszó nem egyezik!", "Hibás jelszó", MessageBoxButton.OK, MessageBoxImage.Error);
-            //                }
-            //            }
-            //            // password is NOT set
-            //            else
-            //            {
-            //                DialogResult = true;
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Hiányzó adatok:" + Environment.NewLine + missingData, "Hiányzó adatok", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    }
-            //}
+            if (validate)
+            {
+                DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show("Hiányzó adatok:" + Environment.NewLine + missingData, "Hiányzó adatok", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
 
             //private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
             //{
             //    e.Handled = char.IsLetter(e.Text[0]) || e.Text[0] == ' '; // e.Text[0] != ' '
             //}
-            DialogResult = true;
         }
 
         //private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)

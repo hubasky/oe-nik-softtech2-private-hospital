@@ -21,8 +21,9 @@ namespace HubaskyHospitalManager.Model.PatientManagement
     {
         //egy medical history van, azon belül több medical record, azon belül több procedure
         [Key]
+        public int Id { get; set; }
         public string CreatedTimestamp { get; private set; }
-        public string LastModifiedTimestamp { get; set; }
+        public string LastModifiedTimestamp { get; private set; }
 
         //set esetén ezeken keresztül frissül a LastModifiedTimestamp!
         private string anamnesis;
@@ -35,54 +36,32 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public string ShortDescription
         {
             get { return shortDescription; }
-            set
-            {
-                shortDescription = value;
-                IsUpdated();
-            }
+            set { shortDescription = value; IsUpdated(); }
         }
 
         public string Anamnesis
         {
             get { return anamnesis; }
-            set
-            {
-                anamnesis = value;
-                IsUpdated();
-            }
+            set { anamnesis = value; IsUpdated(); }
         }
 
         public string Diagnosis
         {
             get { return diagnosis; }
-            set
-            {
-                diagnosis = value;
-                IsUpdated();
-            }
+            set { diagnosis = value; IsUpdated(); }
         }
 
         public State State
         {
             get { return state; }
-            set
-            {
-                state = value;
-                IsUpdated();
-            }
+            set { state = value; IsUpdated(); }
         }
-
 
         public virtual List<Procedure> Procedures
         {
             get { return procedures; }
-            set
-            {
-                procedures = value;
-                IsUpdated();
-            }
+            set { procedures = value; IsUpdated(); }
         }
-
 
         public MedicalRecord()
         {
@@ -147,24 +126,24 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             return this.Procedures;
         }
 
-        public override bool Equals(object obj)
-        {
-            var properMedicalRecord = obj as MedicalRecord;
+        //public override bool Equals(object obj)
+        //{
+        //    var properMedicalRecord = obj as MedicalRecord;
 
-            if (properMedicalRecord == null)
-            {
-                return false;
-            }
+        //    if (properMedicalRecord == null)
+        //    {
+        //        return false;
+        //    }
 
-            //ha minden set-hez be van írva az isUpdated(), akkor csak ezeket kell ellenőrizni!
-            if (!(this.CreatedTimestamp == properMedicalRecord.CreatedTimestamp &&
-                this.LastModifiedTimestamp == properMedicalRecord.LastModifiedTimestamp))
-            {
-                return false;
-            }
+        //    //ha minden set-hez be van írva az isUpdated(), akkor csak ezeket kell ellenőrizni!
+        //    if (!(this.CreatedTimestamp == properMedicalRecord.CreatedTimestamp &&
+        //        this.LastModifiedTimestamp == properMedicalRecord.LastModifiedTimestamp))
+        //    {
+        //        return false;
+        //    }
 
-            return true;
-        }
+        //    return true;
+        //}
 
         private void IsUpdated()
         {
@@ -177,6 +156,8 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         {
             this.State = State.Closed;
             //itt még végig kell hupákolni a procedure-öket is!
+            foreach (Procedure proc in Procedures)
+                proc.State = State.Closed;
         }
 
     }//end MedicalRecord

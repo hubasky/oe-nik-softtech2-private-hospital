@@ -12,18 +12,23 @@ namespace HubaskyHospitalManager.Model.Common
     public class Patient : Person, ICloneable
     {
         [Key]
-        public int Ssn { get; set; }
+        public string Ssn { get; set; }
         public virtual List<MedicalRecord> MedicalHistory { get; set; }
         public Gender Gender { get; set; }
-        //public string Address { get; set; }
 
         public Patient()
         {
+            Ssn = "";
+            Name = "";
+            Address = "";
+            Phone = "";
+            DateOfBirth = "";
+            Gender = Gender.Female;
             this.MedicalHistory = new List<MedicalRecord>();
         }
 
 
-        public Patient(string name, string phone, string dateOfBirth, int ssn, string address, List<MedicalRecord> medicalHistory, Gender gender)
+        public Patient(string name, string phone, string dateOfBirth, string ssn, string address, List<MedicalRecord> medicalHistory, Gender gender)
         {
             this.Phone = phone;
             this.Name = name;
@@ -31,10 +36,7 @@ namespace HubaskyHospitalManager.Model.Common
             this.Ssn = ssn;
             this.Gender = gender;
             this.Address = address;
-            this.MedicalHistory = (medicalHistory == null) ?
-                new List<MedicalRecord>() :
-                medicalHistory;
-
+            this.MedicalHistory = (medicalHistory == null) ? new List<MedicalRecord>() : medicalHistory;
         }
 
         public List<MedicalRecord> UpdateMedicalHistory(List<MedicalRecord> newMedicalHistory)
@@ -66,58 +68,58 @@ namespace HubaskyHospitalManager.Model.Common
             return clone;
         }
 
-        public override bool Equals(object obj)
-        {
-            var properPatient = obj as Patient;
+        //public override bool Equals(object obj)
+        //{
+        //    var properPatient = obj as Patient;
 
-            if (properPatient == null)
-            {
-                return false;
-            }
+        //    if (properPatient == null)
+        //    {
+        //        return false;
+        //    }
 
-            //adattagok tesztelése, elvileg lehet equals nélkül ezeket
-            if (!(this.Phone == properPatient.Phone &&
-                this.Name == properPatient.Name &&
-                this.DateOfBirth == properPatient.DateOfBirth &&
-                this.Ssn == properPatient.Ssn &&
-                this.Address == properPatient.Address &&
-                this.Gender == properPatient.Gender))
-            {
+        //    //adattagok tesztelése, elvileg lehet equals nélkül ezeket
+        //    if (!(this.Phone == properPatient.Phone &&
+        //        this.Name == properPatient.Name &&
+        //        this.DateOfBirth == properPatient.DateOfBirth &&
+        //        this.Ssn == properPatient.Ssn &&
+        //        this.Address == properPatient.Address &&
+        //        this.Gender == properPatient.Gender))
+        //    {
 
-                return false;
+        //        return false;
 
-            }
+        //    }
 
-            if (!(this.MedicalHistory == null)) //ha nem null 
-            {
-                if (properPatient.MedicalHistory == null) //ha null
-                {
-                    return false;
-                }
-                else { 
-                //ha ugyanolyan hosszúak, akkor fusson csak le, különben hibára futhat
-                    if (this.MedicalHistory.Count == properPatient.MedicalHistory.Count &&
-                        this.MedicalHistory.Count >0 &&
-                        properPatient.MedicalHistory.Count >0)
-                    {
-                        int idx = 0;
-                        while (this.MedicalHistory[idx].Equals(properPatient.MedicalHistory[idx]))
-                        {
-                            idx++;
-                        }
+        //    if (!(this.MedicalHistory == null)) //ha nem null 
+        //    {
+        //        if (properPatient.MedicalHistory == null) //ha null
+        //        {
+        //            return false;
+        //        }
+        //        else { 
+        //        //ha ugyanolyan hosszúak, akkor fusson csak le, különben hibára futhat
+        //            if (this.MedicalHistory.Count == properPatient.MedicalHistory.Count &&
+        //                this.MedicalHistory.Count >0 &&
+        //                properPatient.MedicalHistory.Count >0)
+        //            {
+        //                int idx = 0;
+        //                while (this.MedicalHistory[idx].Equals(properPatient.MedicalHistory[idx]))
+        //                {
+        //                    idx++;
+        //                }
 
-                        if (!(idx == this.MedicalHistory.Count))
-                        {
-                            return false;
-                        }
-                        //kilép, true
-                    }
-                }
-            }
+        //                if (!(idx == this.MedicalHistory.Count))
+        //                {
+        //                    return false;
+        //                }
+        //                //kilép, true
+        //            }
+        //        }
+        //    }
 
-            //ha minden stimmel
-            return true;
-        }
+        //    //ha minden stimmel
+        //    return true;
+        //}
 
 
         //CSAK akkor hívják, ha a betegnek nincs nyitott medicalrecordja, és új procedure-t adna valaki hozzá...

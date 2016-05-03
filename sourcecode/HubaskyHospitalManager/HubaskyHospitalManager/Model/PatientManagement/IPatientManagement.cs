@@ -18,11 +18,12 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 {
     public interface IPatientManagement
     {
-        Patient NewPatient(Patient patient);
+        void NewPatient(Patient patient);
 
         /// 
         /// <param name="patient"></param>
         void UpdatePatient(Patient patientFromUI, Patient patientToDB);
+
 
         /// 
         /// <param name="patient"></param>

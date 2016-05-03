@@ -32,7 +32,7 @@ namespace HubaskyHospitalManager.Data
                 "Kómás Kati",   //name
                 "069011111",       //tel
                 "1996.06.20",   //DoB
-                9991999,         //SSN
+                "9991999",         //SSN
                 "kamucím1",        //address
                 null,           //medicalHistory
                 Gender.Female   //Gender
@@ -47,7 +47,7 @@ namespace HubaskyHospitalManager.Data
                 "Kankós Karesz",   //name
                 "0660222222",       //tel
                 "1991.02.13",   //DoB
-                1359143,         //SSN
+                "1359143",         //SSN
                  "kamucím2",        //address
                 null,           //medicalHistory
                 Gender.Male   //Gender
@@ -61,7 +61,7 @@ namespace HubaskyHospitalManager.Data
                 "Itókás Imre",   //name
                 "0670333333",       //tel
                 "1978.09.06",   //DoB
-                9083825,         //SSN
+                "9083825",         //SSN
                 "kamucím3",        //address
                 null,           //medicalHistory
                 Gender.Male   //Gender
@@ -75,7 +75,7 @@ namespace HubaskyHospitalManager.Data
                 "Hasmenős Hilda",   //name
                 "062044444",        //tel
                 "1957.11.12",       //DoB
-                1125267,            //SSN
+                "1125267",            //SSN
                 "kamucím3",         //address
                 null,               //medicalHistory
                 Gender.Female       //Gender
@@ -89,7 +89,7 @@ namespace HubaskyHospitalManager.Data
                 "Barangoló Bertold",//name
                 "064055555",        //tel
                 "1985.02.16",       //DoB
-                9306484,            //SSN
+                "9306484",            //SSN
                 "kamucím4",         //address
                 null,               //medicalHistory
                 Gender.Male         //Gender

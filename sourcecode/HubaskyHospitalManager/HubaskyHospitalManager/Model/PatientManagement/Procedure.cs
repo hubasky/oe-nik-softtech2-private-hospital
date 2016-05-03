@@ -159,24 +159,24 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
 
 
-        public override bool Equals(object obj)
-        {
-            var properProcedure = obj as Procedure;
+        //public override bool Equals(object obj)
+        //{
+        //    var properProcedure = obj as Procedure;
 
-            if (properProcedure == null)
-            {
-                return false;
-            }
+        //    if (properProcedure == null)
+        //    {
+        //        return false;
+        //    }
 
-            //ha minden set-hez be van írva az isUpdated(), akkor csak ezeket kell ellenőrizni!
-            if (!(this.CreatedTimestamp == properProcedure.CreatedTimestamp &&
-                this.LastModifiedTimestamp == properProcedure.LastModifiedTimestamp))
-            {
-                return false;
-            }
+        //    //ha minden set-hez be van írva az isUpdated(), akkor csak ezeket kell ellenőrizni!
+        //    if (!(this.CreatedTimestamp == properProcedure.CreatedTimestamp &&
+        //        this.LastModifiedTimestamp == properProcedure.LastModifiedTimestamp))
+        //    {
+        //        return false;
+        //    }
 
-            return true;
-        }
+        //    return true;
+        //}
 
         private void isUpdated()
         {

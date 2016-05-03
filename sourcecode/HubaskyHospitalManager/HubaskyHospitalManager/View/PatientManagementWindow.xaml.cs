@@ -45,7 +45,8 @@ namespace HubaskyHospitalManager.View
             procedureWindow.ShowDialog();
             if (procedureWindow.DialogResult == true)
             {
-                VM.Patientmanager.NewProcedure(VM.SelectedPatient.SelectedMedicalRecord.ModelMedicalRecord, procedureWindow.PView.ModelProcedure);
+                // ezt nem is értem
+                //VM.Patientmanager.NewProcedure(VM.SelectedPatient.SelectedMedicalRecord.ModelMedicalRecord, procedureWindow.PView.ModelProcedure);
             }
 
         }
@@ -56,7 +57,7 @@ namespace HubaskyHospitalManager.View
         private void Btn_NewMedicalRecord_Click(object sender, RoutedEventArgs e)
         {
             MedicalRecord mr = new MedicalRecord();
-            VM.SelectedPatient.MedicalHistory.Add(new MedicalRecordView(mr));
+            // VM.SelectedPatient.MedicalHistory.Add(new MedicalRecordView(mr));
         }
 
         private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)
@@ -76,21 +77,6 @@ namespace HubaskyHospitalManager.View
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
         }
 
-
-
-        private void tbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !char.IsLetter(e.Text[0]) && e.Text != " ";
-            VM.FillPatients();
-            OnPropertyChanged();
-        }
-
-        private void tbFindByName_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            VM.FillPatients();
-            OnPropertyChanged();
-        }
-
         private void Btn_NewPatient_Click(object sender, RoutedEventArgs e)
         {
             EditPatientWindow ptWindow = new EditPatientWindow(this.VM);
@@ -99,14 +85,8 @@ namespace HubaskyHospitalManager.View
             if (ptWindow.DialogResult == true)
             {
                 VM.Patientmanager.NewPatient(ptWindow.Patient);
-
-                //ejnye, ez itt nem szép:
-                VM.Patients = new ObservableCollection<PatientView>();
-                foreach (var item in VM.Patientmanager.Patients)
-                {
-
-                    VM.Patients.Add(new PatientView(item));
-                }
+                VM.FillPatients();
+                lbPatient.Items.Refresh();
             }
 
         }
@@ -122,24 +102,18 @@ namespace HubaskyHospitalManager.View
                 {
                     object selectedItem = ((ListBoxItem)elem).Content;
 
-
-                    EditPatientWindow ptWindow = new EditPatientWindow(this.VM.SelectedPatient.ModelPatient, this.VM);
-
-                    ptWindow.ShowDialog();
-                    if (ptWindow.DialogResult == true)
+                    if (VM.SelectedPatient != null)
                     {
-                        ////csak edit, ezért nem kell:
-                        //VM.Patientmanager.NewPatient(ptWindow.Patient);
+                        EditPatientWindow ptWindow = new EditPatientWindow((Patient)VM.SelectedPatient.Clone(), VM);
 
-                        //ejnye, ez itt nem szép:
-                        VM.Patients = new ObservableCollection<PatientView>();
-                        foreach (var item in VM.Patientmanager.Patients)
+                        ptWindow.ShowDialog();
+                        if (ptWindow.DialogResult == true)
                         {
-                            VM.Patients.Add(new PatientView(item));
+                            VM.Patientmanager.UpdatePatient(ptWindow.Patient, VM.SelectedPatient);
+                            lbPatient.Items.Refresh();
                         }
+
                     }
-
-
 
                     return;
                 }

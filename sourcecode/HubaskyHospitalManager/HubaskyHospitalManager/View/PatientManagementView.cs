@@ -10,6 +10,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HubaskyHospitalManager.View
 {
@@ -17,13 +18,32 @@ namespace HubaskyHospitalManager.View
     {
         private PatientManager patientmanager;
 
-        private ObservableCollection<PatientView> patients;
-        private PatientView selectedPatient;
-
-        public PatientView PreviouslySelectedPatient { get; set; }
+        private ObservableCollection<Patient> patients;
+        public ObservableCollection<Patient> Patients
+        {
+            get { return patients; }
+            set { patients = value; OnPropertyChanged(); }
+        }
         
-        private string findPatientBySSN;
-        private string findPatientByName;
+        private Patient selectedPatient;
+        public Patient SelectedPatient
+        {
+            get { return selectedPatient; }
+            set { selectedPatient = value; OnPropertyChanged(); }
+        }
+
+        private string findPatientBySSN = "";
+        public string FindPatientBySSN
+        {
+            get { return findPatientBySSN; }
+            set { findPatientBySSN = value; OnPropertyChanged(); FillPatients(); }
+        }
+        private string findPatientByName = "";
+        public string FindPatientByName
+        {
+            get { return findPatientByName; }
+            set { findPatientByName = value; OnPropertyChanged(); FillPatients(); }
+        }
 
         private InventoryManager inventoryManager;
         private HospitalManager hospitalManager;
@@ -44,75 +64,14 @@ namespace HubaskyHospitalManager.View
 
         public void FillPatients()
         {
-            //optimalizálatlan, de időhiány...
-
-            //null lesz, ha 0 a hossz, így egyszerűbb kivételt kezelni
-            if (FindPatientBySSN != null && FindPatientBySSN.Length == 0)
-            {
-                FindPatientBySSN = null;
-            }
-            if (FindPatientByName != null && FindPatientByName.Length == 0)
-            {
-                FindPatientByName = null;
-            }
-
-            //keresés / feltöltés
-            Patients = new ObservableCollection<PatientView>();
+            ObservableCollection<Patient> newPatients = new ObservableCollection<Patient>();
 
             if (Patientmanager.Patients != null)
-            {
-                if (FindPatientByName == null && FindPatientBySSN == null) //nincs keresés, mindkét mező üres
-                {
-                    foreach (Patient pt in Patientmanager.Patients)
-                    {
-                        Patients.Add(new PatientView(pt));
-                    }
+                foreach (Patient pt in Patientmanager.Patients)
+                    if (pt.Name.ToLower().Contains((string)FindPatientByName.ToLower()) && pt.Ssn.ToLower().Contains((string)FindPatientBySSN.ToLower()))
+                        newPatients.Add(pt);
 
-                }
-                else //különben 3 eset van: egyik üres, másik üres, egyik sem üres
-                {
-                    if (FindPatientByName != null && FindPatientBySSN == null) //nincs keresés
-                    {
-                        foreach (Patient pt in Patientmanager.Patients)
-                        {
-                            if (pt.Name.ToLower().Contains(FindPatientByName))
-                            {
-
-                                Patients.Add(new PatientView(pt));
-                            }
-                        }
-
-                    }
-                    else if (FindPatientByName == null && FindPatientBySSN != null) //nincs keresés
-                    {
-                        foreach (Patient pt in Patientmanager.Patients)
-                        {
-                            if (pt.Ssn.ToString().Contains(FindPatientBySSN))
-                            {
-
-                                Patients.Add(new PatientView(pt));
-                            }
-                        }
-
-                    }
-                    else //egyik sem null
-                    {
-                        foreach (Patient pt in Patientmanager.Patients)
-                        {
-                            if (pt.Ssn.ToString().Contains(FindPatientBySSN) &&
-                                pt.Name.ToLower().Contains(FindPatientByName))
-                            {
-
-                                Patients.Add(new PatientView(pt));
-                            }
-                        }
-
-                    }
-
-                }
-
-            }
-
+            Patients = newPatients;
         }
 
         
@@ -129,48 +88,11 @@ namespace HubaskyHospitalManager.View
             set { inventoryManager = value; }
         }
 
-        public string FindPatientBySSN
-        {
-            get { return findPatientBySSN; }
-            set
-            {
-                findPatientBySSN = value;
-                FillPatients();
-                OnPropertyChanged();
-            }
-        }
-        public string FindPatientByName
-        {
-            get { return findPatientByName; }
-            set
-            {
-                //null értéket ne konvertáljon kisbetűssé, mert megfekszi a gyomrát
-                findPatientByName = value == null ? null : value.ToLower();
-                FillPatients();
-                OnPropertyChanged();
-            }
-        }
-
         public PatientManager Patientmanager
         {
             get { return patientmanager; }
             set { patientmanager = value; OnPropertyChanged(); }
         }
-
-
-        public virtual ObservableCollection<PatientView> Patients
-        {
-            get { return patients; }
-            set { patients = value; OnPropertyChanged(); }
-        }
-
-
-        public PatientView SelectedPatient
-        {
-            get { return selectedPatient; }
-            set { selectedPatient = value; OnPropertyChanged(); }
-        }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string name = "")

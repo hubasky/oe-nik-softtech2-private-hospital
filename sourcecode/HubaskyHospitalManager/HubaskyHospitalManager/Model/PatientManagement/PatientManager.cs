@@ -13,6 +13,7 @@ using System.Text;
 using System.IO;
 using HubaskyHospitalManager.Model.PatientManagement;
 using HubaskyHospitalManager.Model.Common;
+using HubaskyHospitalManager.Model.Exceptions;
 using HubaskyHospitalManager.Model.ApplicationManagement;
 //using HubaskyHospitalManager.Model.InventoryManagement;
 using System.Linq;
@@ -21,7 +22,6 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 {
     public class PatientManager : IPatientManagement
     {
-        private List<Patient> patients;
         private ApplicationManagement.ApplicationManager appManager;
         private InventoryManagement.InventoryManager invManager;
 
@@ -31,11 +31,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             set { invManager = value; }
         }
 
-        public virtual List<Patient> Patients
-        {
-            get { return patients; }
-            set { patients = value; }
-        }
+        public virtual List<Patient> Patients { get; set; }
 
         public ApplicationManagement.ApplicationManager AppManager
         {
@@ -45,16 +41,16 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         public PatientManager()
         {
-
+            Patients = new List<Patient>();
         }
 
         public PatientManager(ApplicationManager appMgr)
         {
             this.AppManager = appMgr;
             this.invManager = appMgr.InventoryManagement;
-            patients = new List<Patient>();
+            Patients = new List<Patient>();
 
-            patients = AppManager.ApplicationDb.Patients.Select(m => m).ToList();
+            Patients = AppManager.ApplicationDb.Patients.Select(m => m).ToList();
             ////a fenti helyett ideiglenesen:
             //populatepatientsTempMethod();
 
@@ -152,39 +148,53 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         //+    //void UpdateMedicalRecord(Procedure procedureFromUI, Procedure procedureToDB);
 
 
-        public Patient NewPatient(Patient patient)
+        public void NewPatient(Patient patient)
         {
-            if (patient == null)
+            if (patient != null)
             {
-                patient = new Patient();
+                var duplicatedPatient = (from p in Patients
+                                         where patient.Ssn.Equals(p.Ssn)
+                                         select p).FirstOrDefault();
+                if (duplicatedPatient == null)
+                {
+                    Patients.Add(patient);
+                    AppManager.ApplicationDb.Patients.Add(patient);
+                }
+                else
+                    throw new DuplicatedPatientInDbException(String.Format("Patient identified by ssn {0} already exists in database.", patient.Ssn));
             }
-
-            if (!(Patients.Contains(patient)))
-            {
-                patients.Add(patient);
-            }
-
-
-            return patient;
+            AppManager.ApplicationDb.SaveChanges();
         }
 
         /// 
         /// <param name="patient"></param>
         public void UpdatePatient(Patient patientFromUI, Patient patientToDB)
         {
-            if (!(patientFromUI.Equals(patientToDB)))
+            if (patientFromUI != null && patientToDB != null && patientToDB.Ssn.Equals(patientFromUI.Ssn))
             {
-                //egyszerű property-k felülírása
                 patientToDB.Phone = patientFromUI.Phone;
                 patientToDB.Name = patientFromUI.Name;
                 patientToDB.DateOfBirth = patientFromUI.DateOfBirth;
-                patientToDB.Ssn = patientFromUI.Ssn;
+                //patientToDB.Ssn = patientFromUI.Ssn;
+                patientToDB.Address = patientFromUI.Address;
                 patientToDB.Gender = patientFromUI.Gender;
-
-                //csak a szükséges medicalrecordokat, illetve a szükséges procedure-öket update-eli
                 patientToDB.UpdateMedicalHistory(patientFromUI.MedicalHistory);
-
+                AppManager.ApplicationDb.SaveChanges();
             }
+
+            //if (!(patientFromUI.Equals(patientToDB)))
+            //{
+            //    //egyszerű property-k felülírása
+            //    patientToDB.Phone = patientFromUI.Phone;
+            //    patientToDB.Name = patientFromUI.Name;
+            //    patientToDB.DateOfBirth = patientFromUI.DateOfBirth;
+            //    patientToDB.Ssn = patientFromUI.Ssn;
+            //    patientToDB.Gender = patientFromUI.Gender;
+
+            //    //csak a szükséges medicalrecordokat, illetve a szükséges procedure-öket update-eli
+            //    patientToDB.UpdateMedicalHistory(patientFromUI.MedicalHistory);
+
+            //}
         }
 
         /// 
