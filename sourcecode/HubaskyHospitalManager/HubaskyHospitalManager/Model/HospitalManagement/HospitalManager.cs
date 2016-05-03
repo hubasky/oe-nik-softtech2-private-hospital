@@ -17,6 +17,7 @@ using System.Linq;
 using System.Windows;
 using HubaskyHospitalManager.Model.Exceptions;
 using HubaskyHospitalManager.Model.PatientManagement;
+using System.Threading;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
@@ -134,7 +135,8 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
                 throw new InvalidUnitAdditionException("Unit to be added to the database can't be null.");
 
             // If parentUnit is null or Hospital type, the unit needs to be converted to Department
-            if (parentUnit == null || parentUnit.GetType() == Hospital.GetType())
+            
+            if (parentUnit as Hospital != null)
             {
                 Hospital.Departments.Add(new Department(unit));
                 AppManager.ApplicationDb.SaveChanges();
@@ -142,9 +144,9 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             else
             {
                 // If the given unit is ward type, the parent unit must be department
-                if (parentUnit != null && parentUnit.GetType() == Hospital.Departments.FirstOrDefault().GetType())
+                if (parentUnit as Department != null)
                 {
-                    Department dept = (Department)parentUnit;
+                    Department dept = parentUnit as Department;
                     dept.Wards.Add(new Ward(unit));
                     AppManager.ApplicationDb.SaveChanges();
                 }
@@ -205,38 +207,36 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		/// <param name="unit"></param>
 		public void RemoveUnit(Unit unit)
         {
-            if (unit != null)
+            Department dept = unit as Department;
+            if (dept != null)
             {
-                if (unit.GetType() == AppManager.ApplicationDb.Departments.FirstOrDefault().GetType())
-                {
-                    foreach (Ward ward in ((Department)unit).Wards)
+                //if (unit.GetType() == AppManager.ApplicationDb.Departments.FirstOrDefault().GetType())
+                //{
+                    foreach (Ward ward in dept.Wards)
                     {
                         foreach (Employee emp in ward.Employees)
-                            //MoveEmployee(emp, ward, Hospital);
                             Hospital.Employees.Add(emp);
-                        //AppManager.ApplicationDb.Wards.Remove(ward);
                     }
-                    foreach (Employee deptEmp in unit.Employees)
-                        // MoveEmployee(deptEmp, unit, Hospital);
+                    foreach (Employee deptEmp in dept.Employees)
                         Hospital.Employees.Add(deptEmp);
-
-                    //unit.Employees.RemoveRange(0, unit.Employees.Count);
-
-                    AppManager.ApplicationDb.Wards.RemoveRange(((Department)unit).Wards);
-                    AppManager.ApplicationDb.Departments.Remove((Department)unit);
+                    
+                    AppManager.ApplicationDb.Wards.RemoveRange(dept.Wards);
+                    AppManager.ApplicationDb.Departments.Remove(dept);
                     AppManager.ApplicationDb.SaveChanges();
+            }
+            else
+            {
+                Ward ward = unit as Ward;
+                if (ward != null)
+                {
+                    Unit parent = FindParentUnit(ward);
+                    foreach (Employee emp in ward.Employees)
+                        parent.Employees.Add(emp);
+
+                    AppManager.ApplicationDb.Wards.Remove(ward);
+                    AppManager.ApplicationDb.SaveChanges();
+
                 }
-                else
-                    if (unit.GetType() == AppManager.ApplicationDb.Wards.FirstOrDefault().GetType())
-                    {
-                        Unit parent = FindParentUnit(unit);
-                        Ward ward = (Ward)unit;
-                        foreach (Employee emp in ward.Employees)
-                            //MoveEmployee(emp, unit, parent);
-                            parent.Employees.Add(emp);
-                        AppManager.ApplicationDb.Wards.Remove((Ward)unit);
-                        AppManager.ApplicationDb.SaveChanges();
-                    }
             }
 		}
 

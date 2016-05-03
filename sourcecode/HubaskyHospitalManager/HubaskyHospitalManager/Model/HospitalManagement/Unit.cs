@@ -30,6 +30,10 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
 		public Unit()
         {
             Employees = new List<Employee>();
+            Name = "";
+            Email = "";
+            Phone = "";
+            Web = "";
 		}
 
         public Unit(string name, Employee manager, string email, string phone, string web)

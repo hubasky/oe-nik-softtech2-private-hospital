@@ -55,23 +55,23 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             bool validate = true;
             string missingData = "";
 
-            if (unit.Name.Equals(""))
+            if (unit.Name == "")
             {
                 missingData += "  szervezeti egység neve" + Environment.NewLine;
                 validate = false;
             }
 
-            if (unit.Email.Equals(""))
+            if (unit.Email == "")
             {
                 missingData += "  e-mail cím" + Environment.NewLine;
                 validate = false;
             }
-            if (unit.Phone.Equals(""))
+            if (unit.Phone == "")
             {
                 missingData += "  telefonszám" + Environment.NewLine;
                 validate = false;
             }
-            if (unit.Web.Equals(""))
+            if (unit.Web == "")
             {
                 missingData += "  honalpcím" + Environment.NewLine;
                 validate = false;
