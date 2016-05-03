@@ -86,6 +86,7 @@ namespace HubaskyHospitalManager.View
             {
                 VM.Patientmanager.NewPatient(ptWindow.Patient);
                 VM.FillPatients();
+                VM.SelectedPatient = ptWindow.Patient;
                 lbPatient.Items.Refresh();
             }
 
@@ -110,6 +111,9 @@ namespace HubaskyHospitalManager.View
                         if (ptWindow.DialogResult == true)
                         {
                             VM.Patientmanager.UpdatePatient(ptWindow.Patient, VM.SelectedPatient);
+                            Patient selection = VM.SelectedPatient;
+                            VM.SelectedPatient = null;
+                            VM.SelectedPatient = selection;
                             lbPatient.Items.Refresh();
                         }
 
@@ -121,15 +125,7 @@ namespace HubaskyHospitalManager.View
             }
 
         }
+
     }
-
-
-
-
-
-
-
-
-
 }
 
