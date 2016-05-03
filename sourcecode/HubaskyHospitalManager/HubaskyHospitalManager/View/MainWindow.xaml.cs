@@ -21,6 +21,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace HubaskyHospitalManager.View
 {
@@ -37,6 +38,7 @@ namespace HubaskyHospitalManager.View
         }
 
         ApplicationManager appMgr;
+        Thread splashScreen;
 
         private Employee applicationUser;
         public Employee ApplicationUser 
@@ -50,11 +52,33 @@ namespace HubaskyHospitalManager.View
             InitializeComponent();
         }
 
+        private void Splash()
+        {
+            splashScreen = new Thread(() =>
+            {
+                SplashWin w = new SplashWin();
+                w.Show();
+
+                w.Closed += (sender2, e2) => w.Dispatcher.InvokeShutdown();
+
+                System.Windows.Threading.Dispatcher.Run();
+            });
+
+            splashScreen.SetApartmentState(ApartmentState.STA);
+            splashScreen.Start();
+
+            
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Splash();
+
             appMgr = new ApplicationManager();
             ApplicationUser = appMgr.ApplicationUser;
             DataContext = this;
+
+            splashScreen.Abort();
 
             // --- TEST CODE ---
             ////Hospitalmanager-be visz auth nélkül
