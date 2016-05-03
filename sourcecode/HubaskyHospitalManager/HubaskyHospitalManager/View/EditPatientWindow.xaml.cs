@@ -114,10 +114,6 @@ namespace HubaskyHospitalManager.View
             //}
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         //private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         //{

@@ -45,8 +45,7 @@ namespace HubaskyHospitalManager.View
             procedureWindow.ShowDialog();
             if (procedureWindow.DialogResult == true)
             {
-                // ezt nem is értem
-                //VM.Patientmanager.NewProcedure(VM.SelectedPatient.SelectedMedicalRecord.ModelMedicalRecord, procedureWindow.PView.ModelProcedure);
+                
             }
 
         }

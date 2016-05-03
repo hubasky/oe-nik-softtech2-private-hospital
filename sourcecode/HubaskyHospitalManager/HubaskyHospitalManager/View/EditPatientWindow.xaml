@@ -24,7 +24,7 @@
         <Label Content="Név" Margin="10,18,10,0" VerticalAlignment="Top" Height="26"/>
         <TextBox Text="{Binding Patient.Name, UpdateSourceTrigger=PropertyChanged}" Height="23" Margin="10,21,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Lakcím" Margin="10,46,10,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Text="{Binding Patient.Address}" Height="23" Margin="10,49,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" TextChanged="TextBox_TextChanged"/>
+        <TextBox Text="{Binding Patient.Address}" Height="23" Margin="10,49,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Telefonszám" Margin="10,74,10,0" VerticalAlignment="Top" Height="26"/>
         <TextBox Text="{Binding Patient.Phone}" Height="23" Margin="10,77,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Születési dátum" Margin="10,102,10,0" VerticalAlignment="Top" Height="26"/>
