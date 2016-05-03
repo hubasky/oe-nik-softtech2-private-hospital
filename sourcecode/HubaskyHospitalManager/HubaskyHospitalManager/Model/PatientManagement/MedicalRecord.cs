@@ -94,30 +94,13 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             }
         }
 
-        public List<Procedure> UpdateMedicalRecord(MedicalRecord newMedicalRecord)
+        public void UpdateMedicalRecord(MedicalRecord newMedicalRecord)
         {
-            //itt nem érdemes hasonlítani, 0 erőforrás ezeket felülcsapni
             this.CreatedTimestamp = newMedicalRecord.CreatedTimestamp;
-            //this.Anamnesis = newMedicalRecord.Anamnesis;
-            //this.Diagnosis = newMedicalRecord.Anamnesis;
             this.State = newMedicalRecord.State;
             this.ShortDescription = newMedicalRecord.ShortDescription;
-
-            //lehetne bonyolultabb algoritmust is írni, de nagyon valószínűtlen, hogy sorrendileg felcserélődnének
-            //a listában az objektumok
-            for (int i = 0; i < newMedicalRecord.Procedures.Count; i++)
-            {
-                if (!(this.Procedures[i].Equals(newMedicalRecord.Procedures[i])))
-                {
-                    //itt nem szelektáljuk, hogy melyik property-ket írja felül, mindent felülcsap, ha non-equal
-                    this.Procedures[i] = newMedicalRecord.Procedures[i];
-                }
-            }
-
-            //fontos, mert minden set felülpecsételné, és nem lenne azonos a temp és a DB objektum stamp-je!
+            this.Procedures = newMedicalRecord.Procedures;
             this.LastModifiedTimestamp = newMedicalRecord.LastModifiedTimestamp;
-
-            return this.Procedures;
         }
 
 

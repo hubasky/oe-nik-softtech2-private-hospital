@@ -83,16 +83,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         {
             if (procedureFromUI != null && procedureToDB != null)
             {
-                procedureToDB.CreatedTimestamp = procedureFromUI.CreatedTimestamp;
-                procedureToDB.State = procedureFromUI.State;
-                procedureToDB.InventoryUsage = procedureFromUI.InventoryUsage;
-                procedureToDB.Price = procedureFromUI.Price;
-                procedureToDB.Name = procedureFromUI.Name;
-                procedureToDB.Attachments = procedureFromUI.Attachments;
-                procedureToDB.Anamnesis = procedureFromUI.Anamnesis;
-                procedureToDB.Diagnosis = procedureFromUI.Diagnosis;
-                procedureToDB.Duration = procedureFromUI.Duration;
-                procedureToDB.ProcedureType = procedureFromUI.ProcedureType;
+                procedureToDB.UpdateProcedure(procedureFromUI);
             }
             else
             {
@@ -106,11 +97,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         {
             if (medicalRecordFromUI != null && medicalRecordToDB != null)
             {
-                medicalRecordToDB.CreatedTimestamp = medicalRecordToDB.CreatedTimestamp;
-                medicalRecordToDB.State = medicalRecordToDB.State;
-                medicalRecordToDB.ShortDescription = medicalRecordToDB.ShortDescription;
-                medicalRecordToDB.Procedures = medicalRecordToDB.Procedures;
-                medicalRecordToDB.LastModifiedTimestamp = medicalRecordToDB.LastModifiedTimestamp;
+                medicalRecordToDB.UpdateMedicalRecord(medicalRecordFromUI);
             }
         }
 

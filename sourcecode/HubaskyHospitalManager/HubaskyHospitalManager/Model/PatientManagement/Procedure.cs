@@ -37,7 +37,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
 
 
-        private List<InventoryItem> inventoryUsage;
+        private List<ItemUsage> itemUsage;
 
         private string name;
         private int price;
@@ -104,13 +104,13 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             }
         }
 
-        public virtual List<InventoryItem> InventoryUsage
+        public virtual List<ItemUsage> InventoryUsage
         {
-            get { return inventoryUsage; }
+            get { return itemUsage; }
             set
             {
 
-                inventoryUsage = value;
+                itemUsage = value;
                 isUpdated();
             }
         }
@@ -161,25 +161,19 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             LastModifiedTimestamp = DateTime.Now.ToString(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
         }
 
-        //public void IsClosed()
-        //{
-        //    this.State = State.Closed;
-        //}
 
         public void UpdateProcedure(Procedure newProcedure)
         {
+            this.CreatedTimestamp = newProcedure.CreatedTimestamp;
             this.State = newProcedure.State;
-
             this.InventoryUsage = newProcedure.InventoryUsage;
             this.Price = newProcedure.Price;
             this.Name = newProcedure.Name;
-            this.Responsible = newProcedure.Responsible;
-
-            this.Attachments = newProcedure.Attachments; //itt lehet, hogy majd update metódust kell írni...
-
-
-            this.CreatedTimestamp = newProcedure.CreatedTimestamp;
-
+            this.Attachments = newProcedure.Attachments;
+            this.Anamnesis = newProcedure.Anamnesis;
+            this.Diagnosis = newProcedure.Diagnosis;
+            this.Duration = newProcedure.Duration;
+            this.ProcedureType = newProcedure.ProcedureType;
 
             //utoljára, hogy a setterek ne csesszék szét!
             this.LastModifiedTimestamp = newProcedure.LastModifiedTimestamp;

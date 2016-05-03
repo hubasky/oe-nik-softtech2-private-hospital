@@ -68,6 +68,17 @@ namespace HubaskyHospitalManager.Model.Common
             return clone;
         }
 
+        public void UpdatePatient(Patient newPatient)
+        {
+            this.Name = newPatient.Name;
+            this.Phone = newPatient.Phone;
+            this.DateOfBirth = newPatient.DateOfBirth;
+            this.Ssn = newPatient.Ssn;
+            this.Address = newPatient.Address;
+            this.UpdateMedicalHistory(newPatient.MedicalHistory);
+            this.Gender = newPatient.Gender;
+        }
+
         //public override bool Equals(object obj)
         //{
         //    var properPatient = obj as Patient;

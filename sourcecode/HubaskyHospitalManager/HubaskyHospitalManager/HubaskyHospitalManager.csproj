@@ -69,6 +69,7 @@
     <Compile Include="Data\PopulateDb.cs" />
     <Compile Include="Data\XmlReader.cs" />
     <Compile Include="Model\Common\InventoryRecordStatus.cs" />
+    <Compile Include="Model\Common\ItemUsage.cs" />
     <Compile Include="Model\Exceptions\DuplicatedPatientInDbException.cs" />
     <Compile Include="Model\Exceptions\EmployeeRoleForbiddenException.cs" />
     <Compile Include="Model\Exceptions\InvalidUnitAdditionException.cs" />
@@ -79,7 +80,6 @@
     <Compile Include="View\EditPatientWindow.xaml.cs">
       <DependentUpon>EditPatientWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ProcedureView.cs" />
     <Compile Include="View\PatientManagementView.cs" />
     <Compile Include="View\HospitalManagerView\EditProceduresWindow.xaml.cs">
       <DependentUpon>EditProceduresWindow.xaml</DependentUpon>
@@ -111,7 +111,6 @@
       <DependentUpon>InventoryManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoggedInUserConventer.cs" />
-    <Compile Include="View\MedicalRecordView.cs" />
     <Compile Include="View\MedicalRecordWindow.xaml.cs">
       <DependentUpon>MedicalRecordWindow.xaml</DependentUpon>
     </Compile>

@@ -93,10 +93,11 @@ namespace HubaskyHospitalManager.View
                         ptWindow.ShowDialog();
                         if (ptWindow.DialogResult == true)
                         {
-                            VM.Patientmanager.UpdatePatient(ptWindow.Patient, VM.SelectedPatient);
-                            Patient selection = VM.SelectedPatient;
-                            VM.SelectedPatient = null;
-                            VM.SelectedPatient = selection;
+                            //VM.Patientmanager.UpdatePatient(ptWindow.Patient, VM.SelectedPatient);
+                            //Patient selection = VM.SelectedPatient;
+                            //VM.SelectedPatient = null;
+                            //VM.SelectedPatient = selection;
+                            VM.Patientmanager.UpdatePatient(VM.ClonedPatient, VM.SelectedPatient);
                             lbPatient.Items.Refresh();
                         }
 
@@ -122,10 +123,10 @@ namespace HubaskyHospitalManager.View
                 VM.FillMedicalHistory();
                 MedicalHistory.Items.Refresh();
             }
-            else
-            {
-                VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, medicalRecordWindow.MedicalRecord);
-            }
+            ////else
+            ////{
+            ////    VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, medicalRecordWindow.MedicalRecord);
+            ////}
             
         }
 
@@ -148,14 +149,15 @@ namespace HubaskyHospitalManager.View
                         if (medicalRecordWindow.DialogResult == true)
                         {
                             //VM.Patientmanager.NewMedicalRecord(VM.SelectedPatient, mr);
+                            VM.Patientmanager.UpdateMedicalRecord(VM.ClonedMedicalRecord, VM.SelectedMedicalRecord);
                             VM.FillMedicalHistory();
                             MedicalHistory.Items.Refresh();
                         }
-                        else
-                        {
-                            VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, 
-                                medicalRecordWindow.MedicalRecord);
-                        }
+                        ////else
+                        ////{
+                        ////    VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, 
+                        ////        medicalRecordWindow.MedicalRecord);
+                        ////}
 
                     }
 
@@ -179,10 +181,10 @@ namespace HubaskyHospitalManager.View
                     VM.FillProcedures();
                     Procedures.Items.Refresh();
                 }
-                else
-                {   //ha klónt adunk át, akkor törölhető lesz
-                    VM.Patientmanager.RemoveProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
-                }
+                ////else
+                ////{   //ha klónt adunk át, akkor törölhető lesz
+                ////    VM.Patientmanager.RemoveProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
+                ////}
             }
             else
             {
@@ -207,13 +209,14 @@ namespace HubaskyHospitalManager.View
                         procedureWindow.ShowDialog();
                         if (procedureWindow.DialogResult == true)
                         {
+                            VM.Patientmanager.UpdateProcedure(VM.ClonedProcedure, VM.SelectedProcedure);
                             VM.FillProcedures();
                             Procedures.Items.Refresh();
                         }
-                        else
-                        {   //ha klónt adunk át, akkor törölhető lesz
-                            VM.Patientmanager.RemoveProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
-                        }
+                        ////else
+                        ////{   //ha klónt adunk át, akkor törölhető lesz
+                        ////    VM.Patientmanager.RemoveProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
+                        ////}
 
                     }
 
