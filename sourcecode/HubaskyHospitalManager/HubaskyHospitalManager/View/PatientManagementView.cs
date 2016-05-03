@@ -46,7 +46,12 @@ namespace HubaskyHospitalManager.View
             set { medicalHistory = value; OnPropertyChanged(); }
         }
 
-        public MedicalRecord ClonedMedicalRecord { get; set; }
+        private MedicalRecord clonedMedicalRecord;
+        public MedicalRecord ClonedMedicalRecord
+        {
+            get { return clonedMedicalRecord; }
+            set { clonedMedicalRecord = value; OnPropertyChanged(); }
+        }
         private MedicalRecord selectedMedicalRecord;
         public MedicalRecord SelectedMedicalRecord
         {
@@ -54,7 +59,7 @@ namespace HubaskyHospitalManager.View
             set
             {
                 selectedMedicalRecord = value;
-                ClonedMedicalRecord = (MedicalRecord)SelectedMedicalRecord.Clone();
+                if (selectedMedicalRecord != null) ClonedMedicalRecord = (MedicalRecord)selectedMedicalRecord.Clone();
                 FillProcedures();
                 OnPropertyChanged();
             }
@@ -68,7 +73,12 @@ namespace HubaskyHospitalManager.View
         }
 
         //a klón mindig másolata lesz az eredetinek
-        public Procedure ClonedProcedure { get; set; }
+        private Procedure clonedProcedure;
+        public Procedure ClonedProcedure
+        {
+            get {return clonedProcedure;}
+            set {clonedProcedure = value; OnPropertyChanged();}
+        }
         private Procedure selectedProcedure;
         public Procedure SelectedProcedure
         {
@@ -76,7 +86,7 @@ namespace HubaskyHospitalManager.View
             set
             {
                 selectedProcedure = value;
-                ClonedProcedure = (Procedure)SelectedProcedure.Clone();
+                if (selectedProcedure != null) ClonedProcedure = (Procedure)SelectedProcedure.Clone();
                 OnPropertyChanged();
             }
         }

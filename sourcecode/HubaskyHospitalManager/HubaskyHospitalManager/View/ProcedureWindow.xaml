@@ -29,7 +29,7 @@
         <TextBox Text="Dr. Gyógyító György" HorizontalAlignment="Left" Margin="210,144,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
         <TextBox Text="10:26" HorizontalAlignment="Left" Margin="210,205,0,0" VerticalAlignment="Top" Width="166" Height="25"/>
         <Label Content="23 perc" HorizontalAlignment="Left" Margin="210,237,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding ClonedProcedure.Name}" HorizontalAlignment="Left" Margin="210,83,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
+        <Label Content="{Binding ClonedProcedure.Name}" HorizontalAlignment="Left" Margin="210,83,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
         <Label Content="Eljárás megnevezése" HorizontalAlignment="Left" Margin="17,83,0,0" VerticalAlignment="Top" Width="188"/>
         <ListBox HorizontalAlignment="Left" Height="241" Margin="714,83,0,0" VerticalAlignment="Top" Width="256"                 ItemsSource="{Binding ClonedProcedure.Attachments}"
                  SelectedItem="{Binding ClonedPatient}">
@@ -68,7 +68,7 @@
         <Label Content="Eljárás időpontja" HorizontalAlignment="Left" Margin="17,205,0,0" VerticalAlignment="Top" Width="188"/>
         <DatePicker DisplayDate="2016-04-30" HorizontalAlignment="Left" Height="25" Margin="210,175,0,0" VerticalAlignment="Top" Width="166"/>
         <Button Content="Mentés" Name="btnSave" HorizontalAlignment="Left" Height="57" Margin="714,386,0,0" VerticalAlignment="Top" Width="258" Click="btnSave_Click"/>
-        <Label Content="Eljárás típusa" HorizontalAlignment="Left" Margin="19,114,0,0" VerticalAlignment="Top" Width="188"/>
+
         <Label Content="{Binding ClonedPatient.ClonedProcedure}" HorizontalAlignment="Left" Margin="210,114,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
         <TextBox HorizontalAlignment="Left" Height="106" Margin="400,83,0,0" TextWrapping="Wrap" Text="{Binding ClonedProcedure.Anamnesis, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="296"
         	IsEnabled="{Binding SelectedValue, ConverterParameter=ValueForEnabled, Converter={StaticResource StringToBoolConverter}, ElementName=MedicalHistory}"
@@ -77,5 +77,7 @@
         <TextBox HorizontalAlignment="Left" Height="208" Margin="400,235,0,0" TextWrapping="Wrap" Text="{Binding ClonedProcedure.Diagnosis, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="296"
         	IsEnabled="{Binding SelectedValue, ConverterParameter=ValueForEnabled, Converter={StaticResource StringToBoolConverter}, ElementName=MedicalHistory}"/>
         <Label Content="Diagnosis" HorizontalAlignment="Left" Margin="400,205,0,0" VerticalAlignment="Top" Width="139"/>
+        <Button Content="Eljárás típusa" HorizontalAlignment="Left" Margin="17,120,0,0" VerticalAlignment="Top" Width="77" Height="19" BorderBrush="Transparent" Background="OldLace" Click="Button_Click"
+                 />
     </Grid>
 </Window>

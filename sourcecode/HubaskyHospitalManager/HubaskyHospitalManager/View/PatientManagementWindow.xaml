@@ -67,7 +67,7 @@
                  >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <!--<Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -77,7 +77,13 @@
                         </Grid.RowDefinitions>
                         <Label Grid.Column="0" Grid.Row="0" x:Name="tst" Content="{Binding CreatedTimestamp, FallbackValue=null}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
                         <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
-                    </Grid>
+                    </Grid>-->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding CreatedTimestamp}" HorizontalAlignment="Left" />
+                        <TextBlock Text="  "/>
+                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" />
+                        <!--<TextBlock Text=""/>-->
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
@@ -87,56 +93,52 @@
 
         <!--KÓRTÖRTÉNET-->
         <Label Content="Kórtörténet" HorizontalAlignment="Left" Margin="758,34,0,0" VerticalAlignment="Top" Width="209" FontSize="15" />
-        <ListBox x:Name="MedicalHistory" HorizontalAlignment="Left" Height="126" Margin="758,64,0,0" VerticalAlignment="Top" Width="411" 
+        <ListBox x:Name="MedicalHistory" HorizontalAlignment="Left" Height="95" Margin="758,64,0,0" VerticalAlignment="Top" Width="411" 
                  ItemsSource="{Binding Path=MedicalHistory}" 
                  SelectedItem="{Binding Path=SelectedMedicalRecord}" MouseDoubleClick="MedicalHistory_MouseDoubleClick" 
                  >
             <!--SelectedItem="{Binding Path=SelectedPatient}">-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Label Grid.Column="0" Grid.Row="0" x:Name="tst" Content="{Binding CreatedTimestamp, FallbackValue=null}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
-                        <Label Grid.Column="1" Grid.Row="0" Content="{Binding ShortDescription, FallbackValue=null}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" />
-                    </Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding CreatedTimestamp}" HorizontalAlignment="Left" />
+                        <TextBlock Text="  "/>
+                        <TextBlock Text="{Binding ShortDescription}" HorizontalAlignment="Left" />
+                        <!--<TextBlock Text=""/>-->
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="Btn_NewMedicalRecord" Content="Új Kezelés felvétele" HorizontalAlignment="Left" Margin="758,195,0,0" VerticalAlignment="Top" Click="Btn_NewMedicalRecord_Click"
+        <Button x:Name="Btn_NewMedicalRecord" Content="Új Kezelés felvétele" HorizontalAlignment="Left" Margin="757,164,0,0" VerticalAlignment="Top" Click="Btn_NewMedicalRecord_Click"
                 
-        IsEnabled="{Binding ElementName=lbPatient, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}"
+        IsEnabled="{Binding ElementName=lbPatient, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}" Width="175"
                 />
-        <Label Content="Létrehozva" HorizontalAlignment="Left" Margin="757,433,0,0" VerticalAlignment="Top" Width="82"/>
-        <Label Content="Módosítva" HorizontalAlignment="Left" Margin="957,432,0,0" VerticalAlignment="Top" Width="82"/>
-        <Label Content="Folyamat állapot" HorizontalAlignment="Left" Margin="759,401,0,0" VerticalAlignment="Top" Width="139"/>
-        <Label Content="{Binding SelectedMedicalRecord.CreatedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="844,432,0,0" VerticalAlignment="Top" Width="108"/>
-        <Label Content="{Binding SelectedMedicalRecord.LastModifiedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="1044,433,0,0" VerticalAlignment="Top" Width="125"/>
-        <ComboBox HorizontalAlignment="Left" Height="26" Margin="942,401,0,0" VerticalAlignment="Top" Width="226"
+        <Label Content="Létrehozva" HorizontalAlignment="Left" Margin="758,227,0,0" VerticalAlignment="Top" Width="82"/>
+        <Label Content="Módosítva" HorizontalAlignment="Left" Margin="958,226,0,0" VerticalAlignment="Top" Width="82"/>
+        <Label Content="Folyamat állapot" HorizontalAlignment="Left" Margin="760,195,0,0" VerticalAlignment="Top" Width="139"/>
+        <Label Content="{Binding SelectedMedicalRecord.CreatedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="845,226,0,0" VerticalAlignment="Top" Width="108"/>
+        <Label Content="{Binding SelectedMedicalRecord.LastModifiedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="1045,227,0,0" VerticalAlignment="Top" Width="125"/>
+        <ComboBox HorizontalAlignment="Left" Height="26" Margin="943,195,0,0" VerticalAlignment="Top" Width="226"
                   ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
                   SelectedItem="{Binding SelectedMedicalRecord.State}"
                   IsEnabled="False"
                   />
         <!--Visibility="{Binding ElementName=Procedures, Path=SelectedValue, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter=ValueForEnabled}"-->
-        <Label Content="Diagnosis" HorizontalAlignment="Left" Margin="759,305,0,0" VerticalAlignment="Top" Width="139"/>
-        <TextBlock HorizontalAlignment="Left" Height="61" Margin="758,335,0,0" TextWrapping="Wrap" Text="{Binding SelectedMedicalRecord.Diagnosis}" VerticalAlignment="Top" Width="411"
+        <Label Content="Diagnosis" HorizontalAlignment="Left" Margin="757,444,0,0" VerticalAlignment="Top" Width="139"/>
+        <TextBlock HorizontalAlignment="Left" Height="61" Margin="756,473,0,0" TextWrapping="Wrap" Text="{Binding SelectedMedicalRecord.Diagnosis}" VerticalAlignment="Top" Width="411"
                  IsEnabled="{Binding ElementName=MedicalHistory, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}"/>
 
-        <Label Content="Anamnesis" HorizontalAlignment="Left" Margin="759,227,0,0" VerticalAlignment="Top" Width="80"/>
-        <Label Content="{Binding SelectedMedicalRecord.ShortDescription}"
-                 HorizontalAlignment="Left" Margin="872,227,0,0" VerticalAlignment="Top" Width="296" Height="27"
-                 />
+        <Label Content="Anamnesis" HorizontalAlignment="Left" Margin="757,366,0,0" VerticalAlignment="Top" Width="80"/>
         <!--Visibility="{Binding ElementName=MedicalHistory, Path=SelectedValue, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter=ValueForEnabled}"-->
 
-        <TextBlock HorizontalAlignment="Left" Height="55" Margin="759,250,0,0" TextWrapping="Wrap" Text="{Binding SelectedMedicalRecord.Anamnesis}" VerticalAlignment="Top" Width="411"
+        <TextBlock HorizontalAlignment="Left" Height="55" Margin="757,389,0,0" TextWrapping="Wrap" Text="{Binding SelectedMedicalRecord.Anamnesis}" VerticalAlignment="Top" Width="411"
                  IsEnabled="{Binding ElementName=MedicalHistory, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}"
                  />
         <Button x:Name="Btn_RemovePatient" Content="Beteg eltávolítása" HorizontalAlignment="Left" Margin="186,546,0,0" VerticalAlignment="Top" Width="115" Click="Btn_RemovePatient_Click"/>
+        <Button x:Name="Btn_RemoveMedicalRecord" Content="Kezelés eltávolítása" HorizontalAlignment="Left" Margin="992,164,0,0" VerticalAlignment="Top" Click="Btn_RemoveMedicalRecord_Click"
+                
+        	IsEnabled="{Binding SelectedValue, ConverterParameter=ValueForEnabled, Converter={StaticResource StringToBoolConverter}, ElementName=lbPatient}" Width="175"
+                />
 
     </Grid>
 </Window>

@@ -7,7 +7,7 @@
         Title="Beteg szerkesztése"       
         WindowStartupLocation="CenterScreen"        
         Icon="pack://application:,,,/Images/hubasky_icon.png"
-        Height="274" Width="390" Loaded="Window_Loaded">
+        Height="300" Width="390" Loaded="Window_Loaded">
     <Window.Resources>
         <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
                         ObjectType="{x:Type sys:Enum}">
@@ -28,13 +28,16 @@
         <Label Content="Telefonszám" Margin="10,74,10,0" VerticalAlignment="Top" Height="26"/>
         <TextBox Text="{Binding Patient.Phone}" Height="23" Margin="10,77,10.333,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Születési dátum" Margin="10,102,10,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Text="{Binding Patient.DateOfBirth}" Height="23" Margin="10,105,10.333,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="TxtBox_Name" Text="{Binding Patient.DateOfBirth}" Height="23" Margin="10,105,10.333,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Nem" Margin="10,130,10,0" VerticalAlignment="Top" Height="26"/>
-        <ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
+        <ComboBox x:Name="TxtBox_Gender" ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
                   SelectedItem="{Binding Patient.Gender}" Height="23" Margin="10,133,10.333,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="TAJ" Margin="10,158,10,0" VerticalAlignment="Top" Height="26"/>
         <TextBox x:Name="TxtBox_Ssn" Text="{Binding Patient.Ssn, UpdateSourceTrigger=PropertyChanged}" Height="23" Margin="10,161,10.333,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
 
-        <Button Content="OK" HorizontalAlignment="Right" Margin="0,205,111.333,0" Width="160" Click="Button_Click" Height="30" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button Content="OK" HorizontalAlignment="Right" Margin="0,231,111.333,0" Width="160" Click="Button_Click" Height="30" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="PasswordBox" Text="{Binding Patient.Password, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" Height="23" Margin="10,189,9.333,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+         ContextMenu="{x:Null}" TextElement.Foreground="Transparent" />
+        <Label Content="Jelszó" Margin="10,186,10,0" VerticalAlignment="Top" Height="26"/>
     </Grid>
 </Window>

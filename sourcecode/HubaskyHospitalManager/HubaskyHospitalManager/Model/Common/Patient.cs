@@ -17,6 +17,7 @@ namespace HubaskyHospitalManager.Model.Common
         public virtual List<MedicalRecord> MedicalHistory { get; set; }
         public Gender Gender { get; set; }
         public string Password { get; set; }
+        public string UserGroup { get; private set; }
 
         public Patient()
         {
@@ -27,6 +28,8 @@ namespace HubaskyHospitalManager.Model.Common
             DateOfBirth = "";
             Gender = Gender.Female;
             this.MedicalHistory = new List<MedicalRecord>();
+
+            UserGroup = "user";
         }
 
 
@@ -40,6 +43,8 @@ namespace HubaskyHospitalManager.Model.Common
             Address = address;
             MedicalHistory = (medicalHistory == null) ? new List<MedicalRecord>() : medicalHistory;
             Password = ApplicationManager.CalculateSHA256(DateOfBirth);
+
+            UserGroup = "user";
         }
 
         public List<MedicalRecord> UpdateMedicalHistory(List<MedicalRecord> newMedicalHistory)
@@ -136,13 +141,13 @@ namespace HubaskyHospitalManager.Model.Common
         //}
 
 
-        //CSAK akkor hívják, ha a betegnek nincs nyitott medicalrecordja, és új procedure-t adna valaki hozzá...
-        //ekkor lefut a new medical history, de annak az adattagjának kéne egy adattagját return-ölni
-        //Demeter pedig ezt nem szereti
-        public Procedure ReturnFirstProcedureOfNewMedicalRecord()
-        {
-            return this.MedicalHistory[0].Procedures[0];
-        }
+        ////CSAK akkor hívják, ha a betegnek nincs nyitott medicalrecordja, és új procedure-t adna valaki hozzá...
+        ////ekkor lefut a new medical history, de annak az adattagjának kéne egy adattagját return-ölni
+        ////Demeter pedig ezt nem szereti
+        //public Procedure ReturnFirstProcedureOfNewMedicalRecord()
+        //{
+        //    return this.MedicalHistory[0].Procedures[0];
+        //}
 
     }//end Patient
 

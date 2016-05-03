@@ -129,7 +129,7 @@ namespace HubaskyHospitalManager.View
             medicalRecordWindow.ShowDialog();
             if (medicalRecordWindow.DialogResult == true)
             {
-                VM.Patientmanager.NewMedicalRecord(VM.SelectedPatient, medicalRecordWindow.MedicalRecord);
+                VM.Patientmanager.NewMedicalRecord(VM.ClonedPatient, medicalRecordWindow.MedicalRecord);
                 VM.FillMedicalHistory();
                 MedicalHistory.Items.Refresh();
             }
@@ -138,6 +138,14 @@ namespace HubaskyHospitalManager.View
             ////    VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, medicalRecordWindow.MedicalRecord);
             ////}
             
+        }
+
+
+        private void Btn_RemoveMedicalRecord_Click(object sender, RoutedEventArgs e)
+        {
+            VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, VM.SelectedMedicalRecord);
+            VM.FillMedicalHistory();
+            MedicalHistory.Items.Refresh();
         }
 
         //MEDICALRECORD DUPLAKLIKK
@@ -235,6 +243,9 @@ namespace HubaskyHospitalManager.View
                 elem = (UIElement)VisualTreeHelper.GetParent(elem);
             }
         }
+
+
+
 
         
 

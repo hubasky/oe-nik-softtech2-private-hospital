@@ -57,6 +57,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public void RemovePatient(Patient patient)
         {
             Patients.Remove(patient);
+            AppManager.ApplicationDb.Patients.Remove(patient);
             AppManager.ApplicationDb.SaveChanges();
         }
 

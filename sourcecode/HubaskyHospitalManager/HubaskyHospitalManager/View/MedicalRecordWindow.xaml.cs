@@ -22,7 +22,6 @@ namespace HubaskyHospitalManager.View
     public partial class MedicalRecordWindow : Window
     {
         public PatientManagementView VM { get; set; }
-        //public ProcedureView PView { get; set; }
         public MedicalRecord MedicalRecord { get; set; }
 
 
@@ -73,12 +72,6 @@ namespace HubaskyHospitalManager.View
         {
             DialogResult = true;
         }
-
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false;
-        }
-
 
     }
 }

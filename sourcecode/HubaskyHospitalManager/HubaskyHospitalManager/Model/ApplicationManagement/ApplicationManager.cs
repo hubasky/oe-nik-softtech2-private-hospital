@@ -35,7 +35,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
 
         public ApplicationManager()
         {
-            string version = "00";
+            string version = "01";
             string dataSource = @"Data Source=(localdb)\MSSQLLocalDB";
             string initialCatalog = @"Initial Catalog=tempdb" + version;
             string security = @"Integrated Security=True";
@@ -43,7 +43,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             string connStr = string.Format("{0};{1};{2};{3}", dataSource, initialCatalog, security, dbFileName);
 
             // Ez a db server beállítása, a file conn stringet benthagyom arra az esetre, ha később kellene...
-            connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=HubaskyDataBase;User ID=sa;Password=szoftech;Pooling=False";
+            connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=HubaskyDataBase03;User ID=sa;Password=szoftech;Pooling=False";
 
             ApplicationDb = new HubaskyDataBase(connStr);
 

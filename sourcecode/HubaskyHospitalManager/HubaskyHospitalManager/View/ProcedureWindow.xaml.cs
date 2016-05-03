@@ -78,6 +78,11 @@ namespace HubaskyHospitalManager.View
             DialogResult = false;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
     }
 }

@@ -60,11 +60,23 @@ namespace HubaskyHospitalManager.View
             DataContext = this;
             Patient = pt;
             TxtBox_Ssn.IsEnabled = false; //szerintem ne kapcsoljuk ki, legyen szerkeszthető
+            TxtBox_Name.IsEnabled = false;
+            TxtBox_Gender.IsEnabled = false;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void textBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Copy ||
+                e.Command == ApplicationCommands.Cut ||
+                e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

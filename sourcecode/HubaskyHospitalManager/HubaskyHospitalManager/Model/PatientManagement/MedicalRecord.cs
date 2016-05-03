@@ -24,9 +24,10 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public string CreatedTimestamp { get; set; }
         public string LastModifiedTimestamp { get; set; }
         public State State { get; set; }
-        public string ShortDescription { get; set; }
         public virtual List<Procedure> Procedures { get; set; }
-               
+        public string ShortDescription { get; set; }
+
+
         public MedicalRecord()
         {
             //Guid g = new Guid();
