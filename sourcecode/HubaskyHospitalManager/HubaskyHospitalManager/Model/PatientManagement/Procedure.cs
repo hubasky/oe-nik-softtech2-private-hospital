@@ -25,9 +25,9 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public int Id { get; set; }
         public string CreatedTimestamp { get; set; }
         public string LastModifiedTimestamp { get; set; }
-        public ProcedureType ProcedureType { get; set; }
-        public Employee Responsible { get; set; }
-        public Ward Ward { get; set; }
+        public virtual ProcedureType ProcedureType { get; set; }
+        public virtual Employee Responsible { get; set; }
+        public virtual Ward Ward { get; set; }
 
         public string Anamnesis { get; set; }
         public string Diagnosis { get; set; }
@@ -119,6 +119,8 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             this.Diagnosis = newProcedure.Diagnosis;
             this.Duration = newProcedure.Duration;
             this.ProcedureType = newProcedure.ProcedureType;
+            this.Ward = newProcedure.Ward;
+            this.Responsible = newProcedure.Responsible;
             
         }
 

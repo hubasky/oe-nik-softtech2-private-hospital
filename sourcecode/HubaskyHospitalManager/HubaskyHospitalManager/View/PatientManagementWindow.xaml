@@ -111,8 +111,8 @@
                 />-->
 
         <!--Visibility="{Binding ElementName=Procedures, Path=SelectedValue, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter=ValueForEnabled}"-->
-        <Label Content="Diagnosis" Margin="10,418,10,0" VerticalAlignment="Top" Grid.Column="2" Height="26"/>
-        <TextBlock Height="174" Margin="9,449,10,0" TextWrapping="Wrap" Text="{Binding SelectedProcedure.Diagnosis}" VerticalAlignment="Top" Grid.Column="2" TextAlignment="Justify"/>
+        <Label Content="Diagnosis" Margin="10,418,10,0" VerticalAlignment="Top" Grid.Column="2" Height="26" FontWeight="Medium"/>
+        <TextBlock Height="174" Margin="20,449,20,0" TextWrapping="Wrap" Text="{Binding SelectedProcedure.Diagnosis}" VerticalAlignment="Top" Grid.Column="2" TextAlignment="Justify"/>
 
 
         <Button x:Name="Btn_RemovePatient" Content="Beteg eltávolítása" Margin="0,0,10,10" Click="Btn_RemovePatient_Click" Grid.Row="1" HorizontalAlignment="Right" Width="115" Height="22" VerticalAlignment="Bottom"/>
@@ -124,25 +124,27 @@
         <!-- Eljárás adatlap -->
         <Label Content="Eljárás adatlap" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="15" Grid.Column="2" Height="30"/>
 
-        <Label Content="Megnevezés" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="91" Grid.Column="2" Height="26"/>
-        <Label Content="{Binding SelectedProcedure.ProcedureType.Name}" Margin="97,61,0,0" VerticalAlignment="Top" Grid.Column="2" Height="26" HorizontalAlignment="Left" Width="370"/>
+        <Label Content="Megnevezés" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="91" Grid.Column="2" Height="26" FontWeight="Medium"/>
+        <Label Content="{Binding SelectedProcedure.ProcedureType.Name}" Margin="106,44,10,0" VerticalAlignment="Top" Grid.Column="2" Height="26"/>
 
-        <Label Content="Eljárás kód" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26"/>
-        <Label Content="{Binding SelectedProcedure.ProcedureType.Id}" Margin="97,92,253,0" VerticalAlignment="Top" Grid.Column="2" Height="26"/>
-        <Label Content="Állapot" HorizontalAlignment="Left" Margin="229,92,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26"/>
-        <Label Content="{Binding SelectedProcedure.State, Converter={StaticResource StateStringConventer}}" Margin="316,92,0,0" VerticalAlignment="Top" Grid.Column="2" Height="26" HorizontalAlignment="Left" Width="151"/>
+        <Label Content="Eljárás kód" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26" FontWeight="Medium"/>
+        <Label Content="{Binding SelectedProcedure.ProcedureType.Id}" Margin="97,75,253,0" VerticalAlignment="Top" Grid.Column="2" Height="26"/>
+        <Label Content="Állapot" HorizontalAlignment="Left" Margin="229,75,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26" FontWeight="Medium"/>
+        <Label Content="{Binding SelectedProcedure.State, Converter={StaticResource StateStringConventer}}" Margin="316,75,10,0" VerticalAlignment="Top" Grid.Column="2" Height="26"/>
 
-        <Label Content="Létrehozva" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26"/>
-        <Label Content="{Binding SelectedProcedure.CreatedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="97,123,0,0" VerticalAlignment="Top" Width="127" Grid.Column="2"/>
-        <Label Content="Módosítva" HorizontalAlignment="Left" Margin="229,123,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26"/>
-        <Label Content="{Binding SelectedProcedure.LastModifiedTimestamp}" Height="26" Margin="316,123,10,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label Content="Létrehozva" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26" FontWeight="Medium"/>
+        <Label Content="{Binding SelectedProcedure.CreatedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="97,106,0,0" VerticalAlignment="Top" Width="127" Grid.Column="2"/>
+        <Label Content="Módosítva" HorizontalAlignment="Left" Margin="229,106,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26" FontWeight="Medium"/>
+        <Label Content="{Binding SelectedProcedure.LastModifiedTimestamp}" Height="26" Margin="316,106,10,0" VerticalAlignment="Top" Grid.Column="2"/>
 
-        <Label Content="Anamnesis" Margin="10,215,10,0" VerticalAlignment="Top" Grid.Column="2" Height="26"/>
-        <TextBlock Height="167" Margin="10,246,10,0" TextWrapping="Wrap" Text="{Binding SelectedProcedure.Anamnesis}" VerticalAlignment="Top" Grid.Column="2" TextAlignment="Justify" />
-        <Label Content="Felelős dolgozó" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" Height="26"/>
-        <Label Content="{Binding SelectedProcedure.Responsible.Name}" HorizontalAlignment="Left" Height="26" Margin="229,154,0,0" VerticalAlignment="Top" Width="238" Grid.Column="2"/>
-        <Label Content="Felelős intézeti egység" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" Height="26"/>
-        <Label Content="{Binding SelectedProcedure.Ward.Name}" HorizontalAlignment="Left" Height="26" Margin="229,185,0,0" VerticalAlignment="Top" Width="238" Grid.Column="2"/>
+        <Label Content="Anamnesis" Margin="10,230,10,0" VerticalAlignment="Top" Grid.Column="2" Height="26" FontWeight="Medium"/>
+        <TextBlock Height="148" Margin="20,261,20,0" TextWrapping="Wrap" Text="{Binding SelectedProcedure.Anamnesis}" VerticalAlignment="Top" Grid.Column="2" TextAlignment="Justify" />
+        <Label Content="Felelős dolgozó" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" Height="26" FontWeight="Medium"/>
+        <Label Content="{Binding SelectedProcedure.Responsible.Name}" Height="26" Margin="229,137,10,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label Content="Felelős intézeti egység" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" Height="26" FontWeight="Medium"/>
+        <Label Content="{Binding SelectedProcedure.Ward.Name}" Height="26" Margin="229,168,10,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label Content="Eljárás ára" HorizontalAlignment="Left" Margin="10,199,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" Height="26" FontWeight="Medium"/>
+        <Label Content="{Binding SelectedProcedure.Price}" Height="26" Margin="229,199,10,0" VerticalAlignment="Top" Grid.Column="2"/>
 
     </Grid>
 </Window>

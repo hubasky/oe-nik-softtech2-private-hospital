@@ -242,6 +242,21 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
                     {
                         foreach (Employee emp in ward.Employees)
                             Hospital.Employees.Add(emp);
+
+                        var ptype = (from p in AppManager.ApplicationDb.ProcedureTypes
+                                     from w in p.Wards
+                                     where w.Id == ward.Id
+                                     select p).ToList();
+
+                        foreach (var p in ptype)
+                            p.Wards.Remove(ward);
+
+                        var proc = (from p in AppManager.ApplicationDb.Procedures
+                                    where p.Ward.Id == ward.Id
+                                    select p).ToList();
+                        foreach (var p in proc)
+                            p.Ward = null;
+
                     }
                     foreach (Employee deptEmp in dept.Employees)
                         Hospital.Employees.Add(deptEmp);
@@ -258,6 +273,20 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
                     Unit parent = FindParentUnit(ward);
                     foreach (Employee emp in ward.Employees)
                         parent.Employees.Add(emp);
+
+                    var ptype = (from p in AppManager.ApplicationDb.ProcedureTypes
+                                from w in p.Wards
+                                where w.Id == ward.Id
+                                select p).ToList();
+
+                    foreach(var p in ptype)
+                        p.Wards.Remove(ward);
+
+                    var proc = (from p in AppManager.ApplicationDb.Procedures
+                               where p.Ward.Id == ward.Id
+                               select p).ToList();
+                    foreach (var p in proc)
+                        p.Ward = null;
 
                     AppManager.ApplicationDb.Wards.Remove(ward);
                     AppManager.ApplicationDb.SaveChanges();
@@ -343,6 +372,12 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             if(procedureType != null)
                 foreach (Ward ward in procedureType.Wards)
                     ward.Procedures.Remove(procedureType);
+            var proc = (from p in AppManager.ApplicationDb.Procedures
+                    where p.ProcedureType.Id == procedureType.Id
+                    select p).ToList();
+            foreach (Procedure p in proc)
+                p.ProcedureType = null;
+
             AppManager.ApplicationDb.ProcedureTypes.Remove(procedureType);
             AppManager.ApplicationDb.SaveChanges();
         }

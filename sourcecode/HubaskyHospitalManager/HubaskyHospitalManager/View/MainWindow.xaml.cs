@@ -171,7 +171,7 @@ namespace HubaskyHospitalManager.View
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            DbLoadThread.Abort();
+            DbLoadThread.Interrupt();
         }
     }
 }

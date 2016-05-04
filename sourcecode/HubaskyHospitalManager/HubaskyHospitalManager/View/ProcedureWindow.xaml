@@ -19,29 +19,32 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Páciens neve" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="188"/>
-        <Label Content="{Binding VM.SelectedPatient.Name}" HorizontalAlignment="Left" Margin="210,22,0,0" VerticalAlignment="Top" Height="25" Width="166"/>
-        <Label Content="TAJ száma" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="188"/>
-        <Label Content="{Binding VM.SelectedPatient.Ssn}" HorizontalAlignment="Left" Margin="210,47,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
-        <Label Content="Eljárás felelőse" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Width="188"/>
-        <Label Content="{Binding Procedure.Responsible.Name}" HorizontalAlignment="Left" Margin="210,73,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
-        <Label Content="Beavatkozás időtartama (perc)" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" Width="188"/>
-        <TextBox Text="{Binding Procedure.Duration}" Margin="210,99,10,0" VerticalAlignment="Top"/>
-        <Label Content="Eljárás állapota" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="188"/>
-        <ComboBox Height="27" Margin="210,126,10,0" VerticalAlignment="Top"
+        <Label Content="Páciens neve" HorizontalAlignment="Left" Margin="9,11,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="{Binding VM.SelectedPatient.Name}" HorizontalAlignment="Left" Margin="209,12,0,0" VerticalAlignment="Top" Height="25" Width="166"/>
+        <Label Content="TAJ száma" HorizontalAlignment="Left" Margin="9,37,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="{Binding VM.SelectedPatient.Ssn}" HorizontalAlignment="Left" Margin="209,37,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
+        <Label Content="Eljárás felelőse" HorizontalAlignment="Left" Margin="9,63,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="{Binding Procedure.Responsible.Name}" HorizontalAlignment="Left" Margin="209,63,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
+        <Label Content="Beavatkozás időtartama (perc)" HorizontalAlignment="Left" Margin="9,89,0,0" VerticalAlignment="Top" Width="188"/>
+        <TextBox Text="{Binding Procedure.Duration}" Margin="209,89,11,0" VerticalAlignment="Top"/>
+        <Label Content="Eljárás állapota" HorizontalAlignment="Left" Margin="9,117,0,0" VerticalAlignment="Top" Width="188"/>
+        <ComboBox Height="27" Margin="209,116,11,0" VerticalAlignment="Top"
                   ItemsSource="{Binding StateTypes, Converter={StaticResource StateTypesConverter}}"
                   SelectedItem="{Binding Procedure.State, Converter={StaticResource StateStringConventer}}"/>
+        <Label Margin="10,148,201,0" Content="Eljárás ára" VerticalAlignment="Top"/>
+        <TextBox Margin="209,148,10,0" Text="{Binding Procedure.Price}" VerticalAlignment="Top"/>
 
-        <Label Content="Osztály" Margin="10,163,119,0" VerticalAlignment="Top"/>
-        <ListBox Margin="10,189,10,232" ItemsSource="{Binding WardsList}" SelectedItem="{Binding Procedure.Ward}">
+
+        <Label Content="Osztály" Margin="10,179,119,0" VerticalAlignment="Top"/>
+        <ListBox Margin="10,210,10,208" ItemsSource="{Binding WardsList}" SelectedItem="{Binding Procedure.Ward}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="Eljárás" Margin="10,273,119,0" VerticalAlignment="Top"/>
-        <ListBox Margin="10,299,10,72" ItemsSource="{Binding Procedure.Ward.Procedures}" SelectedItem="{Binding Procedure.ProcedureType}">
+        <Label Content="Eljárás" Margin="10,299,119,0" VerticalAlignment="Top"/>
+        <ListBox Margin="10,330,10,72" ItemsSource="{Binding Procedure.Ward.Procedures}" SelectedItem="{Binding Procedure.ProcedureType}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
