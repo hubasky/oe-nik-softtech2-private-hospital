@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HubaskyHospitalManager.Model.Common
 {
-    public class ItemUsage
+    public class ItemUsage : ICloneable 
     {
         [Key]
         public int Id { get; set; }
@@ -24,5 +24,12 @@ namespace HubaskyHospitalManager.Model.Common
             Quantity = quantity;
         }
 
+
+        public object Clone()
+        {
+            Object clone = new ItemUsage(ItemId, Quantity);
+
+            return clone;            
+        }
     }
 }

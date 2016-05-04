@@ -64,16 +64,22 @@ namespace HubaskyHospitalManager.Model.Common
 
         public Object Clone()
         {
-            Object clone = new Patient(
+            List<MedicalRecord> MedRecList = new List<MedicalRecord>();
+            foreach (MedicalRecord mr in this.MedicalHistory)
+            {
+                MedRecList.Add((MedicalRecord)mr.Clone());
+            }
+
+            Patient clone = new Patient(
                 this.Name,
                 this.Phone,
                 this.DateOfBirth,
                 this.Ssn,
                 this.Address,
-                this.MedicalHistory,
+                MedRecList,
                 this.Gender);
 
-            return clone;
+            return (object)clone;
         }
 
         public void UpdatePatient(Patient newPatient)
