@@ -12,6 +12,7 @@
     <Window.Resources>
         <local:StringToBoolConverter x:Key="StringToBoolConverter" />
         <local:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+        <local:StateStringConventer x:Key="StateStringConventer" />
 
         <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
                         ObjectType="{x:Type sys:Enum}">
@@ -129,7 +130,7 @@
         <Label Content="Eljárás kód" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26"/>
         <Label Content="{Binding SelectedProcedure.ProcedureType.Id}" Margin="97,92,253,0" VerticalAlignment="Top" Grid.Column="2" Height="26"/>
         <Label Content="Állapot" HorizontalAlignment="Left" Margin="229,92,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26"/>
-        <Label Content="{Binding SelectedProcedure.State}" Margin="316,92,0,0" VerticalAlignment="Top" Grid.Column="2" Height="26" HorizontalAlignment="Left" Width="151"/>
+        <Label Content="{Binding SelectedProcedure.State, Converter={StaticResource StateStringConventer}}" Margin="316,92,0,0" VerticalAlignment="Top" Grid.Column="2" Height="26" HorizontalAlignment="Left" Width="151"/>
 
         <Label Content="Létrehozva" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26"/>
         <Label Content="{Binding SelectedProcedure.CreatedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="97,123,0,0" VerticalAlignment="Top" Width="127" Grid.Column="2"/>

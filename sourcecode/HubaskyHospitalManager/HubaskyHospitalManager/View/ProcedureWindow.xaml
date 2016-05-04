@@ -57,9 +57,9 @@
         <!--Második oszlop-->
 
         <Label Content="Anamnesis" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" Grid.Column="1"/>
-        <TextBox Height="193" Margin="10,41,10,0" TextWrapping="Wrap" Text="{Binding Procedure.Anamnesis}" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox Height="193" Margin="10,41,10,0" TextWrapping="Wrap" Text="{Binding Procedure.Anamnesis}" VerticalAlignment="Top" Grid.Column="1" AcceptsReturn="True"/>
         <Label Content="Diagnosis" Margin="10,250,10,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox Margin="13,0,7,11" TextWrapping="Wrap" Text="{Binding Procedure.Diagnosis}" Grid.Column="1" Height="208" VerticalAlignment="Bottom"/>
+        <TextBox Margin="13,0,7,11" TextWrapping="Wrap" Text="{Binding Procedure.Diagnosis}" Grid.Column="1" Height="208" VerticalAlignment="Bottom" AcceptsReturn="True"/>
 
         <!--Harmadik oszlop-->
 

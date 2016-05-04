@@ -213,16 +213,13 @@ namespace HubaskyHospitalManager.View
                     VM.Patientmanager.NewProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
                     VM.FillProcedures();
                     Procedures.Items.Refresh();
+                    VM.SelectedProcedure = null;
+                    VM.SelectedProcedure = procedureWindow.Procedure;
                 }
-                ////else
-                ////{   //ha klónt adunk át, akkor törölhető lesz
-                ////    VM.Patientmanager.RemoveProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
-                ////}
             }
             else
             {
                 MessageBox.Show("Zárt kezeléshez nem lehet eljárást rendelni!", "Node Pistikee!", MessageBoxButton.OK, MessageBoxImage.Error);
-
             }
         }
 
@@ -233,38 +230,21 @@ namespace HubaskyHospitalManager.View
         //PROCEDURE DUPLAKLIKK
         private void Procedures_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            UIElement elem = (UIElement)Procedures.InputHitTest(e.GetPosition(Procedures));
-
-            while (elem != Procedures)
+            if (VM.SelectedProcedure != null)
             {
-                if (elem is ListBoxItem)
+                ProcedureWindow procedureWindow = new ProcedureWindow(VM.SelectedProcedure, VM);
+                procedureWindow.ShowDialog();
+                if (procedureWindow.DialogResult == true)
                 {
-                    object selectedItem = ((ListBoxItem)elem).Content;
+                    VM.Patientmanager.UpdateProcedure(procedureWindow.Procedure, VM.SelectedProcedure);
+                    VM.Patientmanager.UpdateAttachments(procedureWindow.FilesToSave, procedureWindow.LocalPathToSave, VM.SelectedProcedure);
 
-                    if (VM.SelectedProcedure != null)
-                    {
-                        if (VM.SelectedProcedure.State != State.Closed)
-                        {
-                            ProcedureWindow procedureWindow = new ProcedureWindow((Procedure)VM.SelectedProcedure.Clone(), VM);
-                            procedureWindow.ShowDialog();
-                            if (procedureWindow.DialogResult == true)
-                            {
-                                VM.Patientmanager.UpdateProcedure(VM.ClonedProcedure, VM.SelectedProcedure);
-                                VM.Patientmanager.UpdateAttachments(procedureWindow.FilesToSave, procedureWindow.LocalPathToSave, VM.SelectedProcedure);
-
-                                VM.FillProcedures();
-                                Procedures.Items.Refresh();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Tisztelt betegünk az alábbi kezelést már rendezte.", "Már kifizetett kezelés", MessageBoxButton.OK, MessageBoxImage.Error);
-                            }
-                        }
-
-                        return;
-                    }
+                    VM.FillProcedures();
+                    Procedures.Items.Refresh();
+                    var sel = VM.SelectedProcedure;
+                    VM.SelectedProcedure = null;
+                    VM.SelectedProcedure = sel;
                 }
-                elem = (UIElement)VisualTreeHelper.GetParent(elem);
             }
         }
         #endregion
@@ -295,15 +275,6 @@ namespace HubaskyHospitalManager.View
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
         }
-
-        //private void Btn_Discharge_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
-
     }
-
-
-
 }
 

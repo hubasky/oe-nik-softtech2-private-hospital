@@ -74,7 +74,6 @@ namespace HubaskyHospitalManager.View
             FilesToSave = new List<Attachment>();
             WardsList = pmv.Patientmanager.AppManager.ApplicationDb.Wards.ToList();
             VM = pmv;
-            //VM.SelectedProcedure = Procedure;
             DataContext = this;
         }
       
@@ -85,6 +84,8 @@ namespace HubaskyHospitalManager.View
             VM = pmv;
             Procedure = (Procedure)procedure.Clone();
             FilesToSave = new List<Attachment>();
+            LocalPathToSave = new List<string>();
+            WardsList = pmv.Patientmanager.AppManager.ApplicationDb.Wards.ToList();
             DataContext = this;
         }
 

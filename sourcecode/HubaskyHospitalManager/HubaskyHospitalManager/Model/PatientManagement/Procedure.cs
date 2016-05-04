@@ -56,15 +56,22 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         }
 
 
-        public Procedure(string createdTimestamp, State state, List<ItemUsage> inventoryUsage,
+        public Procedure(string createdTimestamp, string lastModifTimestamp, State state, List<ItemUsage> inventoryUsage,
             int price, List<Attachment> attachments, string anamnesis, string diagnosis,
-            int duration, ProcedureType type)
+            int duration, ProcedureType type, Ward ward, Employee resp)
         {
             this.CreatedTimestamp = createdTimestamp;
+            this.LastModifiedTimestamp = lastModifTimestamp;
             this.State = state;
             this.InventoryUsage = inventoryUsage;
             this.Price = price;
             this.Attachments = attachments;
+            this.Anamnesis = anamnesis;
+            this.Diagnosis = diagnosis;
+            this.Duration = duration;
+            this.ProcedureType = type;
+            this.Ward = ward;
+            this.Responsible = resp;
         }
 
         /// 
@@ -78,8 +85,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         {
             InventoryUsage = new List<ItemUsage>(usage);
         }
-
-
+        
         private void isUpdated()
         {
             LastModifiedTimestamp = DateTime.Now.ToString(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -105,6 +111,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         public void UpdateProcedure(Procedure newProcedure)
         {
             this.CreatedTimestamp = newProcedure.CreatedTimestamp;
+            this.LastModifiedTimestamp = DateTime.Now.ToString(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             this.State = newProcedure.State;
             this.InventoryUsage = newProcedure.InventoryUsage;
             this.Price = newProcedure.Price;
@@ -113,35 +120,26 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             this.Diagnosis = newProcedure.Diagnosis;
             this.Duration = newProcedure.Duration;
             this.ProcedureType = newProcedure.ProcedureType;
-
-            //utoljára, hogy a setterek ne csesszék szét!
-            this.LastModifiedTimestamp = newProcedure.LastModifiedTimestamp;
+            
         }
-
 
         internal Object Clone()
         {
-            //List<ItemUsage> cloneUsage = new List<ItemUsage>();
-            //foreach (ItemUsage item in InventoryUsage)
-            //{
-            //    cloneUsage.Add((ItemUsage)item.Clone());
-            //}
-
-
-            Object clone = new Procedure(
+            Procedure clone = new Procedure(
                 CreatedTimestamp,
+                LastModifiedTimestamp,
                 State,
-                //cloneUsage,
                 InventoryUsage,
                 Price,
                 Attachments, 
                 Anamnesis, 
                 Diagnosis, 
                 Duration, 
-                ProcedureType);
+                ProcedureType,
+                Ward,
+                Responsible);
 
             return clone;
         }
-    }//end Procedure
-
-}//end namespace PatientManagement
+    }
+}
