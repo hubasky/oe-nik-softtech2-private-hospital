@@ -18,6 +18,7 @@ using System.Windows;
 using HubaskyHospitalManager.Model.Exceptions;
 using HubaskyHospitalManager.Model.PatientManagement;
 using System.Threading;
+using HubaskyHospitalManager.Data;
 
 namespace HubaskyHospitalManager.Model.HospitalManagement
 {
@@ -30,7 +31,32 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
         {
             this.AppManager = appMgr;
             Hospital = AppManager.ApplicationDb.Hospital.FirstOrDefault();
+
+            //csak elsõ futtatásnél kell betölti a cuccost, aztán ki lehet kommentezni
+            //AddWardsAndProceduresToDB();
 		}
+
+        private void AddWardsAndProceduresToDB()
+        {
+            XmlReader xmlReader = new XmlReader();
+            List<Role> roles = new List<Role>();
+            roles.Add(Role.Administrator);
+            roles.Add(Role.DataRecorder);
+            roles.Add(Role.Doctor);
+            roles.Add(Role.Laboratorian);
+            roles.Add(Role.Nurse);
+            for (int i = 0; i < xmlReader.Procedures.Count(); i++)
+            {
+                AppManager.ApplicationDb.ProcedureTypes.Add(new ProcedureType(xmlReader.Procedures.Keys.ElementAt(i), xmlReader.Procedures.Values.ElementAt(i), roles));
+            }
+            for (int i = 0; i < xmlReader.Wards.Values.Distinct().Count(); i++)
+            {
+                var name = xmlReader.Wards.Values.Distinct().ElementAt(i);
+                AppManager.ApplicationDb.Wards.Add(new Ward(name, new Employee("tesztuser" + i, "1234"), name + "@hubasky.hu", "110" + i, "http://" + name + ".hubasky.hu"));
+            }
+
+            AppManager.ApplicationDb.SaveChanges();
+        }
         
 		/// 
 		/// <param name="employee"></param>
