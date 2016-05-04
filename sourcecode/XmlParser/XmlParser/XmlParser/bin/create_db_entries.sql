@@ -6,6 +6,7 @@ gender varchar(255),
 _address varchar(255),
 _password varchar(255),
 phoneNumber varchar(255),
+usergroup varchar(255)
 );
 
 CREATE TABLE MedicalRecord
@@ -46,16 +47,17 @@ CREATE TABLE Attachments
 attachmentID int IDENTITY(1,1) PRIMARY KEY,
 procedureID int,
 pathToFile varchar(255),
-attachmentName varchar(255)
+attachmentName varchar(255),
+picture image
 FOREIGN KEY (procedureID) REFERENCES _Procedure(procedureID)	
 );
 
 
 
-INSERT INTO Patient (socialSecurityNumber, name, gender, _address, _password, phoneNumber)
-    VALUES (1234576, 'Timmy', 'male', 'teszt1', 'teszt1', 'teszt1'),
-		   (6541432, 'Claire', 'female', 'teszt2', 'teszt2', 'teszt2'),
-           (7894225, 'Sally', 'female', 'teszt3', 'teszt3', 'teszt3');
+INSERT INTO Patient (socialSecurityNumber, name, gender, _address, _password, phoneNumber, usergroup)
+    VALUES (1234576, 'Timmy', 'male', 'teszt1', 'teszt1', 'teszt1', user),
+		   (6541432, 'Claire', 'female', 'teszt2', 'teszt2', 'teszt2', user),
+           (7894225, 'Sally', 'female', 'teszt3', 'teszt3', 'teszt3', user);
 
 INSERT INTO MedicalRecord (socialSecurityNumber, createDate)
     VALUES (1234576, '1912-10-25'),
@@ -93,3 +95,7 @@ ADD picture image
 insert into Attachments (picture) 
 SELECT BulkColumn 
 FROM Openrowset( Bulk 'F:\Repok\images\images4.jpg', Single_Blob) as image
+
+insert into Attachments (picture) 
+SELECT BulkColumn 
+FROM Openrowset( Bulk 'C:\Hubasky\temp\images\images4.jpg', Single_Blob) as image
