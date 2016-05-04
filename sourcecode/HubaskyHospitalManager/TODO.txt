@@ -1,3 +1,6 @@
+MainWindow:
+	Login előtti csekk, hogy van-e kapcsolat, hogy ne legyen runtime error (DONE)
+
 Patient manager:
     ui-t picit átrendezni hogy egységesebb legyen. (DONE)
     eljárás adatlap ui mezők felvétele, módosítása

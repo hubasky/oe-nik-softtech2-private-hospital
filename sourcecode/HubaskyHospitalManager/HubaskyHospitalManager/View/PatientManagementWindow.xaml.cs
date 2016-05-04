@@ -133,6 +133,41 @@ namespace HubaskyHospitalManager.View
             }            
         }
 
+        // Kezelés szerkesztése
+        private void MedicalHistory_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+            UIElement elem = (UIElement)MedicalHistory.InputHitTest(e.GetPosition(MedicalHistory));
+            while (elem != MedicalHistory)
+            {
+                if (elem is ListBoxItem)
+                {
+                    object selectedItem = ((ListBoxItem)elem).Content;
+
+                    if (VM.SelectedMedicalRecord != null)
+                    {
+                        //példányosítson számla ablakot
+
+                        MedicalRecordWindow medicalRecordWindow = new MedicalRecordWindow(VM.ClonedMedicalRecord, VM);
+
+                        medicalRecordWindow.ShowDialog();
+                        if (medicalRecordWindow.DialogResult == true)
+                        {
+                            ////VM.Patientmanager.NewMedicalRecord(VM.SelectedPatient, mr);
+                            //VM.Patientmanager.UpdateMedicalRecord(VM.ClonedMedicalRecord, VM.SelectedMedicalRecord);
+
+                            //VM.FillMedicalHistory();
+                            //MedicalHistory.Items.Refresh();
+                        }
+
+                    }
+
+                    return;
+                }
+                elem = (UIElement)VisualTreeHelper.GetParent(elem);
+            }
+        }
+
         // Kezelés törlése
         private void Btn_RemoveMedicalRecord_Click(object sender, RoutedEventArgs e)
         {
