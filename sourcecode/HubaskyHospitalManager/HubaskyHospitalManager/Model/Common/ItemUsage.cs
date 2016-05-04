@@ -29,7 +29,7 @@ namespace HubaskyHospitalManager.Model.Common
 
         public override string ToString()
         {
-            return String.Format("{2} {3} {1} (id: {0})", Id, Name, Quantity, Unit);
+            return String.Format("{2} {3} {1}", Id, Name, Quantity, Unit);
         }
 
 
