@@ -18,6 +18,8 @@ using HubaskyHospitalManager.Model.ApplicationManagement;
 //using HubaskyHospitalManager.Model.InventoryManagement;
 using System.Linq;
 using HubaskyHospitalManager.Data;
+using System.Net;
+using System.Windows;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
@@ -150,16 +152,56 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             AppManager.ApplicationDb.SaveChanges();
         }
 
-        public void UpdateAttachments(List<Attachment> filesToSave, List<Attachment> filesToDelete, Procedure procedure)
+        public void UpdateAttachments(List<Attachment> filesToSave, List<string> localPathToSave, Procedure procedure)
         {
-            MedicalRecord mrec = (from m in appManager.ApplicationDb.MedicalRecords
-                                  where m.Procedures.Contains(procedure)
+            
+
+            MedicalRecord medicalRecord = (from m in appManager.ApplicationDb.MedicalRecords
+                                  from p in m.Procedures
+                                  where p.Id == procedure.Id
                                   select m).FirstOrDefault();
             Patient patient = (from p in appManager.ApplicationDb.Patients
-                               where p.MedicalHistory.Contains(mrec)
+                               from m in p.MedicalHistory
+                               where m.Id == medicalRecord.Id
                                select p).FirstOrDefault();
             FTPConnection ftp = new FTPConnection("193.224.69.39", "balu", "szoftech", "hubasky/attachments");
-            ftp.CreateDirectory(patient.Ssn);
+            string medicalRecordPath = String.Format("{0}/{1}", patient.Ssn, medicalRecord.Id);
+            string ftpFileName = "";
+            try
+            {
+                ftp.CreateDirectory(medicalRecordPath);
+            }
+            catch (WebException)
+            {
+                //MessageBox.Show(e.Status.ToString() + ": Már létezik a könytár!");
+            }
+            for (int i = 0; i < filesToSave.Count(); i++)
+            {
+                ftpFileName = String.Format("{0}/{1}_{2}_{3}", medicalRecordPath, procedure.Id, filesToSave[i].Id, filesToSave[i].File);
+                ftp.UploadFile(ftpFileName, localPathToSave[i]);
+            }
+        }
+
+        public void DownloadAttachment(Attachment attachment, string localPath)
+        {
+            Procedure procedure = (from p in appManager.ApplicationDb.Procedures
+                                   from a in p.Attachments
+                                   where a.Id == attachment.Id
+                                   select p).FirstOrDefault();
+            MedicalRecord medicalRecord = (from m in appManager.ApplicationDb.MedicalRecords
+                                           from p in m.Procedures
+                                           where p.Id == procedure.Id
+                                           select m).FirstOrDefault();
+            Patient patient = (from p in appManager.ApplicationDb.Patients
+                               from m in p.MedicalHistory
+                               where m.Id == medicalRecord.Id
+                               select p).FirstOrDefault();
+
+            string medicalRecordPath = String.Format("{0}/{1}", patient.Ssn, medicalRecord.Id);
+            string ftpFileName = String.Format("{0}/{1}_{2}_{3}", medicalRecordPath, procedure.Id, attachment.Id, attachment.File);
+
+            FTPConnection ftp = new FTPConnection("193.224.69.39", "balu", "szoftech", "hubasky/attachments");
+            ftp.DownloadFile(ftpFileName, localPath);
         }
 
     }//end PatientManager

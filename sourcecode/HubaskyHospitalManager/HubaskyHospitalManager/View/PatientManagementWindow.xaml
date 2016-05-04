@@ -124,12 +124,12 @@
         <Label Content="Eljárás adatlap" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="15" Grid.Column="2" Height="30"/>
 
         <Label Content="Megnevezés" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="91" Grid.Column="2" Height="26"/>
-        <Label Content="{Binding SelectedProcedure.ProcedureType.Name}" Margin="0,61,10,0" VerticalAlignment="Top" Grid.Column="2" Height="26" HorizontalAlignment="Right" Width="370"/>
+        <Label Content="{Binding SelectedProcedure.ProcedureType.Name}" Margin="97,61,0,0" VerticalAlignment="Top" Grid.Column="2" Height="26" HorizontalAlignment="Left" Width="370"/>
 
         <Label Content="Eljárás kód" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26"/>
         <Label Content="{Binding SelectedProcedure.ProcedureType.Id}" Margin="97,92,253,0" VerticalAlignment="Top" Grid.Column="2" Height="26"/>
         <Label Content="Állapot" HorizontalAlignment="Left" Margin="229,92,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26"/>
-        <Label Content="{Binding SelectedProcedure.State}" Margin="0,92,10,0" VerticalAlignment="Top" Grid.Column="2" Height="26" HorizontalAlignment="Right" Width="151"/>
+        <Label Content="{Binding SelectedProcedure.State}" Margin="316,92,0,0" VerticalAlignment="Top" Grid.Column="2" Height="26" HorizontalAlignment="Left" Width="151"/>
 
         <Label Content="Létrehozva" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="82" Grid.Column="2" Height="26"/>
         <Label Content="{Binding SelectedProcedure.CreatedTimestamp}" HorizontalAlignment="Left" Height="26" Margin="97,123,0,0" VerticalAlignment="Top" Width="127" Grid.Column="2"/>

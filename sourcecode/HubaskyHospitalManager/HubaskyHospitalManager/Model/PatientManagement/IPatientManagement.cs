@@ -51,7 +51,9 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         /// <param name="patient"></param>
         void UpdateMedicalRecord(MedicalRecord medicalRecordFromUI, MedicalRecord medicalRecordToDB);
 
-        void UpdateAttachments(List<Attachment> filesToSave, List<Attachment> filesToDelete, Procedure procedure);
+        void UpdateAttachments(List<Attachment> filesToSave, List<string> localPathToSave, Procedure procedure);
+
+        void DownloadAttachment(Attachment attachment, string localPath);
     }//end IPatientManagement
 
 }//end namespace PatientManagement

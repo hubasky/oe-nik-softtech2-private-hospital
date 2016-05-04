@@ -69,9 +69,9 @@ namespace HubaskyHospitalManager.View
             get { return wardsList; }
             set { wardsList = value; OnPropertyChanged(); }
         }
-
+        
         public List<Attachment> FilesToSave { get; set; }
-        public List<Attachment> FilesToDelete { get; set; }
+        public List<string> LocalPathToSave { get; set; }
         
         public ProcedureWindow(PatientManagementView pmv)
         {
@@ -79,7 +79,6 @@ namespace HubaskyHospitalManager.View
 
             Procedure = new Procedure();
             FilesToSave = new List<Attachment>();
-            FilesToDelete = new List<Attachment>();
             WardsList = pmv.Patientmanager.AppManager.ApplicationDb.Wards.ToList();
             VM = pmv;
             //VM.SelectedProcedure = Procedure;
@@ -93,7 +92,6 @@ namespace HubaskyHospitalManager.View
             VM = pmv;
             Procedure = (Procedure)procedure.Clone();
             FilesToSave = new List<Attachment>();
-            FilesToDelete = new List<Attachment>();
             DataContext = this;
         }
 
@@ -121,13 +119,37 @@ namespace HubaskyHospitalManager.View
             openDialog.Multiselect = true;
             if (openDialog.ShowDialog() == true)
             {
+                FilesToSave = new List<Attachment>();
+                LocalPathToSave = new List<string>();
                 foreach (string file in openDialog.SafeFileNames)
                 {
                     Attachment att = new Attachment(file);
                     Procedure.AddAttachment(att);
                     FilesToSave.Add(att);
                 }
+                foreach (string file in openDialog.FileNames)
+                {
+                    LocalPathToSave.Add(file);
+                }
+
                 ListBox_Attachments.Items.Refresh();
+            }
+        }
+
+        // ATTACHMENT DOUBLE CLICK - save file to local
+        private void ListBox_Attachments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (SelectedAttachment != null)
+            {
+                SaveFileDialog saveFile = new SaveFileDialog();
+                saveFile.FileName = SelectedAttachment.File;
+                string[] ext = SelectedAttachment.File.Split('.');
+                saveFile.Filter = "*." + ext[ext.Length - 1] + "|*." + ext[ext.Length - 1];
+                saveFile.DefaultExt = ext[ext.Length - 1];
+                if (saveFile.ShowDialog() == true)
+                {
+                    VM.Patientmanager.DownloadAttachment(SelectedAttachment, saveFile.FileName);
+                }
             }
         }
 
@@ -135,5 +157,7 @@ namespace HubaskyHospitalManager.View
         {
             DialogResult = true;
         }
+
+
     }
 }

@@ -77,10 +77,10 @@
         <Button x:Name="Btn_ItemUsageMod" Content="Új eszköz felvétele" Margin="0,189,10,0" VerticalAlignment="Top" Click="Btn_ItemUsageMod_Click" Grid.Column="2" HorizontalAlignment="Right" Width="123"/>
 
 
-        <Label Content="Csatolmányok" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Height="27" Grid.Column="2"/>
+        <Label Content="Csatolmányok" Margin="10,233,10,0" VerticalAlignment="Top" Height="27" Grid.Column="2"/>
         <ListBox x:Name="ListBox_Attachments" Height="124" Margin="10,265,10,0" VerticalAlignment="Top"
                  ItemsSource="{Binding Procedure.Attachments}"
-                 SelectedItem="{Binding SelectedAttachment}" Grid.Column="2">
+                 SelectedItem="{Binding SelectedAttachment}" Grid.Column="2" MouseDoubleClick="ListBox_Attachments_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -89,7 +89,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="Btn_DeleteAttachment" Content="Fájl törlése" Margin="10,394,0,0" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Left" Width="111"/>
         <Button x:Name="Btn_NewAttachmentMod" Content="Fájl hozzáadása" Margin="176,394,10,0" VerticalAlignment="Top" Click="Btn_NewAttachmentMod_Click" Grid.Column="2"/>
 
         <Button Content="Mentés" Name="btnSave" Height="42" Margin="10,0,10,12" VerticalAlignment="Bottom" Click="btnSave_Click" Grid.Column="2"/>

@@ -225,6 +225,8 @@ namespace HubaskyHospitalManager.View
                         if (procedureWindow.DialogResult == true)
                         {
                             VM.Patientmanager.UpdateProcedure(VM.ClonedProcedure, VM.SelectedProcedure);
+                            VM.Patientmanager.UpdateAttachments(procedureWindow.FilesToSave, procedureWindow.LocalPathToSave, VM.SelectedProcedure);
+
                             VM.FillProcedures();
                             Procedures.Items.Refresh();
                         }
