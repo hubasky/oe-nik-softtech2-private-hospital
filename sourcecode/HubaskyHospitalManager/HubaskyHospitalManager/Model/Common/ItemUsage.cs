@@ -11,17 +11,25 @@ namespace HubaskyHospitalManager.Model.Common
     {
         [Key]
         public int Id { get; set; }
-        public int ItemId { get; set; }
+        public string Name { get; set; }
         public int Quantity { get; set; }
+        public InventoryUnit Unit { get; set; }
 
         public ItemUsage()
         {
         }
 
-        public ItemUsage(int itemId, int quantity)
+        public ItemUsage(int id, string name, int quantity, InventoryUnit unit)
         {
-            ItemId = itemId;
+            Id = id;
+            Name = name;
             Quantity = quantity;
+            Unit = unit;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{2} {3} {1} (id: {0})", Id, Name, Quantity, Unit);
         }
 
 

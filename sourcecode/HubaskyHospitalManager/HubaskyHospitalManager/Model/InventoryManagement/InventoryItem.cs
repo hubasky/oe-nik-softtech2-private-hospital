@@ -39,7 +39,7 @@ namespace HubaskyHospitalManager.Model.InventoryManagement
 
         public override string ToString()
         {
-            return String.Format("{2} {3} {1} (id: {0})", Id, Name, Quantity, Unit, Status);
+            return String.Format("{2} {3} {1} (id: {0})", Id, Name, Quantity, Unit);
         }
 
     }//end InventoryItem
