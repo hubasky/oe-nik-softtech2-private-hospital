@@ -53,13 +53,13 @@ namespace HubaskyHospitalManager.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Thread t1 = new Thread(() =>
-            {
+            //Thread t1 = new Thread(() =>
+            //{
                 appMgr = new ApplicationManager();
                 ApplicationUser = appMgr.ApplicationUser;
-                DataContext = this;
-            });
+            //});
 
+            DataContext = this;
             // --- TEST CODE ---
             ////Hospitalmanager-be visz auth nélkül
             //appMgr.HospitalManagement = new HospitalManager(appMgr);
@@ -76,6 +76,19 @@ namespace HubaskyHospitalManager.View
             //PatientManagementView.ShowDialog();
 
             // --- END OF TEST CODE ---
+
+
+            Thread DbLoadThread = new Thread(() =>
+            {
+                appMgr.InitializeDataBase();
+                Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    Label_DbConnection.Content = "kapcsolódva";
+                }));
+            });
+
+            DbLoadThread.Start();
+            
         }
 
         private void Grid_HospitalManagement_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

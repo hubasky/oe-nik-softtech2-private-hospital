@@ -21,6 +21,10 @@ using System.Linq;
 using HubaskyHospitalManager.Model.Exceptions;
 using System.Security.Cryptography;
 using System.Windows;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Threading;
+
 
 namespace HubaskyHospitalManager.Model.ApplicationManagement
 {
@@ -42,13 +46,14 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             string dbFileName = @"AttachDBFilename=C:\Users\aowczare\Documents\GitHub\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
             string connStr = string.Format("{0};{1};{2};{3}", dataSource, initialCatalog, security, dbFileName);
 
+		}
+
+        public void InitializeDataBase()
+        {
             // Ez a db server beállítása, a file conn stringet benthagyom arra az esetre, ha később kellene...
-            connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=HubaskyDataBase03;User ID=sa;Password=szoftech;Pooling=False";
+            string connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=HubaskyDataBase03;User ID=sa;Password=szoftech;Pooling=False";
 
             ApplicationDb = new HubaskyDataBase(connStr);
-
-            // Ezt most átmenetileg kikapcsolom, igazából lassan eljutok arra a szintre a hosp managerrel, hogy appon keresztül lehet adatbázisba hozzáadni usereket meg wardokat. Remélem :D
-            // PopulateDb.Populate(this);
 
             // Ha még nem létezik az adatbázis, akkor default inicializáció:
             if (ApplicationDb.Hospital.FirstOrDefault() == null)
@@ -67,7 +72,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
                 hosp.Employees.Add(admin);
                 ApplicationDb.SaveChanges();
             }
-		}
+        }
 
         public static String CalculateSHA256(String data)
         {

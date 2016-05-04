@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\FTPConnection.cs" />
     <Compile Include="Data\HubaskyDataBase.cs" />
     <Compile Include="Data\PopulateDb.cs" />
     <Compile Include="Data\XmlReader.cs" />

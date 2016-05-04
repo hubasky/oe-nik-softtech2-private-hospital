@@ -6,11 +6,11 @@
         WindowState="Maximized"
         Title="Hubasky Magánkórház" Height="720" Width="1280" Loaded="Window_Loaded"
         Icon="pack://application:,,,/Images/hubasky_icon.png">
-    
+
     <Window.Resources>
         <local:LoggedInUserConventer x:Key="LoggedInUserConverter"/>
     </Window.Resources>
-    
+
     <Grid Background="#FFC8C8C8">
         <Grid HorizontalAlignment="Center" Height="340" Margin="0" VerticalAlignment="Center" Width="980">
             <Grid x:Name="Grid_HospitalManagement" HorizontalAlignment="Center" Height="200" Margin="45,65,685,0" VerticalAlignment="Top" Width="250" Background="White" Cursor="Hand" MouseLeftButtonUp="Grid_HospitalManagement_MouseLeftButtonUp">
@@ -106,7 +106,14 @@
             </MenuItem>
         </Menu>
         <StatusBar Height="35" VerticalAlignment="Bottom">
-            <Label x:Name="Status_Login" Content="{Binding Path=ApplicationUser, Converter={StaticResource LoggedInUserConverter}}"/>
+            <Grid Height="30" Width="1272">
+                <Label x:Name="Status_Login" Content="{Binding Path=ApplicationUser, Converter={StaticResource LoggedInUserConverter}}" HorizontalAlignment="Left" Width="250"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="Adatbázis kapcsolat:" Margin="0,0,0,0" HorizontalAlignment="Right" Width="132" Grid.Column="1"/>
+                    <Label x:Name="Label_DbConnection" Content="nincs kapcsolat" HorizontalAlignment="Right" Width="109" Grid.Column="1"/>
+                </StackPanel>
+            </Grid>
         </StatusBar>
     </Grid>
 </Window>
+    
