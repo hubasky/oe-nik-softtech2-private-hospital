@@ -30,6 +30,8 @@ namespace HubaskyHospitalManager.View
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        private Thread DbLoadThread;
+
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string name = "")
         {
@@ -76,8 +78,7 @@ namespace HubaskyHospitalManager.View
 
             // --- END OF TEST CODE ---
 
-
-            Thread DbLoadThread = new Thread(() =>
+            DbLoadThread = new Thread(() =>
             {
                 appMgr.InitializeDataBase();
                 Dispatcher.BeginInvoke((Action)(() =>
@@ -87,7 +88,7 @@ namespace HubaskyHospitalManager.View
                 }));
             });
 
-            DbLoadThread.Start();
+            DbLoadThread.Start(); 
 
         }
 
@@ -166,6 +167,11 @@ namespace HubaskyHospitalManager.View
         private void UpdateLoggedInUser()
         {
             this.ApplicationUser = appMgr.ApplicationUser;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            DbLoadThread.Abort();
         }
     }
 }
