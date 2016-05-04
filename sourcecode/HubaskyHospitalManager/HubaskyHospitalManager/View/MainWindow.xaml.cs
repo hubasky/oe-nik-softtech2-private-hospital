@@ -38,7 +38,6 @@ namespace HubaskyHospitalManager.View
         }
 
         ApplicationManager appMgr;
-        Thread splashScreen;
 
         private Employee applicationUser;
         public Employee ApplicationUser 
@@ -52,33 +51,14 @@ namespace HubaskyHospitalManager.View
             InitializeComponent();
         }
 
-        private void Splash()
-        {
-            splashScreen = new Thread(() =>
-            {
-                SplashWin w = new SplashWin();
-                w.Show();
-
-                w.Closed += (sender2, e2) => w.Dispatcher.InvokeShutdown();
-
-                System.Windows.Threading.Dispatcher.Run();
-            });
-
-            splashScreen.SetApartmentState(ApartmentState.STA);
-            splashScreen.Start();
-
-            
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Splash();
-
-            appMgr = new ApplicationManager();
-            ApplicationUser = appMgr.ApplicationUser;
-            DataContext = this;
-
-            splashScreen.Abort();
+            Thread t1 = new Thread(() =>
+            {
+                appMgr = new ApplicationManager();
+                ApplicationUser = appMgr.ApplicationUser;
+                DataContext = this;
+            });
 
             // --- TEST CODE ---
             ////Hospitalmanager-be visz auth nélkül
@@ -87,13 +67,13 @@ namespace HubaskyHospitalManager.View
             //HospitalManagementView.ShowDialog();
 
             //Patientmanager-be visz auth nélkül
-            appMgr.PatientManagement = new Model.PatientManagement.PatientManager(appMgr);
+            //ppMgr.PatientManagement = new Model.PatientManagement.PatientManager(appMgr);
 
             //majd ezt is át kell vezetni
-            appMgr.InventoryManagement = new Model.InventoryManagement.InventoryManager(appMgr);
+            //appMgr.InventoryManagement = new Model.InventoryManagement.InventoryManager(appMgr);
 
-            PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
-            PatientManagementView.ShowDialog();
+            //PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
+            //PatientManagementView.ShowDialog();
 
             // --- END OF TEST CODE ---
         }
