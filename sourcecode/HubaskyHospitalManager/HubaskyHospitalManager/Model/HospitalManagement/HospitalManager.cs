@@ -33,7 +33,7 @@ namespace HubaskyHospitalManager.Model.HospitalManagement
             Hospital = AppManager.ApplicationDb.Hospital.FirstOrDefault();
 
             //csak elsõ futtatásnél kell betölti a cuccost, aztán ki lehet kommentezni
-            AddWardsAndProceduresToDB();
+            //AddWardsAndProceduresToDB();
 		}
 
         private void AddWardsAndProceduresToDB()
