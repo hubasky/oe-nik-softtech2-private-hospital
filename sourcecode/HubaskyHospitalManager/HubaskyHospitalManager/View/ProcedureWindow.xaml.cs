@@ -91,7 +91,6 @@ namespace HubaskyHospitalManager.View
 
         private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)
         {
-            
             InventoryManagementWindow invWindow = new InventoryManagementWindow(VM.InventoryManager);
 
             invWindow.ShowDialog();
@@ -100,8 +99,17 @@ namespace HubaskyHospitalManager.View
             {
                 foreach (InventoryItem item in VM.InventoryManager.InventoryUsage)
                 {
-                    ItemUsage usage = new ItemUsage(0, item.Name, item.Quantity, item.Unit);
-                    Procedure.InventoryUsage.Add(usage);
+                    ItemUsage usage = Procedure.InventoryUsage.SingleOrDefault(i => i.ItemId == item.Id);
+
+                    if (usage == null)
+                    {
+                        usage = new ItemUsage(0, item.Id, item.Name, item.Quantity, item.Unit);
+                        Procedure.InventoryUsage.Add(usage);
+                    }
+                    else
+                    {
+                        usage.Quantity += item.Quantity;
+                    }                    
                 }
 
                 VM.InventoryManager.InventoryUsage.Clear();

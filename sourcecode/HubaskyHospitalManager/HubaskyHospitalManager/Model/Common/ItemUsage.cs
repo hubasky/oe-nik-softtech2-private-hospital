@@ -11,6 +11,7 @@ namespace HubaskyHospitalManager.Model.Common
     {
         [Key]
         public int Id { get; set; }
+        public int ItemId { get; set; }
         public string Name { get; set; }
         public int Quantity { get; set; }
         public InventoryUnit Unit { get; set; }
@@ -19,9 +20,10 @@ namespace HubaskyHospitalManager.Model.Common
         {
         }
 
-        public ItemUsage(int id, string name, int quantity, InventoryUnit unit)
+        public ItemUsage(int id, int itemid, string name, int quantity, InventoryUnit unit)
         {
             Id = id;
+            ItemId = itemid;
             Name = name;
             Quantity = quantity;
             Unit = unit;
@@ -29,13 +31,13 @@ namespace HubaskyHospitalManager.Model.Common
 
         public override string ToString()
         {
-            return String.Format("{2} {3} {1} (id: {0})", Id, Name, Quantity, Unit);
+            return String.Format("{2} {3} {1}", Id, Name, Quantity, Unit);
         }
 
 
         public object Clone()
         {
-            Object clone = new ItemUsage(Id, Name, Quantity, Unit);
+            Object clone = new ItemUsage(Id, ItemId, Name, Quantity, Unit);
 
             return clone;
         }

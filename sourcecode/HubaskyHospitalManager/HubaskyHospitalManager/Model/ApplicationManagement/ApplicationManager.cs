@@ -55,7 +55,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
         public void InitializeDataBase()
         {
             // Ez a db server beállítása, a file conn stringet benthagyom arra az esetre, ha később kellene...
-            string connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=HubaskyDataBase05;User ID=sa;Password=szoftech;Pooling=False";
+            string connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=HubaskyDataBase06;User ID=sa;Password=szoftech;Pooling=False";
 
             ApplicationDb = new HubaskyDataBase(connStr);
 
@@ -72,7 +72,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
                 ApplicationDb.Hospital.Add(hosp);
 
                 // Default admin user
-                Employee admin = new Employee("admin", ApplicationManager.CalculateSHA256("03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"), 100000.0, Role.Administrator, "Adminisztrátor", "-", "-", "-");
+                Employee admin = new Employee("admin", ApplicationManager.CalculateSHA256("1234"), 100000.0, Role.Administrator, "Adminisztrátor", "-", "-", "-");
                 hosp.Employees.Add(admin);
                 ApplicationDb.SaveChanges();
             }
