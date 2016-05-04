@@ -40,12 +40,14 @@ namespace HubaskyHospitalManager.View
         ApplicationManager appMgr;
 
         private Employee applicationUser;
-        public Employee ApplicationUser 
+        public Employee ApplicationUser
         {
             get { return applicationUser; }
             set { applicationUser = value; OnPropertyChanged(); }
         }
-        
+
+        public Boolean? isConnected { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -81,66 +83,88 @@ namespace HubaskyHospitalManager.View
                 Dispatcher.BeginInvoke((Action)(() =>
                 {
                     Label_DbConnection.Content = "kapcsolódva";
+                    isConnected = true;
                 }));
             });
 
             DbLoadThread.Start();
-            
+
         }
 
         private void Grid_HospitalManagement_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            LoginWindow firstLogin = new LoginWindow(new Role[] { Role.Administrator }, appMgr);
-            firstLogin.ShowDialog();
-            if (firstLogin.DialogResult == true)
+            if (isConnected == true)
             {
-                UpdateLoggedInUser();
-                appMgr.HospitalManagement = new HospitalManager(appMgr);
-                HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow(appMgr.HospitalManagement);
-                HospitalManagementView.ShowDialog();
-                appMgr.Logout();
-                UpdateLoggedInUser();
+                LoginWindow firstLogin = new LoginWindow(new Role[] { Role.Administrator }, appMgr);
+                firstLogin.ShowDialog();
+                if (firstLogin.DialogResult == true)
+                {
+                    UpdateLoggedInUser();
+                    appMgr.HospitalManagement = new HospitalManager(appMgr);
+                    HospitalManagementWindow HospitalManagementView = new HospitalManagementWindow(appMgr.HospitalManagement);
+                    HospitalManagementView.ShowDialog();
+                    appMgr.Logout();
+                    UpdateLoggedInUser();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nincs kapcsolat a szerverrel.", "Hiba történt", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void Grid_PatientManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            appMgr.PatientManagement = new PatientManager(appMgr);
-            appMgr.InventoryManagement = new InventoryManager(appMgr);
-            appMgr.HospitalManagement = new HospitalManager(appMgr);
-            PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
-            PatientManagementView.ShowDialog();
+            if (isConnected == true)
+            {
+                appMgr.PatientManagement = new PatientManager(appMgr);
+                appMgr.InventoryManagement = new InventoryManager(appMgr);
+                appMgr.HospitalManagement = new HospitalManager(appMgr);
+                PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
+                PatientManagementView.ShowDialog();
 
-            //LoginWindow firstLogin = new LoginWindow(appMgr);
+                //LoginWindow firstLogin = new LoginWindow(appMgr);
 
-            //firstLogin.ShowDialog();
-            //if (firstLogin.DialogResult == true)
-            //{
-            //    UpdateLoggedInUser();
-            //    appMgr.PatientManagement = new PatientManager(appMgr);
-            //    appMgr.InventoryManagement = new InventoryManager(appMgr);
-            //    appMgr.HospitalManagement = new HospitalManager(appMgr);
-            //    PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
-            //    PatientManagementView.ShowDialog();
-            //    appMgr.Logout();
-            //    UpdateLoggedInUser();
-            //}
+                //firstLogin.ShowDialog();
+                //if (firstLogin.DialogResult == true)
+                //{
+                //    UpdateLoggedInUser();
+                //    appMgr.PatientManagement = new PatientManager(appMgr);
+                //    appMgr.InventoryManagement = new InventoryManager(appMgr);
+                //    appMgr.HospitalManagement = new HospitalManager(appMgr);
+                //    PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
+                //    PatientManagementView.ShowDialog();
+                //    appMgr.Logout();
+                //    UpdateLoggedInUser();
+                //}
+            }
+            else
+            {
+                MessageBox.Show("Nincs kapcsolat a szerverrel.", "Hiba történt", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
 
         private void Grid_InventoryManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            LoginWindow firstLogin = new LoginWindow(new Role[] { Role.Administrator, Role.DataRecorder }, appMgr);
-            firstLogin.ShowDialog();
-            if (firstLogin.DialogResult == true)
+            if (isConnected == true)
             {
-                UpdateLoggedInUser();
-                appMgr.InventoryManagement = new InventoryManager(appMgr);
-                InventoryEditorWindow InventoryEditorView = new InventoryEditorWindow(appMgr.InventoryManagement);
-                InventoryEditorView.ShowDialog();
-                appMgr.InventoryManagement = null;
-                appMgr.Logout();
-                UpdateLoggedInUser();
+                LoginWindow firstLogin = new LoginWindow(new Role[] { Role.Administrator, Role.DataRecorder }, appMgr);
+                firstLogin.ShowDialog();
+                if (firstLogin.DialogResult == true)
+                {
+                    UpdateLoggedInUser();
+                    appMgr.InventoryManagement = new InventoryManager(appMgr);
+                    InventoryEditorWindow InventoryEditorView = new InventoryEditorWindow(appMgr.InventoryManagement);
+                    InventoryEditorView.ShowDialog();
+                    appMgr.InventoryManagement = null;
+                    appMgr.Logout();
+                    UpdateLoggedInUser();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nincs kapcsolat a szerverrel.", "Hiba történt", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

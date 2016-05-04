@@ -108,13 +108,6 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         {
             if (patientFromUI != null && patientToDB != null)
             {
-                //patientToDB.Phone = patientFromUI.Phone;
-                //patientToDB.Name = patientFromUI.Name;
-                //patientToDB.DateOfBirth = patientFromUI.DateOfBirth;
-                //patientToDB.Ssn = patientFromUI.Ssn;
-                //patientToDB.Address = patientFromUI.Address;
-                //patientToDB.Gender = patientFromUI.Gender;
-                //patientToDB.UpdateMedicalHistory(patientFromUI.MedicalHistory);
                 patientToDB.UpdatePatient(patientFromUI);
             }
             else
