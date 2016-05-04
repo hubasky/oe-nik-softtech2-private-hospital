@@ -255,10 +255,10 @@ namespace HubaskyHospitalManager.View
                                 VM.FillProcedures();
                                 Procedures.Items.Refresh();
                             }
-                            else
-                            {
-                                MessageBox.Show("Tisztelt betegünk az alábbi kezelést már rendezte.", "Már kifizetett kezelés", MessageBoxButton.OK, MessageBoxImage.Error);
-                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tisztelt betegünk az alábbi kezelést már rendezte.", "Már kifizetett kezelés", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
 
                         return;
