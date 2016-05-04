@@ -110,7 +110,7 @@
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="500"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="140"/>

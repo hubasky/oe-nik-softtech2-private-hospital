@@ -9,6 +9,61 @@ using System.Windows.Data;
 
 namespace HubaskyHospitalManager.View
 {
+    public class StateTypesConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string[] source = value as string[];
+            string[] target = new string[source.Length];
+
+            for (int i = 0; i < source.Length; i++)
+            {
+                switch (source[i])
+                {
+                    case "Closed": target[i] = "lezárva"; break;
+                    case "InProgress": target[i] = "folyamatban"; break;
+                    case "New": target[i] = "új"; break;
+                    case "Paid": target[i] = "fizetve"; break;
+                }
+            }
+            return target;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return Binding.DoNothing;
+        }
+    }
+
+    public class StateStringConventer : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            State state = (State)value;
+            switch (state)
+            {
+                case State.Closed: return "lezárva";
+                case State.InProgress: return "folyamatban";
+                case State.New: return "új";
+                case State.Paid: return "fizetve";
+            }
+            return Binding.DoNothing;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string name = (string)value;
+            switch (name)
+            {
+                case "lezárva": return State.Closed;
+                case "folyamatban": return State.InProgress;
+                case "új": return State.New;
+                case "fizetve": return State.Paid;
+            }
+            return Binding.DoNothing;
+        }
+    }
+
     public class SelectedGenderStringConventer : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

@@ -105,27 +105,20 @@ namespace HubaskyHospitalManager.View
 
         private void Grid_PatientManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            appMgr.PatientManagement = new PatientManager(appMgr);
-            appMgr.InventoryManagement = new InventoryManager(appMgr);
-            appMgr.HospitalManagement = new HospitalManager(appMgr);
-            PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
-            PatientManagementView.ShowDialog();
+            LoginWindow firstLogin = new LoginWindow(appMgr);
 
-            //LoginWindow firstLogin = new LoginWindow(appMgr);
-
-            //firstLogin.ShowDialog();
-            //if (firstLogin.DialogResult == true)
-            //{
-            //    UpdateLoggedInUser();
-            //    appMgr.PatientManagement = new PatientManager(appMgr);
-            //    appMgr.InventoryManagement = new InventoryManager(appMgr);
-            //    appMgr.HospitalManagement = new HospitalManager(appMgr);
-            //    PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
-            //    PatientManagementView.ShowDialog();
-            //    appMgr.Logout();
-            //    UpdateLoggedInUser();
-            //}
-
+            firstLogin.ShowDialog();
+            if (firstLogin.DialogResult == true)
+            {
+                UpdateLoggedInUser();
+                appMgr.PatientManagement = new PatientManager(appMgr);
+                appMgr.InventoryManagement = new InventoryManager(appMgr);
+                appMgr.HospitalManagement = new HospitalManager(appMgr);
+                PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
+                PatientManagementView.ShowDialog();
+                appMgr.Logout();
+                UpdateLoggedInUser();
+            }
         }
 
         private void Grid_InventoryManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

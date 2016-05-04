@@ -4,80 +4,94 @@
         xmlns:local ="clr-namespace:HubaskyHospitalManager.View"
         xmlns:l ="clr-namespace:HubaskyHospitalManager.Model.Common"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        Title="Új eljárás"  Height="530" Width="1000"       
+        Title="Eljárás szerkesztése"  Height="530" Width="1000"       
         WindowStartupLocation="CenterScreen"        
-        Icon="pack://application:,,,/Images/hubasky_icon.png">
+        Icon="pack://application:,,,/Images/hubasky_icon.png" ResizeMode="NoResize">
     <Window.Resources>
-        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
-                        ObjectType="{x:Type sys:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="l:State"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        <local:StringToBoolConverter x:Key="StringToBoolConverter" />
+        <local:StateStringConventer x:Key="StateStringConventer" />
+        <local:StateTypesConverter x:Key="StateTypesConverter" />
     </Window.Resources>
 
     <Grid>
-        <Label Content="Eljárást végző orvos neve" HorizontalAlignment="Left" Margin="17,144,0,0" VerticalAlignment="Top" Width="188"/>
-        <Label Content="Eljárás napja" HorizontalAlignment="Left" Margin="17,175,0,0" VerticalAlignment="Top" Width="188"/>
-        <Label Content="Beavatkozás időtartama" HorizontalAlignment="Left" Margin="17,237,0,0" VerticalAlignment="Top" Width="188"/>
-        <Label Content="{Binding ClonedPatient.Name}" HorizontalAlignment="Left" Margin="210,22,0,0" VerticalAlignment="Top" Height="25" Width="166"/>
-        <!--"{Binding ClonedPatient.ModelPatient.Name}"-->
-        <Label Content="{Binding ClonedPatient.Ssn}" HorizontalAlignment="Left" Margin="210,52,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
-        <Label Content="Páciens neve" HorizontalAlignment="Left" Margin="17,21,0,0" VerticalAlignment="Top" Width="188"/>
-        <Label Content="TAJ száma" HorizontalAlignment="Left" Margin="17,52,0,0" VerticalAlignment="Top" Width="188"/>
-        <TextBox Text="Dr. Gyógyító György" HorizontalAlignment="Left" Margin="210,144,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
-        <TextBox Text="10:26" HorizontalAlignment="Left" Margin="210,205,0,0" VerticalAlignment="Top" Width="166" Height="25"/>
-        <Label Content="23 perc" HorizontalAlignment="Left" Margin="210,237,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding ClonedProcedure.Name}" HorizontalAlignment="Left" Margin="210,83,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
-        <Label Content="Eljárás megnevezése" HorizontalAlignment="Left" Margin="17,83,0,0" VerticalAlignment="Top" Width="188"/>
-        <ListBox HorizontalAlignment="Left" Height="241" Margin="714,83,0,0" VerticalAlignment="Top" Width="256"                 ItemsSource="{Binding ClonedProcedure.Attachments}"
-                 SelectedItem="{Binding ClonedPatient}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Páciens neve" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="{Binding VM.SelectedPatient.Name}" HorizontalAlignment="Left" Margin="210,22,0,0" VerticalAlignment="Top" Height="25" Width="166"/>
+        <Label Content="TAJ száma" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="{Binding VM.SelectedPatient.Ssn}" HorizontalAlignment="Left" Margin="210,47,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
+        <Label Content="Eljárás felelőse" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Width="188"/>
+        <Label Content="{Binding VM.Patientmanager.AppManager.ApplicationUser.Name}" HorizontalAlignment="Left" Margin="210,73,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
+        <Label Content="Beavatkozás időtartama (perc)" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" Width="188"/>
+        <TextBox Text="{Binding Procedure.Duration}" Margin="210,99,10,0" VerticalAlignment="Top"/>
+        <Label Content="Eljárás állapota" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="188"/>
+        <ComboBox Height="27" Margin="210,126,10,0" VerticalAlignment="Top"
+                  ItemsSource="{Binding StateTypes, Converter={StaticResource StateTypesConverter}}"
+                  SelectedItem="{Binding Procedure.State, Converter={StaticResource StateStringConventer}}"/>
+
+        <Label Content="Osztály" Margin="10,163,119,0" VerticalAlignment="Top"/>
+        <ListBox Margin="10,189,10,232" ItemsSource="{Binding WardsList}" SelectedItem="{Binding Procedure.Ward}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Label Content="{Binding ModelPatient.Name}" HorizontalAlignment="Left" Margin="2,0,0,0" Height="25" FontSize="10" VerticalContentAlignment="Center" VerticalAlignment="Center" />
-                    </Grid>
-                    <!--<Label></Label>-->
+                    <TextBlock Text="{Binding Name}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-
         </ListBox>
-        <Label Content="Csatolmányok" HorizontalAlignment="Left" Margin="714,51,0,0" VerticalAlignment="Top" Height="27"/>
-        <Button x:Name="Btn_NewAttachmentMod" Content="Új csatolmány hozzáadása" HorizontalAlignment="Left" Margin="714,329,0,0" VerticalAlignment="Top" Width="158" Click="Btn_NewAttachmentMod_Click" Height="29"/>
-        <Label Content="Létrehozva:" HorizontalAlignment="Left" Margin="19,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
-        <Label Content="{Binding ClonedProcedure.CreatedTimestamp}" HorizontalAlignment="Left" Margin="95,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
-        <Label Content="Módosítva:" HorizontalAlignment="Left" Margin="185,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
-        <Label Content="{Binding ClonedProcedure.LastModifiedTimestamp}" HorizontalAlignment="Left" Margin="261,462,0,0" Width="85" Height="28" VerticalAlignment="Top"/>
-        <Label Content="Eszközigény" HorizontalAlignment="Left" Margin="17,303,0,0" VerticalAlignment="Top" Width="138"/>
-        <ListView HorizontalAlignment="Left" Height="89" Margin="17,329,0,0" VerticalAlignment="Top" Width="359" 
-                  ItemsSource="{Binding ClonedProcedure.InventoryUsage}"
-                 SelectedItem="{Binding ClonedProcedure.SelectedInventoryItem}">
+        <Label Content="Eljárás" Margin="10,273,119,0" VerticalAlignment="Top"/>
+        <ListBox Margin="10,299,10,72" ItemsSource="{Binding Procedure.Ward.Procedures}" SelectedItem="{Binding Procedure.ProcedureType}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Label Content="Létrehozva:" HorizontalAlignment="Left" Margin="10,0,0,39" Width="85" Height="28" VerticalAlignment="Bottom"/>
+        <Label Content="{Binding Procedure.CreatedTimestamp}" Margin="100,0,11,39" Height="28" VerticalAlignment="Bottom"/>
+        <Label Content="Módosítva:" HorizontalAlignment="Left" Margin="10,0,0,11" Width="85" Height="28" VerticalAlignment="Bottom"/>
+        <Label Content="{Binding Procedure.LastModifiedTimestamp}" Margin="100,0,10,11" Height="28" VerticalAlignment="Bottom"/>
+
+        <!--Második oszlop-->
+
+        <Label Content="Anamnesis" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" Grid.Column="1"/>
+        <TextBox Height="193" Margin="10,41,10,0" TextWrapping="Wrap" Text="{Binding Procedure.Anamnesis}" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Diagnosis" Margin="10,250,10,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox Margin="13,0,7,11" TextWrapping="Wrap" Text="{Binding Procedure.Diagnosis}" Grid.Column="1" Height="208" VerticalAlignment="Bottom"/>
+
+        <!--Harmadik oszlop-->
+
+        <Label Content="Eszközigény" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <ListView Height="143" Margin="10,41,10,0" VerticalAlignment="Top" 
+                  ItemsSource="{Binding Procedure.InventoryUsage}"
+                 SelectedItem="{Binding SelectedItem}" Grid.Column="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="Btn_ItemUsageMod" Content="Új eszköz felvétele" HorizontalAlignment="Left" Margin="17,423,0,0" VerticalAlignment="Top" Click="Btn_ItemUsageMod_Click" Width="170"/>
-        <Label Content="Eljárás állapota" HorizontalAlignment="Left" Margin="17,269,0,0" VerticalAlignment="Top" Width="188"/>
-        <ComboBox HorizontalAlignment="Left" Height="27" Margin="210,268,0,0" VerticalAlignment="Top" Width="166"
-                  ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
-                  SelectedItem="{Binding ClonedProcedure.State}"
-                  />
-        <Label Content="Eljárás időpontja" HorizontalAlignment="Left" Margin="17,205,0,0" VerticalAlignment="Top" Width="188"/>
-        <DatePicker DisplayDate="2016-04-30" HorizontalAlignment="Left" Height="25" Margin="210,175,0,0" VerticalAlignment="Top" Width="166"/>
-        <Button Content="Mentés" Name="btnSave" HorizontalAlignment="Left" Height="57" Margin="714,386,0,0" VerticalAlignment="Top" Width="258" Click="btnSave_Click"/>
+        <Button x:Name="Btn_DeleteUsedItem" Content="Eszköz törlése" Margin="10,189,0,0" VerticalAlignment="Top"  Grid.Column="2" HorizontalAlignment="Left" Width="123"/>
+        <Button x:Name="Btn_ItemUsageMod" Content="Új eszköz felvétele" Margin="0,189,10,0" VerticalAlignment="Top" Click="Btn_ItemUsageMod_Click" Grid.Column="2" HorizontalAlignment="Right" Width="123"/>
 
-        <Label Content="{Binding ClonedPatient.ClonedProcedure}" HorizontalAlignment="Left" Margin="210,114,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
-        <TextBox HorizontalAlignment="Left" Height="106" Margin="400,83,0,0" TextWrapping="Wrap" Text="{Binding ClonedProcedure.Anamnesis, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="296"
-        	IsEnabled="{Binding SelectedValue, ConverterParameter=ValueForEnabled, Converter={StaticResource StringToBoolConverter}, ElementName=MedicalHistory}"
-                 />
-        <Label Content="Anamnesis" HorizontalAlignment="Left" Margin="400,52,0,0" VerticalAlignment="Top" Width="80"/>
-        <TextBox HorizontalAlignment="Left" Height="208" Margin="400,235,0,0" TextWrapping="Wrap" Text="{Binding ClonedProcedure.Diagnosis, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="296"
-        	IsEnabled="{Binding SelectedValue, ConverterParameter=ValueForEnabled, Converter={StaticResource StringToBoolConverter}, ElementName=MedicalHistory}"/>
-        <Label Content="Diagnosis" HorizontalAlignment="Left" Margin="400,205,0,0" VerticalAlignment="Top" Width="139"/>
-        <Button Content="Eljárás típusa" HorizontalAlignment="Left" Margin="17,120,0,0" VerticalAlignment="Top" Width="77" Height="19" BorderBrush="Transparent" Background="OldLace" Click="Button_Click"
-                 />
+
+        <Label Content="Csatolmányok" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Height="27" Grid.Column="2"/>
+        <ListBox x:Name="ListBox_Attachments" Height="124" Margin="10,265,10,0" VerticalAlignment="Top"
+                 ItemsSource="{Binding Procedure.Attachments}"
+                 SelectedItem="{Binding SelectedAttachment}" Grid.Column="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Label Content="{Binding File}" HorizontalAlignment="Left" Margin="2,0,0,0" Height="25" FontSize="10" VerticalContentAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="Btn_DeleteAttachment" Content="Fájl törlése" Margin="10,394,0,0" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Left" Width="111"/>
+        <Button x:Name="Btn_NewAttachmentMod" Content="Fájl hozzáadása" Margin="176,394,10,0" VerticalAlignment="Top" Click="Btn_NewAttachmentMod_Click" Grid.Column="2"/>
+
+        <Button Content="Mentés" Name="btnSave" Height="42" Margin="10,0,10,12" VerticalAlignment="Bottom" Click="btnSave_Click" Grid.Column="2"/>
     </Grid>
 </Window>

@@ -17,6 +17,7 @@ using HubaskyHospitalManager.Model.Exceptions;
 using HubaskyHospitalManager.Model.ApplicationManagement;
 //using HubaskyHospitalManager.Model.InventoryManagement;
 using System.Linq;
+using HubaskyHospitalManager.Data;
 
 namespace HubaskyHospitalManager.Model.PatientManagement
 {
@@ -154,6 +155,18 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         {
             medicalrecord.RemoveProcedure(procedure);
             AppManager.ApplicationDb.SaveChanges();
+        }
+
+        public void UpdateAttachments(List<Attachment> filesToSave, List<Attachment> filesToDelete, Procedure procedure)
+        {
+            MedicalRecord mrec = (from m in appManager.ApplicationDb.MedicalRecords
+                                  where m.Procedures.Contains(procedure)
+                                  select m).FirstOrDefault();
+            Patient patient = (from p in appManager.ApplicationDb.Patients
+                               where p.MedicalHistory.Contains(mrec)
+                               select p).FirstOrDefault();
+            FTPConnection ftp = new FTPConnection("193.224.69.39", "balu", "szoftech", "hubasky/attachments");
+            ftp.CreateDirectory(patient.Ssn);
         }
 
     }//end PatientManager

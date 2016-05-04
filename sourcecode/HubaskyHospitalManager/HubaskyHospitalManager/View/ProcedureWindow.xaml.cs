@@ -13,29 +13,77 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HubaskyHospitalManager.Model.PatientManagement;
 using System.IO;
+using HubaskyHospitalManager.Model.Common;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using HubaskyHospitalManager.Model.InventoryManagement;
+using System.Collections.ObjectModel;
+using HubaskyHospitalManager.Model.HospitalManagement;
+using Microsoft.Win32;
 
 namespace HubaskyHospitalManager.View
 {
     /// <summary>
     /// Interaction logic for NewProcedureWindow.xaml
     /// </summary>
-    public partial class ProcedureWindow : Window
+    public partial class ProcedureWindow : Window, INotifyPropertyChanged
     {
-        public PatientManagementView VM { get; set; }
-        //public ProcedureView PView { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(name));
+        }
 
-        public Procedure Procedure { get; set; }
-        
+        public PatientManagementView VM { get; set; }
+
+        private Procedure procedure;
+        public Procedure Procedure
+        {
+            get { return procedure; }
+            set { procedure = value; OnPropertyChanged(); }
+        }
+
+        public Array StateTypes
+        {
+            get { return Enum.GetNames(typeof(State)); }
+        }
+
+        private Attachment selectedAttachment;
+        public Attachment SelectedAttachment
+        {
+            get { return selectedAttachment; }
+            set { selectedAttachment = value; OnPropertyChanged(); }
+        }
+
+        private InventoryItem selectedItem;
+        public InventoryItem SelectedItem
+        {
+            get { return selectedItem; }
+            set { selectedItem = value; OnPropertyChanged(); }
+        }
+
+        private List<Ward> wardsList;
+        public List<Ward> WardsList
+        {
+            get { return wardsList; }
+            set { wardsList = value; OnPropertyChanged(); }
+        }
+
+        public List<Attachment> FilesToSave { get; set; }
+        public List<Attachment> FilesToDelete { get; set; }
         
         public ProcedureWindow(PatientManagementView pmv)
         {
             InitializeComponent();
 
             Procedure = new Procedure();
-
+            FilesToSave = new List<Attachment>();
+            FilesToDelete = new List<Attachment>();
+            WardsList = pmv.Patientmanager.AppManager.ApplicationDb.Wards.ToList();
             VM = pmv;
-            VM.SelectedProcedure = Procedure;
-            DataContext = VM;
+            //VM.SelectedProcedure = Procedure;
+            DataContext = this;
         }
       
         public ProcedureWindow(Procedure procedure, PatientManagementView pmv)
@@ -43,13 +91,15 @@ namespace HubaskyHospitalManager.View
             InitializeComponent();
 
             VM = pmv;
-            Procedure = procedure;
-            DataContext = VM;
+            Procedure = (Procedure)procedure.Clone();
+            FilesToSave = new List<Attachment>();
+            FilesToDelete = new List<Attachment>();
+            DataContext = this;
         }
 
         private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)
         {
-
+            
             InventoryManagementWindow invWindow = new InventoryManagementWindow(VM.InventoryManager);
 
             invWindow.ShowDialog();
@@ -66,24 +116,24 @@ namespace HubaskyHospitalManager.View
 
         private void Btn_NewAttachmentMod_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Képek|*.jpg;*.png;*.bmp|Dokumentumok|*.docx;*.doc;*.pdf|Minden fájl|*.*";
+            openDialog.Multiselect = true;
+            if (openDialog.ShowDialog() == true)
+            {
+                foreach (string file in openDialog.SafeFileNames)
+                {
+                    Attachment att = new Attachment(file);
+                    Procedure.AddAttachment(att);
+                    FilesToSave.Add(att);
+                }
+                ListBox_Attachments.Items.Refresh();
+            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }
-
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
     }
 }

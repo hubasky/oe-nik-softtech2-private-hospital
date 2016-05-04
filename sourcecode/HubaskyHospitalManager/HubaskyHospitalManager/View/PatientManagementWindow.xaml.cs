@@ -152,15 +152,15 @@ namespace HubaskyHospitalManager.View
         {
             if (VM.SelectedMedicalRecord.State != State.Closed) //csak akkor lehet hozzáadni, ha nem closed
             {
-                ProcedureWindow procedureWindow = new ProcedureWindow(VM);
-                procedureWindow.ShowDialog();
-                if (procedureWindow.DialogResult == true)
-                {
+                    ProcedureWindow procedureWindow = new ProcedureWindow(VM);
+                    procedureWindow.ShowDialog();
+                    if (procedureWindow.DialogResult == true)
+                    {
 
-                    VM.Patientmanager.NewProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
-                    VM.FillProcedures();
-                    Procedures.Items.Refresh();
-                }
+                        VM.Patientmanager.NewProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
+                        VM.FillProcedures();
+                        Procedures.Items.Refresh();
+                    }
                 ////else
                 ////{   //ha klónt adunk át, akkor törölhető lesz
                 ////    VM.Patientmanager.RemoveProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
