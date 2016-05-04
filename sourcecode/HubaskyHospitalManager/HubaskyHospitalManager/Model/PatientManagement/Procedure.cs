@@ -50,7 +50,6 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
             this.Price = 0;
             this.Attachments = new List<Attachment>();
-            //this.responsible //-> nincs inicializálva!
 
             this.LastModifiedTimestamp = this.CreatedTimestamp;
         }

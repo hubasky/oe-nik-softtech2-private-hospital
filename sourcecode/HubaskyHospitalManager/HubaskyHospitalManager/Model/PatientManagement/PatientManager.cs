@@ -141,7 +141,8 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         public Procedure NewProcedure(MedicalRecord medicalrecord, Procedure procedure)
         {
-            medicalrecord.NewProcedure(procedure);
+            //medicalrecord.NewProcedure(procedure);
+            medicalrecord.Procedures.Add(procedure);
             AppManager.ApplicationDb.SaveChanges();
             return procedure;
 

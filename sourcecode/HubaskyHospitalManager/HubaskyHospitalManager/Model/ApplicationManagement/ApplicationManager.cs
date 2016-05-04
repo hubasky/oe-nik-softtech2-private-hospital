@@ -128,7 +128,8 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             {
                 if (username.Equals(emp.Username) && ApplicationManager.CalculateSHA256(password).Equals(emp.Password))
                 {
-                    loginUser = (Employee)emp.Clone();
+                    //loginUser = (Employee)emp.Clone();
+                    loginUser = emp;
                     break;
                 }
             }
@@ -151,11 +152,13 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
                     foreach (Role role in roles)
                     {
                         if (role == emp.Role)
-                            loginUser = (Employee)emp.Clone();
+                            //loginUser = (Employee)emp.Clone();
+                            loginUser = emp;
                     }
                     if (loginUser == null)
                     {
-                        ApplicationUser = (Employee)emp.Clone();
+                        //ApplicationUser = (Employee)emp.Clone();
+                        ApplicationUser = emp;
                         throw new EmployeeRoleForbiddenException(String.Format("It is forbidden for user \"{0}\" to use the selected module.", emp.Username));
                     }
                 }

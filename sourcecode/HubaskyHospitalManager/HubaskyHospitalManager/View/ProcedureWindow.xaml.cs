@@ -71,6 +71,7 @@ namespace HubaskyHospitalManager.View
             InitializeComponent();
 
             Procedure = new Procedure();
+            Procedure.Responsible = pmv.Patientmanager.AppManager.ApplicationUser;
             FilesToSave = new List<Attachment>();
             WardsList = pmv.Patientmanager.AppManager.ApplicationDb.Wards.ToList();
             VM = pmv;

@@ -24,7 +24,7 @@
         <Label Content="TAJ száma" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="188"/>
         <Label Content="{Binding VM.SelectedPatient.Ssn}" HorizontalAlignment="Left" Margin="210,47,0,0" VerticalAlignment="Top" Height="26" Width="166"/>
         <Label Content="Eljárás felelőse" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Width="188"/>
-        <Label Content="{Binding VM.Patientmanager.AppManager.ApplicationUser.Name}" HorizontalAlignment="Left" Margin="210,73,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
+        <Label Content="{Binding Procedure.Responsible.Name}" HorizontalAlignment="Left" Margin="210,73,0,0" VerticalAlignment="Top" Width="166" Height="26"/>
         <Label Content="Beavatkozás időtartama (perc)" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" Width="188"/>
         <TextBox Text="{Binding Procedure.Duration}" Margin="210,99,10,0" VerticalAlignment="Top"/>
         <Label Content="Eljárás állapota" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="188"/>

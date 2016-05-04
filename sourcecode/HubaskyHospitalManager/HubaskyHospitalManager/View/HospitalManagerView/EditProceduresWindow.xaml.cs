@@ -106,10 +106,13 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
 
         private void Btn_AddProcedure_Click(object sender, RoutedEventArgs e)
         {
-            ChosenProcedures.Add(AllProceduresSelected);
-            Ward.Procedures.Add(AllProceduresSelected);
-            AllProcedures.Remove(AllProceduresSelected);
-            AppMgr.HospitalManagement.UpdateDatabase();
+            if (AllProceduresSelected != null)
+            {
+                ChosenProcedures.Add(AllProceduresSelected);
+                Ward.Procedures.Add(AllProceduresSelected);
+                AllProcedures.Remove(AllProceduresSelected);
+                AppMgr.HospitalManagement.UpdateDatabase();
+            }
         }
 
         private void Btn_RemoveProcedure_Click(object sender, RoutedEventArgs e)
