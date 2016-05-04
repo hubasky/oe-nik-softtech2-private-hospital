@@ -12,13 +12,14 @@ namespace HubaskyHospitalManager.Data
 
         private XDocument xDoc;
         private Dictionary<string, string> procedures;
-        private List<string> wards;
+        private Dictionary<string, string> wards;
 
-        public List<string> Wards
+        public Dictionary<string, string> Wards
         {
             get { return wards; }
             set { wards = value; }
         }
+                
 
         public Dictionary<string, string> Procedures
         {
@@ -40,7 +41,7 @@ namespace HubaskyHospitalManager.Data
             //SB string:@"..\..\..\..\XmlParser\XmlParser\XmlParser\bin\kezelesek.xml"
             xDoc = XDocument.Load(@"..\..\..\..\XmlParser\XmlParser\XmlParser\bin\kezelesek.xml");                       
             procedures = new Dictionary<string, string>();
-            wards = new List<string>();
+            wards = new Dictionary<string, string>();
             LoadProcedures();
         }
 
@@ -51,7 +52,7 @@ namespace HubaskyHospitalManager.Data
             for (int i = 0; i < numberOfWards; i++)
             {
                 numberOfProcedures = xDoc.Descendants("ward").ElementAt(i).Descendants("procedure").Count();
-                wards.Add((string)xDoc.Descendants("ward").ElementAt(i).Descendants("name").ElementAt(0));
+                
                 for (int j = 0; j < numberOfProcedures; j++)
                 {
                     id = (string)xDoc.Descendants("ward").ElementAt(i).
@@ -63,6 +64,7 @@ namespace HubaskyHospitalManager.Data
 
                     if (id != null && description != null)
                         procedures.Add(id, description);
+                        wards.Add(id, (string)xDoc.Descendants("ward").ElementAt(i).Descendants("name").ElementAt(0));
                 }
             }
         }
