@@ -108,18 +108,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
                     new XRect(50, n+i*15, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 			}
 
-            //    int lng = text.Length;
-            //    line = text.Substring(end + 3, lng - end - 4);
-
-            //    text = line;
-            //    begin = end;
-            //}
-
-
-            //            graph.DrawString(text, font, XBrushes.Black,
-            //new XRect(0, 0, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-
-
+          
             string tempstring = filePath + @"\" + filename;
             tempstring.Replace(@"\\", @"\");
             pdf.Save(tempstring);
