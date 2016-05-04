@@ -105,6 +105,7 @@ namespace HubaskyHospitalManager.View
                     Procedure.InventoryUsage.Add(usage);
                 }
 
+                VM.InventoryManager.InventoryUsage.Clear();
                 ListBox_InventoryUsage.Items.Refresh();
             }
 
