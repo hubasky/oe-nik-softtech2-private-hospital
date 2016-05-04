@@ -28,6 +28,7 @@ using PdfSharp;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using System.Drawing;
+using Microsoft.Win32;
 
 
 namespace HubaskyHospitalManager.Model.ApplicationManagement
@@ -108,12 +109,23 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
                     new XRect(50, n+i*15, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 			}
 
-          
-            string tempstring = filePath + @"\" + filename;
-            tempstring.Replace(@"\\", @"\");
-            pdf.Save(tempstring);
 
-            MessageBox.Show("Sikeres nyomtatás az alábbi helyre: \n\n          " + filePath + "\n\n          " + filename,
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.FileName = filename;
+            //string[] ext = SelectedAttachment.File.Split('.');
+            //saveFile.Filter = "*."; //"*." + ext[ext.Length - 1] + "|*." + ext[ext.Length - 1]
+            string[] ext = filename.Split('.');
+            saveFile.Filter = "*." + ext[ext.Length - 1] + "|*." + ext[ext.Length - 1];
+            saveFile.DefaultExt = ext[ext.Length - 1];
+
+            saveFile.DefaultExt = filename;
+            if (saveFile.ShowDialog() == true)
+            {
+                //VM.Patientmanager.DownloadAttachment(SelectedAttachment, saveFile.FileName);
+                pdf.Save(saveFile.FileName);
+            }
+
+            MessageBox.Show("Sikeres nyomtatás az alábbi helyre: \n\n          " + saveFile.FileName,
                     "A számla elkészült");
         }
 
