@@ -35,9 +35,9 @@ namespace HubaskyHospitalManager.Model.Common
 
         public object Clone()
         {
-            Object clone = new ItemUsage(ItemId, Quantity);
+            Object clone = new ItemUsage(Id, Name, Quantity, Unit);
 
-            return clone;            
+            return clone;
         }
     }
 }
