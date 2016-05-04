@@ -103,6 +103,7 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             {
                 medicalRecordToDB.UpdateMedicalRecord(medicalRecordFromUI);
             }
+
             AppManager.ApplicationDb.SaveChanges();
         }
 

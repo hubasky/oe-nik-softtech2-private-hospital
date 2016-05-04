@@ -8,6 +8,12 @@
         WindowStartupLocation="CenterScreen"        
         Icon="pack://application:,,,/Images/hubasky_icon.png">
     <Window.Resources>
+
+
+            <local:StateStringConventer x:Key="StateStringConventer" />
+            <local:StateTypesConverter x:Key="StateTypesConverter" />
+        
+
         <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
                         ObjectType="{x:Type sys:Enum}">
             <ObjectDataProvider.MethodParameters>
@@ -36,7 +42,7 @@
         <Label Content="{Binding ClonedMedicalRecord.LastModifiedTimestamp}" HorizontalAlignment="Left" Margin="189,149,0,0" Width="243" Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"/>
         <Label Content="Kezelés állapota" Margin="5,179,51.333,0" VerticalAlignment="Top" Height="25" Grid.Column="1"/>
         <Label HorizontalAlignment="Left" Height="25" Margin="188.667,179,0,0" VerticalAlignment="Top" Width="243"
-                  Content="{Binding ClonedMedicalRecord.State}" Grid.Column="1" Grid.ColumnSpan="2"
+                  Content="{Binding ClonedMedicalRecord.State, Converter={StaticResource StateStringConventer}}" Grid.Column="1" Grid.ColumnSpan="2"
                   />
         <!--<ComboBox HorizontalAlignment="Left" Height="25" Margin="189,179,0,0" VerticalAlignment="Top" Width="175"
                   ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
