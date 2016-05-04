@@ -30,15 +30,19 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         public MedicalRecord()
         {
-            //Guid g = new Guid();
             this.CreatedTimestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             this.State = State.New;
-            //this.Diagnosis = "";
             this.ShortDescription = "";
             this.Procedures = new List<Procedure>();
-            //this.Procedures.Add(new Procedure()); // <- ez nem jó ötlet itt [SB]
+            this.LastModifiedTimestamp = this.CreatedTimestamp;
+        }
 
-            //setterek miatt a végén!
+        public MedicalRecord(string shortDescription)
+        {
+            this.CreatedTimestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            this.State = State.New;
+            this.ShortDescription = shortDescription;
+            this.Procedures = new List<Procedure>();
             this.LastModifiedTimestamp = this.CreatedTimestamp;
         }
 

@@ -53,13 +53,10 @@ namespace HubaskyHospitalManager.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //Thread t1 = new Thread(() =>
-            //{
-                appMgr = new ApplicationManager();
-                ApplicationUser = appMgr.ApplicationUser;
-            //});
-
+            appMgr = new ApplicationManager();
+            ApplicationUser = appMgr.ApplicationUser;
             DataContext = this;
+
             // --- TEST CODE ---
             ////Hospitalmanager-be visz auth nélkül
             //appMgr.HospitalManagement = new HospitalManager(appMgr);
@@ -67,7 +64,7 @@ namespace HubaskyHospitalManager.View
             //HospitalManagementView.ShowDialog();
 
             //Patientmanager-be visz auth nélkül
-            //ppMgr.PatientManagement = new Model.PatientManagement.PatientManager(appMgr);
+            //appMgr.PatientManagement = new Model.PatientManagement.PatientManager(appMgr);
 
             //majd ezt is át kell vezetni
             //appMgr.InventoryManagement = new Model.InventoryManagement.InventoryManager(appMgr);
@@ -108,21 +105,26 @@ namespace HubaskyHospitalManager.View
 
         private void Grid_PatientManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            appMgr.PatientManagement = new PatientManager(appMgr);
+            appMgr.InventoryManagement = new InventoryManager(appMgr);
+            appMgr.HospitalManagement = new HospitalManager(appMgr);
+            PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
+            PatientManagementView.ShowDialog();
 
-            LoginWindow firstLogin = new LoginWindow(appMgr);
+            //LoginWindow firstLogin = new LoginWindow(appMgr);
 
-            firstLogin.ShowDialog();
-            if (firstLogin.DialogResult == true)
-            {
-                UpdateLoggedInUser();
-                appMgr.PatientManagement = new PatientManager(appMgr);
-                appMgr.InventoryManagement = new InventoryManager(appMgr);
-                appMgr.HospitalManagement = new HospitalManager(appMgr);
-                PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
-                PatientManagementView.ShowDialog();
-                appMgr.Logout();
-                UpdateLoggedInUser();
-            }
+            //firstLogin.ShowDialog();
+            //if (firstLogin.DialogResult == true)
+            //{
+            //    UpdateLoggedInUser();
+            //    appMgr.PatientManagement = new PatientManager(appMgr);
+            //    appMgr.InventoryManagement = new InventoryManager(appMgr);
+            //    appMgr.HospitalManagement = new HospitalManager(appMgr);
+            //    PatientManagementWindow PatientManagementView = new PatientManagementWindow(appMgr.PatientManagement);
+            //    PatientManagementView.ShowDialog();
+            //    appMgr.Logout();
+            //    UpdateLoggedInUser();
+            //}
 
         }
 

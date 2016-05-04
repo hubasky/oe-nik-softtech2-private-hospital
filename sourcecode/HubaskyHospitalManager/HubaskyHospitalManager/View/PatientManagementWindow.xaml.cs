@@ -61,7 +61,7 @@ namespace HubaskyHospitalManager.View
         //PATIENT GOMB
         private void Btn_NewPatient_Click(object sender, RoutedEventArgs e)
         {
-            EditPatientWindow ptWindow = new EditPatientWindow(this.VM);
+            EditPatientWindow ptWindow = new EditPatientWindow();
 
             ptWindow.ShowDialog();
             if (ptWindow.DialogResult == true)
@@ -88,7 +88,7 @@ namespace HubaskyHospitalManager.View
 
                     if (VM.SelectedPatient != null)
                     {
-                        EditPatientWindow ptWindow = new EditPatientWindow(VM.ClonedPatient, VM);
+                        EditPatientWindow ptWindow = new EditPatientWindow(VM.ClonedPatient);
 
                         ptWindow.ShowDialog();
                         if (ptWindow.DialogResult == true)
@@ -120,27 +120,20 @@ namespace HubaskyHospitalManager.View
             lbPatient.Items.Refresh();
         }
 
-        //MEDICALRECORD GOMB
+        // Új Kezelés
         private void Btn_NewMedicalRecord_Click(object sender, RoutedEventArgs e)
         {
-
-            MedicalRecordWindow medicalRecordWindow = new MedicalRecordWindow(VM);
-
+            NewMedicalRecordWindow medicalRecordWindow = new NewMedicalRecordWindow();
             medicalRecordWindow.ShowDialog();
             if (medicalRecordWindow.DialogResult == true)
             {
-                VM.Patientmanager.NewMedicalRecord(VM.ClonedPatient, medicalRecordWindow.MedicalRecord);
+                VM.Patientmanager.NewMedicalRecord(VM.SelectedPatient, medicalRecordWindow.MedicalRecord);
                 VM.FillMedicalHistory();
                 MedicalHistory.Items.Refresh();
-            }
-            ////else
-            ////{
-            ////    VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, medicalRecordWindow.MedicalRecord);
-            ////}
-            
+            }            
         }
 
-
+        // Kezelés törlése
         private void Btn_RemoveMedicalRecord_Click(object sender, RoutedEventArgs e)
         {
             VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, VM.SelectedMedicalRecord);
@@ -148,41 +141,10 @@ namespace HubaskyHospitalManager.View
             MedicalHistory.Items.Refresh();
         }
 
-        //MEDICALRECORD DUPLAKLIKK
-        private void MedicalHistory_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        // Zárójelentés
+        private void Btn_Discharge_Click(object sender, RoutedEventArgs e)
         {
-
-            UIElement elem = (UIElement)MedicalHistory.InputHitTest(e.GetPosition(MedicalHistory));
-            while (elem != MedicalHistory)
-            {
-                if (elem is ListBoxItem)
-                {
-                    object selectedItem = ((ListBoxItem)elem).Content;
-
-                    if (VM.SelectedMedicalRecord != null)
-                    {
-                        MedicalRecordWindow medicalRecordWindow = new MedicalRecordWindow(VM.ClonedMedicalRecord, VM);
-
-                        medicalRecordWindow.ShowDialog();
-                        if (medicalRecordWindow.DialogResult == true)
-                        {
-                            //VM.Patientmanager.NewMedicalRecord(VM.SelectedPatient, mr);
-                            VM.Patientmanager.UpdateMedicalRecord(VM.ClonedMedicalRecord, VM.SelectedMedicalRecord);
-                            VM.FillMedicalHistory();
-                            MedicalHistory.Items.Refresh();
-                        }
-                        ////else
-                        ////{
-                        ////    VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, 
-                        ////        medicalRecordWindow.MedicalRecord);
-                        ////}
-
-                    }
-
-                    return;
-                }
-                elem = (UIElement)VisualTreeHelper.GetParent(elem);
-            }
+            VM.SelectedMedicalRecord.State = State.Closed;
         }
 
         //PROCEDURE GOMB
@@ -243,6 +205,7 @@ namespace HubaskyHospitalManager.View
                 elem = (UIElement)VisualTreeHelper.GetParent(elem);
             }
         }
+
 
 
 

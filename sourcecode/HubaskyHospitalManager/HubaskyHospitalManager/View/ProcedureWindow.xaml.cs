@@ -30,6 +30,7 @@ namespace HubaskyHospitalManager.View
         public ProcedureWindow(PatientManagementView pmv)
         {
             InitializeComponent();
+
             Procedure = new Procedure();
 
             VM = pmv;

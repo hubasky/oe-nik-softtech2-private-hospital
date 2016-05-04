@@ -113,8 +113,8 @@
       <DependentUpon>InventoryManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoggedInUserConventer.cs" />
-    <Compile Include="View\MedicalRecordWindow.xaml.cs">
-      <DependentUpon>MedicalRecordWindow.xaml</DependentUpon>
+    <Compile Include="View\NewMedicalRecordWindow.xaml.cs">
+      <DependentUpon>NewMedicalRecordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ProcedureWindow.xaml.cs">
       <DependentUpon>ProcedureWindow.xaml</DependentUpon>
@@ -177,7 +177,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\MedicalRecordWindow.xaml">
+    <Page Include="View\NewMedicalRecordWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

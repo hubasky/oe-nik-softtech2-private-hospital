@@ -1,0 +1,15 @@
+﻿<Window x:Class="HubaskyHospitalManager.View.NewMedicalRecordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local ="clr-namespace:HubaskyHospitalManager.View"
+        xmlns:l ="clr-namespace:HubaskyHospitalManager.Model.Common"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Új gyógykezelés"  Height="177" Width="449"       
+        WindowStartupLocation="CenterScreen"        
+        Icon="pack://application:,,,/Images/hubasky_icon.png">
+    <StackPanel>
+        <Label Content="Kezelés rövid leírása" HorizontalAlignment="Left" Margin="10,19,0,10" VerticalAlignment="Top" Width="174" Height="26"/>
+        <TextBox x:Name="TxtBox_ShortDescription" Text="" Margin="10,0,10,0" VerticalAlignment="Top" Height="26" />
+        <Button Content="Mentés" x:Name="btnSave" HorizontalAlignment="Right" Margin="0,20,10,0" VerticalAlignment="Top" Width="100" Click="btnSave_Click"/>
+    </StackPanel>
+</Window>

@@ -106,13 +106,30 @@
             </MenuItem>
         </Menu>
         <StatusBar Height="35" VerticalAlignment="Bottom">
-            <Grid Height="30" Width="1272">
-                <Label x:Name="Status_Login" Content="{Binding Path=ApplicationUser, Converter={StaticResource LoggedInUserConverter}}" HorizontalAlignment="Left" Width="250"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Label Content="Adatbázis kapcsolat:" Margin="0,0,0,0" HorizontalAlignment="Right" Width="132" Grid.Column="1"/>
-                    <Label x:Name="Label_DbConnection" Content="nincs kapcsolat" HorizontalAlignment="Right" Width="109" Grid.Column="1"/>
-                </StackPanel>
-            </Grid>
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem>
+                <Label x:Name="Status_Login" 
+                       Content="{Binding Path=ApplicationUser, Converter={StaticResource LoggedInUserConverter}}" />
+            </StatusBarItem>
+            <Separator Grid.Column="2" Background="#FFD4D4D4" Margin="2,6,2,6"/>
+            <StatusBarItem Grid.Column="3">
+                <Label Content="Adatbázis kapcsolat:"/>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="4">
+                <Label x:Name="Label_DbConnection" Content="nincs kapcsolat"/>
+            </StatusBarItem>
         </StatusBar>
     </Grid>
 </Window>

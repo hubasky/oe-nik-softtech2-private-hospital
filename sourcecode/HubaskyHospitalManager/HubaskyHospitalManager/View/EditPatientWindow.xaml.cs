@@ -30,7 +30,6 @@ namespace HubaskyHospitalManager.View
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
-            //if (handler == "Name") VM.
         }
         
         private Patient patient;
@@ -40,44 +39,31 @@ namespace HubaskyHospitalManager.View
             set { patient = value; OnPropertyChanged(); }
         }
 
+        public bool IsEdit { get; set; }
+        public Array GenderTypes
+        {
+            get { return Enum.GetNames(typeof(Gender)); }
+        }
 
-        private PatientManagementView VM;
-
-        public EditPatientWindow(PatientManagementView view)
+        public EditPatientWindow()
         {
             InitializeComponent();
-            VM = view;
-            //DataContext = VM;
             DataContext = this;
             Patient = new Patient();
+            IsEdit = false;
         }
 
-        public EditPatientWindow(Patient pt, PatientManagementView view)
+        public EditPatientWindow(Patient patient)
         {
             InitializeComponent();
-            VM = view;
-            //DataContext = VM;
             DataContext = this;
-            Patient = pt;
-            TxtBox_Ssn.IsEnabled = false; //szerintem ne kapcsoljuk ki, legyen szerkeszthető
-            TxtBox_Name.IsEnabled = false;
+            Patient = patient;
+            IsEdit = true;
+            TxtBox_Ssn.IsEnabled = false;
             TxtBox_Gender.IsEnabled = false;
+            TxtBox_DateOfBirth.IsEnabled = false;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void textBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (e.Command == ApplicationCommands.Copy ||
-                e.Command == ApplicationCommands.Cut ||
-                e.Command == ApplicationCommands.Paste)
-            {
-                e.Handled = true;
-            }
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -104,6 +90,8 @@ namespace HubaskyHospitalManager.View
                 missingData += "  születési dátum" + Environment.NewLine;
                 validate = false;
             }
+            else
+                Patient.Password = ApplicationManager.CalculateSHA256(Patient.DateOfBirth);
             if (Patient.Ssn == "")
             {
                 missingData += "  TAJ szám" + Environment.NewLine;    
@@ -118,18 +106,6 @@ namespace HubaskyHospitalManager.View
             {
                 MessageBox.Show("Hiányzó adatok:" + Environment.NewLine + missingData, "Hiányzó adatok", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
-
-            //private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-            //{
-            //    e.Handled = char.IsLetter(e.Text[0]) || e.Text[0] == ' '; // e.Text[0] != ' '
-            //}
         }
-
-
-        //private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        //{
-        //    e.Handled = char.IsLetter(e.Text[0]) || e.Text[0] == ' '; // e.Text[0] != ' '
-        //}
     }
 }
