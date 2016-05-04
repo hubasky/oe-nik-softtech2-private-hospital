@@ -133,12 +133,10 @@ namespace HubaskyHospitalManager.Model.PatientManagement
                     linesOfBill.Add(""); linesOfBill.Add("");
                 }
 
-                //bill[0] = sum.ToString();
 
                 linesOfBill.Add(""); linesOfBill.Add("");
                 linesOfBill.Add(string.Format("FIZETENDŐ VÉGÖSSZEG:                                                                           {0}", sum.ToString())); //
 
-                //linesOfBill.Add(sum.ToString());
                 this.State = State.Closed;
             }
 
