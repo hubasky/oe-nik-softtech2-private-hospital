@@ -122,9 +122,6 @@
       <DependentUpon>PatientManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HospitalManagerView\UnitView.cs" />
-    <Compile Include="View\SplashWin.xaml.cs">
-      <DependentUpon>SplashWin.xaml</DependentUpon>
-    </Compile>
     <Page Include="View\EditPatientWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -188,10 +185,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PatientManagementWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\SplashWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

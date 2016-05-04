@@ -63,7 +63,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
                 ApplicationDb.Hospital.Add(hosp);
 
                 // Default admin user
-                Employee admin = new Employee("admin", ApplicationManager.CalculateSHA256("1234"), 100000.0, Role.Administrator, "Adminisztrátor", "-", "-", "-");
+                Employee admin = new Employee("admin", ApplicationManager.CalculateSHA256("03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"), 100000.0, Role.Administrator, "Adminisztrátor", "-", "-", "-");
                 hosp.Employees.Add(admin);
                 ApplicationDb.SaveChanges();
             }
