@@ -33,7 +33,7 @@ namespace HubaskyHospitalManager.View
             set
             {
                 selectedPatient = value;
-                // if (selectedPatient != null) ClonedPatient = (Patient)selectedPatient.Clone();
+                if (selectedPatient != null) ClonedPatient = (Patient)selectedPatient.Clone();
                 FillMedicalHistory();
                 OnPropertyChanged();
             }
@@ -59,7 +59,7 @@ namespace HubaskyHospitalManager.View
             set
             {
                 selectedMedicalRecord = value;
-                // if (selectedMedicalRecord != null) ClonedMedicalRecord = (MedicalRecord)selectedMedicalRecord.Clone();
+                if (selectedMedicalRecord != null) ClonedMedicalRecord = (MedicalRecord)selectedMedicalRecord.Clone();
                 FillProcedures();
                 OnPropertyChanged();
             }
@@ -120,6 +120,7 @@ namespace HubaskyHospitalManager.View
             FillPatients();
         }
 
+        #region Fill methods
 
         public void FillPatients()
         {
@@ -144,6 +145,18 @@ namespace HubaskyHospitalManager.View
             MedicalHistory = newMedicalHistory;
         }
 
+        public void FillProcedures()
+        {
+            ObservableCollection<Procedure> newProcedures = new ObservableCollection<Procedure>();
+
+            if (SelectedMedicalRecord != null)
+                foreach (Procedure proc in SelectedMedicalRecord.Procedures)
+                    newProcedures.Add(proc);
+
+            Procedures = newProcedures;
+        }
+
+        #endregion
 
         public HospitalManager HospitalManager
         {
@@ -171,15 +184,6 @@ namespace HubaskyHospitalManager.View
 
         }
 
-        public void FillProcedures()
-        {
-            ObservableCollection<Procedure> newProcedures = new ObservableCollection<Procedure>();
 
-            if (SelectedMedicalRecord != null)
-                foreach (Procedure proc in SelectedMedicalRecord.Procedures)
-                    newProcedures.Add(proc);
-
-            Procedures = newProcedures;
-        }
     }
 }

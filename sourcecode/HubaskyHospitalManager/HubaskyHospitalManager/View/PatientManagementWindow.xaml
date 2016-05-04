@@ -80,15 +80,15 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="Btn_NewProcedure" Content="Új eljárás felvétele" Margin="0,0,10,10" Click="Btn_NewProcedure_Click" RenderTransformOrigin="0.533,-0.8"
-                IsEnabled="{Binding ElementName=MedicalHistory, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}" Grid.Column="1" HorizontalAlignment="Right" Width="120" Height="22" VerticalAlignment="Bottom"
+        <Button x:Name="Btn_NewProcedure" Content="Új eljárás felvétele" Margin="0,0,10,10.667" Click="Btn_NewProcedure_Click" RenderTransformOrigin="0.533,-0.8"
+                IsEnabled="{Binding ElementName=MedicalHistory, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}" Grid.Column="1" HorizontalAlignment="Right" Width="179" Height="22" VerticalAlignment="Bottom"
                 />
 
         <!--KÓRTÖRTÉNET-->
         <Label Content="Kórtörténet" Margin="10,211,10,0" VerticalAlignment="Top" FontSize="15" Grid.Column="1" Height="30" />
         <ListBox x:Name="MedicalHistory" Margin="10,246,10,0" 
                  ItemsSource="{Binding Path=MedicalHistory}" 
-                 SelectedItem="{Binding Path=SelectedMedicalRecord}" Grid.Column="1" Height="120" VerticalAlignment="Top" 
+                 SelectedItem="{Binding Path=SelectedMedicalRecord}" Grid.Column="1" Height="120" VerticalAlignment="Top" MouseDoubleClick="MedicalHistory_MouseDoubleClick" 
                  >
             <!--SelectedItem="{Binding Path=SelectedPatient}">-->
             <ListBox.ItemTemplate>
@@ -102,12 +102,12 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="Btn_NewMedicalRecord" Content="Új Kezelés felvétele" Margin="10,374,0,0" Click="Btn_NewMedicalRecord_Click"                
-        IsEnabled="{Binding ElementName=lbPatient, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}" Grid.Column="1" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="130"
+        <Button x:Name="Btn_NewMedicalRecord" Content="Új Kezelés felvétele" Margin="10.333,374,0,0" Click="Btn_NewMedicalRecord_Click"                
+        IsEnabled="{Binding ElementName=lbPatient, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}" Grid.Column="1" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="179"
                 />
-        <Button x:Name="Btn_Discharge" Content="Zárójelentés készítése" Margin="160,374,160,0"                
+        <!--<Button x:Name="Btn_Discharge" Content="Zárójelentés készítése" Margin="160,374,160,0"                
         IsEnabled="{Binding ElementName=lbPatient, Path=SelectedValue, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ValueForEnabled}" Grid.Column="1" Height="22" VerticalAlignment="Top" Click="Btn_Discharge_Click"
-                />
+                />-->
 
         <!--Visibility="{Binding ElementName=Procedures, Path=SelectedValue, Converter={StaticResource StringToVisibilityConverter}, ConverterParameter=ValueForEnabled}"-->
         <Label Content="Diagnosis" Margin="10,418,10,0" VerticalAlignment="Top" Grid.Column="2" Height="26"/>
@@ -117,7 +117,7 @@
         <Button x:Name="Btn_RemovePatient" Content="Beteg eltávolítása" Margin="0,0,10,10" Click="Btn_RemovePatient_Click" Grid.Row="1" HorizontalAlignment="Right" Width="115" Height="22" VerticalAlignment="Bottom"/>
         <Button x:Name="Btn_RemoveMedicalRecord" Content="Kezelés eltávolítása" Margin="0,374,10,0" Click="Btn_RemoveMedicalRecord_Click"
                 
-        	IsEnabled="{Binding SelectedValue, ConverterParameter=ValueForEnabled, Converter={StaticResource StringToBoolConverter}, ElementName=lbPatient}" Grid.Column="1" Height="22" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"
+        	IsEnabled="{Binding SelectedValue, ConverterParameter=ValueForEnabled, Converter={StaticResource StringToBoolConverter}, ElementName=lbPatient}" Grid.Column="1" Height="22" VerticalAlignment="Top" HorizontalAlignment="Right" Width="179"
                 />
 
         <!-- Eljárás adatlap -->

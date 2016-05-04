@@ -85,6 +85,22 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             LastModifiedTimestamp = DateTime.Now.ToString(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
         }
 
+        public string[] isClosed()
+        {
+            string[] billitem = {"", "",""};
+
+            if (this.State != State.Paid && this.State != State.Closed)
+            {
+                this.State = State.Closed;
+            }
+            
+            billitem[0] = this.CreatedTimestamp.Substring(0,10);      //date
+            billitem[1] = this.ProcedureType == null? "Eljárás" : this.ProcedureType.ToString();//Proc.type
+            billitem[2] = this.Price.ToString();        //PRICE
+            
+                
+            return billitem;   
+        }
 
         public void UpdateProcedure(Procedure newProcedure)
         {
@@ -105,9 +121,17 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
         internal Object Clone()
         {
+            //List<ItemUsage> cloneUsage = new List<ItemUsage>();
+            //foreach (ItemUsage item in InventoryUsage)
+            //{
+            //    cloneUsage.Add((ItemUsage)item.Clone());
+            //}
+
+
             Object clone = new Procedure(
                 CreatedTimestamp,
                 State,
+                //cloneUsage,
                 InventoryUsage,
                 Price,
                 Attachments, 

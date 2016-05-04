@@ -23,55 +23,39 @@ namespace HubaskyHospitalManager.View
     {
         public PatientManagementView VM { get; set; }
         public MedicalRecord MedicalRecord { get; set; }
-
-
+        
         public MedicalRecordWindow(PatientManagementView pmv)
         {
             InitializeComponent();
-            MedicalRecord = new MedicalRecord();
-
-            VM = pmv;
-            VM.SelectedMedicalRecord = MedicalRecord;
-            DataContext = pmv;
-        }
-
-        public MedicalRecordWindow(MedicalRecord medicalRecord, PatientManagementView pmv)
-        {
-            InitializeComponent();
 
             VM = pmv;
 
-            MedicalRecord = medicalRecord;
+            MedicalRecord = VM.ClonedMedicalRecord;
 
             DataContext = VM;
         }
 
-        private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)
+       
+
+        private void btnBillPay_Click(object sender, RoutedEventArgs e)
         {
+            //MessageBox.Show(checkboxBill.IsChecked.ToString());
 
-            InventoryManagementWindow invWindow = new InventoryManagementWindow(VM.InventoryManager);
-
-            invWindow.ShowDialog();
-
-            if (invWindow.DialogResult == true)
+            if (checkboxBill.IsChecked == true)
             {
-                // ezt se tudom mit akar csinálni
-                // VM.SelectedProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
-                //PView.ModelProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
+                //fizetés                
+                DialogResult = true;
+            }
+            else
+            {
+                //csak megtekintés
+                //MedicalRecord = VM.SelectedMedicalRecord; //semmi értelme, de egy próbát megért
+                DialogResult = false;
             }
 
 
         }
 
-        private void Btn_NewAttachmentMod_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = true;
-        }
 
     }
 }

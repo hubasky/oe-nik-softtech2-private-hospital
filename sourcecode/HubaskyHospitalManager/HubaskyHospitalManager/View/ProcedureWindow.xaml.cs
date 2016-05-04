@@ -56,13 +56,6 @@ namespace HubaskyHospitalManager.View
             set { selectedAttachment = value; OnPropertyChanged(); }
         }
 
-        private InventoryItem selectedItem;
-        public InventoryItem SelectedItem
-        {
-            get { return selectedItem; }
-            set { selectedItem = value; OnPropertyChanged(); }
-        }
-
         private List<Ward> wardsList;
         public List<Ward> WardsList
         {
@@ -104,9 +97,13 @@ namespace HubaskyHospitalManager.View
 
             if (invWindow.DialogResult == true)
             {
-                //PView.ModelProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
-                // ez itt nem tudom mit akar csinálni...
-                //VM.SelectedProcedure.UpdateInventoryUsage(VM.InventoryManager.InventoryUsage);
+                foreach (InventoryItem item in VM.InventoryManager.InventoryUsage)
+                {
+                    ItemUsage usage = new ItemUsage(0, item.Name, item.Quantity, item.Unit);
+                    Procedure.InventoryUsage.Add(usage);
+                }
+
+                ListBox_InventoryUsage.Items.Refresh();
             }
 
 

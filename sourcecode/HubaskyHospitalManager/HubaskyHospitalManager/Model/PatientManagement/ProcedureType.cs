@@ -101,5 +101,10 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
             return clone;
         }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

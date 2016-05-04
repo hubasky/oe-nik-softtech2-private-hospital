@@ -24,6 +24,10 @@ using System.Windows;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using PdfSharp;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
+using System.Drawing;
 
 
 namespace HubaskyHospitalManager.Model.ApplicationManagement
@@ -46,12 +50,12 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             string dbFileName = @"AttachDBFilename=C:\Users\aowczare\Documents\GitHub\HubaskyHospitalManager\HubaskyHospitalManager\Data\tempdb" + version + ".mdf";
             string connStr = string.Format("{0};{1};{2};{3}", dataSource, initialCatalog, security, dbFileName);
 
-		}
+        }
 
         public void InitializeDataBase()
         {
             // Ez a db server beállítása, a file conn stringet benthagyom arra az esetre, ha később kellene...
-            string connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=HubaskyDataBase03;User ID=sa;Password=szoftech;Pooling=False";
+            string connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=HubaskyDataBase05;User ID=sa;Password=szoftech;Pooling=False";
 
             ApplicationDb = new HubaskyDataBase(connStr);
 
@@ -85,6 +89,32 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
             }
 
             return Sb.ToString();
+        }
+
+        public void PrintToPDF(string filename, string filePath, List<string> text)
+        {
+            PdfDocument pdf = new PdfDocument();
+            PdfPage pdfPage = pdf.AddPage();
+            XGraphics graph = XGraphics.FromPdfPage(pdfPage);
+            XFont font = new XFont("Verdana", 12, XFontStyle.Regular);
+
+
+            int n = 50; //pixel a tetejétől          
+
+            for (int i = 0; i < text.Count; i++)
+			{
+			 
+                graph.DrawString(text[i], font, XBrushes.Black,
+                    new XRect(50, n+i*15, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+			}
+
+          
+            string tempstring = filePath + @"\" + filename;
+            tempstring.Replace(@"\\", @"\");
+            pdf.Save(tempstring);
+
+            MessageBox.Show("Sikeres nyomtatás az alábbi helyre: \n\n          " + filePath + "\n\n          " + filename,
+                    "A számla elkészült");
         }
 
         ///

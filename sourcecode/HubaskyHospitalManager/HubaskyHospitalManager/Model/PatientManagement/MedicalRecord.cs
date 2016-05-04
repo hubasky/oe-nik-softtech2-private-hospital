@@ -95,23 +95,72 @@ namespace HubaskyHospitalManager.Model.PatientManagement
         }
 
 
-        public void IsClosed()
+        public List<string> IsClosed()
         {
-            if (this.State == State.Closed)
+
+            string[] bill = { "", "" }; //végösszeg, számlaszöveg
+
+            List<string> linesOfBill = new List<string>();
+            if (this.State != State.Closed) //ha nem lezárt már
             {
+
+                //Proc.isClosed() returns:
+                //billitem[0] = this.CreatedTimestamp;      //date
+                //billitem[1] = this.ProcedureType.ToString();//Proc.type
+                //billitem[2] = this.Price.ToString();        //PRICE
+
+
+                int sum = 0;
+
+
+                linesOfBill.Add(string.Format("                                               TÉTELES SZÁMLA"));
+                linesOfBill.Add(""); linesOfBill.Add(""); linesOfBill.Add(""); linesOfBill.Add("");
+
+                linesOfBill.Add(string.Format("Dátum                                                   Vizsgálat                                    Ár"));
+                linesOfBill.Add(""); linesOfBill.Add("");
+
+
                 foreach (Procedure proc in Procedures)
-                    proc.State = State.Closed;
+                {
+                    string[] billitem = proc.isClosed();
+
+                    //végösszeg
+                    sum += Convert.ToInt16(billitem[2]);
+
+                    //számla szöveg:
+                    linesOfBill.Add(string.Format("{0}                                            {1}                                          {2}",
+                        billitem[0], billitem[1], billitem[2]));
+                    linesOfBill.Add(""); linesOfBill.Add("");
+                }
+
+                //bill[0] = sum.ToString();
+
+                linesOfBill.Add(""); linesOfBill.Add("");
+                linesOfBill.Add(string.Format("FIZETENDŐ VÉGÖSSZEG:                                                                           {0}", sum.ToString())); //
+
+                //linesOfBill.Add(sum.ToString());
+                this.State = State.Closed;
             }
+
+            return linesOfBill;
         }
 
 
         public Object Clone()
         {
+            List<Procedure> proxxx = new List<Procedure>();
+
+            foreach (Procedure proc in Procedures)
+            {
+                proxxx.Add((Procedure)proc.Clone());
+            }
+
             Object clone = new MedicalRecord(
                 this.CreatedTimestamp,
                 this.State,
                 this.ShortDescription,
-                this.Procedures,
+                proxxx,
+                //this.Procedures,
                 this.LastModifiedTimestamp);
 
             return clone;
