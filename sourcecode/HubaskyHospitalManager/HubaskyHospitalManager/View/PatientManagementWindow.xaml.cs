@@ -234,6 +234,7 @@ namespace HubaskyHospitalManager.View
         private void Procedures_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             UIElement elem = (UIElement)Procedures.InputHitTest(e.GetPosition(Procedures));
+
             while (elem != Procedures)
             {
                 if (elem is ListBoxItem)
@@ -244,6 +245,7 @@ namespace HubaskyHospitalManager.View
                     {
                         if (VM.SelectedProcedure.State != State.Closed)
                         {
+                            ProcedureWindow procedureWindow = new ProcedureWindow((Procedure)VM.SelectedProcedure.Clone(), VM);
                             procedureWindow.ShowDialog();
                             if (procedureWindow.DialogResult == true)
                             {
@@ -253,23 +255,18 @@ namespace HubaskyHospitalManager.View
                                 VM.FillProcedures();
                                 Procedures.Items.Refresh();
                             }
-                        else
-                        {
-                            MessageBox.Show("Tisztelt betegünk az alábbi kezelést már rendezte.", "Már kifizetett kezelés", MessageBoxButton.OK, MessageBoxImage.Error);
+                            else
+                            {
+                                MessageBox.Show("Tisztelt betegünk az alábbi kezelést már rendezte.", "Már kifizetett kezelés", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
                         }
-                        ////else
-                        ////{   //ha klónt adunk át, akkor törölhető lesz
-                        ////    VM.Patientmanager.RemoveProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
-                        ////}
 
+                        return;
                     }
-
-                    return;
                 }
                 elem = (UIElement)VisualTreeHelper.GetParent(elem);
             }
         }
-
         #endregion
 
         // Zárójelentés
