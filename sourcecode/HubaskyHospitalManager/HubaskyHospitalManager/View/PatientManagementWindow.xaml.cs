@@ -201,15 +201,15 @@ namespace HubaskyHospitalManager.View
         {
             if (VM.SelectedMedicalRecord.State != State.Closed) //csak akkor lehet hozzáadni, ha nem closed
             {
-                    ProcedureWindow procedureWindow = new ProcedureWindow(VM);
-                    procedureWindow.ShowDialog();
-                    if (procedureWindow.DialogResult == true)
-                    {
+                ProcedureWindow procedureWindow = new ProcedureWindow(VM);
+                procedureWindow.ShowDialog();
+                if (procedureWindow.DialogResult == true)
+                {
 
-                        VM.Patientmanager.NewProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
-                        VM.FillProcedures();
-                        Procedures.Items.Refresh();
-                    }
+                    VM.Patientmanager.NewProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
+                    VM.FillProcedures();
+                    Procedures.Items.Refresh();
+                }
                 ////else
                 ////{   //ha klónt adunk át, akkor törölhető lesz
                 ////    VM.Patientmanager.RemoveProcedure(VM.SelectedMedicalRecord, procedureWindow.Procedure);
@@ -217,7 +217,8 @@ namespace HubaskyHospitalManager.View
             }
             else
             {
-                throw new ClosedMedicalRecordAdditionException("Zárt kezeléshez nem lehet eljárást rendelni!");
+                MessageBox.Show("Zárt kezeléshez nem lehet eljárást rendelni!", "Node Pistikee!", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
         }
 
@@ -237,14 +238,22 @@ namespace HubaskyHospitalManager.View
 
                     if (VM.SelectedProcedure != null)
                     {
-                        ProcedureWindow procedureWindow = new ProcedureWindow(VM.ClonedProcedure, VM);
-
-                        procedureWindow.ShowDialog();
-                        if (procedureWindow.DialogResult == true)
+                        if (VM.SelectedProcedure.State != State.Closed)
                         {
-                            VM.Patientmanager.UpdateProcedure(VM.ClonedProcedure, VM.SelectedProcedure);
-                            VM.FillProcedures();
-                            Procedures.Items.Refresh();
+
+                            ProcedureWindow procedureWindow = new ProcedureWindow(VM.ClonedProcedure, VM);
+
+                            procedureWindow.ShowDialog();
+                            if (procedureWindow.DialogResult == true)
+                            {
+                                VM.Patientmanager.UpdateProcedure(VM.ClonedProcedure, VM.SelectedProcedure);
+                                VM.FillProcedures();
+                                Procedures.Items.Refresh();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tisztelt betegünk az alábbi kezelést már rendezte.", "Már kifizetett kezelés", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         ////else
                         ////{   //ha klónt adunk át, akkor törölhető lesz
@@ -275,7 +284,7 @@ namespace HubaskyHospitalManager.View
                     filename,
                     folder,
                     bill);
-                
+
             }
 
         }
