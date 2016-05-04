@@ -57,7 +57,7 @@ namespace HubaskyHospitalManager.View
         //PATIENT GOMB
         private void Btn_NewPatient_Click(object sender, RoutedEventArgs e)
         {
-            EditPatientWindow ptWindow = new EditPatientWindow();
+            EditPatientWindow ptWindow = new EditPatientWindow(VM.Patientmanager);
 
             ptWindow.ShowDialog();
             if (ptWindow.DialogResult == true)

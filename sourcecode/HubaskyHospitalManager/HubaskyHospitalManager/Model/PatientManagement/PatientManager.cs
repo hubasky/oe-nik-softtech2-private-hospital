@@ -153,6 +153,8 @@ namespace HubaskyHospitalManager.Model.PatientManagement
             AppManager.ApplicationDb.SaveChanges();
         }
 
+
+
         public void UpdateAttachments(List<Attachment> filesToSave, List<string> localPathToSave, Procedure procedure)
         {
             

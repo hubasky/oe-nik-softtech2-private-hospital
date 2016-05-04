@@ -1,6 +1,7 @@
 ﻿using HubaskyHospitalManager.Model.ApplicationManagement;
 using HubaskyHospitalManager.Model.Common;
 using HubaskyHospitalManager.Model.HospitalManagement;
+using HubaskyHospitalManager.Model.PatientManagement;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,7 +32,7 @@ namespace HubaskyHospitalManager.View
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(name));
         }
-        
+
         private Patient patient;
         public Patient Patient
         {
@@ -45,12 +46,15 @@ namespace HubaskyHospitalManager.View
             get { return Enum.GetNames(typeof(Gender)); }
         }
 
-        public EditPatientWindow()
+        public Boolean SSNValidBool { get; set; }
+        public PatientManager PMGR { get; set; }
+        public EditPatientWindow(PatientManager patientmanager)
         {
             InitializeComponent();
             DataContext = this;
             Patient = new Patient();
             IsEdit = false;
+            this.PMGR = patientmanager;
         }
 
         public EditPatientWindow(Patient patient)
@@ -72,30 +76,36 @@ namespace HubaskyHospitalManager.View
 
             if (Patient.Name == "")
             {
-                missingData += "  név" + Environment.NewLine;                
+                missingData += "  név hiányzik" + Environment.NewLine;
                 validate = false;
             }
             if (Patient.Phone == "")
             {
-                missingData += "  telefonszám" + Environment.NewLine;
+                missingData += "  telefonszám hiányzik" + Environment.NewLine;
                 validate = false;
             }
             if (Patient.Address == "")
             {
-                missingData += "  lakcím" + Environment.NewLine;
+                missingData += "  lakcím hiányzik" + Environment.NewLine;
                 validate = false;
             }
             if (Patient.DateOfBirth == "")
             {
-                missingData += "  születési dátum" + Environment.NewLine;
+                missingData += "  születési dátum hiányzik" + Environment.NewLine;
                 validate = false;
             }
             else
                 Patient.Password = ApplicationManager.CalculateSHA256(Patient.DateOfBirth);
+
             if (Patient.Ssn == "")
             {
-                missingData += "  TAJ szám" + Environment.NewLine;    
+                missingData += "  TAJ szám hiányzik" + Environment.NewLine;
                 validate = false;
+            }
+            else if (!(isSSNValid(Patient.Ssn)))
+            {
+                validate = false;
+                missingData += "  TAJ szám NEM EGYEDI" + Environment.NewLine;
             }
 
             if (validate)
@@ -104,8 +114,26 @@ namespace HubaskyHospitalManager.View
             }
             else
             {
-                MessageBox.Show("Hiányzó adatok:" + Environment.NewLine + missingData, "Hiányzó adatok", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Hiányzó/hibás adatok:" + Environment.NewLine + missingData, "Hiányzó adatok", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+        }
+        private bool isSSNValid(string ssn)
+        {
+            if (PMGR.Patients != null && PMGR.Patients.Count > 0)
+            {
+                foreach (Patient pt in PMGR.Patients)
+                {
+                    if (Patient.Ssn != null && Patient.Ssn == ssn)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+
+
         }
     }
 }
