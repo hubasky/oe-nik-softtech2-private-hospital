@@ -166,6 +166,10 @@ namespace HubaskyHospitalManager.View
                                 //VM.FillMedicalHistory();
                                 //MedicalHistory.Items.Refresh();
 
+                                VM.Patientmanager.UpdateMedicalRecord(VM.SelectedMedicalRecord, VM.SelectedMedicalRecord);
+                                VM.FillMedicalHistory();
+                                MedicalHistory.Items.Refresh();
+                                
                                 PrintInvoice();
                             }
 
