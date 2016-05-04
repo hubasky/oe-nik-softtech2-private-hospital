@@ -56,13 +56,6 @@ namespace HubaskyHospitalManager.View
             set { selectedAttachment = value; OnPropertyChanged(); }
         }
 
-        private InventoryItem selectedItem;
-        public InventoryItem SelectedItem
-        {
-            get { return selectedItem; }
-            set { selectedItem = value; OnPropertyChanged(); }
-        }
-
         private List<Ward> wardsList;
         public List<Ward> WardsList
         {
@@ -106,17 +99,13 @@ namespace HubaskyHospitalManager.View
 
             if (invWindow.DialogResult == true)
             {
-               
-
-                //VM.InventoryManager.InventoryUsage
                 foreach (InventoryItem item in VM.InventoryManager.InventoryUsage)
                 {
                     ItemUsage usage = new ItemUsage(0, item.Name, item.Quantity, item.Unit);
                     Procedure.InventoryUsage.Add(usage);
                 }
 
-                ListView_InventoryUsage.Items.Refresh();
-
+                ListBox_InventoryUsage.Items.Refresh();
             }
 
 

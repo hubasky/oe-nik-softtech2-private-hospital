@@ -64,17 +64,10 @@
         <!--Harmadik oszlop-->
 
         <Label Content="Eszközigény" Margin="10,10,10,0" VerticalAlignment="Top" Grid.Column="2"/>
-        <ListView x:Name="ListView_InventoryUsage" Height="143" Margin="10,41,10,0" VerticalAlignment="Top" 
-                  ItemsSource="{Binding Procedure.InventoryUsage}"
-                 SelectedItem="{Binding SelectedItem}" Grid.Column="2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button x:Name="Btn_DeleteUsedItem" Content="Eszköz törlése" Margin="10,189,0,0" VerticalAlignment="Top"  Grid.Column="2" HorizontalAlignment="Left" Width="123"/>
-        <Button x:Name="Btn_ItemUsageMod" Content="Új eszköz felvétele" Margin="0,189,10,0" VerticalAlignment="Top" Click="Btn_ItemUsageMod_Click" Grid.Column="2" HorizontalAlignment="Right" Width="123"/>
+        <ListBox x:Name="ListBox_InventoryUsage" Height="143" Margin="10,41,10,0" VerticalAlignment="Top" IsEnabled="False"
+                  ItemsSource="{Binding Procedure.InventoryUsage}" Grid.Column="2">
+        </ListBox>
+        <Button x:Name="Btn_ItemUsageMod" Content="Új eszköz felvétele" Margin="0,189,10,0" VerticalAlignment="Top" Click="Btn_ItemUsageMod_Click" Grid.Column="2" HorizontalAlignment="Center" Width="123"/>
 
 
         <Label Content="Csatolmányok" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Height="27" Grid.Column="2"/>
