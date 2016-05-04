@@ -51,7 +51,7 @@ namespace HubaskyHospitalManager.Model.ApplicationManagement
         public void InitializeDataBase()
         {
             // Ez a db server beállítása, a file conn stringet benthagyom arra az esetre, ha később kellene...
-            string connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=HubaskyDataBase03;User ID=sa;Password=szoftech;Pooling=False";
+            string connStr = @"Data Source=193.224.69.39,1433;Initial Catalog=HubaskyDataBase05;User ID=sa;Password=szoftech;Pooling=False";
 
             ApplicationDb = new HubaskyDataBase(connStr);
 
