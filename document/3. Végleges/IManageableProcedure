@@ -1,0 +1,13 @@
+A HospitalManager három interface-t implementál. Kettő korábban bemutatásra került, ez a harmadik pedig az IManageableProcedure. Három metódust deklarál, hasonlóan az előzőekhez, Add, Delete és Update Procedure.
+Az interface műveletek a ProcedureTypeok kezelését valósítják meg, melyek arra szolgálnak, hogy definiálják az egyes eljárás műveleteket. Több-több kapcsolatot valósítanak meg a Ward osztállyal, így egy Ward részleg több féle eljárást is felvehet, de ezek az eljárások más Wardokhoz is felkerülhetnek a listára. (Tipikusan minden Ward felveszi a Betegfelvétel eljárást.)
+
+new_01 kép
+AddNewProcedure
+Az interface hívást követően a manager osztály meghívja az adatbázis ProcedureType táblát tartalmazó DbSet. Add metódusát, melyel beleilleszti az eljárást a többi közé.
+
+new_02 kép
+DeleteProcedure
+Hívást követően szisztematikusan el kell távolítani minden referenciát a típusra, így először a Ward-ok megfelelő adattagján, majd a Procedure-ök megfelelő adattagján hívja meg a remove parancsot, befejezésképp pedig a DbSet-ből is eltávolítja a használni nem kívánt típust.
+
+new_03 kép
+A manager osztály saját metódusait hívja meg a végrehajtás során, először a paraméterként kapott kiindulási és cél objektumok adattagjait másolja. A cél objektum az adatbázis táblában helyezkedik el, ennek adattagjait írja felül a kiindulási objektuméval. Ezt követően már csak érvényesíteni kell a mentéseket az adatbázisban, erre az UpdateDatabase() metódus szolgál.
