@@ -1,0 +1,33 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi=
+"http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=
+"http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
+    <!-- Don't change this value -->
+    <persistence-unit name="GenericDBAdapter">
+    <jta-data-source>jdbc/__mssqldb</jta-data-source>
+    	<class>hubasky.database.domain.Attachment</class>
+    	<class>hubasky.database.domain.Doctor</class>
+    	<class>hubasky.database.domain.MedicalRecord</class>
+    	<class>hubasky.database.domain.Patient</class>
+    	<class>hubasky.database.domain._Procedure</class>
+        <properties>
+            <!--  Don't change this value  -->
+            <property name="hibernate.archive.autodetection" value="class,hbm" />
+            <!--The driver class name"/-->
+            <property name="hibernate.connection.driver_class" value="net.sourceforge.jtds.jdbc.Driver"/>
+            <!--The connection url"/-->
+            <property name="hibernate.connection.url" value="jdbc:jtds:sqlserver://193.224.69.39:1433/HubaskyDataBase03;instance=HUBASKY-PC;user=sa;password=szoftech" />
+            <!--DB login credentials"/-->
+            <!--<property name="hibernate.connection.username" value="sa" />-->
+            <!--<property name="hibernate.connection.password" value="q87uil87ee" />-->
+            <!--connection pool properties"/-->
+            <property name="hibernate.c3p0.min_size" value="5" />
+            <property name="hibernate.c3p0.max_size" value="20" />
+            <property name="hibernate.c3p0.timeout" value="300" />
+            <property name="hibernate.c3p0.max_statements" value="50" />
+            <property name="hibernate.c3p0.idle_test_period" value="3000" />
+            <!--The dialect to use-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
+        </properties>
+    </persistence-unit>
+</persistence>
