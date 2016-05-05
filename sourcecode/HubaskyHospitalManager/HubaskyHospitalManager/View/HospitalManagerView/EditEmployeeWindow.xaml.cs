@@ -101,8 +101,9 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             {
                 Units.Add(unit);
             }
-            SelectedUnit = HospView.SelectedUnit.Reference;
-            if (SelectedUnit != null && SelectedUnit.Manager.Username.Equals(Employee.Username))
+            if (HospView.SelectedUnit != null)
+                SelectedUnit = HospView.SelectedUnit.Reference;
+            if (SelectedUnit != null && SelectedUnit.Manager != null && SelectedUnit.Manager.Username.Equals(Employee.Username))
                 IsManager = true;
         }
 
