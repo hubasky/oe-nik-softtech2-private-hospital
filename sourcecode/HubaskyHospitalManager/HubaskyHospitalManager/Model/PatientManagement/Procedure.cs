@@ -142,5 +142,23 @@ namespace HubaskyHospitalManager.Model.PatientManagement
 
             return clone;
         }
+
+        public Role[] GetAllowedRoles()
+        {            
+            List<Role> list = new List<Role>();
+            if (ProcedureType.AllowedAdministrator)
+                list.Add(Role.Administrator);
+            if (ProcedureType.AllowedDataRecorder)
+                list.Add(Role.DataRecorder);
+            if (ProcedureType.AllowedDoctor)
+                list.Add(Role.Doctor);
+            if (ProcedureType.AllowedLaboratorian)
+                list.Add(Role.Laboratorian);
+            if (ProcedureType.AllowedNurse)
+                list.Add(Role.Nurse);
+
+            return list.ToArray();
+        }
+
     }
 }

@@ -41,3 +41,25 @@ Patient manager:
 
         public State State { get; set; } +++++++
         public int Price { get; set; } +++++++
+
+
+Jogosultsági kezelések:
+Hospital manager:
+- bejelentkezni adatrögzítő és admin tud (DONE)
+- mindenhez ennek a kettőnek van joga, kivétel: (DONE)
+- szervezeti egység törlése: admin (DONE)
+- alkalmazott törlése: admin (DONE)
+
+Patient manager:
+- Bejelentkezni mindenki tud (DONE)
+- Beteg eltávolítása csak admin!!! (DONE)
+- új beteg felvétele - admin, datarecorder (DONE)
+- új kezelés felvétele - datarecorder, admin (DONE)
+- kezelés eltávolítása - admin (DONE)
+- eljárás megtekintése nem igényel autentikációt, letölthetők a csatolmányok, de új kiírás vagy módosítás már authentikálást kér. (DONE)
+- új eljárás kiírása/módosítása - eljárás típus függő (DONE)
+
+Eszközkezelő:
+- admin és adatrögzítő tud belépni ide (DONE)
+- külön authentikációt nem igényel egyik feladat sem (DONE)
+

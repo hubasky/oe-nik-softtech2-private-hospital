@@ -88,6 +88,11 @@ namespace HubaskyHospitalManager.View
             LocalPathToSave = new List<string>();
             WardsList = pmv.Patientmanager.AppManager.ApplicationDb.Wards.ToList();
             DataContext = this;
+
+            // disable UI elements for procedure editing:
+            TextBox_Price.IsEnabled = false;
+            ListBox_Ward.IsEnabled = false;
+            ListBox_ProcedureType.IsEnabled = false;
         }
 
         private void Btn_ItemUsageMod_Click(object sender, RoutedEventArgs e)
@@ -162,8 +167,13 @@ namespace HubaskyHospitalManager.View
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = true;
+        {            
+            LoginWindow auth = new LoginWindow(Procedure.GetAllowedRoles(), VM.Patientmanager.AppManager);
+            auth.ShowDialog();
+            if (auth.DialogResult == true)
+            {
+                DialogResult = true;
+            }
         }
 
 

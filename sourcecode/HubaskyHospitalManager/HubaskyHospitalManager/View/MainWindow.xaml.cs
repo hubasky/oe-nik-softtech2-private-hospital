@@ -96,7 +96,7 @@ namespace HubaskyHospitalManager.View
         {
             if (isConnected == true)
             {
-                LoginWindow firstLogin = new LoginWindow(new Role[] { Role.Administrator }, appMgr);
+                LoginWindow firstLogin = new LoginWindow(new Role[] { Role.Administrator, Role.DataRecorder }, appMgr);
                 firstLogin.ShowDialog();
                 if (firstLogin.DialogResult == true)
                 {
@@ -116,11 +116,9 @@ namespace HubaskyHospitalManager.View
 
         private void Grid_PatientManagement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            LoginWindow firstLogin = new LoginWindow(appMgr);
-
-
             if (isConnected == true)
             {
+                LoginWindow firstLogin = new LoginWindow(appMgr);
                 firstLogin.ShowDialog();
                 if (firstLogin.DialogResult == true)
                 {

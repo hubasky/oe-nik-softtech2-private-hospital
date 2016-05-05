@@ -32,11 +32,11 @@
                   ItemsSource="{Binding StateTypes, Converter={StaticResource StateTypesConverter}}"
                   SelectedItem="{Binding Procedure.State, Converter={StaticResource StateStringConventer}}"/>
         <Label Margin="10,148,201,0" Content="Eljárás ára" VerticalAlignment="Top"/>
-        <TextBox Margin="209,148,10,0" Text="{Binding Procedure.Price}" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBox_Price" Margin="209,148,10,0" Text="{Binding Procedure.Price}" VerticalAlignment="Top"/>
 
 
         <Label Content="Osztály" Margin="10,179,119,0" VerticalAlignment="Top"/>
-        <ListBox Margin="10,210,10,208" ItemsSource="{Binding WardsList}" SelectedItem="{Binding Procedure.Ward}">
+        <ListBox x:Name="ListBox_Ward" Margin="10,210,10,208" ItemsSource="{Binding WardsList}" SelectedItem="{Binding Procedure.Ward}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
@@ -44,7 +44,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Label Content="Eljárás" Margin="10,299,119,0" VerticalAlignment="Top"/>
-        <ListBox Margin="10,330,10,72" ItemsSource="{Binding Procedure.Ward.Procedures}" SelectedItem="{Binding Procedure.ProcedureType}">
+        <ListBox x:Name="ListBox_ProcedureType" Margin="10,330,10,72" ItemsSource="{Binding Procedure.Ward.Procedures}" SelectedItem="{Binding Procedure.ProcedureType}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>

@@ -77,9 +77,14 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
             }
             else
             {
-                AppMgr.HospitalManagement.RemoveUnit(HospView.SelectedUnit.Reference);
-                HospView.SelectedUnit = null;
-                HospView.UpdateHierarchyList();
+                LoginWindow auth = new LoginWindow(new Role[] { Role.Administrator }, AppMgr);
+                auth.ShowDialog();
+                if (auth.DialogResult == true)
+                {
+                    AppMgr.HospitalManagement.RemoveUnit(HospView.SelectedUnit.Reference);
+                    HospView.SelectedUnit = null;
+                    HospView.UpdateHierarchyList();
+                }
             }            
         }
 
@@ -107,11 +112,19 @@ namespace HubaskyHospitalManager.View.HospitalManagerView
 
         private void Btn_DeleteEmployee_Click(object sender, RoutedEventArgs e)
         {
-            AppMgr.HospitalManagement.RemoveEmployee(HospView.SelectedEmployee);
-            var selection = HospView.SelectedUnit;
-            HospView.SelectedUnit = null;
-            HospView.SelectedUnit = selection;
-            HospView.UpdateHierarchyList();
+            if (HospView.SelectedEmployee != null)
+            {
+                LoginWindow auth = new LoginWindow(new Role[] { Role.Administrator }, AppMgr);
+                auth.ShowDialog();
+                if (auth.DialogResult == true)
+                {
+                    AppMgr.HospitalManagement.RemoveEmployee(HospView.SelectedEmployee);
+                    var selection = HospView.SelectedUnit;
+                    HospView.SelectedUnit = null;
+                    HospView.SelectedUnit = selection;
+                    HospView.UpdateHierarchyList();
+                }
+            }
         }
 
         private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)

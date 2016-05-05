@@ -56,19 +56,21 @@ namespace HubaskyHospitalManager.View
         # region NewPatient || Gombbal hozzáadás
         //PATIENT GOMB
         private void Btn_NewPatient_Click(object sender, RoutedEventArgs e)
-        {
-            EditPatientWindow ptWindow = new EditPatientWindow(VM.Patientmanager);
-
-            ptWindow.ShowDialog();
-            if (ptWindow.DialogResult == true)
+    {
+            LoginWindow auth = new LoginWindow(new Role[] { Role.Administrator, Role.DataRecorder }, VM.Patientmanager.AppManager);
+            auth.ShowDialog();
+            if (auth.DialogResult == true)
             {
-                VM.Patientmanager.NewPatient(ptWindow.Patient);
-                VM.FillPatients();
-                VM.SelectedPatient = ptWindow.Patient;
-                lbPatient.Items.Refresh();
-
+                EditPatientWindow ptWindow = new EditPatientWindow(VM.Patientmanager);
+                ptWindow.ShowDialog();
+                if (ptWindow.DialogResult == true)
+                {
+                    VM.Patientmanager.NewPatient(ptWindow.Patient);
+                    VM.FillPatients();
+                    VM.SelectedPatient = ptWindow.Patient;
+                    lbPatient.Items.Refresh();
+                }
             }
-
         }
         #endregion
 
@@ -115,9 +117,18 @@ namespace HubaskyHospitalManager.View
         //PATIENT TÖRLÉS
         private void Btn_RemovePatient_Click(object sender, RoutedEventArgs e)
         {
-            VM.Patientmanager.RemovePatient(VM.SelectedPatient);
-            VM.FillPatients();
-            lbPatient.Items.Refresh();
+            if (VM.SelectedPatient != null)
+            {
+                LoginWindow auth = new LoginWindow(new Role[] { Role.Administrator }, VM.Patientmanager.AppManager);
+                auth.ShowDialog();
+                if (auth.DialogResult == true)
+                {
+                    VM.Patientmanager.RemovePatient(VM.SelectedPatient);
+                    VM.FillPatients();
+                    VM.SelectedPatient = null;
+                    lbPatient.Items.Refresh();
+                }
+            }
         }
         #endregion
 
@@ -125,13 +136,18 @@ namespace HubaskyHospitalManager.View
         // Új Kezelés
         private void Btn_NewMedicalRecord_Click(object sender, RoutedEventArgs e)
         {
-            NewMedicalRecordWindow medicalRecordWindow = new NewMedicalRecordWindow();
-            medicalRecordWindow.ShowDialog();
-            if (medicalRecordWindow.DialogResult == true)
+            LoginWindow auth = new LoginWindow(new Role[] { Role.Administrator, Role.DataRecorder }, VM.Patientmanager.AppManager);
+            auth.ShowDialog();
+            if (auth.DialogResult == true)
             {
-                VM.Patientmanager.NewMedicalRecord(VM.SelectedPatient, medicalRecordWindow.MedicalRecord);
-                VM.FillMedicalHistory();
-                MedicalHistory.Items.Refresh();
+                NewMedicalRecordWindow medicalRecordWindow = new NewMedicalRecordWindow();
+                medicalRecordWindow.ShowDialog();
+                if (medicalRecordWindow.DialogResult == true)
+                {
+                    VM.Patientmanager.NewMedicalRecord(VM.SelectedPatient, medicalRecordWindow.MedicalRecord);
+                    VM.FillMedicalHistory();
+                    MedicalHistory.Items.Refresh();
+                }
             }
         }
         #endregion
@@ -191,9 +207,17 @@ namespace HubaskyHospitalManager.View
         // Kezelés törlése
         private void Btn_RemoveMedicalRecord_Click(object sender, RoutedEventArgs e)
         {
-            VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, VM.SelectedMedicalRecord);
-            VM.FillMedicalHistory();
-            MedicalHistory.Items.Refresh();
+            if (VM.SelectedMedicalRecord != null)
+            {
+                LoginWindow auth = new LoginWindow(new Role[] { Role.Administrator }, VM.Patientmanager.AppManager);
+                auth.ShowDialog();
+                if (auth.DialogResult == true)
+                {
+                    VM.Patientmanager.RemoveMedicalRecord(VM.SelectedPatient, VM.SelectedMedicalRecord);
+                    VM.FillMedicalHistory();
+                    MedicalHistory.Items.Refresh();
+                }
+            }
         }
         #endregion
 

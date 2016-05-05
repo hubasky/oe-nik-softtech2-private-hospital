@@ -120,20 +120,30 @@ namespace HubaskyHospitalManager.View
         }
         private bool isSSNValid(string ssn)
         {
-            if (PMGR.Patients != null && PMGR.Patients.Count > 0)
-            {
-                foreach (Patient pt in PMGR.Patients)
-                {
-                    if (Patient.Ssn != null && Patient.Ssn == ssn)
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-
-
+            var patient = (from p in PMGR.Patients
+                           where p.Ssn == ssn
+                           select p).FirstOrDefault();
+            if (patient == null)
+                return true;
+            else
+                return false;
         }
+
+        //{
+        //    if (PMGR.Patients != null && PMGR.Patients.Count > 0)
+        //    {
+        //        foreach (Patient pt in PMGR.Patients)
+        //        {
+        //            if (Patient.Ssn != null && Patient.Ssn == ssn)
+        //            {
+        //                return false;
+        //            }
+        //        }
+        //    }
+
+        //    return true;
+
+
+        //}
     }
 }

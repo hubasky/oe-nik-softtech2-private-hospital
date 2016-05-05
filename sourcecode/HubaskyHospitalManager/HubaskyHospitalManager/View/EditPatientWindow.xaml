@@ -18,13 +18,13 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>-->
     </Window.Resources>
-    <Grid>
+    <Grid FocusManager.FocusedElement="{Binding ElementName=TextBox_Name}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="151*"/>
             <ColumnDefinition Width="231*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Név" Margin="10,18,10,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Text="{Binding Patient.Name, UpdateSourceTrigger=PropertyChanged}" Height="23" Margin="10,21,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="TextBox_Name" Text="{Binding Patient.Name, UpdateSourceTrigger=PropertyChanged}" Height="23" Margin="10,21,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Lakcím" Margin="10,46,10,0" VerticalAlignment="Top" Height="26"/>
         <TextBox Text="{Binding Patient.Address}" Height="23" Margin="10,49,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Telefonszám" Margin="10,74,10,0" VerticalAlignment="Top" Height="26"/>
@@ -38,6 +38,6 @@
         <Label Content="TAJ" Margin="10,158,10,0" VerticalAlignment="Top" Height="26"/>
         <TextBox x:Name="TxtBox_Ssn" Text="{Binding Patient.Ssn, UpdateSourceTrigger=PropertyChanged}" Height="23" Margin="10,161,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
 
-        <Button Content="OK" HorizontalAlignment="Right" Margin="0,0,9,10" Width="160" Click="Button_Click" Grid.Column="1" Height="30" VerticalAlignment="Bottom"/>
+        <Button Content="OK" HorizontalAlignment="Right" Margin="0,0,9,10" Width="160" Click="Button_Click" Grid.Column="1" Height="30" VerticalAlignment="Bottom" IsDefault="True"/>
     </Grid>
 </Window>

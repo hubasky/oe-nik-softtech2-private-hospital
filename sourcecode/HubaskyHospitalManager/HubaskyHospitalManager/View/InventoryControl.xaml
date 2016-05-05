@@ -29,7 +29,7 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid FocusManager.FocusedElement="{Binding ElementName=textBox}">
         <Grid.RowDefinitions>
             <RowDefinition Height="{Binding ElementName=label, Path=Height}"/>
             <RowDefinition/>
